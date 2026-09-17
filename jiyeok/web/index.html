@@ -2145,7 +2145,9 @@ function stackLabelRows(rows,slots){
 const esc = v => String(v??"").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 function schoolTipHtml(r){
   const g=Array.isArray(r.grades)?r.grades:[];
-  return `<b>${esc(r.name)}</b>`+g.map((n,i)=>`<br>${i+1}학년 ${fmt(n)}명`).join("");
+  const c=Array.isArray(r.grade_classes)?r.grade_classes:[];
+  return `<b>${esc(r.name)}</b>`+g.map((n,i)=>`<br>${i+1}학년 ${fmt(n)}명`+
+    (c[i]!==undefined?` (${fmt(c[i])}학급)`:"")).join("");
 }
 function cachedPoiMarker(kind,st,r){
   const lat=r._displayLat??r.lat, lng=r._displayLng??r.lng;
