@@ -2116,6 +2116,45 @@ function spreadCoincidentRows(rows){
   return out;
 }
 
+/* 학교 원 밑 학생수가 서로 겹치는 것을 푼다 (2026-09-18).
+   같은 좌표를 흩뿌리는 spreadCoincidentRows 로는 못 막는다 — 학교는 좌표가 **다르지만 가깝다.**
+   겹치는지는 배율에 따라 달라지므로 위경도가 아니라 **화면 좌표**로 판정하고, 마커를 다시 만들지 않고
+   숫자 칸의 top 만 밀어 쌓는다(줌마다 마커를 새로 만들면 poiMarkerCache 가 무의미해진다).
+   ponytail: 화면에 그려진 것끼리 O(n^2) 비교 — 한 동에 보이는 학교는 수십 개라 충분하다.
+             수백 개가 한 화면에 들어오는 배율이 생기면 격자 버킷으로 바꿀 것. */
+const SCHOOL_NUM_TOP = 10, SCHOOL_NUM_STEP = 13, SCHOOL_NUM_H = 12, SCHOOL_NUM_MAX_SLOT = 6;
+function restackSchoolNums(){
+  if(!map2) return;
+  const items=[];
+  for(const kind of ["school_elem","school_mid","school_high"]){
+    const layer=poiLayers[kind];
+    if(!layer || !map2.hasLayer(layer)) continue;
+    for(const m of layer.getLayers()){
+      const el=m.getElement && m.getElement();
+      const num=el && el.querySelector(".poi-school-num");
+      if(!num) continue;
+      num.style.top=SCHOOL_NUM_TOP+"px";           // 매번 원위치에서 다시 쌓는다
+      const q=map2.latLngToContainerPoint(m.getLatLng());
+      items.push({num, x:q.x, y:q.y, w:num.getBoundingClientRect().width||28});
+    }
+  }
+  items.sort((a,b)=>a.y-b.y || a.x-b.x);           // 북->남. 위에 있는 것이 자리를 먼저 잡는다
+  const placed=[];
+  for(const it of items){
+    let slot=0, top=it.y+SCHOOL_NUM_TOP;
+    while(slot<SCHOOL_NUM_MAX_SLOT){
+      top=it.y+SCHOOL_NUM_TOP+slot*SCHOOL_NUM_STEP;
+      const hit=placed.some(o=>Math.abs(o.x-it.x) < (o.w+it.w)/2+2
+                            && Math.abs(o.top-top) < SCHOOL_NUM_H);
+      if(!hit) break;
+      slot++;
+    }
+    if(slot) it.num.style.top=(SCHOOL_NUM_TOP+slot*SCHOOL_NUM_STEP)+"px";
+    placed.push({x:it.x, w:it.w, top});
+  }
+}
+
+
 async function viewSelectedAdmsPoi(admCodes){
   admViewToken++;
   const token=++poiSelectionToken;
@@ -2211,6 +2250,8 @@ function drawPoi(poi, admCode, admGeoOverride=null){
     map2.zoomControl.setPosition("bottomright");
     map2.attributionControl.setPrefix("");   // 위성 타일은 출처 표기가 이용조건이다
     applyBasemap();
+    /* 배율이 바뀌면 화면상 거리가 달라져 겹침도 달라진다 */
+    map2.on("zoomend moveend", restackSchoolNums);
   }
   drawBasemapButtons();
   Object.values(poiLayers).forEach(l => map2.removeLayer(l));
@@ -2310,6 +2351,7 @@ function drawPoi(poi, admCode, admGeoOverride=null){
   //    뒤에 올린 것이 위로 오므로 영유 → 경쟁사 → 자사 순서로 끌어올린다.
   restyleMarkers();
   raiseKeyLayers();
+  requestAnimationFrame(restackSchoolNums);   // 마커가 DOM 에 붙은 뒤에야 폭을 잰다
 
   if(unmatched){
     hint.textContent = "일부 POI에 행정동 매칭 정보가 없어 시군구 전체 POI를 표시합니다"
@@ -2329,6 +2371,7 @@ function drawPoi(poi, admCode, admGeoOverride=null){
     input.closest(".poi-filter-chip").classList.toggle("off",!input.checked);
     if(input.checked){ poiLayers[k].addTo(map2); raiseKeyLayers(); }
     else map2.removeLayer(poiLayers[k]);
+    requestAnimationFrame(restackSchoolNums);
   });
 
   // ④ 접근성 KPI 채우기
