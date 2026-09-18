@@ -2116,13 +2116,17 @@ function spreadCoincidentRows(rows){
   return out;
 }
 
-/* 학교 원 밑 학생수가 서로 겹치는 것을 푼다 (2026-09-18).
-   같은 좌표를 흩뿌리는 spreadCoincidentRows 로는 못 막는다 — 학교는 좌표가 **다르지만 가깝다.**
-   겹치는지는 배율에 따라 달라지므로 위경도가 아니라 **화면 좌표**로 판정하고, 마커를 다시 만들지 않고
-   숫자 칸의 top 만 밀어 쌓는다(줌마다 마커를 새로 만들면 poiMarkerCache 가 무의미해진다).
-   ponytail: 화면에 그려진 것끼리 O(n^2) 비교 — 한 동에 보이는 학교는 수십 개라 충분하다.
-             수백 개가 한 화면에 들어오는 배율이 생기면 격자 버킷으로 바꿀 것. */
-const SCHOOL_NUM_TOP = 10, SCHOOL_NUM_STEP = 13, SCHOOL_NUM_H = 12, SCHOOL_NUM_MAX_SLOT = 6;
+/* 학교 마커가 서로 겹치는 것을 푼다 (2026-09-18).
+   ⚠️ **원과 숫자를 같이 민다.** 숫자만 밀면 밀려난 숫자가 옆 학교 원 밑에 붙어
+   「한 학교에 숫자 두 개」로 읽힌다 (김포 운양동 모담초 88 + 모담중 475 실측 — 이 둘은 좌표가 같다).
+   같은 좌표를 흩뿌리는 spreadCoincidentRows 로는 못 막는다. 그건 **한 레이어 안**에서만 돌고
+   초·중·고는 레이어가 따로라 초1개·중1개는 각각 「혼자」로 보이기 때문이다.
+   겹침은 배율에 따라 달라지므로 위경도가 아니라 **화면 좌표**로 판정하고, 마커를 다시 만들지 않고
+   CSS top 만 민다(줌마다 마커를 새로 만들면 poiMarkerCache 가 무의미해진다).
+   ponytail: 화면에 그려진 것끼리 O(n^2) 비교 — 한 동에 보이는 학교는 수십 개라 충분하다. */
+const SCHOOL_DOT_TOP = -9, SCHOOL_NUM_TOP = 10;   // CSS 기본값
+const SCHOOL_SLOT_STEP = 34;                      // 원 18 + 숫자 12 + 여백
+const SCHOOL_BOX_H = 32, SCHOOL_MAX_SLOT = 5;
 function restackSchoolNums(){
   if(!map2) return;
   const items=[];
@@ -2131,25 +2135,32 @@ function restackSchoolNums(){
     if(!layer || !map2.hasLayer(layer)) continue;
     for(const m of layer.getLayers()){
       const el=m.getElement && m.getElement();
-      const num=el && el.querySelector(".poi-school-num");
-      if(!num) continue;
-      num.style.top=SCHOOL_NUM_TOP+"px";           // 매번 원위치에서 다시 쌓는다
+      const dot=el && el.querySelector(".poi-school");
+      if(!dot) continue;
+      const num=el.querySelector(".poi-school-num");
+      dot.style.top=SCHOOL_DOT_TOP+"px";          // 매번 원위치에서 다시 쌓는다
+      if(num) num.style.top=SCHOOL_NUM_TOP+"px";
       const q=map2.latLngToContainerPoint(m.getLatLng());
-      items.push({num, x:q.x, y:q.y, w:num.getBoundingClientRect().width||28});
+      const w=Math.max(18, num ? (num.getBoundingClientRect().width||28) : 18);
+      items.push({dot, num, x:q.x, y:q.y, w});
     }
   }
-  items.sort((a,b)=>a.y-b.y || a.x-b.x);           // 북->남. 위에 있는 것이 자리를 먼저 잡는다
+  items.sort((a,b)=>a.y-b.y || a.x-b.x);          // 북→남. 위에 있는 것이 자리를 먼저 잡는다
   const placed=[];
   for(const it of items){
-    let slot=0, top=it.y+SCHOOL_NUM_TOP;
-    while(slot<SCHOOL_NUM_MAX_SLOT){
-      top=it.y+SCHOOL_NUM_TOP+slot*SCHOOL_NUM_STEP;
+    let slot=0, top=it.y;
+    while(slot<SCHOOL_MAX_SLOT){
+      top=it.y+slot*SCHOOL_SLOT_STEP;
       const hit=placed.some(o=>Math.abs(o.x-it.x) < (o.w+it.w)/2+2
-                            && Math.abs(o.top-top) < SCHOOL_NUM_H);
+                            && Math.abs(o.top-top) < SCHOOL_BOX_H);
       if(!hit) break;
       slot++;
     }
-    if(slot) it.num.style.top=(SCHOOL_NUM_TOP+slot*SCHOOL_NUM_STEP)+"px";
+    if(slot){
+      const d=slot*SCHOOL_SLOT_STEP;
+      it.dot.style.top=(SCHOOL_DOT_TOP+d)+"px";
+      if(it.num) it.num.style.top=(SCHOOL_NUM_TOP+d)+"px";
+    }
     placed.push({x:it.x, w:it.w, top});
   }
 }
