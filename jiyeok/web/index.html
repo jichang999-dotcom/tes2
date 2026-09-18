@@ -2097,39 +2097,38 @@ function raiseKeyLayers(){
   });
 }
 
-function spreadCoincidentRows(rows){
-  const groups=new Map();
-  rows.forEach(r=>{
+/* 좌표가 **완전히 같은** POI 를 아주 조금 흩뿌린다.
+   ⚠️ 슬롯은 **레이어를 가로질러** 매긴다 — 초·중·고는 레이어가 따로라 레이어별로 매기면
+   모담초(88명)+모담중(475명)처럼 (초 1개, 중 1개)가 각각 「혼자」로 보여 원이 포개진다.
+   첫 번째는 **제자리에 둔다** — 대표 위치를 지킨다. 오프셋은 약 9m 로, 상담에서 짚는 위치를 해치지 않는다. */
+const SPREAD_STEPS = [[0,0],[0,1],[0,-1],[1,0],[-1,0],[1,1],[-1,-1],[1,-1],[-1,1]];
+                                   // 세로(위도) 먼저 — 같은 도수에서 경도 간격이 cos(위도)만큼
+                                   // 짧아 가로로 밀면 원이 덜 떨어진다
+const SPREAD_DEG = 0.00035;        // 위도 약 39m · 경도 약 31m — 학교 부지 안쪽 수준이라
+                                   // 상담에서 짚는 위치를 해치지 않는다. 9m 로는 줌 16 에서 약 5px 라
+                                   // 18px 원이 그대로 겹쳤다(모담초·모담중 실측).
+function spreadCoincidentRows(rows, slots){
+  const own = slots || new Map();
+  return rows.map(r=>{
     const key=`${Number(r.lat).toFixed(6)},${Number(r.lng).toFixed(6)}`;
-    if(!groups.has(key)) groups.set(key,[]);
-    groups.get(key).push(r);
+    const i=own.get(key)||0; own.set(key,i+1);
+    if(!i) return r;
+    const [dx,dy]=SPREAD_STEPS[i%SPREAD_STEPS.length];
+    return {...r,_displayLat:Number(r.lat)+dy*SPREAD_DEG,
+                 _displayLng:Number(r.lng)+dx*SPREAD_DEG};
   });
-  const out=[];
-  groups.forEach(group=>{
-    if(group.length===1){ out.push(group[0]); return; }
-    group.forEach((r,i)=>{
-      const angle=2*Math.PI*i/group.length;
-      out.push({...r,_displayLat:Number(r.lat)+Math.sin(angle)*0.000075,
-                     _displayLng:Number(r.lng)+Math.cos(angle)*0.000075});
-    });
-  });
-  return out;
 }
 
-/* 학교 마커가 서로 겹치는 것을 푼다 (2026-09-18).
-   ⚠️ **원과 숫자를 같이 민다.** 숫자만 밀면 밀려난 숫자가 옆 학교 원 밑에 붙어
-   「한 학교에 숫자 두 개」로 읽힌다 (김포 운양동 모담초 88 + 모담중 475 실측 — 이 둘은 좌표가 같다).
-   같은 좌표를 흩뿌리는 spreadCoincidentRows 로는 못 막는다. 그건 **한 레이어 안**에서만 돌고
-   초·중·고는 레이어가 따로라 초1개·중1개는 각각 「혼자」로 보이기 때문이다.
-   겹침은 배율에 따라 달라지므로 위경도가 아니라 **화면 좌표**로 판정하고, 마커를 다시 만들지 않고
-   CSS top 만 민다(줌마다 마커를 새로 만들면 poiMarkerCache 가 무의미해진다).
+/* 학교 원 밑 숫자가 서로 겹치면 **숫자를 숨긴다** (2026-09-18).
+   ⚠️ **마커를 옮겨 쌓지 않는다.** 1차 구현이 원과 숫자를 아래로 밀었는데,
+   줌 13 논현고잔동에서 사리울초가 136px(약 2km) 밀려 **행정동 경계 밖에 찍혔다** —
+   상담에서 학교 위치를 잘못 짚게 된다. 마커 위치가 숫자 가독성보다 먼저다.
+   좌표가 **완전히 같은** 경우는 spreadCoincidentRows 가 약 9m 흩뿌려 원이 포개지지 않게 한다.
+   숨은 숫자는 확대하면(겹침이 풀리면) 다시 나타나고, 말풍선으로는 언제든 볼 수 있다.
    ponytail: 화면에 그려진 것끼리 O(n^2) 비교 — 한 동에 보이는 학교는 수십 개라 충분하다. */
-const SCHOOL_DOT_TOP = -9, SCHOOL_NUM_TOP = 10;   // CSS 기본값
-const SCHOOL_SLOT_STEP = 34;                      // 원 18 + 숫자 12 + 여백
-const SCHOOL_BOX_H = 32, SCHOOL_MAX_SLOT = 5;
 function restackSchoolNums(){
   if(!map2) return;
-  const items=[];
+  const items=[], dots=[];
   for(const kind of ["school_elem","school_mid","school_high"]){
     const layer=poiLayers[kind];
     if(!layer || !map2.hasLayer(layer)) continue;
@@ -2137,31 +2136,24 @@ function restackSchoolNums(){
       const el=m.getElement && m.getElement();
       const dot=el && el.querySelector(".poi-school");
       if(!dot) continue;
-      const num=el.querySelector(".poi-school-num");
-      dot.style.top=SCHOOL_DOT_TOP+"px";          // 매번 원위치에서 다시 쌓는다
-      if(num) num.style.top=SCHOOL_NUM_TOP+"px";
       const q=map2.latLngToContainerPoint(m.getLatLng());
-      const w=Math.max(18, num ? (num.getBoundingClientRect().width||28) : 18);
-      items.push({dot, num, x:q.x, y:q.y, w});
+      dots.push({x:q.x, y:q.y, w:18, h:18});          // 원은 중심에서 ±9
+      const num=el.querySelector(".poi-school-num");
+      if(!num) continue;
+      num.style.display="";                          // 매번 전부 되살린 뒤 다시 판정한다
+      items.push({num, x:q.x, y:q.y+16, w:num.getBoundingClientRect().width||28, h:12, mine:q});
     }
   }
-  items.sort((a,b)=>a.y-b.y || a.x-b.x);          // 북→남. 위에 있는 것이 자리를 먼저 잡는다
-  const placed=[];
+  const hit=(a,b)=>Math.abs(a.x-b.x) < (a.w+b.w)/2+1 && Math.abs(a.y-b.y) < (a.h+b.h)/2+1;
+  items.sort((a,b)=>a.y-b.y || a.x-b.x);              // 북→남. 위에 있는 것이 남는다
+  const kept=[];
   for(const it of items){
-    let slot=0, top=it.y;
-    while(slot<SCHOOL_MAX_SLOT){
-      top=it.y+slot*SCHOOL_SLOT_STEP;
-      const hit=placed.some(o=>Math.abs(o.x-it.x) < (o.w+it.w)/2+2
-                            && Math.abs(o.top-top) < SCHOOL_BOX_H);
-      if(!hit) break;
-      slot++;
-    }
-    if(slot){
-      const d=slot*SCHOOL_SLOT_STEP;
-      it.dot.style.top=(SCHOOL_DOT_TOP+d)+"px";
-      if(it.num) it.num.style.top=(SCHOOL_NUM_TOP+d)+"px";
-    }
-    placed.push({x:it.x, w:it.w, top});
+    /* 숨기는 기준은 둘이다 — ①다른 숫자와 겹친다 ②**다른 학교의 원**에 가린다.
+       ②를 빼면 모담초·모담중처럼 붙은 자리에서 숫자가 옆 원 뒤로 들어가 반쯤 보인다. */
+    const clash = kept.some(o=>hit(o,it))
+               || dots.some(d=>Math.abs(d.x-it.mine.x)+Math.abs(d.y-it.mine.y) > 0.5 && hit(d,it));
+    if(clash) it.num.style.display="none";
+    else kept.push(it);
   }
 }
 
@@ -2335,6 +2327,7 @@ function drawPoi(poi, admCode, admGeoOverride=null){
 
   const counts = {}, used = {};
   const labelSlots = new Map();
+  const coincidentSlots=new Map();   // 좌표 동일 흩뿌림 — 학교 초·중·고를 가로질러 공유한다
   let unmatched = false;
   Object.keys(POI_STYLE).forEach(kind => {
     const st = POI_STYLE[kind];
@@ -2351,7 +2344,7 @@ function drawPoi(poi, admCode, admGeoOverride=null){
     //    "0개"는 결측이 아니라 실측값이므로 0으로 둔다.
     const hasAdm = all.some(r => r.adm_cd);
     if(rows.length === 0 && all.length > 0 && !hasAdm){ rows = all; unmatched = true; }
-    rows=POI_LABEL_KINDS.has(kind)?stackLabelRows(rows,labelSlots):spreadCoincidentRows(rows);
+    rows=POI_LABEL_KINDS.has(kind)?stackLabelRows(rows,labelSlots):spreadCoincidentRows(rows,coincidentSlots);
     counts[kind] = rows.length; used[kind] = rows;
     const g=L.layerGroup(rows.map(r=>cachedPoiMarker(kind,st,r)));
     poiLayers[kind] = g.addTo(map2);
