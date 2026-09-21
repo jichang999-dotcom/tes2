@@ -32,6 +32,21 @@ nav.toc li a{display:block;padding:5px 10px;border-left:3px solid transparent;co
 nav.toc li a.on{border-color:var(--accent);color:var(--ink);font-weight:600;background:var(--accent-soft)}
 nav.toc li.sub a{padding-left:24px;font-size:13px}
 main{padding:24px 0 80px;min-width:0}
+details.grp{margin:0 0 44px}
+details.grp>summary{list-style:none;cursor:pointer;padding:12px 14px;margin-bottom:4px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:19px;font-weight:700}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary::after{content:"펼치기 ▾";margin-left:auto;font-size:13px;font-weight:400;color:var(--sub)}
+details.grp[open]>summary::after{content:"접기 ▴"}
+details.grp[open]>summary{border-color:var(--accent);background:var(--accent-soft)}
+details.grp>summary .gno{color:var(--accent)}
+details.grp>summary small{font-size:13px;font-weight:400;color:var(--sub)}
+details.grp>section.part{margin-top:24px}
+section.part.solo{border-top:2px solid var(--accent);padding-top:18px}
+nav.toc li.ghead{padding:14px 10px 2px;font-size:13px;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:6px}
+nav.toc li.ghead:first-child{border-top:0;margin-top:0}
+nav.toc li.ghead small{font-weight:400;color:var(--sub)}
+.expand-btn{margin:14px 10px;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:6px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer}
+.expand-btn:hover{color:var(--ink);border-color:var(--accent)}
 section.part{margin-bottom:56px;scroll-margin-top:70px}
 h2{font-size:24px;margin:0 0 6px;padding-top:8px}
 h2 small{display:block;font-size:13px;color:var(--accent);font-weight:600;letter-spacing:.05em}
@@ -95,7 +110,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
  .step .body{padding:6px 12px 12px}
 }
 @media print{
- header.top,nav.toc,.cmd button,.step label,.menu-btn{display:none!important}
+ header.top,nav.toc,.cmd button,.step label,.menu-btn,.expand-btn{display:none!important}
+ details.grp>summary{display:none}
  .wrap{display:block;max-width:none}
  body{background:#fff;color:#000;font-size:12px}
  .step,figure,table,.box{break-inside:avoid}
@@ -107,7 +123,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.10 · 2026-09-21</span></h1>
+  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.11 · 2026-09-21</span></h1>
+  <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 12 단계</span></div>
 </header>
@@ -115,23 +132,31 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <div class="wrap">
 <nav class="toc" id="toc" aria-label="목차">
 <ol>
-  <li><a href="#p0">0. 시작 전</a></li>
+  <li class="ghead">① 설치 <small>1~8단계</small></li>
+  <li><a href="#p0">시작 전 · 준비물</a></li>
   <li class="sub"><a href="#modes">채팅과 Claude Code 차이</a></li>
-  <li><a href="#p1">1. 설치 (1~8단계)</a></li>
+  <li><a href="#p1">설치 (1~8단계)</a></li>
+  <li class="sub"><a href="#s6">6. 터미널 열기</a></li>
   <li class="sub"><a href="#s7">7. Claude Code 설치</a></li>
   <li class="sub"><a href="#s8">8. 로그인</a></li>
-  <li><a href="#p2">2. 답변 언어 (9단계)</a></li>
-  <li><a href="#p3">3. 규칙과 스킬 (10~12단계)</a></li>
-  <li><a href="#p4">4. 원리 이해</a></li>
+  <li class="ghead">② 세팅 <small>9~12단계</small></li>
+  <li><a href="#p2">답변 언어 (9단계)</a></li>
+  <li><a href="#p3">규칙과 스킬 (10~12단계)</a></li>
+  <li class="ghead">③ 팁 <small>필요할 때</small></li>
+  <li><a href="#p4">원리 이해</a></li>
   <li class="sub"><a href="#context">컨텍스트 원리</a></li>
   <li class="sub"><a href="#memory">메모리 원리</a></li>
-  <li><a href="#p5">5. 일할 때</a></li>
-  <li><a href="#p6">6. 막혔을 때</a></li>
-  <li><a href="#p7">7. 다음 단계</a></li>
+  <li><a href="#p5">일할 때</a></li>
+  <li><a href="#p7">다음 단계</a></li>
+  <li class="ghead">막혔을 때 <small>언제든</small></li>
+  <li><a href="#p6">자주 틀리는 것 · 되돌리기</a></li>
 </ol>
+<button type="button" class="expand-btn" id="expandBtn">모두 펼치기</button>
 </nav>
 
 <main>
+<details class="grp" id="g1">
+<summary><span class="gno">①</span> 설치 <small>1~8단계 · 한 번만 · 30~60분</small></summary>
 <!-- ============ 0 ============ -->
 <section class="part" id="p0">
   <h2><small>PART 0</small>시작 전</h2>
@@ -356,6 +381,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   </article>
 </section>
 
+</details>
+
+<details class="grp" id="g2">
+<summary><span class="gno">②</span> 세팅 <small>9~12단계 · 한 번만 · 15분</small></summary>
 <!-- ============ 2 ============ -->
 <section class="part" id="p2">
   <h2><small>PART 2</small>답변 언어 (9단계)</h2>
@@ -446,6 +475,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   </article>
 </section>
 
+</details>
+
+<details class="grp" id="g3">
+<summary><span class="gno">③</span> 팁 <small>원리 · 자주 쓰는 기능 · 다음 단계</small></summary>
 <!-- ============ 4 ============ -->
 <section class="part" id="p4">
   <h2><small>PART 4</small>원리 이해</h2>
@@ -607,37 +640,6 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 
 </section>
 
-<!-- ============ 6 ============ -->
-<section class="part" id="p6">
-  <h2><small>PART 6</small>막혔을 때</h2>
-  <h3>자주 틀리는 것</h3>
-  <div class="tbl"><table>
-    <tr><th>증상</th><th>원인</th><th>해결</th></tr>
-    <tr><td>터미널이 열 때마다 cmd 로 열림<br><small>프롬프트에 <code class="k">PS</code> 가 없다</small></td><td>편집기의 <b>기본 터미널</b>이 명령 프롬프트(cmd)로 설정됨</td><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> → <code class="k">Terminal: Select Default Profile</code> → <b>PowerShell</b> (<a href="#s6">6단계</a>)</td></tr>
-    <tr><td>로그인이 끝까지 되지 않음</td><td>무료 계정</td><td><b>Pro 요금제 이상</b>이 있어야 한다. 요금제를 올린 뒤 다시 <code class="k">claude</code> 실행 (<a href="#s8">8단계</a>)</td></tr>
-    <tr><td>claude 실행 직후 바로 꺼짐</td><td>처음 뜨는 폴더 신뢰 창에서 기본 선택(No, exit) 그대로 Enter</td><td>다시 claude 실행 → 아래 화살표로 "Yes, I trust this folder" 선택 후 Enter (<a href="#s8">8단계</a>)</td></tr>
-    <tr><td>claude -v 에 버전이 안 나옴</td><td>설치 전부터 편집기가 열려 있어 바뀐 경로를 모름 (터미널 탭만 새로 열어도 갱신되지 않는다). 또는 설치 경로가 Path 에 없음</td><td>Cursor·VS Code 를 <b>완전히 종료했다가 다시 연다.</b> 그래도 안 되면 사용자 변수 Path 에 <code class="k">.local\bin</code> 추가 (<a href="#s7">7단계</a>)</td></tr>
-    <tr><td>터미널에 <code class="k">&amp; 'C:\…\스크린샷 ….png'</code> 가 입력되고 오류</td><td>Claude Code 입력창이 아니라 <b>PowerShell 에 파일을 끌어다 놓음.</b> 경로에 공백이 있으면 PowerShell 이 <code class="k">&amp;</code> 를 붙여 그 파일을 실행하려 한다</td><td><code class="k">claude</code> 를 먼저 실행하고 <b>입력창</b>에서 <kbd>Ctrl</kbd> + <kbd>V</kbd>. 또는 파일을 작업 폴더에 공백 없는 영어 이름으로 저장하고 <code class="k">@파일명</code> 으로 부른다 (<a href="#p5">PART 5</a>)</td></tr>
-    <tr><td>10단계의 2단계(작업 폴더 규칙)가 멈춤</td><td>폴더 이름에 한글/공백, 또는 바탕화면·사용자 폴더(C:\Users\&lt;계정&gt;)에서 실행</td><td>영어 이름 작업 폴더에서 다시 붙여넣기 (전역 규칙은 이미 만들어져 있으므로 「같은 내용」이라고 나오면 정상)</td></tr>
-    <tr><td>/skills 에 token-efficient 가 없음</td><td>.claude\token-efficient (skills 빠짐)</td><td>skills 폴더를 통째로 다시 붙여넣기</td></tr>
-    <tr><td>/skills 에 token-efficient 가 없음</td><td>&lt;작업 폴더&gt;\skills (.claude 빠짐)<br>바탕화면\skills 그대로 둠</td><td>.claude 폴더 안으로 옮기기</td></tr>
-    <tr><td>규칙이 적용 안 된 것 같음</td><td>Claude Code 를 다시 실행하지 않음</td><td>완전히 껐다가 작업 폴더에서 다시 실행</td></tr>
-    <tr><td>짧은 질문에도 길게 답함</td><td>10단계의 1단계(전역 규칙)가 안 만들어짐</td><td>CLAUDE_초기설정.txt 를 다시 붙여넣은 뒤 다시 실행</td></tr>
-    <tr><td>스킬이 가끔만 적용됨</td><td>정상 (스킬은 필요할 때만 불려옴)</td><td>항상 적용할 규칙은 CLAUDE.md 에 둔다</td></tr>
-    <tr><td>파일이 CLAUDE.md.txt 로 생김</td><td>확장자 문제</td><td>이름을 CLAUDE.md 로 바꾸기</td></tr>
-  </table></div>
-
-  <h3>되돌리기</h3>
-  <div class="tbl"><table>
-    <tr><th>대상</th><th>방법</th></tr>
-    <tr><td>스킬</td><td>&lt;작업 폴더&gt;\.claude\skills\token-efficient 폴더 삭제</td></tr>
-    <tr><td>전역 규칙</td><td>C:\Users\&lt;계정&gt;\.claude\CLAUDE.md 삭제<br>(백업이 있으면 CLAUDE.md.bak 을 CLAUDE.md 로 이름 변경)</td></tr>
-    <tr><td>작업 폴더 규칙</td><td>&lt;작업 폴더&gt;\.claude\CLAUDE.md 삭제</td></tr>
-    <tr><td>답변 언어</td><td>/config → Language 항목에서 korean 을 english 로 바꾼다.</td></tr>
-    <tr><td>공통 주의</td><td>.claude 폴더 전체를 지우지 않는다. (다른 설정도 들어 있다)<br>지운 뒤 Claude Code 를 다시 실행한다.</td></tr>
-  </table></div>
-</section>
-
 <!-- ============ 7 ============ -->
 <section class="part" id="p7">
   <h2><small>PART 7</small>다음 단계</h2>
@@ -674,6 +676,40 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p style="color:var(--sub);font-size:13px">화면은 2026-09-15~21, Claude Code 2.1.272~273 · VS Code 1.138 기준입니다. 버전이 바뀌면 문구가 조금 다를 수 있습니다.</p>
 </section>
 
+</details>
+
+<!-- ============ 6 ============ -->
+<section class="part solo" id="p6">
+  <h2><small>PART 6</small>막혔을 때</h2>
+  <p class="lead">세 묶음 어디에서 막혔든 여기를 먼저 본다. 맨 위 <b>[막혔을 때]</b> 버튼으로 언제든 올 수 있다.</p>
+  <h3>자주 틀리는 것</h3>
+  <div class="tbl"><table>
+    <tr><th>증상</th><th>원인</th><th>해결</th></tr>
+    <tr><td>터미널이 열 때마다 cmd 로 열림<br><small>프롬프트에 <code class="k">PS</code> 가 없다</small></td><td>편집기의 <b>기본 터미널</b>이 명령 프롬프트(cmd)로 설정됨</td><td><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd> → <code class="k">Terminal: Select Default Profile</code> → <b>PowerShell</b> (<a href="#s6">6단계</a>)</td></tr>
+    <tr><td>로그인이 끝까지 되지 않음</td><td>무료 계정</td><td><b>Pro 요금제 이상</b>이 있어야 한다. 요금제를 올린 뒤 다시 <code class="k">claude</code> 실행 (<a href="#s8">8단계</a>)</td></tr>
+    <tr><td>claude 실행 직후 바로 꺼짐</td><td>처음 뜨는 폴더 신뢰 창에서 기본 선택(No, exit) 그대로 Enter</td><td>다시 claude 실행 → 아래 화살표로 "Yes, I trust this folder" 선택 후 Enter (<a href="#s8">8단계</a>)</td></tr>
+    <tr><td>claude -v 에 버전이 안 나옴</td><td>설치 전부터 편집기가 열려 있어 바뀐 경로를 모름 (터미널 탭만 새로 열어도 갱신되지 않는다). 또는 설치 경로가 Path 에 없음</td><td>Cursor·VS Code 를 <b>완전히 종료했다가 다시 연다.</b> 그래도 안 되면 사용자 변수 Path 에 <code class="k">.local\bin</code> 추가 (<a href="#s7">7단계</a>)</td></tr>
+    <tr><td>터미널에 <code class="k">&amp; 'C:\…\스크린샷 ….png'</code> 가 입력되고 오류</td><td>Claude Code 입력창이 아니라 <b>PowerShell 에 파일을 끌어다 놓음.</b> 경로에 공백이 있으면 PowerShell 이 <code class="k">&amp;</code> 를 붙여 그 파일을 실행하려 한다</td><td><code class="k">claude</code> 를 먼저 실행하고 <b>입력창</b>에서 <kbd>Ctrl</kbd> + <kbd>V</kbd>. 또는 파일을 작업 폴더에 공백 없는 영어 이름으로 저장하고 <code class="k">@파일명</code> 으로 부른다 (<a href="#p5">PART 5</a>)</td></tr>
+    <tr><td>10단계의 2단계(작업 폴더 규칙)가 멈춤</td><td>폴더 이름에 한글/공백, 또는 바탕화면·사용자 폴더(C:\Users\&lt;계정&gt;)에서 실행</td><td>영어 이름 작업 폴더에서 다시 붙여넣기 (전역 규칙은 이미 만들어져 있으므로 「같은 내용」이라고 나오면 정상)</td></tr>
+    <tr><td>/skills 에 token-efficient 가 없음</td><td>.claude\token-efficient (skills 빠짐)</td><td>skills 폴더를 통째로 다시 붙여넣기</td></tr>
+    <tr><td>/skills 에 token-efficient 가 없음</td><td>&lt;작업 폴더&gt;\skills (.claude 빠짐)<br>바탕화면\skills 그대로 둠</td><td>.claude 폴더 안으로 옮기기</td></tr>
+    <tr><td>규칙이 적용 안 된 것 같음</td><td>Claude Code 를 다시 실행하지 않음</td><td>완전히 껐다가 작업 폴더에서 다시 실행</td></tr>
+    <tr><td>짧은 질문에도 길게 답함</td><td>10단계의 1단계(전역 규칙)가 안 만들어짐</td><td>CLAUDE_초기설정.txt 를 다시 붙여넣은 뒤 다시 실행</td></tr>
+    <tr><td>스킬이 가끔만 적용됨</td><td>정상 (스킬은 필요할 때만 불려옴)</td><td>항상 적용할 규칙은 CLAUDE.md 에 둔다</td></tr>
+    <tr><td>파일이 CLAUDE.md.txt 로 생김</td><td>확장자 문제</td><td>이름을 CLAUDE.md 로 바꾸기</td></tr>
+  </table></div>
+
+  <h3>되돌리기</h3>
+  <div class="tbl"><table>
+    <tr><th>대상</th><th>방법</th></tr>
+    <tr><td>스킬</td><td>&lt;작업 폴더&gt;\.claude\skills\token-efficient 폴더 삭제</td></tr>
+    <tr><td>전역 규칙</td><td>C:\Users\&lt;계정&gt;\.claude\CLAUDE.md 삭제<br>(백업이 있으면 CLAUDE.md.bak 을 CLAUDE.md 로 이름 변경)</td></tr>
+    <tr><td>작업 폴더 규칙</td><td>&lt;작업 폴더&gt;\.claude\CLAUDE.md 삭제</td></tr>
+    <tr><td>답변 언어</td><td>/config → Language 항목에서 korean 을 english 로 바꾼다.</td></tr>
+    <tr><td>공통 주의</td><td>.claude 폴더 전체를 지우지 않는다. (다른 설정도 들어 있다)<br>지운 뒤 Claude Code 를 다시 실행한다.</td></tr>
+  </table></div>
+</section>
+
 </main>
 </div>
 
@@ -684,6 +720,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
+    <tr><td><b>v1.11</b></td><td>2026-09-21</td><td>
+      <ul>
+        <li><b>바뀜</b> 전체를 <b>① 설치(1~8단계) · ② 세팅(9~12단계) · ③ 팁</b> 세 묶음으로 접었다. 지금 할 묶음만 펼쳐져 있고, 제목을 누르면 열고 닫힌다</li>
+        <li><b>바뀜</b> <b>「막혔을 때」는 묶음 밖</b>에 두어 항상 보인다. 맨 위 <b>[막혔을 때]</b> 버튼으로 어디서든 갈 수 있다</li>
+        <li><b>그대로</b> <b>단계 번호 1~12 와 PART 번호는 바뀌지 않았다.</b> 예전에 받은 링크(<code class="k">#p6</code> 같은 주소)도 그대로 열리고, 진행률 체크도 유지된다</li>
+        <li><b>추가</b> 목차 아래 <b>[모두 펼치기]</b> — 문서 전체에서 <kbd>Ctrl</kbd> + <kbd>F</kbd> 로 찾을 때 쓴다. 인쇄하면 자동으로 모두 펼쳐진다</li>
+      </ul></td></tr>
     <tr><td><b>v1.10</b></td><td>2026-09-21</td><td>
       <ul>
         <li><b>추가</b> 6단계 「한 번만 해 두기」 — 터미널이 <b>열 때마다 cmd 로 열릴 때</b> 기본 터미널을 <b>PowerShell 로 고정</b>하는 법 (<code class="k">Terminal: Select Default Profile</code>). 교육에서 두 번 나온 증상이다</li>
@@ -798,14 +841,43 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   document.getElementById('relBtn').addEventListener('click',function(){rel.showModal()});
   rel.querySelector('.close').addEventListener('click',function(){rel.close()});
 
+  // 3묶음 접기/펼치기 (단계 번호·앵커는 그대로라 옛 링크도 산다)
+  var grps=[].slice.call(document.querySelectorAll('details.grp'));
+  function openFor(t){var d=t&&t.closest?t.closest('details.grp'):null;if(d)d.open=true;return d}
+  function openByHash(){
+    if(!location.hash)return false;
+    var t=null;try{t=document.querySelector(location.hash)}catch(e){}
+    if(!t)return false;
+    if(openFor(t))setTimeout(function(){t.scrollIntoView()},0);
+    return true;
+  }
+  if(!openByHash()){
+    var done=0;steps.forEach(function(s){if(s.querySelector('input[type=checkbox]').checked)done++});
+    var g=document.getElementById(done<8?'g1':(done<12?'g2':'g3'));
+    if(g)g.open=true;
+  }
+  window.addEventListener('hashchange',openByHash);
+  var expandBtn=document.getElementById('expandBtn');
+  expandBtn.addEventListener('click',function(){
+    var toOpen=grps.some(function(d){return !d.open});
+    grps.forEach(function(d){d.open=toOpen});
+    expandBtn.textContent=toOpen?'모두 접기':'모두 펼치기';
+  });
+  window.addEventListener('beforeprint',function(){grps.forEach(function(d){d.open=true})});
+
   var toc=document.getElementById('toc'),btn=document.getElementById('menuBtn');
+  toc.addEventListener('click',function(e){
+    var a=e.target.closest('a');if(!a)return;
+    var t=null;try{t=document.querySelector(a.getAttribute('href'))}catch(err){}
+    if(t)openFor(t);
+  });
   btn.addEventListener('click',function(){var o=toc.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
   var links=[].slice.call(toc.querySelectorAll('a'));
   links.forEach(function(a){a.addEventListener('click',function(){toc.classList.remove('open');btn.setAttribute('aria-expanded',false)})});
   var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
   function sync(){
     var y=window.pageYOffset,hit=links[0];
-    targets.forEach(function(t,i){if(t&&t.getBoundingClientRect().top+y<=y+90)hit=links[i]});
+    targets.forEach(function(t,i){if(t&&t.offsetParent!==null&&t.getBoundingClientRect().top+y<=y+90)hit=links[i]});
     // 맨 아래에서는 마지막 항목(더 스크롤할 수 없어 기준선에 못 닿는다)
     if(y+window.innerHeight>=document.documentElement.scrollHeight-2)hit=links[links.length-1];
     links.forEach(function(a){a.classList.remove('on')});hit.classList.add('on');
