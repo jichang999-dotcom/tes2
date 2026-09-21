@@ -311,7 +311,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <header><span class="no">8</span><h3>로그인</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div>
-        <div class="box warn"><b>유료 계정이 필요하다</b>Claude Code 는 <b>Pro 요금제 이상</b>(Pro · Max · Team · Enterprise)에서 쓸 수 있다. <b>무료 계정으로는 이 단계를 넘어가도 쓸 수 없다.</b> 로그인하기 전에 내 계정의 요금제를 먼저 확인한다. (확인: <a href="https://claude.ai/settings/billing" target="_blank" rel="noopener">claude.ai 설정 &gt; 요금제</a>)</div>
+        <div class="box warn"><b>유료 계정이 필요하다</b>Claude Code 는 <b>Pro 요금제 이상</b>(Pro · Max · Team · Enterprise)에서 쓸 수 있다. <b>무료 계정으로는 로그인 자체가 되지 않는다.</b> 여기서 막히면 계정 문제이지 설치 문제가 아니다. 시작하기 전에 내 계정의 요금제를 먼저 확인한다. (확인: <a href="https://claude.ai/settings/billing" target="_blank" rel="noopener">claude.ai 설정 &gt; 요금제</a>)</div>
         <div class="cmd"><code>claude</code><button type="button">복사</button></div>
         <p>터미널에서 실행하면 처음 한 번 안내 창이 차례로 뜬다.</p>
         <ol class="flow">
@@ -590,6 +590,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h3>자주 틀리는 것</h3>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
+    <tr><td>로그인이 끝까지 되지 않음</td><td>무료 계정</td><td><b>Pro 요금제 이상</b>이 있어야 한다. 요금제를 올린 뒤 다시 <code class="k">claude</code> 실행 (<a href="#s8">8단계</a>)</td></tr>
     <tr><td>claude 실행 직후 바로 꺼짐</td><td>처음 뜨는 폴더 신뢰 창에서 기본 선택(No, exit) 그대로 Enter</td><td>다시 claude 실행 → 아래 화살표로 "Yes, I trust this folder" 선택 후 Enter (<a href="#s8">8단계</a>)</td></tr>
     <tr><td>claude -v 에 버전이 안 나옴</td><td>설치 전부터 편집기가 열려 있어 바뀐 경로를 모름 (터미널 탭만 새로 열어도 갱신되지 않는다). 또는 설치 경로가 Path 에 없음</td><td>Cursor·VS Code 를 <b>완전히 종료했다가 다시 연다.</b> 그래도 안 되면 사용자 변수 Path 에 <code class="k">.local\bin</code> 추가 (<a href="#s7">7단계</a>)</td></tr>
     <tr><td>터미널에 <code class="k">&amp; 'C:\…\스크린샷 ….png'</code> 가 입력되고 오류</td><td>Claude Code 입력창이 아니라 <b>PowerShell 에 파일을 끌어다 놓음.</b> 경로에 공백이 있으면 PowerShell 이 <code class="k">&amp;</code> 를 붙여 그 파일을 실행하려 한다</td><td><code class="k">claude</code> 를 먼저 실행하고 <b>입력창</b>에서 <kbd>Ctrl</kbd> + <kbd>V</kbd>. 또는 파일을 작업 폴더에 공백 없는 영어 이름으로 저장하고 <code class="k">@파일명</code> 으로 부른다 (<a href="#p5">PART 5</a>)</td></tr>
