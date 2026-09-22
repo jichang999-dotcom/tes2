@@ -370,6 +370,12 @@ function punch(kind) {
 }
 $('btnIn').onclick = function () { punch('in'); };
 $('btnOut').onclick = function () { punch('out'); };
+
+/* 화면을 다시 볼 때 서버 상태를 다시 받아온다.
+ * 켜둔 채 자정을 넘기면 버튼이 어제 기준으로 잠긴 채 남는다. */
+document.addEventListener('visibilitychange', function () {
+  if (!document.hidden && token && !$('viewMain').classList.contains('hide')) boot();
+});
 </script>
 </body>
 </html>
