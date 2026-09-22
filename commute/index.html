@@ -4,7 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#1f7a4d">
+<meta name="apple-mobile-web-app-title" content="출퇴근">
 <title>출퇴근</title>
+<!-- 홈 화면 아이콘. data URI 로 인라인한다 (GitHub 이미지 업로드 금지 규칙). -->
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEQElEQVR42u3dv2oUYRTG4dyJV+AVeAUW1qYXWxu7dApWFhEsg52k0UawEUwZUllJ2jQBwUYQBMuRs2CzsP+yM7Pn+84z8APRCBLn2d15dzd7dO/k0SBV7cg3QQBIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgA6O49PjsZnn98M5xenC968fls8XsAqOuT/sv11bDpiK8JHACoix6+fTZc3Xwfdj1uf/0cnr5/BYDaLR7e7Ht8+PYVALVXnLhjHXEPcv/lMQBqo3eXn4axj+z3BABoUVzATnXEWgSAUi89Ux6///4ZHrx+AoByrj1xgk59ZH0oBEDh4gI1Zss5jkCW8YIYgMIn//WPm2HOI+MTZQCYO2c7Mj4MAsDcOdsRzwsAoG7nzm1eJgGAup07tzkAUNdz57ojLroBUNdzp2sAlZ87Vx3xKlMA1P3cuerI+D4BAMydZRcgAMydpR/+AGDunO3WP+sbYwAwd05+ZP7JEQCYOyc9Mr8ZBgBzZ8n3AABg7iz5pBcA5s7ZXvKQ/adBAGDuLPf+XwDMnZOf/LFCtfQ9BMDc2fVbHgEwd5o7ATB3Vp87ATB3lp47ATB3lp47ATB3lp47ATB3lp47ATB3lp47uwYQb7WLx8fLH+kTU2H8Xkx0Ld5dmzsBWHtyxLuMdrl1DAytfKqhuROAtY+J97lljHuL7OuFuROASdeQzBOeuROAWabAjP+x5k4AZp0CMyEwdwKw8oJwyikwAwJzJwArG+ODmzMjMHcCcLBb/0MjMHcCkOqicG4E5k4A0p0gcyEwdwKwsUM9Np76ZDB3ArBVPd4imjsBaALAFAjMnQA0BWBMBOZOAJoEMAYCcycAd2r5Nf6tIjB3AlB2KjR3AtDNYrLrCWTuBKDZ5wL2RWDuBKDLJ422QWDuBKDbi+FNCMydADT9qtB9EJg7ASj1ppFlBOZOAMoiyPbvMnd2+mNRMiMwdwIAgbkTAAjMnQBAYO4EAAJzJwAQmDsBgMDcCQAE5k4AIDB3AgCBuRMACMydAEBg7gQAAnMnABCYOwGAwNwJAATmTgAgMHcCUBqBuROAsgjMnQCURWDuBKAsAnMnAGURmDsBKIvA3AlAaQTmTgDKIjB3AlAWgbkTgLIIzJ0AlEVg7gSgLAJzJwBlEZg7AWgWwb4ffhF/3y0/AE13enG+871BfH38Pd8/ALooLl5ju990jxB/Hl/nYheArjHER6JGcSv//9dOegAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQABIBvggCQAJAAkACQAJAAkACQAJAAkACQAJAAkACQmu0fJKUo9dHEKHsAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMAAAADACAYAAABS3GwHAAAEQElEQVR42u3dv2oUYRTG4dyJV+AVeAUW1qYXWxu7dApWFhEsg52k0UawEUwZUllJ2jQBwUYQBMuRs2CzsP+yM7Pn+84z8APRCBLn2d15dzd7dO/k0SBV7cg3QQBIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgASABIAEgA6O49PjsZnn98M5xenC968fls8XsAqOuT/sv11bDpiK8JHACoix6+fTZc3Xwfdj1uf/0cnr5/BYDaLR7e7Ht8+PYVALVXnLhjHXEPcv/lMQBqo3eXn4axj+z3BABoUVzATnXEWgSAUi89Ux6///4ZHrx+AoByrj1xgk59ZH0oBEDh4gI1Zss5jkCW8YIYgMIn//WPm2HOI+MTZQCYO2c7Mj4MAsDcOdsRzwsAoG7nzm1eJgGAup07tzkAUNdz57ojLroBUNdzp2sAlZ87Vx3xKlMA1P3cuerI+D4BAMydZRcgAMydpR/+AGDunO3WP+sbYwAwd05+ZP7JEQCYOyc9Mr8ZBgBzZ8n3AABg7iz5pBcA5s7ZXvKQ/adBAGDuLPf+XwDMnZOf/LFCtfQ9BMDc2fVbHgEwd5o7ATB3Vp87ATB3lp47ATB3lp47ATB3lp47ATB3lp47ATB3lp47uwYQb7WLx8fLH+kTU2H8Xkx0Ld5dmzsBWHtyxLuMdrl1DAytfKqhuROAtY+J97lljHuL7OuFuROASdeQzBOeuROAWabAjP+x5k4AZp0CMyEwdwKw8oJwyikwAwJzJwArG+ODmzMjMHcCcLBb/0MjMHcCkOqicG4E5k4A0p0gcyEwdwKwsUM9Np76ZDB3ArBVPd4imjsBaALAFAjMnQA0BWBMBOZOAJoEMAYCcycAd2r5Nf6tIjB3AlB2KjR3AtDNYrLrCWTuBKDZ5wL2RWDuBKDLJ422QWDuBKDbi+FNCMydADT9qtB9EJg7ASj1ppFlBOZOAMoiyPbvMnd2+mNRMiMwdwIAgbkTAAjMnQBAYO4EAAJzJwAQmDsBgMDcCQAE5k4AIDB3AgCBuRMACMydAEBg7gQAAnMnABCYOwGAwNwJAATmTgAgMHcCUBqBuROAsgjMnQCURWDuBKAsAnMnAGURmDsBKIvA3AlAaQTmTgDKIjB3AlAWgbkTgLIIzJ0AlEVg7gSgLAJzJwBlEZg7AWgWwb4ffhF/3y0/AE13enG+871BfH38Pd8/ALooLl5ju990jxB/Hl/nYheArjHER6JGcSv//9dOegAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQAJAAkACQABIBvggCQAJAAkACQAJAAkACQAJAAkACQAJAAkACQmu0fJKUo9dHEKHsAAAAASUVORK5CYII=">
 <script src="https://accounts.google.com/gsi/client" async defer></script>
 <style>
 :root{
@@ -185,33 +190,91 @@ function api(body) {
   }).then(function (r) { return r.json(); });
 }
 
-/* ---- 로그인 ---- */
+/* ---- 로그인 ----
+ * 홈 화면 아이콘으로 실행하면(standalone) iOS 는 팝업을 띄울 수 없고 Safari 와 저장 공간도 분리된다.
+ * 그래서 팝업을 쓰는 GIS 버튼이 accounts.google.com 백지로 끝난다.
+ * standalone 에서는 같은 탭 리다이렉트로 id_token 을 받아온다.
+ */
+var standalone = window.navigator.standalone === true
+  || (window.matchMedia && window.matchMedia('(display-mode: standalone)').matches);
+
+function redirectLogin() {
+  var a = new Uint8Array(16);
+  (window.crypto || window.msCrypto).getRandomValues(a);
+  var nonce = Array.prototype.map.call(a, function (b) { return ('0' + b.toString(16)).slice(-2); }).join('');
+  localStorage.setItem('nonce', nonce);   // 리다이렉트로 원점을 떠나므로 sessionStorage 는 못 믿는다
+
+  location.href = 'https://accounts.google.com/o/oauth2/v2/auth?' + [
+    'client_id=' + encodeURIComponent(CLIENT_ID),
+    'response_type=id_token',
+    'scope=' + encodeURIComponent('openid email profile'),
+    'redirect_uri=' + encodeURIComponent(location.origin + location.pathname),
+    'nonce=' + nonce,
+    'prompt=select_account'
+  ].join('&');
+}
+
+/** 리다이렉트 복귀분. 토큰은 #fragment 로 온다. nonce 가 안 맞으면 버린다. */
+function takeFragmentToken() {
+  if (!location.hash || location.hash.indexOf('id_token=') < 0) return null;
+  var t = null;
+  location.hash.slice(1).split('&').forEach(function (kv) {
+    var p = kv.split('=');
+    if (p[0] === 'id_token') t = decodeURIComponent(p[1]);
+  });
+  history.replaceState(null, '', location.pathname);
+  if (!t) return null;
+  try {
+    var b = t.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
+    while (b.length % 4) b += '=';
+    if (JSON.parse(atob(b)).nonce !== localStorage.getItem('nonce')) return null;
+  } catch (e) { return null; }
+  localStorage.removeItem('nonce');
+  return t;
+}
+
 window.onGoogleCredential = function (res) {
   token = res.credential;
-  sessionStorage.setItem('idt', token);
+  localStorage.setItem('idt', token);
   boot();
 };
-window.onload = function () {
-  var waited = 0, iv = setInterval(function () {
-    if (window.google && google.accounts) {
-      clearInterval(iv);
-      google.accounts.id.initialize({ client_id: CLIENT_ID, callback: window.onGoogleCredential, auto_select: true });
-      google.accounts.id.renderButton($('gbtn'), { theme: 'outline', size: 'large', text: 'signin_with', locale: 'ko', width: 260 });
-    } else if ((waited += 100) > 8000) {
-      clearInterval(iv);
-      show('viewLogin');
-      $('gbtn').textContent = '구글 로그인 스크립트를 불러오지 못했습니다. 새로고침하세요.';
-    }
-  }, 100);
 
-  token = sessionStorage.getItem('idt');
+window.onload = function () {
+  var fresh = takeFragmentToken();
+  if (fresh) { token = fresh; localStorage.setItem('idt', token); }
+  else token = localStorage.getItem('idt');
+
+  if (standalone) {
+    var b = document.createElement('button');
+    b.className = 'big'; b.style.background = 'var(--out)'; b.style.width = '100%';
+    b.textContent = '구글 계정으로 로그인';
+    b.onclick = redirectLogin;
+    $('gbtn').appendChild(b);
+  } else {
+    var waited = 0, iv = setInterval(function () {
+      if (window.google && google.accounts) {
+        clearInterval(iv);
+        google.accounts.id.initialize({ client_id: CLIENT_ID, callback: window.onGoogleCredential, auto_select: true });
+        google.accounts.id.renderButton($('gbtn'), { theme: 'outline', size: 'large', text: 'signin_with', locale: 'ko', width: 260 });
+      } else if ((waited += 100) > 8000) {
+        clearInterval(iv);
+        $('gbtn').innerHTML = '';
+        var f = document.createElement('button');
+        f.className = 'big'; f.style.background = 'var(--out)'; f.style.width = '100%';
+        f.textContent = '구글 계정으로 로그인';
+        f.onclick = redirectLogin;
+        $('gbtn').appendChild(f);
+      }
+    }, 100);
+  }
+
   if (token) boot(); else show('viewLogin');
 };
 
 function boot() {
   api({ action: 'init' }).then(function (r) {
     if (r.error) {
-      sessionStorage.removeItem('idt'); token = null;
+      localStorage.removeItem('idt'); token = null;
       show('viewLogin');
       return;
     }
@@ -242,7 +305,7 @@ $('btnSave').onclick = function () {
 };
 $('btnEdit').onclick = function () { $('mgr').value = mgr || ''; show('viewSetup'); };
 $('btnOutSess').onclick = function () {
-  sessionStorage.removeItem('idt'); token = null;
+  localStorage.removeItem('idt'); token = null;
   if (window.google && google.accounts) google.accounts.id.disableAutoSelect();
   show('viewLogin');
 };
