@@ -76,12 +76,6 @@ button.big:disabled{opacity:.45; cursor:default}
 .msg.no{background:rgba(180,35,24,.1); color:var(--no)}
 .msg.info{background:var(--out-bg); color:var(--out)}
 
-label{display:block; font-size:13px; color:var(--sub); margin:14px 0 6px}
-input{
-  width:100%; padding:14px; font-size:16px; border-radius:12px;
-  border:1px solid var(--line); background:var(--bg); color:var(--fg);
-}
-input:focus{outline:2px solid var(--out); outline-offset:-1px}
 .hint{font-size:12px; color:var(--sub); margin-top:8px; line-height:1.55}
 #gbtn{margin-top:18px; display:flex; justify-content:center; min-height:44px}
 .hide{display:none !important}
@@ -100,20 +94,7 @@ input:focus{outline:2px solid var(--out); outline-offset:-1px}
     <p class="hint">위치 확인을 위해 브라우저가 위치 권한을 물어봅니다. 허용해야 출퇴근 처리가 됩니다.</p>
   </section>
 
-  <!-- 2. 팀장 이메일 등록 -->
-  <section id="viewSetup" class="card hide">
-    <h1>팀장 이메일 등록</h1>
-    <p class="date" id="setupMe"></p>
-    <label for="mgr">팀장 이메일</label>
-    <input id="mgr" type="email" inputmode="email" autocomplete="off" placeholder="manager@askwhy.co.kr">
-    <div class="btns">
-      <button class="big" id="btnSave" style="background:var(--out)">저장</button>
-    </div>
-    <div class="msg" id="setupMsg"></div>
-    <p class="hint">지각 알림이 본인과 이 주소로 함께 발송됩니다.</p>
-  </section>
-
-  <!-- 3. 메인 -->
+  <!-- 2. 메인 -->
   <section id="viewMain" class="card hide">
     <h1>출퇴근</h1>
     <p class="date" id="today"></p>
@@ -141,9 +122,9 @@ input:focus{outline:2px solid var(--out); outline-offset:-1px}
 
     <div class="who">
       <span class="em" id="meEm"></span>
-      <button class="linkbtn" id="btnEdit">팀장 변경</button>
       <button class="linkbtn" id="btnOutSess">로그아웃</button>
     </div>
+    <p class="hint" id="mgrLine"></p>
   </section>
 
 </div>
@@ -156,18 +137,17 @@ var OFFICE    = { lat: 37.47381, lng: 126.99494 };   // 남부순환로 2219 나
 var RADIUS_M  = 100;                                 // 서버에서 동일 값으로 재검증한다
 /* ================ */
 
-var token = null, me = null, mgr = null, pos = null;
+var token = null, me = null, pos = null;
 
 var $ = function (id) { return document.getElementById(id); };
 function show(v) {
-  ['viewLogin', 'viewSetup', 'viewMain'].forEach(function (n) { $(n).classList.add('hide'); });
+  ['viewLogin', 'viewMain'].forEach(function (n) { $(n).classList.add('hide'); });
   $(v).classList.remove('hide');
 }
 function say(el, kind, html) {
   el.className = 'msg show ' + kind;
   el.innerHTML = html;
 }
-function hide(el) { el.className = 'msg'; }
 
 /* 두 좌표 사이 거리(m). 서버 haversine_ 과 같은 식이어야 한다. */
 function distM(aLat, aLng, bLat, bLng) {
@@ -278,10 +258,13 @@ function boot() {
       show('viewLogin');
       return;
     }
-    me = r.email; mgr = r.manager;
+    me = r.email;
     $('meEm').textContent = me;
-    $('setupMe').textContent = me;
-    if (!mgr) { $('mgr').value = ''; show('viewSetup'); return; }
+    // 팀장은 시트 조직도 탭이 정한다. 조직도에 없으면 기록만 되고 알림은 나가지 않는다.
+    var mg = r.managers || [];
+    $('mgrLine').textContent = mg.length
+      ? '지각 알림 수신: 본인, ' + mg.join(', ')
+      : '조직도에 등록되지 않아 지각 알림이 발송되지 않습니다. 관리자에게 조직도 등록을 요청하세요.';
     paint(r.today);
     show('viewMain');
     locate();
@@ -291,19 +274,6 @@ function boot() {
   });
 }
 
-/* ---- 팀장 등록 ---- */
-$('btnSave').onclick = function () {
-  var v = $('mgr').value.trim();
-  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { say($('setupMsg'), 'no', '이메일 형식이 아닙니다.'); return; }
-  this.disabled = true;
-  say($('setupMsg'), 'info', '<span class="spin"></span>저장 중');
-  api({ action: 'register', manager: v }).then(function (r) {
-    $('btnSave').disabled = false;
-    if (r.error) { say($('setupMsg'), 'no', r.error); return; }
-    mgr = v; hide($('setupMsg')); boot();
-  });
-};
-$('btnEdit').onclick = function () { $('mgr').value = mgr || ''; show('viewSetup'); };
 $('btnOutSess').onclick = function () {
   localStorage.removeItem('idt'); token = null;
   if (window.google && google.accounts) google.accounts.id.disableAutoSelect();
