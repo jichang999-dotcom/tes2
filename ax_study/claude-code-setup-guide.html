@@ -41,7 +41,6 @@ details.grp[open]>summary{border-color:var(--accent);background:var(--accent-sof
 details.grp>summary .gno{color:var(--accent)}
 details.grp>summary small{font-size:13px;font-weight:400;color:var(--sub)}
 details.grp>section.part{margin-top:24px}
-section.part.solo{border-top:2px solid var(--accent);padding-top:18px}
 nav.toc li.ghead{padding:14px 10px 2px;font-size:13px;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:6px}
 nav.toc li.ghead:first-child{border-top:0;margin-top:0}
 nav.toc li.ghead small{font-weight:400;color:var(--sub)}
@@ -123,7 +122,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.12 · 2026-09-22</span></h1>
+  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.13 · 2026-09-22</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 12 단계</span></div>
@@ -683,9 +682,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <!-- ============ 6 ============ -->
-<section class="part solo" id="p6">
+<details class="grp" id="g4">
+<summary><span class="gno">?</span> 막혔을 때 <small>언제든 · 자주 틀리는 것 · 되돌리기</small></summary>
+<section class="part" id="p6">
   <h2><small>PART 6</small>막혔을 때</h2>
-  <p class="lead">세 묶음 어디에서 막혔든 여기를 먼저 본다. 맨 위 <b>[막혔을 때]</b> 버튼으로 언제든 올 수 있다.</p>
+  <p class="lead">앞의 세 묶음 어디에서 막혔든 여기를 먼저 본다. 맨 위 <b>[막혔을 때]</b> 버튼으로 언제든 올 수 있다.</p>
   <h3>자주 틀리는 것</h3>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
@@ -713,6 +714,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>공통 주의</td><td>.claude 폴더 전체를 지우지 않는다. (다른 설정도 들어 있다)<br>지운 뒤 Claude Code 를 다시 실행한다.</td></tr>
   </table></div>
 </section>
+</details>
 
 </main>
 </div>
@@ -724,6 +726,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
+    <tr><td><b>v1.13</b></td><td>2026-09-22</td><td>
+      <ul>
+        <li><b>바뀜</b> <b>「막혔을 때」도 접히는 묶음</b>이 되어 네 묶음이 됐다. 맨 위 <b>[막혔을 때]</b> 버튼을 누르면 펼쳐지면서 그 자리로 간다</li>
+        <li><b>바뀜</b> 새로 열거나 새로고침하면 <b>네 묶음이 모두 접힌 상태</b>로 시작한다. 필요한 묶음만 눌러서 편다 (전에는 진행률에 따라 한 묶음이 자동으로 열렸다)</li>
+        <li><b>그대로</b> 단계 번호 1~12 · PART 번호 · 진행률 체크는 그대로다. <code class="k">#p6</code> 같은 예전 링크로 들어오면 그 묶음이 자동으로 열린다</li>
+      </ul></td></tr>
     <tr><td><b>v1.12</b></td><td>2026-09-22</td><td>
       <ul>
         <li><b>추가</b> PART 0 준비물 — <b>입문과정설치파일.zip</b>. 압축을 풀고 <code class="k">설치하기.bat</code> 하나를 더블클릭하면 <b>2 · 3 · 5 · 7단계</b>(Node.js · VS Code · 확장 3종 · Claude Code)가 한 번에 설치된다</li>
@@ -850,7 +858,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   document.getElementById('relBtn').addEventListener('click',function(){rel.showModal()});
   rel.querySelector('.close').addEventListener('click',function(){rel.close()});
 
-  // 3묶음 접기/펼치기 (단계 번호·앵커는 그대로라 옛 링크도 산다)
+  // 4묶음 접기/펼치기 (단계 번호·앵커는 그대로라 옛 링크도 산다)
   var grps=[].slice.call(document.querySelectorAll('details.grp'));
   function openFor(t){var d=t&&t.closest?t.closest('details.grp'):null;if(d)d.open=true;return d}
   function openByHash(){
@@ -860,12 +868,15 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     if(openFor(t))setTimeout(function(){t.scrollIntoView()},0);
     return true;
   }
-  if(!openByHash()){
-    var done=0;steps.forEach(function(s){if(s.querySelector('input[type=checkbox]').checked)done++});
-    var g=document.getElementById(done<8?'g1':(done<12?'g2':'g3'));
-    if(g)g.open=true;
-  }
+  openByHash();   // 해시로 들어온 경우에만 그 묶음을 연다. 그냥 새로고침하면 전부 접힌 채로 시작한다.
   window.addEventListener('hashchange',openByHash);
+  // 맨 위 [막혔을 때] 처럼 이미 같은 해시에 있을 때는 hashchange 가 안 뜬다
+  [].slice.call(document.querySelectorAll('header.top a[href^="#"]')).forEach(function(a){
+    a.addEventListener('click',function(){
+      var t=null;try{t=document.querySelector(a.getAttribute('href'))}catch(e){}
+      if(t)openFor(t);
+    });
+  });
   var expandBtn=document.getElementById('expandBtn');
   expandBtn.addEventListener('click',function(){
     var toOpen=grps.some(function(d){return !d.open});
