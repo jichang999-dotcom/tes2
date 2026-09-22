@@ -39,11 +39,15 @@ h1{font-size:19px; margin:0 0 4px; letter-spacing:-.2px}
 .who .em{font-size:13px; color:var(--sub); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .linkbtn{background:none; border:none; color:var(--sub); font-size:12px; text-decoration:underline; cursor:pointer; padding:4px; flex:none}
 
-.status{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px}
-.slot{background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:12px 14px}
-.slot .k{font-size:12px; color:var(--sub); margin-bottom:3px}
-.slot .v{font-size:22px; font-weight:650; letter-spacing:-.5px; font-variant-numeric:tabular-nums}
+.status{display:grid; grid-template-columns:1fr; gap:8px; margin-top:6px}
+.slot{
+  background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:13px 16px;
+  display:flex; align-items:baseline; justify-content:space-between; gap:12px; min-width:0;
+}
+.slot .k{font-size:13px; color:var(--sub); flex:none}
+.slot .v{font-size:22px; font-weight:650; letter-spacing:-.5px; font-variant-numeric:tabular-nums; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
 .slot.late .v{color:var(--no)}
+.slot.late .k::after{content:' 지각'; color:var(--no); font-weight:600}
 
 .btns{display:grid; gap:10px; margin-top:16px}
 button.big{
@@ -244,11 +248,14 @@ $('btnOutSess').onclick = function () {
 };
 
 /* ---- 화면 갱신 ---- */
+/* 서버가 'HH:mm' 만 준다. 그 형태가 아니면 표시하지 않는다 (시트를 손으로 고쳐 시간형이 된 옛 행 대비). */
+function hhmm(v) { return /^\d{2}:\d{2}$/.test(String(v || '')) ? String(v) : '-'; }
+
 function paint(t) {
   t = t || {};
   $('today').textContent = t.date || '';
-  $('tIn').textContent = t['in'] || '-';
-  $('tOut').textContent = t.out || '-';
+  $('tIn').textContent = hhmm(t['in']);
+  $('tOut').textContent = hhmm(t.out);
   $('slotIn').classList.toggle('late', !!t.late);
   $('btnIn').disabled = !!t['in'];
   $('btnIn').textContent = t['in'] ? '출근 완료' : '출근';
@@ -291,7 +298,7 @@ function punch(kind) {
     $('btnOut').disabled = false;
     if (r.error) { say(m, 'no', r.error); $('btnIn').disabled = false; return; }
     paint(r.today);
-    if (r.already) say(m, 'info', '이미 ' + r.today['in'] + ' 에 출근 처리되어 있습니다.');
+    if (r.already) say(m, 'info', '이미 ' + hhmm(r.today['in']) + ' 에 출근 처리되어 있습니다.');
     else say(m, 'ok', label + ' 완료 · ' + r.time + (r.late ? ' (지각)' : ''));
   }).catch(function () {
     $('btnIn').disabled = false; $('btnOut').disabled = false;
