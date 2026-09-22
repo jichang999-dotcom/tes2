@@ -123,7 +123,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.11 · 2026-09-21</span></h1>
+  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.12 · 2026-09-22</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 12 단계</span></div>
@@ -191,16 +191,20 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>준비물</th><th>역할</th><th>필수 여부</th></tr>
     <tr><td><b>Claude 유료 계정</b><br><small>Pro 이상</small></td><td>8단계 로그인에 쓴다. <b>무료 계정으로는 Claude Code 를 쓸 수 없다.</b></td><td>필수</td></tr>
+    <tr><td><b>입문과정설치파일.zip</b><br><small>약 255MB</small></td><td>Node.js · VS Code · 확장 3종 · Claude Code 를 <b>한 번에</b> 설치한다 (2 · 3 · 5 · 7단계)</td><td>권장</td></tr>
     <tr><td>CLAUDE_초기설정.txt</td><td>전역 규칙과 작업 폴더 규칙(CLAUDE.md 2개)을 한 번에 만든다</td><td>필수</td></tr>
     <tr><td>skills 폴더</td><td>token-efficient 스킬</td><td>선택</td></tr>
   </table></div>
-  <div class="box tip"><b>미리 해 두면 좋은 것</b>1~8단계는 <b>내려받기가 대부분</b>이라, 여러 사람이 같은 와이파이에서 동시에 하면 이 구간에만 30분~1시간이 걸린다. <b>2단계 Node.js · 3단계 Cursor/VS Code · 5단계 확장 프로그램</b>을 미리 깔아 두면 당일에는 <b>7단계부터</b> 시작할 수 있다. Node.js 는 Claude Code 설치에 꼭 필요하지는 않으므로(2단계 설명 참고) 급하면 뒤로 미뤄도 된다.</div>
+  <div class="box tip"><b>설치 ZIP 을 쓰면 훨씬 빠릅니다</b>공유 폴더의 <b>입문과정설치파일.zip</b> 하나가 <b>2단계 Node.js · 3단계 VS Code · 5단계 확장 프로그램 · 7단계 Claude Code</b> 를 한 번에 깔아 준다. 압축을 <b>폴더로 푼 뒤</b> 안의 <code class="k">설치하기.bat</code> 을 더블클릭하고, 중간에 뜨는 [사용자 계정 컨트롤] 창에서 [예] 를 누른 다음 검은 창이 끝날 때까지(10분쯤) 기다린다. 그러면 <b>1 · 4 · 6 · 8단계</b>만 남는다. 이미 깔려 있는 것은 알아서 건너뛰므로 여러 번 실행해도 된다.
+</div>
+  <div class="box warn"><b>주의</b><b>ZIP 안에서 바로 더블클릭하면 설치되지 않는다.</b> 탐색기가 그 파일 하나만 임시 폴더로 풀어서 옆에 있어야 할 설치 파일을 못 찾는다. 반드시 <b>압축을 풀고 나온 폴더</b>에서 실행한다.</div>
+  <div class="box tip"><b>직접 깔 때 미리 해 두면 좋은 것</b>1~8단계는 <b>내려받기가 대부분</b>이라, 여러 사람이 같은 와이파이에서 동시에 하면 이 구간에만 30분~1시간이 걸린다. <b>2단계 Node.js · 3단계 Cursor/VS Code · 5단계 확장 프로그램</b>을 미리 깔아 두면 당일에는 <b>7단계부터</b> 시작할 수 있다. Node.js 는 Claude Code 설치에 꼭 필요하지는 않으므로(2단계 설명 참고) 급하면 뒤로 미뤄도 된다.</div>
 </section>
 
 <!-- ============ 1 ============ -->
 <section class="part" id="p1">
   <h2><small>PART 1</small>설치 (1~8단계)</h2>
-  <p class="lead">한 번만 하면 됩니다.</p>
+  <p class="lead">한 번만 하면 됩니다. <b>설치 ZIP</b>(PART 0 준비물)으로 깔았다면 <b>2 · 3 · 5 · 7단계</b>는 이미 끝났으니 화면만 확인하고 넘어가면 됩니다.</p>
 
   <article class="step" id="s1" data-step="1">
     <header><span class="no">1</span><h3>작업 폴더 만들기</h3><label><input type="checkbox">완료</label></header>
@@ -720,6 +724,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
+    <tr><td><b>v1.12</b></td><td>2026-09-22</td><td>
+      <ul>
+        <li><b>추가</b> PART 0 준비물 — <b>입문과정설치파일.zip</b>. 압축을 풀고 <code class="k">설치하기.bat</code> 하나를 더블클릭하면 <b>2 · 3 · 5 · 7단계</b>(Node.js · VS Code · 확장 3종 · Claude Code)가 한 번에 설치된다</li>
+        <li><b>그대로</b> <b>단계 번호 1~12 와 PART 번호는 바뀌지 않았다.</b> ZIP 을 쓰지 않고 하나씩 깔아도 예전과 똑같다</li>
+      </ul></td></tr>
     <tr><td><b>v1.11</b></td><td>2026-09-21</td><td>
       <ul>
         <li><b>바뀜</b> 전체를 <b>① 설치(1~8단계) · ② 세팅(9~12단계) · ③ 팁</b> 세 묶음으로 접었다. 지금 할 묶음만 펼쳐져 있고, 제목을 누르면 열고 닫힌다</li>
