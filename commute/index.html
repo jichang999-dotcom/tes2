@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>출퇴근</title>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<style>
+:root{
+  --bg:#f4f5f7; --card:#ffffff; --fg:#1b1d21; --sub:#6b7280; --line:#e4e6ea;
+  --in:#1f7a4d; --in-bg:#e8f5ee; --out:#2f5fa8; --out-bg:#e9effa;
+  --ok:#1f7a4d; --no:#b42318; --warn:#9a6700;
+  --shadow:0 1px 2px rgba(16,24,40,.06),0 8px 24px rgba(16,24,40,.08);
+}
+@media (prefers-color-scheme:dark){
+  :root{
+    --bg:#111317; --card:#1a1d22; --fg:#e8eaed; --sub:#9aa1ab; --line:#2a2e35;
+    --in:#57c98d; --in-bg:#16281f; --out:#7aa7e8; --out-bg:#161f2c;
+    --ok:#57c98d; --no:#f08b7f; --warn:#e0b34a;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.4);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--fg); min-height:100vh;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  -webkit-font-smoothing:antialiased;
+  display:flex; justify-content:center; align-items:flex-start;
+  padding:24px 16px calc(24px + env(safe-area-inset-bottom));
+}
+.wrap{width:100%; max-width:420px}
+.card{background:var(--card); border:1px solid var(--line); border-radius:18px; box-shadow:var(--shadow); padding:22px}
+.card + .card{margin-top:14px}
+h1{font-size:19px; margin:0 0 4px; letter-spacing:-.2px}
+.date{font-size:13px; color:var(--sub); margin:0}
+.who{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:16px; padding-top:16px; border-top:1px solid var(--line)}
+.who .em{font-size:13px; color:var(--sub); overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.linkbtn{background:none; border:none; color:var(--sub); font-size:12px; text-decoration:underline; cursor:pointer; padding:4px; flex:none}
+
+.status{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:6px}
+.slot{background:var(--bg); border:1px solid var(--line); border-radius:12px; padding:12px 14px}
+.slot .k{font-size:12px; color:var(--sub); margin-bottom:3px}
+.slot .v{font-size:22px; font-weight:650; letter-spacing:-.5px; font-variant-numeric:tabular-nums}
+.slot.late .v{color:var(--no)}
+
+.btns{display:grid; gap:10px; margin-top:16px}
+button.big{
+  border:none; border-radius:14px; padding:18px; font-size:17px; font-weight:650;
+  cursor:pointer; color:#fff; letter-spacing:-.2px; transition:transform .08s, opacity .15s;
+}
+button.big:active{transform:scale(.985)}
+button.big:disabled{opacity:.45; cursor:default}
+#btnIn{background:var(--in)}
+#btnOut{background:var(--out)}
+
+.loc{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:13px; color:var(--sub); line-height:1.6}
+.loc b{color:var(--fg); font-weight:600; font-variant-numeric:tabular-nums}
+.dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:1px; background:var(--sub)}
+.dot.ok{background:var(--ok)} .dot.no{background:var(--no)}
+.coord{display:flex; align-items:center; gap:8px; margin-top:8px; font-size:11.5px; color:var(--sub); font-variant-numeric:tabular-nums}
+
+.msg{margin-top:14px; border-radius:12px; padding:12px 14px; font-size:13.5px; line-height:1.55; display:none}
+.msg.show{display:block}
+.msg.ok{background:var(--in-bg); color:var(--ok)}
+.msg.no{background:rgba(180,35,24,.1); color:var(--no)}
+.msg.info{background:var(--out-bg); color:var(--out)}
+
+label{display:block; font-size:13px; color:var(--sub); margin:14px 0 6px}
+input{
+  width:100%; padding:14px; font-size:16px; border-radius:12px;
+  border:1px solid var(--line); background:var(--bg); color:var(--fg);
+}
+input:focus{outline:2px solid var(--out); outline-offset:-1px}
+.hint{font-size:12px; color:var(--sub); margin-top:8px; line-height:1.55}
+#gbtn{margin-top:18px; display:flex; justify-content:center; min-height:44px}
+.hide{display:none !important}
+.spin{display:inline-block; width:13px; height:13px; border:2px solid currentColor; border-right-color:transparent; border-radius:50%; animation:r .7s linear infinite; vertical-align:-2px; margin-right:6px}
+@keyframes r{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- 1. 로그인 -->
+  <section id="viewLogin" class="card hide">
+    <h1>출퇴근</h1>
+    <p class="date">회사 계정으로 로그인하세요.</p>
+    <div id="gbtn"></div>
+    <p class="hint">위치 확인을 위해 브라우저가 위치 권한을 물어봅니다. 허용해야 출퇴근 처리가 됩니다.</p>
+  </section>
+
+  <!-- 2. 팀장 이메일 등록 -->
+  <section id="viewSetup" class="card hide">
+    <h1>팀장 이메일 등록</h1>
+    <p class="date" id="setupMe"></p>
+    <label for="mgr">팀장 이메일</label>
+    <input id="mgr" type="email" inputmode="email" autocomplete="off" placeholder="manager@askwhy.co.kr">
+    <div class="btns">
+      <button class="big" id="btnSave" style="background:var(--out)">저장</button>
+    </div>
+    <div class="msg" id="setupMsg"></div>
+    <p class="hint">지각 알림이 본인과 이 주소로 함께 발송됩니다.</p>
+  </section>
+
+  <!-- 3. 메인 -->
+  <section id="viewMain" class="card hide">
+    <h1>출퇴근</h1>
+    <p class="date" id="today"></p>
+
+    <div class="status" style="margin-top:16px">
+      <div class="slot" id="slotIn"><div class="k">출근</div><div class="v" id="tIn">-</div></div>
+      <div class="slot"><div class="k">퇴근</div><div class="v" id="tOut">-</div></div>
+    </div>
+
+    <div class="btns">
+      <button class="big" id="btnIn">출근</button>
+      <button class="big" id="btnOut">퇴근</button>
+    </div>
+
+    <div class="msg" id="msg"></div>
+
+    <div class="loc">
+      <div id="locLine"><span class="dot"></span>위치 확인 중</div>
+      <div class="coord">
+        <span id="coordTxt">-</span>
+        <button class="linkbtn" id="btnCopy">복사</button>
+        <button class="linkbtn" id="btnRefresh">위치 새로고침</button>
+      </div>
+    </div>
+
+    <div class="who">
+      <span class="em" id="meEm"></span>
+      <button class="linkbtn" id="btnEdit">팀장 변경</button>
+      <button class="linkbtn" id="btnOutSess">로그아웃</button>
+    </div>
+  </section>
+
+</div>
+
+<script>
+/* ===== 설정 ===== */
+var API_URL   = 'https://script.google.com/macros/s/AKfycbw_pjt28WmUlXsI8K9l_T16exQIMR8dtE2dZCA-B6DJ6bNVJs7rzdJqA9qXF1BxmVGt/exec';
+var CLIENT_ID = '977294712467-cpvocgvkm553kqfhqsgedhigh8ga2dut.apps.googleusercontent.com';
+var OFFICE    = { lat: 37.47381, lng: 126.99494 };   // 남부순환로 2219 나노빌딩
+var RADIUS_M  = 100;                                 // 서버에서 동일 값으로 재검증한다
+/* ================ */
+
+var token = null, me = null, mgr = null, pos = null;
+
+var $ = function (id) { return document.getElementById(id); };
+function show(v) {
+  ['viewLogin', 'viewSetup', 'viewMain'].forEach(function (n) { $(n).classList.add('hide'); });
+  $(v).classList.remove('hide');
+}
+function say(el, kind, html) {
+  el.className = 'msg show ' + kind;
+  el.innerHTML = html;
+}
+function hide(el) { el.className = 'msg'; }
+
+/* 두 좌표 사이 거리(m). 서버 haversine_ 과 같은 식이어야 한다. */
+function distM(aLat, aLng, bLat, bLng) {
+  var R = 6371000, r = Math.PI / 180;
+  var dLat = (bLat - aLat) * r, dLng = (bLng - aLng) * r;
+  var s = Math.sin(dLat / 2) * Math.sin(dLat / 2)
+        + Math.cos(aLat * r) * Math.cos(bLat * r) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+  return 2 * R * Math.atan2(Math.sqrt(s), Math.sqrt(1 - s));
+}
+/* GPS 오차를 관용한 실효 거리. 실내 측위는 수십 m 씩 튄다. */
+function effective(d, acc) { return Math.max(0, d - (acc || 0)); }
+
+function api(body) {
+  body.idToken = token;
+  return fetch(API_URL, {
+    method: 'POST',
+    // text/plain 이라야 preflight 가 안 생긴다. Apps Script 는 OPTIONS 를 못 받는다.
+    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+    body: JSON.stringify(body)
+  }).then(function (r) { return r.json(); });
+}
+
+/* ---- 로그인 ---- */
+window.onGoogleCredential = function (res) {
+  token = res.credential;
+  sessionStorage.setItem('idt', token);
+  boot();
+};
+window.onload = function () {
+  var waited = 0, iv = setInterval(function () {
+    if (window.google && google.accounts) {
+      clearInterval(iv);
+      google.accounts.id.initialize({ client_id: CLIENT_ID, callback: window.onGoogleCredential, auto_select: true });
+      google.accounts.id.renderButton($('gbtn'), { theme: 'outline', size: 'large', text: 'signin_with', locale: 'ko', width: 260 });
+    } else if ((waited += 100) > 8000) {
+      clearInterval(iv);
+      show('viewLogin');
+      $('gbtn').textContent = '구글 로그인 스크립트를 불러오지 못했습니다. 새로고침하세요.';
+    }
+  }, 100);
+
+  token = sessionStorage.getItem('idt');
+  if (token) boot(); else show('viewLogin');
+};
+
+function boot() {
+  api({ action: 'init' }).then(function (r) {
+    if (r.error) {
+      sessionStorage.removeItem('idt'); token = null;
+      show('viewLogin');
+      return;
+    }
+    me = r.email; mgr = r.manager;
+    $('meEm').textContent = me;
+    $('setupMe').textContent = me;
+    if (!mgr) { $('mgr').value = ''; show('viewSetup'); return; }
+    paint(r.today);
+    show('viewMain');
+    locate();
+  }).catch(function () {
+    show('viewLogin');
+    $('gbtn').insertAdjacentHTML('afterend', '<p class="hint" style="color:var(--no)">서버에 연결하지 못했습니다. API_URL 설정을 확인하세요.</p>');
+  });
+}
+
+/* ---- 팀장 등록 ---- */
+$('btnSave').onclick = function () {
+  var v = $('mgr').value.trim();
+  if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v)) { say($('setupMsg'), 'no', '이메일 형식이 아닙니다.'); return; }
+  this.disabled = true;
+  say($('setupMsg'), 'info', '<span class="spin"></span>저장 중');
+  api({ action: 'register', manager: v }).then(function (r) {
+    $('btnSave').disabled = false;
+    if (r.error) { say($('setupMsg'), 'no', r.error); return; }
+    mgr = v; hide($('setupMsg')); boot();
+  });
+};
+$('btnEdit').onclick = function () { $('mgr').value = mgr || ''; show('viewSetup'); };
+$('btnOutSess').onclick = function () {
+  sessionStorage.removeItem('idt'); token = null;
+  if (window.google && google.accounts) google.accounts.id.disableAutoSelect();
+  show('viewLogin');
+};
+
+/* ---- 화면 갱신 ---- */
+function paint(t) {
+  t = t || {};
+  $('today').textContent = t.date || '';
+  $('tIn').textContent = t['in'] || '-';
+  $('tOut').textContent = t.out || '-';
+  $('slotIn').classList.toggle('late', !!t.late);
+  $('btnIn').disabled = !!t['in'];
+  $('btnIn').textContent = t['in'] ? '출근 완료' : '출근';
+}
+
+/* ---- 위치 ---- */
+function locate() {
+  var line = $('locLine');
+  line.innerHTML = '<span class="dot"></span><span class="spin"></span>위치 확인 중';
+  if (!navigator.geolocation) { line.innerHTML = '<span class="dot no"></span>이 브라우저는 위치를 지원하지 않습니다'; return; }
+  navigator.geolocation.getCurrentPosition(function (p) {
+    pos = p.coords;
+    var d = distM(pos.latitude, pos.longitude, OFFICE.lat, OFFICE.lng);
+    var eff = effective(d, pos.accuracy);
+    var inside = eff <= RADIUS_M;
+    line.innerHTML = '<span class="dot ' + (inside ? 'ok' : 'no') + '"></span>'
+      + '회사까지 <b>' + Math.round(d) + 'm</b> · 오차 <b>±' + Math.round(pos.accuracy) + 'm</b>'
+      + (inside ? ' · 허용 범위' : ' · 범위 밖 (' + RADIUS_M + 'm 기준)');
+    $('coordTxt').textContent = pos.latitude.toFixed(6) + ', ' + pos.longitude.toFixed(6);
+  }, function (err) {
+    pos = null;
+    line.innerHTML = '<span class="dot no"></span>위치를 가져오지 못했습니다 (' + (err.code === 1 ? '권한 거부' : err.code === 3 ? '시간 초과' : '사용 불가') + ')';
+  }, { enableHighAccuracy: true, timeout: 15000, maximumAge: 0 });
+}
+$('btnRefresh').onclick = locate;
+$('btnCopy').onclick = function () {
+  var t = $('coordTxt').textContent;
+  if (navigator.clipboard) navigator.clipboard.writeText(t);
+  this.textContent = '복사됨';
+  var b = this; setTimeout(function () { b.textContent = '복사'; }, 1500);
+};
+
+/* ---- 출퇴근 ---- */
+function punch(kind) {
+  var m = $('msg'), label = kind === 'in' ? '출근' : '퇴근';
+  if (!pos) { say(m, 'no', '위치를 먼저 확인하세요. 위치 새로고침을 누르고 다시 시도하세요.'); locate(); return; }
+  $('btnIn').disabled = true; $('btnOut').disabled = true;
+  say(m, 'info', '<span class="spin"></span>' + label + ' 처리 중');
+  api({ action: kind, lat: pos.latitude, lng: pos.longitude, acc: pos.accuracy }).then(function (r) {
+    $('btnOut').disabled = false;
+    if (r.error) { say(m, 'no', r.error); $('btnIn').disabled = false; return; }
+    paint(r.today);
+    if (r.already) say(m, 'info', '이미 ' + r.today['in'] + ' 에 출근 처리되어 있습니다.');
+    else say(m, 'ok', label + ' 완료 · ' + r.time + (r.late ? ' (지각)' : ''));
+  }).catch(function () {
+    $('btnIn').disabled = false; $('btnOut').disabled = false;
+    say(m, 'no', '전송 실패. 네트워크를 확인하고 다시 시도하세요.');
+  });
+}
+$('btnIn').onclick = function () { punch('in'); };
+$('btnOut').onclick = function () { punch('out'); };
+</script>
+</body>
+</html>
