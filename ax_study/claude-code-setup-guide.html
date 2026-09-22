@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.15 · 2026-09-22</span></h1>
+  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.16 · 2026-09-22</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 12 단계</span></div>
@@ -756,6 +756,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
+    <tr><td><b>v1.16</b></td><td>2026-09-22</td><td>
+      <ul>
+        <li><b>고침</b> <b>새로고침하면 펼쳐 둔 묶음이 다시 열리던 것</b>을 막았다. 브라우저가 되살리는 상태까지 지워, 이제 <b>새로 열든 새로고침하든 항상 전부 접힌 상태</b>로 시작한다</li>
+        <li><b>바뀜</b> <code class="k">#p6</code> 같은 <b>주소를 달고 들어와도 접힌 채로</b> 시작한다. 펼치는 것은 <b>페이지 안에서 링크를 눌렀을 때</b>다 — 맨 위 [막혔을 때] 버튼, 목차, 표 안의 (7단계) 링크는 그대로 동작한다</li>
+        <li><b>그대로</b> 내용 · 단계 번호 1~12 · PART 번호는 그대로다</li>
+      </ul></td></tr>
     <tr><td><b>v1.15</b></td><td>2026-09-22</td><td>
       <ul>
         <li><b>바뀜</b> 7단계 「막히면」 이 <b>두 가지로 갈라져 접힌다</b>. <b>A. 설치 명령(<code class="k">irm</code> 줄)이 실패한다</b> / <b>B. 설치는 됐는데 <code class="k">claude -v</code> 에 버전이 안 나온다</b> — 내 증상에 맞는 쪽만 펼쳐서 본다</li>
@@ -912,7 +918,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     if(openFor(t))setTimeout(function(){t.scrollIntoView()},0);
     return true;
   }
-  openByHash();   // 해시로 들어온 경우에만 그 묶음을 연다. 그냥 새로고침하면 전부 접힌 채로 시작한다.
+  // 첫 화면은 무조건 전부 접힌다 (해시가 있어도, 새로고침이어도)
+  // 브라우저는 새로고침·뒤로가기 때 details 의 펼침 상태를 되살린다. 그것까지 지운다.
+  function collapseAll(){[].slice.call(document.querySelectorAll('details')).forEach(function(d){d.open=false})}
+  var touched=false;   // 사람이 한 번 누른 뒤에는 늦게 오는 load 가 그것을 닫아 버리면 안 된다
+  document.addEventListener('click',function(){touched=true},true);
+  function collapseIfUntouched(){if(!touched)collapseAll()}
+  collapseAll();
+  window.addEventListener('DOMContentLoaded',collapseIfUntouched);
+  window.addEventListener('load',collapseIfUntouched);
+  window.addEventListener('pageshow',function(e){if(e.persisted){touched=false;collapseAll()}});
+  // 펼치는 것은 페이지 안에서 링크를 눌렀을 때만이다 (목차 · 표의 (7단계) · 맨 위 [막혔을 때])
   window.addEventListener('hashchange',openByHash);
   // 맨 위 [막혔을 때] 처럼 이미 같은 해시에 있을 때는 hashchange 가 안 뜬다
   [].slice.call(document.querySelectorAll('header.top a[href^="#"]')).forEach(function(a){
