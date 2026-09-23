@@ -79,6 +79,15 @@ button.big:disabled{opacity:.45; cursor:default}
 .hint{font-size:12px; color:var(--sub); margin-top:8px; line-height:1.55}
 #gbtn{margin-top:18px; display:flex; justify-content:center; min-height:44px}
 .hide{display:none !important}
+
+.hist h2{font-size:15px; margin:0 0 10px}
+.hist table{width:100%; border-collapse:collapse; font-size:13px; font-variant-numeric:tabular-nums}
+.hist th,.hist td{padding:7px 4px; text-align:left; border-bottom:1px solid var(--line); white-space:nowrap}
+.hist th{color:var(--sub); font-weight:500; font-size:12px}
+.hist td.t,.hist th.t{text-align:right}
+.hist tr.d td{background:var(--bg); color:var(--sub); font-size:12px; font-weight:600; padding:6px 8px}
+.hist td.late{color:var(--no); font-weight:600}
+.hist .nm{max-width:9em; overflow:hidden; text-overflow:ellipsis}
 .spin{display:inline-block; width:13px; height:13px; border:2px solid currentColor; border-right-color:transparent; border-radius:50%; animation:r .7s linear infinite; vertical-align:-2px; margin-right:6px}
 @keyframes r{to{transform:rotate(360deg)}}
 </style>
@@ -89,7 +98,7 @@ button.big:disabled{opacity:.45; cursor:default}
   <!-- 1. 로그인 -->
   <section id="viewLogin" class="card hide">
     <h1>출퇴근</h1>
-    <p class="date">회사 계정으로 로그인하세요.</p>
+    <p class="date">조직도에 등록된 구글 계정으로 로그인하세요.</p>
     <div id="gbtn"></div>
     <p class="hint">위치 확인을 위해 브라우저가 위치 권한을 물어봅니다. 허용해야 출퇴근 처리가 됩니다.</p>
   </section>
@@ -127,6 +136,13 @@ button.big:disabled{opacity:.45; cursor:default}
     <p class="hint" id="mgrLine"></p>
   </section>
 
+  <!-- 3. 기록 (전체권한 Y 는 전원, 나머지는 본인) -->
+  <section id="viewHist" class="card hist hide">
+    <h2 id="histTitle">내 출퇴근 기록</h2>
+    <table><thead id="histHead"></thead><tbody id="histBody"></tbody></table>
+    <p class="hint" id="histEmpty"></p>
+  </section>
+
 </div>
 
 <script>
@@ -141,7 +157,7 @@ var token = null, me = null, pos = null;
 
 var $ = function (id) { return document.getElementById(id); };
 function show(v) {
-  ['viewLogin', 'viewMain'].forEach(function (n) { $(n).classList.add('hide'); });
+  ['viewLogin', 'viewMain', 'viewHist'].forEach(function (n) { $(n).classList.add('hide'); });
   $(v).classList.remove('hide');
 }
 function say(el, kind, html) {
@@ -260,13 +276,12 @@ function boot() {
     }
     me = r.email;
     $('meEm').textContent = me;
-    // 팀장은 시트 조직도 탭이 정한다. 조직도에 없으면 기록만 되고 알림은 나가지 않는다.
+    // 팀장은 시트 조직도 탭이 정한다. 팀장 본인이거나 팀장 없는 팀이면 cc 가 없다.
     var mg = r.managers || [];
-    $('mgrLine').textContent = mg.length
-      ? '지각 알림 수신: 본인, ' + mg.join(', ')
-      : '조직도에 등록되지 않아 지각 알림이 발송되지 않습니다. 관리자에게 조직도 등록을 요청하세요.';
+    $('mgrLine').textContent = mg.length ? '지각 알림 수신: 본인, ' + mg.join(', ') : '';
     paint(r.today);
     show('viewMain');
+    paintHist(r.history);
     locate();
   }).catch(function () {
     show('viewLogin');
@@ -292,6 +307,24 @@ function paint(t) {
   $('slotIn').classList.toggle('late', !!t.late);
   $('btnIn').disabled = !!t['in'];
   $('btnIn').textContent = t['in'] ? '출근 완료' : '출근';
+}
+
+/* 기록 표. 날짜별로 묶어 최신 날짜가 위. 서버가 정렬·권한 필터를 해서 준다. */
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return '&#' + c.charCodeAt(0) + ';'; }); }
+function paintHist(h) {
+  if (!h) return;   // 옛 백엔드는 history 를 안 준다
+  $('histTitle').textContent = h.all ? '전체 출퇴근 기록' : '내 출퇴근 기록';
+  $('histHead').innerHTML = '<tr>' + (h.all ? '<th>팀</th><th>이름</th>' : '<th></th>') + '<th class="t">출근</th><th class="t">퇴근</th></tr>';
+  var html = '', last = '', cols = h.all ? 4 : 3;
+  h.rows.forEach(function (r) {
+    if (r.date !== last) { last = r.date; html += '<tr class="d"><td colspan="' + cols + '">' + esc(r.date) + '</td></tr>'; }
+    html += '<tr>' + (h.all ? '<td>' + esc(r.team) + '</td><td class="nm">' + esc(r.name) + '</td>' : '<td></td>')
+      + '<td class="t' + (r.late ? ' late' : '') + '">' + hhmm(r['in']) + (r.late ? ' 지각' : '') + '</td>'
+      + '<td class="t">' + hhmm(r.out) + '</td></tr>';
+  });
+  $('histBody').innerHTML = html;
+  $('histEmpty').textContent = h.rows.length ? '최근 30일' : '최근 30일 기록이 없습니다.';
+  $('viewHist').classList.remove('hide');
 }
 
 /* ---- 위치 ---- */
@@ -331,6 +364,7 @@ function punch(kind) {
     $('btnOut').disabled = false;
     if (r.error) { say(m, 'no', r.error); $('btnIn').disabled = false; return; }
     paint(r.today);
+    paintHist(r.history);
     if (r.already) say(m, 'info', '이미 ' + hhmm(r.today['in']) + ' 에 출근 처리되어 있습니다.');
     else say(m, 'ok', label + ' 완료 · ' + r.time + (r.late ? ' (지각)' : ''));
   }).catch(function () {
