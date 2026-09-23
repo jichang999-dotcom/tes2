@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.0 · 2026-09-23</span></h1>
+  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.1 · 2026-09-23</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <a class="rel-btn" href="https://docs.google.com/document/d/16VqrcWI4fmoNcRZdRaxqP6b2aoniH_0oJREXNFhU3g0/edit" target="_blank" rel="noopener" title="진행자 계정으로 로그인해야 열립니다">진행자용</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -198,7 +198,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <article class="step" id="s1" data-step="1">
     <header><span class="no">1</span><h3>휴대폰으로 열기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <div class="row"><b>방법</b><div><p>진행자가 띄운 QR 을 찍거나 아래 주소를 휴대폰 <b>Chrome</b>(아이폰은 <b>Safari</b>)에서 엽니다.</p>
+      <div class="row"><b>방법</b><div><p>아래 QR 을 휴대폰 카메라로 찍거나 주소를 휴대폰 <b>Chrome</b>(아이폰은 <b>Safari</b>)에서 엽니다.</p>
+        <div class="shots"><figure><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATgAAAE4CAIAAABAHXg9AAAFQElEQVR42u3dQY4jOQxFwe9G3f/K7hPUIgGxSCoj1gOPnV0PSoCQ9Pl+vwFm++cRgFABoYJQAaECQgWhAkIFhApCBYQKQgWECggVhAoIFRAqCBUQKiBUECogVBAqMMXPqQ/6fD4rfvCpc4yn/d7q3/Xb5596Dk+//9v+3qyo4NUXECoIFRAqIFQQKpCVc9QUz5GyZM5ZPW+s/r2nvv/Tz3k6v33b35sVFbz6AkIFoQJCBYQKQgVy1Rw1TXO/LNmXeGp+2LW/dMvz3/73ZkUFr76AUEGogFABoYJQgbxijrrFqTlk9bm1v33+tPnt9nmsFRUQKggVECoIFRAqIFSIOSo5NSfsmsfmZffEWlEBoQJCBaECQgWhegQgVCCL56jT9h9Wzy275rHT7lPdPje2ogJCBaECQgWhAkIFhAoxR439il37S7vmkKfuTd1+D6oVFRAqCBUQKiBUECogVHi1j3spZ+5T7dpHOm0+6e/TigpCBYQKQgWECggVhApk8Ry1+rzZU/skt++3vPU85Op/R+f6AkIFhApCBYQKQgWECqThXN/quVnX/ZnVc90s2Tc7bc487TlXz72tqODVFxAqCBUQKiBUECqQlXPUrjln9bxr+/7VrvOBt5yHvGV+bkUFr76AUEGogFABoYJQgbziftSuc4CnnStb/d93zRunnUu8/dxgKyp49QWECkIFhAoIFYQK5Kr9qGm6L3TLfO/U9+/aX/q2z7GiAkIFoQJCBaECQgWECrEfdcG5qVu+/63z565zmLfMS92PCl59AaECQgWhAkIFhAp59X7Urv2caZpPds3rps2lT+2b7dqXu2U/sxUVvPoCQgWhAkIFhApCBXLVftQM2+/Xtd/SfHjX/uTq+3itqODVFxAqIFQQKiBUECqQV+xHTdPc7G37P6u/5/b9uhk2/7SigldfQKiAUEGogFABoULsR43zfk/tj63eZ3vrPuTt9/RaUcGrLyBUECogVECoIFQgV81Rq+eu2+d10+bGW/Zhdv2uafNVKyp49QWECkIFhAoIFYQK5KpzfbP8vNyn89tT+0KnzT+33Ct76rlNmzNbUcGrLyBUECogVECoIFQgV53rm+Lzb9N0Hu+0eWP1+cDVc+8t80wrKiBUECogVBAqIFRAqBBz1AvPd91yP+q0/avT9v3eOg+3ooJXX0CoIFRAqIBQQahA7Ee98FzZLc9n+3nC0+bD7kcFhApCBYQKQgWECggVYo46aL7XdS5u1z2uXc8zS+7LtaICQgWECkIFhApC9QhAqEAW7EfdMhft+pyu+ee0c4+75rpb5rFWVBAqIFQQKiBUQKggVCDuR1187u60eXLXPHza790yt7eigldfQKggVECogFBBqEBefT9qhp0f2/V7u+aT087XnTa/nbav1YoKXn0BoYJQAaECQgWhAn/qJ5eem/p0brZlDjztPtKu/aXTPseKCggVhAoIFYQKCBUQKsQcNfP3c2bYPszfPufUvLd6zrnlPN7qfbBxri8gVBAqIFQQKiBUQKgQc9S4HzU75sPV89iu83vTNE/uej5WVPDqCwgVhAoIFRAqCBWIOWr2nnPbNRd9+jnTzlXech6v/aiAUEGogFABoYJQAaFCzFEzZ26ZS+exKd5XWT0HnjaXfvr/nTZ3taKCV19AqIBQQaiAUEGoQF49R+2a41V/z+r7QrfPV7d/nzTtO7WigldfQKggVECogFBBqMAIn1v3hYIVFRAqIFQQKiBUECogVECoIFRAqIBQQaiAUAGhglABoYJQAaECQgWhAkIFhApCBQr8B0aX6nWyxh9PAAAAAElFTkSuQmCC" alt="완성본 출퇴근 앱 주소 QR 코드" style="max-width:200px;background:#fff"><figcaption>휴대폰 카메라로 찍으면 바로 열린다</figcaption></figure></div>
         <div class="cmd"><code>https://jichang999-dotcom.github.io/tes2/commute/index.html</code><button type="button">복사</button></div></div></div>
       <div class="row"><b>확인</b><div><p>「출퇴근」 제목과 [Google 계정으로 로그인] 버튼이 보인다.</p></div></div>
       <div class="box warn"><b>주의</b>카카오톡 안에서 링크를 누르면 카카오톡 브라우저로 열려 로그인이 막힐 수 있습니다. 오른쪽 위 메뉴에서 <b>다른 브라우저로 열기</b>를 고릅니다.</div>
@@ -394,6 +395,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.1</b></td><td>2026-09-23</td><td>
+      <ul><li><b>추가</b> 1단계에 완성본 앱 주소 QR 코드. 진행자 화면을 따로 띄우지 않아도 가이드 화면을 휴대폰으로 찍으면 된다</li></ul></td></tr>
     <tr><td><b>v1.0</b></td><td>2026-09-23</td><td>
       <ul>
         <li>첫 배포. 10단계 카드(완성본 써 보기 3 · 미니 앱 만들기 4 · 말로 고치기 3), 진행률 체크, 복사 버튼, 화면 캡처 5장</li>
