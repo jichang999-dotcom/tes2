@@ -100,6 +100,7 @@ button.big:disabled{opacity:.45; cursor:default}
     <h1>출퇴근</h1>
     <p class="date">조직도에 등록된 구글 계정으로 로그인하세요.</p>
     <div id="gbtn"></div>
+    <p class="hint" id="loginErr" style="color:var(--no)"></p>
     <p class="hint">위치 확인을 위해 브라우저가 위치 권한을 물어봅니다. 허용해야 출퇴근 처리가 됩니다.</p>
   </section>
 
@@ -271,9 +272,13 @@ function boot() {
   api({ action: 'init' }).then(function (r) {
     if (r.error) {
       localStorage.removeItem('idt'); token = null;
+      // 이유를 보여준다. 조직도 밖 계정이면 자동 로그인도 끈다(안 끄면 로그인-차단이 무한 반복된다)
+      $('loginErr').textContent = r.error;
+      if (/권한/.test(r.error) && window.google && google.accounts) google.accounts.id.disableAutoSelect();
       show('viewLogin');
       return;
     }
+    $('loginErr').textContent = '';
     me = r.email;
     $('meEm').textContent = me;
     // 팀장은 시트 조직도 탭이 정한다. 팀장 본인이거나 팀장 없는 팀이면 cc 가 없다.
