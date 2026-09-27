@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.7 · 2026-09-27</span></h1>
+  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.8 · 2026-09-27</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <a class="rel-btn" href="https://docs.google.com/document/d/16VqrcWI4fmoNcRZdRaxqP6b2aoniH_0oJREXNFhU3g0/edit" target="_blank" rel="noopener" title="진행자 계정으로 로그인해야 열립니다">진행자용</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -446,6 +446,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.8</b></td><td>2026-09-27</td><td>
+      <ul><li><b>바뀜</b> 진행 체크 저장 키를 새로 바꿨다. v1.4 에서 단계 번호가 당겨져 옛 체크가 다른 단계에 표시될 수 있어서다. 전에 체크한 것은 한 번 비워진다</li></ul></td></tr>
     <tr><td><b>v1.7</b></td><td>2026-09-27</td><td>
       <ul><li><b>추가</b> 정답 파일 <code>정답_서버.gs</code>(12단계에서 막혔을 때) · 5단계 「정답 파일로 갈아탔다면 — 설명서 카드」(정답에는 CLAUDE.md 가 없어서). 정답 경로(정답_출퇴근.html + 정답_서버.gs + 14단계 카드)를 작업 폴더 모양 3곳에서 3번 모두 통과</li></ul></td></tr>
     <tr><td><b>v1.6</b></td><td>2026-09-27</td><td>
@@ -471,7 +473,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 
 <script>
 (function(){
-  var KEY='cc-trial-steps-v1';
+  var KEY='cc-trial-steps-v2';
   var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
   var saved={};
   try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
