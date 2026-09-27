@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.5 · 2026-09-27</span></h1>
+  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.6 · 2026-09-27</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <a class="rel-btn" href="https://docs.google.com/document/d/16VqrcWI4fmoNcRZdRaxqP6b2aoniH_0oJREXNFhU3g0/edit" target="_blank" rel="noopener" title="진행자 계정으로 로그인해야 열립니다">진행자용</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -147,9 +147,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="ghead">② 말로 고치기 <small>8~10단계</small></li>
   <li><a href="#p3">미션 2개 (8~9)</a></li>
   <li class="sub"><a href="#s10">10. 폰 화면으로 보기</a></li>
-  <li class="ghead">③ 더 알아보기 <small>각자 읽기</small></li>
-  <li><a href="#p4">완성본은 어떻게 생겼나</a></li>
-  <li><a href="#p5">우리 팀 앱 떠올리기</a></li>
+  <li class="ghead">③ 시트를 DB 로 <small>11~14단계</small></li>
+  <li><a href="#p4">구글 시트 + 웹앱 (11~14)</a></li>
+  <li class="sub"><a href="#s14">14. 앱과 시트 연결</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
   <li><a href="#p6">자주 막히는 것 · 정답 파일</a></li>
 </ol>
@@ -160,14 +160,15 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <!-- ============ 0 ============ -->
 <section class="part" id="p0">
   <h2><small>PART 0</small>시작 전</h2>
-  <p class="lead">입문 과정(첫 설정 12단계)을 끝낸 사람이 <b>회사에서 실제로 쓰는 앱</b>을 보고, 같은 앱의 작은 판을 <b>말로 만들고 말로 고쳐 보는</b> 30분 체험입니다. 각 단계 오른쪽 위 <b>완료</b>를 체크하면 위쪽 막대에 진행률이 표시됩니다.</p>
-  <div class="box tip"><b>오늘의 주제</b>주제는 출퇴근이 아니라 <b>「사내 앱을 말로 만든다」</b>입니다. 출퇴근 앱은 예시일 뿐입니다. 끝나면 「우리 팀에서 매일 손으로 하는 일 중 앱이 될 만한 것」을 한 줄 적습니다.</div>
+  <p class="lead">입문 과정(첫 설정 12단계)을 끝낸 사람이 <b>회사에서 실제로 쓰는 앱</b>을 보고, 같은 앱의 작은 판을 <b>말로 만들고 말로 고치고, 구글 시트에 기록이 쌓이게 연결해 보는</b> 45분 체험입니다. 각 단계 오른쪽 위 <b>완료</b>를 체크하면 위쪽 막대에 진행률이 표시됩니다.</p>
+  <div class="box tip"><b>오늘의 주제</b>주제는 출퇴근이 아니라 <b>「사내 앱을 말로 만든다」</b>입니다. 출퇴근 앱은 예시일 뿐입니다.</div>
   <div class="hero">
     <b>끝나면 이렇게 됩니다</b>
     <ul>
       <li>휴대폰으로 완성본 앱에서 출근을 찍어 봤다.</li>
       <li>내 노트북에 <code class="k">출퇴근.html</code> 파일 하나를 <b>글 한 장으로</b> 만들었다.</li>
       <li>코드를 보지 않고 <b>말로만</b> 기능 두 가지를 고쳤다.</li>
+      <li>내 구글 시트를 저장소(DB)로 만들고, 앱에서 누른 출근이 <b>시트에 한 줄씩 쌓이게</b> 연결했다.</li>
     </ul>
   </div>
   <h3>오늘 만드는 것과 완성본은 무엇이 다른가요?</h3>
@@ -175,16 +176,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><th></th><th>완성본 (보기만)</th><th>미니 앱 (내가 만든다)</th></tr>
     <tr><td>어디서 여나</td><td>휴대폰 · 인터넷 주소</td><td>내 노트북 · 파일 더블클릭</td></tr>
     <tr><td>로그인</td><td>구글 로그인 + 명단 확인</td><td>없음</td></tr>
-    <tr><td>기록</td><td>구글 시트</td><td>화면 표 + CSV 내려받기</td></tr>
+    <tr><td>기록</td><td>구글 시트</td><td>화면 표 + CSV 내려받기 → PART 4 에서 <b>내 구글 시트</b></td></tr>
     <tr><td>알림</td><td>09:35 메일</td><td>없음</td></tr>
   </table></div>
-  <p>완성본을 똑같이 만들려면 계정 설정이 여러 개 필요해서 30분에 끝나지 않습니다. 그래서 오늘은 <b>핵심 기능 세 가지(출근 버튼 → 회사 반경 판정 → 기록)</b>만 가진 한 파일짜리 앱을 만듭니다.</p>
+  <p>완성본을 똑같이 만들려면 계정 설정이 여러 개 필요해서 한 번에 끝나지 않습니다. 그래서 오늘은 <b>핵심 기능 세 가지(출근 버튼 → 회사 반경 판정 → 기록)</b>만 가진 한 파일짜리 앱을 먼저 만들고, 마지막에 <b>기록을 구글 시트로 보내는 서버</b>만 붙입니다. 로그인 · 명단 확인 · 메일은 붙이지 않습니다.</p>
   <h3>준비물</h3>
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
     <tr><td><b>입문 과정 완료</b></td><td>터미널에서 <code class="k">claude</code> 를 치면 Claude Code 가 켜져야 합니다. 아직이면 <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-setup-guide.html" target="_blank" rel="noopener">입문 가이드</a>부터.</td></tr>
     <tr><td>노트북</td><td>입문에서 쓴 VS Code 또는 Cursor</td></tr>
     <tr><td>휴대폰</td><td>위치 권한을 허용할 수 있는 휴대폰 (PART 1)</td></tr>
+    <tr><td><b>구글 계정</b></td><td>노트북 Chrome 에 로그인된 회사 구글 계정. 구글 시트 · Apps Script 를 씁니다 (PART 4)</td></tr>
     <tr><td>받을 파일 3개</td><td><code class="k">프롬프트_미니출퇴근앱.txt</code> (이 가이드와 같은 글) · <code class="k">정답_출퇴근.html</code> · <code class="k">정답_폰미리보기.html</code> (막혔을 때 갈아탈 파일). 진행자가 공유 폴더로 줍니다</td></tr>
   </table></div>
 </section>
@@ -222,7 +224,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <div class="body">
       <div class="row"><b>방법</b><div><p>[출근] → 위치 권한을 물으면 <b>허용</b>.</p></div></div>
       <div class="row"><b>확인</b><div><p>회사에서 몇 m 인지가 나오고, 화면 아래 기록 표에 오늘 줄이 생긴다.</p></div></div>
-      <div class="box tip"><b>알아 두기</b>회사 반경은 100m 입니다. 건물 안에서는 GPS 가 흔들려서 <b>「거리 − 오차」가 100m 안이면</b> 통과로 칩니다. 이 규칙도 사람이 말로 정한 것입니다(PART 4).</div>
+      <div class="box tip"><b>알아 두기</b>회사 반경은 100m 입니다. 건물 안에서는 GPS 가 흔들려서 <b>「거리 − 오차」가 100m 안이면</b> 통과로 칩니다. 이 규칙도 사람이 말로 정한 것입니다.</div>
     </div>
   </article>
 </section>
@@ -335,41 +337,77 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g3">
-<summary><span class="gno">③</span> 더 알아보기 <small>각자 읽기</small></summary>
+<summary><span class="gno">③</span> 시트를 DB 로 <small>11~14단계 · 15분</small></summary>
 <!-- ============ 4 ============ -->
 <section class="part" id="p4">
-  <h2><small>PART 4</small>완성본은 어떻게 생겼나</h2>
-  <p class="lead">방금 만든 미니 앱에 <b>서버 · 로그인 · 메일</b>을 붙인 것이 완성본입니다. 이것도 전부 말로 요청해서 만들었습니다.</p>
+  <h2><small>PART 4</small>구글 시트를 DB 로 (11~14단계)</h2>
+  <p class="lead">지금 기록은 <b>내 브라우저 안</b>에만 있습니다. 브라우저를 바꾸거나 기록을 지우면 사라집니다. 이제 <b>구글 시트를 저장소(DB)</b>로 쓰고, 그 앞에 <b>Apps Script 웹앱</b>을 세워 앱이 기록을 보내게 합니다. 완성본도 같은 구조입니다.</p>
   <div class="tbl"><table>
-    <tr><th>조각</th><th>하는 일</th><th>미니 앱에는</th></tr>
-    <tr><td><b>화면</b> (인터넷 주소)</td><td>구글 로그인 · 위치 받기 · 거리 표시</td><td>있다 (내 노트북 파일)</td></tr>
-    <tr><td><b>서버</b> (구글 Apps Script)</td><td>로그인한 사람이 명단에 있는지 확인 · 거리를 다시 계산 · 기록</td><td>없다</td></tr>
-    <tr><td><b>기록</b> (구글 시트)</td><td>날짜 · 출근 · 퇴근 · 거리 쌓기</td><td>브라우저 저장 + CSV</td></tr>
-    <tr><td><b>알림</b> (메일)</td><td>09:35 에 한 번, 본인과 팀장에게</td><td>없다</td></tr>
+    <tr><th>출퇴근.html (화면)</th><th></th><th>서버.gs (Apps Script 웹앱)</th><th></th><th>구글 시트 (DB)</th></tr>
+    <tr><td>[출근] 을 누르면 기록 한 줄을 보낸다</td><td>→<br>웹앱 주소</td><td>받아서 시트에 쓴다 · 같은 날짜면 그 줄을 고친다</td><td>→</td><td>날짜 · 출근 · 퇴근 · 거리가 쌓인다</td></tr>
   </table></div>
-  <h3>만들며 부딪힌 것 세 가지 — 셋 다 말로 설명해서 고쳤다</h3>
-  <div class="tbl"><table>
-    <tr><th>무슨 일이 있었나</th><th>어떻게 말했나</th><th>결과</th></tr>
-    <tr><td>사무실 안인데 「반경 밖」</td><td>「건물 안에서는 GPS 오차가 커서 자꾸 밖이라고 나와」</td><td>「거리 − 오차 ≤ 100m」 로 봐주기</td></tr>
-    <tr><td>정시에 왔는데 지각으로 찍힘</td><td>「09:12 에 왔는데 지각이래」</td><td>시트가 시각을 날짜로 바꿔 버리는 문제를 찾아 고침</td></tr>
-    <tr><td>위치가 조용히 안 받아짐</td><td>「버튼을 눌러도 위치를 안 물어봐」</td><td>화면과 서버를 둘로 나눔 (한 덩어리로는 위치 권한이 막힌다)</td></tr>
-  </table></div>
-  <div class="box tip"><b>핵심</b>코드는 Claude Code 가 썼고, <b>반경 · 기준 시각 · 알림 받을 사람 같은 규칙은 사람이 정했습니다.</b> 사람이 할 일은 「무엇을 원하는지」와 「무엇이 이상한지」를 말하는 것입니다.</div>
-</section>
+  <div class="box tip"><b>누가 무엇을 하나</b>코드(서버.gs · 연결)는 Claude Code 가 씁니다. 사람은 <b>시트 만들기 · 코드 붙여넣기 · 배포</b> 세 가지만 브라우저에서 손으로 합니다.</div>
 
-<!-- ============ 5 ============ -->
-<section class="part" id="p5">
-  <h2><small>PART 5</small>우리 팀 앱 떠올리기</h2>
-  <p class="lead">매일 손으로 하는 일 중에 <b>「버튼 → 판정 → 기록」</b> 모양인 것은 오늘 만든 것과 같은 방식으로 앱이 됩니다.</p>
-  <div class="tbl"><table>
-    <tr><th>손으로 하던 일</th><th>버튼</th><th>판정</th><th>기록</th></tr>
-    <tr><td>회의실 예약</td><td>[예약]</td><td>그 시간이 비었나</td><td>예약표</td></tr>
-    <tr><td>비품 신청</td><td>[신청]</td><td>재고가 있나</td><td>신청 목록</td></tr>
-    <tr><td>방문객 기록</td><td>[입실] [퇴실]</td><td>—</td><td>방문 기록표</td></tr>
-    <tr><td>교재 재고 확인</td><td>[입고] [출고]</td><td>부족하면 표시</td><td>재고표</td></tr>
-  </table></div>
-  <p>떠오르지 않으면 Claude Code 에 물어봐도 됩니다.</p>
-  <div class="cmd"><code>나는 ○○팀이고 매일 ○○을 손으로 해. 오늘 만든 출퇴근.html 같은 한 파일짜리 앱으로 만들 수 있는 게 있을까? 세 개만 추천해 줘</code><button type="button">복사</button></div>
+  <article class="step" id="s11" data-step="11">
+    <header><span class="no">11</span><h3>구글 시트 만들기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><p>노트북 Chrome(회사 구글 계정으로 로그인된 창) 주소창에 아래 주소를 넣습니다. 새 시트가 열리면 왼쪽 위 「제목 없는 스프레드시트」를 눌러 <b>출퇴근 기록</b> 으로 바꿉니다.</p>
+        <div class="cmd"><code>sheets.new</code><button type="button">복사</button></div></div></div>
+      <div class="row"><b>확인</b><div><p>빈 시트가 열리고 제목이 「출퇴근 기록」이다. 이 탭은 닫지 않습니다.</p></div></div>
+    </div>
+  </article>
+
+  <article class="step" id="s12" data-step="12">
+    <header><span class="no">12</span><h3>서버 코드 카드 붙여넣기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><p>Claude Code 입력창에 [복사] → <kbd>Ctrl</kbd> + <kbd>V</kbd> → <kbd>Enter</kbd>. 1~2분 걸립니다.</p>
+        <div class="cmd"><code>app_trial 폴더에 서버.gs 파일을 만들어 줘. 구글 시트에 붙여 웹앱으로 배포할 Apps Script 코드다.
+- doPost: 출퇴근.html 이 보낸 기록 한 줄(표에 있는 칸 그대로)을 받아 이 스크립트가 붙은 시트의 첫 탭에 저장한다. 같은 날짜 줄이 있으면 그 줄을 고친다
+- doGet: 저장된 기록 전체를 JSON 으로 돌려준다
+- 첫 줄이 비어 있으면 머리글을 먼저 쓴다
+- 앱은 Content-Type 을 text/plain 으로 보낸다(브라우저의 사전 요청을 피하려고). 받는 쪽은 본문을 JSON 으로 읽는다
+- 날짜 · 시각은 시트가 날짜 값으로 바꾸지 않게 글자 그대로 저장한다
+출퇴근.html 은 아직 고치지 않는다. app_trial 의 CLAUDE.md 에 서버.gs 가 무엇인지 한 줄 추가해 줘.
+끝나면 서버.gs 를 시트에 붙이는 방법을 세 줄로 알려 줘.</code><button type="button">복사</button></div></div></div>
+      <div class="row"><b>확인</b><div><p><code class="k">app_trial</code> 안에 <code class="k">서버.gs</code> 가 생기고, 마지막에 「시트에 붙이는 방법」 세 줄이 나온다.</p></div></div>
+    </div>
+  </article>
+
+  <article class="step" id="s13" data-step="13">
+    <header><span class="no">13</span><h3>시트에 붙이고 웹앱으로 배포</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><ol>
+        <li>11단계 시트에서 메뉴 <b>[확장 프로그램] → [Apps Script]</b>. 새 탭에 코드 편집기가 열립니다.</li>
+        <li>편집기 안의 코드를 전부 지웁니다(<kbd>Ctrl</kbd> + <kbd>A</kbd> → <kbd>Delete</kbd>). VS Code 에서 <code class="k">서버.gs</code> 를 열어 전부 복사해 붙여넣고 저장(<kbd>Ctrl</kbd> + <kbd>S</kbd>).</li>
+        <li>오른쪽 위 <b>[배포] → [새 배포]</b> → 톱니(유형 선택) → <b>[웹 앱]</b></li>
+        <li>실행 계정: <b>나</b> · 액세스 권한이 있는 사용자: <b>모든 사용자</b> → [배포]</li>
+        <li>[액세스 승인] → 내 계정 선택. 「Google에서 확인하지 않은 앱」이 뜨면 <b>[고급] → [(안전하지 않음)으로 이동] → [허용]</b></li>
+        <li>「웹 앱 URL」(<code class="k">…/exec</code> 로 끝나는 주소) 옆 [복사]</li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>복사한 주소를 브라우저 새 탭에 붙여넣어 열면 <code class="k">[]</code> 처럼 대괄호로 된 글자가 보인다(아직 기록이 없어서 빈 목록).</p></div></div>
+      <div class="box warn"><b>주의</b>「확인하지 않은 앱」 경고는 <b>내가 방금 만든 스크립트</b>라서 뜹니다(구글 검토를 안 받았다는 뜻). 다른 사람이 보낸 스크립트라면 허용하지 않습니다. 액세스 권한 목록에 「모든 사용자」가 없으면 회사 계정 정책으로 막힌 것입니다 — 진행자에게 알립니다.</div>
+    </div>
+  </article>
+
+  <article class="step" id="s14" data-step="14">
+    <header><span class="no">14</span><h3>앱과 시트 연결</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><ol>
+        <li>아래 카드 [복사] → Claude Code 입력창에 붙여넣기. <b>아직 <kbd>Enter</kbd> 를 누르지 않습니다.</b></li>
+        <li>Apps Script 탭에서 [배포] → [배포 관리] → 웹 앱 URL [복사]</li>
+        <li>입력창 맨 끝 「웹앱 주소:」 뒤에 붙여넣기 → <kbd>Enter</kbd></li>
+      </ol>
+        <div class="cmd"><code>출퇴근.html 을 구글 시트에 연결해 줘. 웹앱 주소는 맨 아래 줄에 붙였다.
+- 출근 · 퇴근을 기록할 때 이 주소로도 보낸다. Content-Type 은 text/plain 으로 보낸다(본문은 JSON 글자)
+- 보내는 칸 이름은 같은 폴더 서버.gs 가 받는 이름과 맞춘다
+- 화면의 표와 브라우저 저장은 그대로 둔다. 보내기에 실패하면 화면에 "시트 저장 실패" 를 잠깐 보여 주고 기록은 화면에 남긴다
+- 맨 위 설정 줄에 "시트 연결됨" 을 보여 줘
+- app_trial 의 CLAUDE.md 에 웹앱 주소와 시트 칸 구성을 적어 줘
+웹앱 주소:</code><button type="button">복사</button></div></div></div>
+      <div class="row"><b>확인</b><div><p>브라우저에서 <code class="k">출퇴근.html</code> 을 <kbd>F5</kbd> → 맨 위 설정 줄에 <b>「시트 연결됨」</b>. [테스트 모드] → [출근] 을 누르고 시트 탭을 보면 몇 초 안에 오늘 줄이 생긴다. [퇴근] 을 누르면 같은 줄에 퇴근 시각이 채워진다.</p></div></div>
+      <div class="box tip"><b>무엇이 달라졌나</b>이제 기록이 내 노트북 밖(구글 시트)에 있습니다. 다른 노트북이나 휴대폰에서 이 앱을 열어도 같은 시트에 쌓입니다 — 여러 사람이 쓰는 사내 앱은 여기서 시작합니다. 대신 <b>웹앱 주소를 아는 사람은 누구나 기록을 쓸 수 있습니다.</b> 실제 사내 앱은 완성본처럼 로그인 · 명단 확인을 붙입니다. 체험이 끝나면 [배포 관리] 에서 이 배포를 보관해 닫아도 됩니다.</div>
+    </div>
+  </article>
 </section>
 </details>
 
@@ -377,7 +415,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <summary><span class="gno">!</span> 막혔을 때 <small>언제든</small></summary>
 <!-- ============ 6 ============ -->
 <section class="part" id="p6">
-  <h2><small>PART 6</small>막혔을 때</h2>
+  <h2><small>PART 5</small>막혔을 때</h2>
   <div class="box warn"><b>먼저</b>만들기(4~7단계)에서 5분 넘게 막히면 <b>정답 파일로 갈아타고</b> 미션으로 넘어갑니다. 작업 폴더 안 <code class="k">app_trial</code> 폴더에 받은 <code class="k">정답_출퇴근.html</code> 을 넣고 이름을 <code class="k">출퇴근.html</code> 로 바꿉니다.</div>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
@@ -388,6 +426,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>[출근] 을 눌러도 아무 일도 없다</td><td>노트북 위치 서비스가 꺼졌거나 권한을 막았다</td><td>[테스트 모드] 를 켜고 다시</td></tr>
     <tr><td>고쳤다는데 화면이 그대로</td><td>브라우저가 옛 화면을 보여 준다</td><td><kbd>F5</kbd> 새로고침</td></tr>
     <tr><td>두 번째 [출근] 이 기록되지 않는다</td><td>하루 한 번만 기록하게 만들어졌다 (정상)</td><td>[퇴근] 만 누르거나 [기록 지우기] 후 다시</td></tr>
+    <tr><td>액세스 권한에 「모든 사용자」가 없다</td><td>회사 계정 정책으로 막혔다</td><td>진행자에게 알린다</td></tr>
+    <tr><td>「Google에서 확인하지 않은 앱」 경고</td><td>내가 만든 스크립트라 검토를 안 받았다 (정상)</td><td>[고급] → [(안전하지 않음)으로 이동] → [허용]</td></tr>
+    <tr><td>「시트 저장 실패」</td><td>웹앱 주소가 틀렸거나 액세스가 「모든 사용자」가 아니다</td><td>주소를 새 탭에 열어 대괄호 글자가 보이는지 본다. 안 보이면 13단계 3번부터</td></tr>
+    <tr><td><code class="k">서버.gs</code> 를 고쳤는데 그대로</td><td>새 버전으로 배포하지 않았다</td><td>[배포] → [배포 관리] → 연필 → 버전: 새 버전 → [배포]. <b>[새 배포] 는 주소가 바뀌므로 누르지 않는다</b></td></tr>
+    <tr><td>시트에 시각이 날짜처럼 바뀌어 들어간다</td><td>시트가 글자를 날짜로 자동 변환했다</td><td>「시트에 시각이 날짜로 바뀌어 들어가. 글자 그대로 저장되게 서버.gs 를 고쳐 줘」 → 새 버전으로 배포</td></tr>
     <tr><td>고친 뒤 화면이 깨졌다</td><td>고치다 다른 곳을 건드렸다</td><td>「방금 고친 것 때문에 화면이 깨졌어. 되돌려 줘」 라고 말한다</td></tr>
   </table></div>
 </section>
@@ -401,6 +444,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.6</b></td><td>2026-09-27</td><td>
+      <ul><li><b>삭제</b> 「더 알아보기」(완성본은 어떻게 생겼나 · 우리 팀 앱 떠올리기)</li>
+        <li><b>추가</b> PART 4 「구글 시트를 DB 로」 11~14단계 — 시트 만들기 · 서버 코드 카드(<code>서버.gs</code>) · Apps Script 웹앱 배포 · 앱과 시트 연결 카드. 막혔을 때 표에 5줄. 체험 시간 30분 → 45분</li></ul></td></tr>
     <tr><td><b>v1.5</b></td><td>2026-09-27</td><td>
       <ul><li><b>바뀜</b> 5단계 만들기 카드가 <code>출퇴근.html</code> 과 함께 앱 설명서 <code>app_trial/CLAUDE.md</code> 를 만든다(앱 설명 · 지금 설정 · 기록 저장 위치 · 「앱을 고치면 설정도 같이 고친다」). 입문 작업 폴더의 CLAUDE.md 는 건드리지 않는다. 작업 폴더 모양 3곳에서 만들기 · 미션 1 · 미션 2 모두 3/3 통과, 미션 1 뒤 설명서의 반경도 300m 로 같이 바뀌었다</li></ul></td></tr>
     <tr><td><b>v1.4</b></td><td>2026-09-27</td><td>
