@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.13 · 2026-09-27</span></h1>
+  <h1>Claude Code 체험 — 사내 앱을 말로 만든다 <span class="ver">v1.14 · 2026-09-28</span></h1>
   <a class="rel-btn" href="claude-code-build-phone-app.html" title="같은 앱을 네이티브 앱(Expo)으로 만드는 체험 가이드">체험(네이티브 앱)</a>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <a class="rel-btn" href="https://docs.google.com/document/d/16VqrcWI4fmoNcRZdRaxqP6b2aoniH_0oJREXNFhU3g0/edit" target="_blank" rel="noopener" title="진행자 계정으로 로그인해야 열립니다">진행자용</a>
@@ -178,7 +178,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>어디서 여나</td><td>휴대폰 · 인터넷 주소</td><td>내 노트북 · 파일 더블클릭</td></tr>
     <tr><td>로그인</td><td>구글 로그인 + 명단 확인</td><td>없음</td></tr>
     <tr><td>기록</td><td>구글 시트</td><td>화면 표 + CSV 내려받기 → PART 4 에서 <b>내 구글 시트</b></td></tr>
-    <tr><td>알림</td><td>09:35 메일</td><td>없음</td></tr>
+    <tr><td>알림</td><td>없음 (09:35 지각 메일은 2026-09-28 중지)</td><td>없음</td></tr>
   </table></div>
   <p>완성본을 똑같이 만들려면 계정 설정이 여러 개 필요해서 한 번에 끝나지 않습니다. 그래서 오늘은 <b>핵심 기능 세 가지(출근 버튼 → 회사 반경 판정 → 기록)</b>만 가진 한 파일짜리 앱을 먼저 만들고, 마지막에 <b>기록을 구글 시트로 보내는 서버</b>만 붙입니다. 로그인 · 명단 확인 · 메일은 붙이지 않습니다.</p>
   <h3>준비물</h3>
@@ -197,7 +197,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <!-- ============ 1 ============ -->
 <section class="part" id="p1">
   <h2><small>PART 1</small>완성본 써 보기 (1~3단계)</h2>
-  <p class="lead">회사에서 Claude Code 로 만든 출퇴근 앱입니다. 화면·서버·기록·메일이 모두 <b>말로 요청해서</b> 만들어졌습니다.</p>
+  <p class="lead">회사에서 Claude Code 로 만든 출퇴근 앱입니다. 화면·서버·기록이 모두 <b>말로 요청해서</b> 만들어졌습니다.</p>
 
   <article class="step" id="s1" data-step="1">
     <header><span class="no">1</span><h3>휴대폰으로 열기</h3><label><input type="checkbox">완료</label></header>
@@ -433,6 +433,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.14</b></td><td>2026-09-28</td><td>
+      <ul><li><b>바뀜</b> 완성본 09:35 지각 메일 알림 중지 → 비교표 「알림」 칸 · PART 1 소개 문구 수정</li></ul></td></tr>
     <tr><td><b>v1.13</b></td><td>2026-09-27</td><td>
       <ul><li><b>바뀜</b> 맨 위 버튼 이름 [체험B (폰 앱)] → [체험(네이티브 앱)]</li></ul></td></tr>
     <tr><td><b>v1.12</b></td><td>2026-09-27</td><td>
