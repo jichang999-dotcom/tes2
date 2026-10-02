@@ -238,7 +238,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
         <li>VS Code(또는 Cursor)에서 <b>[파일] → [폴더 열기]</b> → 교육 편의 <code class="k">basic_data</code>.</li>
-        <li>터미널에서 <code class="k">claude</code> → <code class="k">/agents</code> 로 직영 리포트 담당, <code class="k">/skills</code> 로 <code class="k">jig-metrics</code> 를 봅니다.</li>
+        <li>탐색기에서 <code class="k">.claude/agents/jig-report.md</code> 와 <code class="k">.claude/skills/jig-metrics/SKILL.md</code> 가 있는지 봅니다.</li>
+        <li>터미널에서 <code class="k">claude</code> → <code class="k">/list-agents</code> 로 직영 리포트 담당, <code class="k">/skills</code> 로 <code class="k">jig-metrics</code> 를 봅니다.</li>
         <li><code class="k">관찰표.txt</code> 를 메모장으로 엽니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>에이전트 · 스킬이 목록에 보이고, 관찰표에 싱글 칸이 채워져 있다.</p></div></div>
@@ -389,7 +390,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <tr><td>도서출판</td><td>채널별 판매 합산 규칙</td><td>도서 1종 판매 리포트</td><td>채널 4개 동시 집계</td><td>집계 담당들이 반품 처리 기준을 맞춤</td></tr>
           <tr><td>학원연구소</td><td>문항 분류 기준</td><td>단원 1개 문항 현황</td><td>단원별 동시 검토</td><td>검토 ↔ 교과 대조 담당이 근거를 주고받음</td></tr>
         </table></div></div></div>
-      <div class="row"><b>확인</b><div><p><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/agents</code> 에 새 에이전트가 보이고, 원본 직영 리포트 담당도 그대로 있다. (켜 둔 창은 방금 생긴 파일을 아직 모른다)</p></div></div>
+      <div class="row"><b>확인</b><div><p><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/list-agents</code> 에 새 에이전트가 나오고, 원본 직영 리포트 담당도 그대로 있다. (켜 둔 창은 방금 생긴 파일을 아직 모른다)</p></div></div>
       <div class="box warn"><b>주의</b>실제로 시켜 볼 때는 <b>가상 자료나 공개해도 되는 자료</b>로 합니다. 이력서 · 지출 · 실적 · 학생 정보 같은 실제 회사 자료는 넣지 않고, 만든 리포트는 인터넷에 올리지 않습니다.</div>
     <button type="button" class="fold-close">닫기</button>
   </details>
@@ -469,7 +470,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="box warn"><b>먼저</b>직영 리포트 담당이나 <code class="k">jig-metrics</code> 가 없거나 이상하면 받은 정답 파일(2단계 「없으면」)로 넣고 다시 켭니다. 나머지 단계는 모두 이 파일로 됩니다.</div>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
-    <tr><td><code class="k">/agents</code> 에 리포트 담당이 없다</td><td>다른 폴더를 열었다 · 교육 편에서 Personal 에 저장했다</td><td><code class="k">basic_data</code> 를 열었는지 확인 · 정답 파일</td></tr>
+    <tr><td>에이전트 목록에 리포트 담당이 없다</td><td>다른 폴더를 열었다 · <code class="k">.claude/agents/</code> 에 파일이 없다</td><td><code class="k">basic_data</code> 를 열었는지 확인 · 정답 파일</td></tr>
     <tr><td>3단계에서 에이전트 파일이 새로 생겼다</td><td>「새로 만들지 마」가 빠졌다</td><td>새 파일은 지우고 카드를 그대로 다시 붙여넣는다</td></tr>
     <tr><td>나눠 달랬는데 에이전트가 하나만 돈다</td><td>나눠 달라는 말이 약했다</td><td>「3개에게 하나씩 <b>동시에</b>」를 그대로 붙여넣는다</td></tr>
     <tr><td>5단계 검산전 리포트가 처음부터 맞게 나왔다</td><td>스킬이 저절로 불려왔다</td><td>「jig-metrics 스킬을 쓰지 말고」를 문장 앞쪽에 둔다</td></tr>
@@ -493,7 +494,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.2</b></td><td>2026-10-02</td><td>
-      <ul><li>선택 「내 업무로 바꾸기」 확인: <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/agents</code> — 켜 둔 창에서는 새로 만든 파일이 목록에 안 나온다(교육 7단계와 같은 이유)</li>
+      <ul><li>2단계 · 선택 확인 · 막힘 표: <code class="k">/agents</code> 대신 <code class="k">/list-agents</code> — Claude Code 2.1.287 에서 <code class="k">/agents</code> 가 없어지고 목록은 <code class="k">/list-agents</code> 로 본다</li>
+      <li>선택 「내 업무로 바꾸기」 확인: <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/agents</code> — 켜 둔 창에서는 새로 만든 파일이 목록에 안 나온다(교육 7단계와 같은 이유)</li>
       <li>5단계 심화를 「학생수를 전체에서 한 번에 세면?」으로 뒤집음 — 회사 기준 학생수는 센터별로 센 뒤 더한 값이다(두 센터 학생은 센터마다 한 명)</li></ul></td></tr>
     <tr><td><b>v1.1</b></td><td>2026-10-01</td><td>
       <ul><li>5 · 7단계 일부러 남기는 오류를 「제외 프로그램 목록만 빼먹기」로 좁힘 — 매번 같은 숫자가 나오게(실측 3/3)</li>
