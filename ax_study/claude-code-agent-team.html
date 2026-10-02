@@ -239,7 +239,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>방법</b><div><ol>
         <li>VS Code(또는 Cursor)에서 <b>[파일] → [폴더 열기]</b> → 교육 편의 <code class="k">basic_data</code>.</li>
         <li>탐색기에서 <code class="k">.claude/agents/jig-report.md</code> 와 <code class="k">.claude/skills/jig-metrics/SKILL.md</code> 가 있는지 봅니다.</li>
-        <li>터미널에서 <code class="k">claude</code> → <code class="k">/list-agents</code> 로 직영 리포트 담당, <code class="k">/skills</code> 로 <code class="k">jig-metrics</code> 를 봅니다.</li>
+        <li>터미널에서 <code class="k">claude</code> → 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」로 직영 리포트 담당, <code class="k">/skills</code> 로 <code class="k">jig-metrics</code> 를 봅니다.</li>
         <li><code class="k">관찰표.txt</code> 를 메모장으로 엽니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>에이전트 · 스킬이 목록에 보이고, 관찰표에 싱글 칸이 채워져 있다.</p></div></div>
@@ -390,7 +390,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <tr><td>도서출판</td><td>채널별 판매 합산 규칙</td><td>도서 1종 판매 리포트</td><td>채널 4개 동시 집계</td><td>집계 담당들이 반품 처리 기준을 맞춤</td></tr>
           <tr><td>학원연구소</td><td>문항 분류 기준</td><td>단원 1개 문항 현황</td><td>단원별 동시 검토</td><td>검토 ↔ 교과 대조 담당이 근거를 주고받음</td></tr>
         </table></div></div></div>
-      <div class="row"><b>확인</b><div><p><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/list-agents</code> 에 새 에이전트가 나오고, 원본 직영 리포트 담당도 그대로 있다. (켜 둔 창은 방금 생긴 파일을 아직 모른다)</p></div></div>
+      <div class="row"><b>확인</b><div><p><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」에 새 에이전트가 나오고, 원본 직영 리포트 담당도 그대로 있다. (켜 둔 창은 방금 생긴 파일을 아직 모른다)</p></div></div>
       <div class="box warn"><b>주의</b>실제로 시켜 볼 때는 <b>가상 자료나 공개해도 되는 자료</b>로 합니다. 이력서 · 지출 · 실적 · 학생 정보 같은 실제 회사 자료는 넣지 않고, 만든 리포트는 인터넷에 올리지 않습니다.</div>
     <button type="button" class="fold-close">닫기</button>
   </details>
@@ -495,7 +495,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.2</b></td><td>2026-10-02</td><td>
       <ul><li>PART 2 머리말에 한 줄 — 교육 편의 「에이전트」 파일이 공식 이름으로는 서브 에이전트(subagent)라는 것</li>
-      <li>2단계 · 선택 확인 · 막힘 표: <code class="k">/agents</code> 대신 <code class="k">/list-agents</code> — Claude Code 2.1.287 에서 <code class="k">/agents</code> 가 없어지고 목록은 <code class="k">/list-agents</code> 로 본다</li>
+      <li>2단계 · 선택 확인 · 막힘 표: <code class="k">/agents</code> 대신 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」로 묻는다 — Claude Code 2.1.287 에서 <code class="k">/agents</code> 가 없어졌다. <code class="k">/list-agents</code> 는 돌고 있는 세션만 보여 줘서 만든 에이전트가 안 나온다(10-03 실측)</li>
       <li>선택 「내 업무로 바꾸기」 확인: <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/agents</code> — 켜 둔 창에서는 새로 만든 파일이 목록에 안 나온다(교육 7단계와 같은 이유)</li>
       <li>5단계 심화를 「학생수를 전체에서 한 번에 세면?」으로 뒤집음 — 회사 기준 학생수는 센터별로 센 뒤 더한 값이다(두 센터 학생은 센터마다 한 명)</li></ul></td></tr>
     <tr><td><b>v1.1</b></td><td>2026-10-01</td><td>
