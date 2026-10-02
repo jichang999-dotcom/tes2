@@ -389,7 +389,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <tr><td>도서출판</td><td>채널별 판매 합산 규칙</td><td>도서 1종 판매 리포트</td><td>채널 4개 동시 집계</td><td>집계 담당들이 반품 처리 기준을 맞춤</td></tr>
           <tr><td>학원연구소</td><td>문항 분류 기준</td><td>단원 1개 문항 현황</td><td>단원별 동시 검토</td><td>검토 ↔ 교과 대조 담당이 근거를 주고받음</td></tr>
         </table></div></div></div>
-      <div class="row"><b>확인</b><div><p><code class="k">/agents</code> 에 새 에이전트가 보이고, 원본 직영 리포트 담당도 그대로 있다.</p></div></div>
+      <div class="row"><b>확인</b><div><p><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/agents</code> 에 새 에이전트가 보이고, 원본 직영 리포트 담당도 그대로 있다. (켜 둔 창은 방금 생긴 파일을 아직 모른다)</p></div></div>
       <div class="box warn"><b>주의</b>실제로 시켜 볼 때는 <b>가상 자료나 공개해도 되는 자료</b>로 합니다. 이력서 · 지출 · 실적 · 학생 정보 같은 실제 회사 자료는 넣지 않고, 만든 리포트는 인터넷에 올리지 않습니다.</div>
     <button type="button" class="fold-close">닫기</button>
   </details>
@@ -493,7 +493,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.2</b></td><td>2026-10-02</td><td>
-      <ul><li>5단계 심화를 「학생수를 전체에서 한 번에 세면?」으로 뒤집음 — 회사 기준 학생수는 센터별로 센 뒤 더한 값이다(두 센터 학생은 센터마다 한 명)</li></ul></td></tr>
+      <ul><li>선택 「내 업무로 바꾸기」 확인: <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/agents</code> — 켜 둔 창에서는 새로 만든 파일이 목록에 안 나온다(교육 7단계와 같은 이유)</li>
+      <li>5단계 심화를 「학생수를 전체에서 한 번에 세면?」으로 뒤집음 — 회사 기준 학생수는 센터별로 센 뒤 더한 값이다(두 센터 학생은 센터마다 한 명)</li></ul></td></tr>
     <tr><td><b>v1.1</b></td><td>2026-10-01</td><td>
       <ul><li>5 · 7단계 일부러 남기는 오류를 「제외 프로그램 목록만 빼먹기」로 좁힘 — 매번 같은 숫자가 나오게(실측 3/3)</li>
       <li>10단계 「다음 과정 준비 — Python 설치」 추가(있으면 좋은 것 6가지 · 설치 · 확인 카드). 전체 10단계</li>
