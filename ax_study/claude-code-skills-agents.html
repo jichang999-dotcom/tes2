@@ -392,8 +392,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 - 이름: jig-report (직영 리포트 담당)
 - description: 직영_실습데이터.csv 를 jig-metrics 스킬의 세는 법으로 세어 월별 과목수 · 학생수 리포트를 HTML 파일로 만들고, 나에게는 결론 3줄만 보고한다. 「리포트 만들어 줘」「직영 리포트」라고 할 때 쓴다
 - tools 는 Read, Glob, Grep, Write, Bash (읽기 · 파일 쓰기 · 실행). model 줄은 쓰지 않는다(메인과 같은 모델)
+- 본문 첫 줄: 너는 직영 학원 데이터 분석 · 리포트 전문가다. 직영 데이터를 회사 기준으로 정확히 세어 리포트를 만든다
 - 원본 CSV 는 고치지 않는다. 파일을 통째로 읽지 말고 Node 명령으로 센다(Python 은 쓰지 않는다). 리포트는 리포트 폴더에 저장한다</code><button type="button">복사</button></div></li>
-        <li>탐색기에서 <code class="k">.claude/agents/jig-report.md</code> 를 열어 맨 위 <code class="k">---</code> 사이(name · description · tools)를 봅니다.</li>
+        <li>탐색기에서 <code class="k">.claude/agents/jig-report.md</code> 를 열어 맨 위 <code class="k">---</code> 사이(name · description · tools)와, 그 아래 첫 줄 「너는 … 전문가다」를 봅니다. 이 첫 줄이 에이전트의 역할입니다 — 공식 문서 예시도 「You are a code improvement specialist」처럼 전문가 역할로 시작합니다.</li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켭니다. 켜 둔 창은 방금 생긴 파일을 아직 모릅니다.</li>
       </ol>
       <p>도구 줄이 에이전트가 할 수 있는 일을 정합니다. 리포트 파일을 쓰고(Write) 숫자를 명령으로 세야(Bash) 해서 <b>읽기 · 쓰기 · 실행</b>을 줍니다.</p></div></div>
@@ -505,6 +506,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <ul><li>3단계 폴더 만들기 · 파일 넣기를 손으로 하던 것에서 <b>프롬프트로 시키기</b>로 바꿈 — 받은 파일 경로를 넣어 보내면 Claude 가 <code class="k">basic_data</code> 를 만들고 파일을 옮긴다</li>
       <li>직영 대시보드와 맞춤 — 실습 데이터에서 <b>방배본원</b>(202507 까지 운영)을 빼고, 학생수도 과목수와 같은 행(<b>반이동한 이수 제외</b>)으로 센다. 202507 = 과목수 5,365 · 학생수 3,291 · 202607 = 5,658 · 3,424 로 대시보드 「전년」 · 「올해」 값과 같다</li>
       <li>학생수 = <b>센터별로 센 뒤 더한 값</b>(전체에서 한 번에 세지 않는다). 두 센터를 다니는 학생은 센터마다 한 명씩 센다. 5단계 카드 · 정답표 · 정답 스킬 · 정답 에이전트를 맞춤</li>
+      <li>11단계 카드에 본문 첫 줄 「너는 직영 학원 데이터 분석 · 리포트 전문가다」 추가(공식 문서 서브 에이전트 예시처럼 역할을 전문가로 적는다) · 정답 파일 · 에이전트_틀도 맞춤</li>
       <li>11단계 「/agents 마법사로 만들기」 → <b>「말로 부탁해서 에이전트 만들기」</b> — Claude Code 2.1.287 에서 <code class="k">/agents</code> 마법사가 없어졌다(실측). 확인은 <code class="k">/list-agents</code></li>
       <li>7단계: <code class="k">/clear</code> 대신 <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/skills</code> — 켜 둔 창에서는 새 스킬이 목록에 안 나온다(실측)</li>
       <li>제외 프로그램에서 <b>컨설팅</b>을 뺌(10개 → 9개) — 컨설팅은 빼지 않고 센다. 정답표 · 정답 스킬 · 정답 에이전트도 맞춤</li>
