@@ -302,12 +302,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
         <li>폴더 모양이 <code class="k">skills/jig-metrics/SKILL.md</code> 인지 봅니다. 파일 이름은 <b>대문자 <code class="k">SKILL.md</code></b> 여야 합니다.</li>
-        <li><code class="k">/clear</code> 로 대화를 비웁니다(방금 알려 준 기준을 Claude 가 잊게).</li>
+        <li><code class="k">exit</code> 로 끄고 <code class="k">claude</code> 로 다시 켭니다. 켜 둔 창은 방금 만든 스킬을 아직 모르고, 다시 켜면 대화도 비워져 방금 알려 준 기준을 Claude 가 잊습니다.</li>
         <li>입력창에 <code class="k">/skills</code> → 목록에 <code class="k">jig-metrics</code> 가 있는지 봅니다. <kbd>Esc</kbd> 로 닫습니다.</li>
         <li><code class="k">/jig-metrics 202508 과목수와 학생수</code> → <kbd>Enter</kbd></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>기준을 다시 설명하지 않았는데도 <code class="k">정답표.txt</code> 의 202508 값이 나온다.</p></div></div>
-      <div class="box tip"><b>목록에 없으면</b><code class="k">exit</code> 로 끄고 <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/skills</code> 를 다시 봅니다.</div>
+      <div class="box tip"><b>다시 켜도 목록에 없으면</b>1번 폴더 모양(<code class="k">.claude/skills/jig-metrics/SKILL.md</code>)과 <code class="k">basic_data</code> 폴더에서 켰는지를 다시 봅니다.</div>
     </div>
   </article>
 
@@ -510,6 +510,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <ul><li>3단계 폴더 만들기 · 파일 넣기를 손으로 하던 것에서 <b>프롬프트로 시키기</b>로 바꿈 — 받은 파일 경로를 넣어 보내면 Claude 가 <code class="k">basic_data</code> 를 만들고 파일을 옮긴다</li>
       <li>직영 대시보드와 맞춤 — 실습 데이터에서 <b>방배본원</b>(202507 까지 운영)을 빼고, 학생수도 과목수와 같은 행(<b>반이동한 이수 제외</b>)으로 센다. 202507 = 과목수 5,365 · 학생수 3,291 · 202607 = 5,658 · 3,424 로 대시보드 「전년」 · 「올해」 값과 같다</li>
       <li>학생수 = <b>센터별로 센 뒤 더한 값</b>(전체에서 한 번에 세지 않는다). 두 센터를 다니는 학생은 센터마다 한 명씩 센다. 5단계 카드 · 정답표 · 정답 스킬 · 정답 에이전트를 맞춤</li>
+      <li>7단계: <code class="k">/clear</code> 대신 <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/skills</code> — 켜 둔 창에서는 새 스킬이 목록에 안 나온다(실측)</li>
       <li>제외 프로그램에서 <b>컨설팅</b>을 뺌(10개 → 9개) — 컨설팅은 빼지 않고 센다. 정답표 · 정답 스킬 · 정답 에이전트도 맞춤</li>
       <li>데이터를 세는 카드(4 · 6 · 11단계)와 정답 파일에 「Node 명령으로 센다(Python 은 쓰지 않는다)」 — 교육생 PC 에는 Python 이 없다(체험 10단계에서 깐다). 7단계 막힘 표에 「python 을 찾을 수 없다」 줄 추가</li>
       <li>실습 데이터를 <b>2025년 7~9월 · 2026년 7~9월</b> 6개월로 바꿈(옛 202502 · 202503 · 202609). 정답표 · 열사전 · 13단계 학년치환(두 학년 내림 줄 삭제) · 7 · 9 · 14단계 예시 달을 맞춤</li>
