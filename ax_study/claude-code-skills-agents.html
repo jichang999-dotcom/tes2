@@ -398,8 +398,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켭니다. 켜 둔 창은 방금 생긴 파일을 아직 모릅니다.</li>
       </ol>
       <p>도구 줄이 에이전트가 할 수 있는 일을 정합니다. 리포트 파일을 쓰고(Write) 숫자를 명령으로 세야(Bash) 해서 <b>읽기 · 쓰기 · 실행</b>을 줍니다.</p></div></div>
-      <div class="row"><b>확인</b><div><p>탐색기에 <code class="k">.claude/agents/jig-report.md</code> 가 있고, 다시 켠 뒤 <code class="k">/list-agents</code> 에 <code class="k">jig-report</code> 가 나온다.</p></div></div>
-      <div class="box tip"><b>/agents 마법사는요?</b>Claude Code 2.1.287 부터 <code class="k">/agents</code> 마법사가 없어졌습니다. 입력하면 「Claude 에게 만들어 달라고 하거나 파일을 직접 고치라」는 안내만 나옵니다. 그래서 말로 부탁해 만들고, 목록은 <code class="k">/list-agents</code> 로 봅니다. 받은 <code class="k">에이전트_틀.md</code> 는 빈칸을 직접 채우고 싶을 때 씁니다.</div>
+      <div class="row"><b>확인</b><div><p>탐색기에 <code class="k">.claude/agents/jig-report.md</code> 가 있고, 다시 켠 뒤 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」라고 물으면 「이 프로젝트 전용」에 <code class="k">jig-report</code> 가 나온다.</p></div></div>
+      <div class="box tip"><b>/agents 마법사는요?</b>Claude Code 2.1.287 부터 <code class="k">/agents</code> 마법사가 없어졌습니다. 입력하면 「Claude 에게 만들어 달라고 하거나 파일을 직접 고치라」는 안내만 나옵니다. 그래서 말로 부탁해 만들고, 목록도 말로 물어봅니다. <code class="k">/list-agents</code> 는 이름이 비슷하지만 <b>지금 돌고 있는</b> 에이전트 · 다른 세션을 보는 명령이라 만든 에이전트가 나오지 않습니다. 받은 <code class="k">에이전트_틀.md</code> 는 빈칸을 직접 채우고 싶을 때 씁니다.</div>
       <div class="box warn"><b>5분 규칙</b>5분 안에 안 되면 받은 <code class="k">정답_리포트담당.md</code> 를 <code class="k">.claude/agents/</code> 폴더(없으면 만든다)에 넣고 이름을 <code class="k">jig-report.md</code> 로 바꾼 뒤, <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켭니다.</div>
     </div>
   </article>
@@ -508,7 +508,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <li>학생수 = <b>센터별로 센 뒤 더한 값</b>(전체에서 한 번에 세지 않는다). 두 센터를 다니는 학생은 센터마다 한 명씩 센다. 5단계 카드 · 정답표 · 정답 스킬 · 정답 에이전트를 맞춤</li>
       <li>11단계 카드 「서브 에이전트를 만들어 줘」 → 「에이전트를 만들어 줘」 — 교육 편은 한 명에게 맡기는 에이전트(싱글)이고, 「서브」는 체험 편에서 나눠 맡길 때 쓰는 말이다</li>
       <li>11단계 카드에 본문 첫 줄 「너는 직영 학원 데이터 분석 · 리포트 전문가다」 추가(공식 문서 예시처럼 역할을 전문가로 적는다) · 정답 파일 · 에이전트_틀도 맞춤</li>
-      <li>11단계 「/agents 마법사로 만들기」 → <b>「말로 부탁해서 에이전트 만들기」</b> — Claude Code 2.1.287 에서 <code class="k">/agents</code> 마법사가 없어졌다(실측). 확인은 <code class="k">/list-agents</code></li>
+      <li>11단계 「/agents 마법사로 만들기」 → <b>「말로 부탁해서 에이전트 만들기」</b> — Claude Code 2.1.287 에서 <code class="k">/agents</code> 마법사가 없어졌다(실측). 확인은 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」(처음 10-02 에 적은 <code class="k">/list-agents</code> 는 돌고 있는 세션만 보여 줘서 틀렸다 · 10-03 실측 3/3)</li>
       <li>7단계: <code class="k">/clear</code> 대신 <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/skills</code> — 켜 둔 창에서는 새 스킬이 목록에 안 나온다(실측)</li>
       <li>제외 프로그램에서 <b>컨설팅</b>을 뺌(10개 → 9개) — 컨설팅은 빼지 않고 센다. 정답표 · 정답 스킬 · 정답 에이전트도 맞춤</li>
       <li>데이터를 세는 카드(4 · 6 · 11단계)와 정답 파일에 「Node 명령으로 센다(Python 은 쓰지 않는다)」 — 교육생 PC 에는 Python 이 없다(체험 10단계에서 깐다). 7단계 막힘 표에 「python 을 찾을 수 없다」 줄 추가</li>
