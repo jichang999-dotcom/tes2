@@ -388,7 +388,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
         <li>아래를 복사해 붙여넣습니다. 파일을 만들어도 되느냐고 물으면 <b>Yes</b>.
-          <div class="cmd"><code>이 프로젝트의 .claude/agents/jig-report.md 에 서브 에이전트를 만들어 줘.
+          <div class="cmd"><code>이 프로젝트의 .claude/agents/jig-report.md 에 에이전트를 만들어 줘.
 - 이름: jig-report (직영 리포트 담당)
 - description: 직영_실습데이터.csv 를 jig-metrics 스킬의 세는 법으로 세어 월별 과목수 · 학생수 리포트를 HTML 파일로 만들고, 나에게는 결론 3줄만 보고한다. 「리포트 만들어 줘」「직영 리포트」라고 할 때 쓴다
 - tools 는 Read, Glob, Grep, Write, Bash (읽기 · 파일 쓰기 · 실행). model 줄은 쓰지 않는다(메인과 같은 모델)
@@ -506,7 +506,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <ul><li>3단계 폴더 만들기 · 파일 넣기를 손으로 하던 것에서 <b>프롬프트로 시키기</b>로 바꿈 — 받은 파일 경로를 넣어 보내면 Claude 가 <code class="k">basic_data</code> 를 만들고 파일을 옮긴다</li>
       <li>직영 대시보드와 맞춤 — 실습 데이터에서 <b>방배본원</b>(202507 까지 운영)을 빼고, 학생수도 과목수와 같은 행(<b>반이동한 이수 제외</b>)으로 센다. 202507 = 과목수 5,365 · 학생수 3,291 · 202607 = 5,658 · 3,424 로 대시보드 「전년」 · 「올해」 값과 같다</li>
       <li>학생수 = <b>센터별로 센 뒤 더한 값</b>(전체에서 한 번에 세지 않는다). 두 센터를 다니는 학생은 센터마다 한 명씩 센다. 5단계 카드 · 정답표 · 정답 스킬 · 정답 에이전트를 맞춤</li>
-      <li>11단계 카드에 본문 첫 줄 「너는 직영 학원 데이터 분석 · 리포트 전문가다」 추가(공식 문서 서브 에이전트 예시처럼 역할을 전문가로 적는다) · 정답 파일 · 에이전트_틀도 맞춤</li>
+      <li>11단계 카드 「서브 에이전트를 만들어 줘」 → 「에이전트를 만들어 줘」 — 교육 편은 한 명에게 맡기는 에이전트(싱글)이고, 「서브」는 체험 편에서 나눠 맡길 때 쓰는 말이다</li>
+      <li>11단계 카드에 본문 첫 줄 「너는 직영 학원 데이터 분석 · 리포트 전문가다」 추가(공식 문서 예시처럼 역할을 전문가로 적는다) · 정답 파일 · 에이전트_틀도 맞춤</li>
       <li>11단계 「/agents 마법사로 만들기」 → <b>「말로 부탁해서 에이전트 만들기」</b> — Claude Code 2.1.287 에서 <code class="k">/agents</code> 마법사가 없어졌다(실측). 확인은 <code class="k">/list-agents</code></li>
       <li>7단계: <code class="k">/clear</code> 대신 <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤 <code class="k">/skills</code> — 켜 둔 창에서는 새 스킬이 목록에 안 나온다(실측)</li>
       <li>제외 프로그램에서 <b>컨설팅</b>을 뺌(10개 → 9개) — 컨설팅은 빼지 않고 센다. 정답표 · 정답 스킬 · 정답 에이전트도 맞춤</li>
