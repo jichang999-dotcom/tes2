@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 교육 — 스킬과 에이전트 <span class="ver">v1.3 · 2026-10-05</span></h1>
+  <h1>Claude Code 초급 교육 — 스킬과 에이전트 <span class="ver">v1.4 · 2026-10-06</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="교육 편 다음에 하는 체험 편">체험 편</a>
   <a class="rel-btn" href="#p7">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -186,7 +186,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
     <tr><td><b>입문 과정 완료</b></td><td>작업 폴더에서 <code class="k">claude</code> 를 치면 켜져야 합니다. 아직이면 <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-setup-guide.html" target="_blank" rel="noopener">입문 가이드</a>부터.</td></tr>
-    <tr><td>받을 파일</td><td><code class="k">직영_실습데이터.csv</code>(실습 데이터) · <code class="k">열사전.txt</code>(열 뜻) · <code class="k">정답표.txt</code>(맞았는지 대조할 숫자) · <code class="k">관찰표.txt</code> · <code class="k">에이전트_틀.md</code> · 정답 파일(<code class="k">정답_jig-metrics</code> 폴더 · <code class="k">정답_리포트담당.md</code>). 진행자가 공유 드라이브의 <b>교육</b> 폴더로 줍니다</td></tr>
+    <tr><td>받을 파일</td><td><code class="k">직영_실습데이터.csv</code>(실습 데이터) · <code class="k">열사전.txt</code>(열 뜻) . 진행자가 공유 드라이브의 <b>교육</b> 폴더로 줍니다. 그 안 <b>참고자료</b> 폴더에는 <code class="k">정답표.txt</code>(맞았는지 대조할 숫자) · <code class="k">관찰표.txt</code> · <code class="k">에이전트_틀.md</code> · 정답 파일(<code class="k">정답_jig-metrics</code> 폴더 · <code class="k">정답_리포트담당.md</code>)이 있습니다</td></tr>
   </table></div>
   <div class="box warn"><b>주의</b>실습 데이터는 학생 이름을 지운 사본이지만 <b>회사 실적</b>입니다. 회사 밖으로 보내지 않고, 인터넷에 올리지 않습니다. 오늘 만드는 <b>리포트 HTML 도 내 PC 에만</b> 둡니다.</div>
 </section>
@@ -503,6 +503,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.4</b></td><td>2026-10-06</td><td>
+      <ul><li>준비물 표: 공유 드라이브 교육 폴더 바로 아래는 실습 데이터 · 열사전만, 정답표 · 관찰표 · 에이전트 틀 · 정답 파일은 <b>참고자료</b> 폴더로 옮김</li></ul></td></tr>
     <tr><td><b>v1.3</b></td><td>2026-10-05</td><td>
       <ul><li>6 · 11단계 카드: 「이 프로젝트의 .claude/…」 → 「지금 이 폴더(basic_data) 안에 … 위 폴더로 올라가지 않는다」 — 입문 작업 폴더(CLAUDE.md 있음) 안에 basic_data 가 있으면 Claude 가 위 폴더를 프로젝트로 보고 스킬 · 에이전트를 거기 만들었다(3회 검증 3/3). 탐색기에 안 보이고 체험 2단계 확인이 틀어진다</li>
       <li>11단계 카드 · 정답 파일: 리포트는 basic_data 안의 리포트 폴더에</li>
