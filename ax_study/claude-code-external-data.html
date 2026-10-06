@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.0 · 2026-10-06</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.1 · 2026-10-06</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -141,24 +141,24 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <ol>
   <li class="ghead">시작 전</li>
   <li><a href="#p0">세 가지 길 · 같은 틀 · 준비물</a></li>
-  <li class="ghead">① 준비 <small>1~3단계</small></li>
+  <li class="ghead">① 준비 <small>1~2단계</small></li>
   <li><a href="#p1">PART 1 준비</a></li>
   <li class="sub"><a href="#s1">1. Python 설치</a></li>
   <li class="sub"><a href="#s2">2. 법령 API 키 신청 해 보기</a></li>
-  <li class="sub"><a href="#s3">3. 슬랙 연결 — 테스트 한 줄</a></li>
-  <li class="ghead">② MCP <small>4~5단계</small></li>
+  <li class="ghead">② MCP <small>3~4단계</small></li>
   <li><a href="#p2">PART 2 MCP — 커넥터로 가져오기</a></li>
-  <li class="sub"><a href="#s4">4. MCP 종류 보기 · 구글 커넥터 연결</a></li>
-  <li class="sub"><a href="#s5">5. 구글 시트 읽고 요약 → 슬랙</a></li>
-  <li class="ghead">③ API <small>6단계</small></li>
+  <li class="sub"><a href="#s3">3. MCP 종류 보기 · 구글 커넥터 연결</a></li>
+  <li class="sub"><a href="#s4">4. 구글 시트 읽고 저장</a></li>
+  <li class="ghead">③ API <small>5단계</small></li>
   <li><a href="#p3">PART 3 API — 키로 받아 오기</a></li>
-  <li class="sub"><a href="#s6">6. 내 부서 법령 조회 → 슬랙</a></li>
-  <li class="ghead">④ 크롤링 <small>7~8단계</small></li>
+  <li class="sub"><a href="#s5">5. 내 부서 법령 조회 · 저장</a></li>
+  <li class="ghead">④ 크롤링 <small>6~7단계</small></li>
   <li><a href="#p4">PART 4 크롤링 — 화면에서 가져오기</a></li>
-  <li class="sub"><a href="#s7">7. 가져와도 되는지 먼저 확인</a></li>
-  <li class="sub"><a href="#s8">8. 보도자료 목록 → 검산 → 슬랙</a></li>
-  <li class="ghead">⑤ 마무리 <small>9단계</small></li>
-  <li><a href="#p5">PART 5 마무리</a></li>
+  <li class="sub"><a href="#s6">6. 가져와도 되는지 먼저 확인</a></li>
+  <li class="sub"><a href="#s7">7. 보도자료 목록 → 검산 → 저장</a></li>
+  <li class="ghead">⑤ 모으기 · 마무리 <small>8~9단계</small></li>
+  <li><a href="#p5">PART 5 모으기 · 마무리</a></li>
+  <li class="sub"><a href="#s8">8. 세 결과를 엑셀 한 파일로</a></li>
   <li class="sub"><a href="#s9">9. 웹앱 배포 다시 보기</a></li>
   <li class="sub"><a href="#wrap">마무리 — 세 길 중 무엇을 고를까</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
@@ -170,23 +170,23 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <main>
 <section class="part" id="p0">
   <h2><small>시작 전</small>업무 데이터는 파일 하나에 모여 있지 않습니다</h2>
-  <p class="lead">교육 편에서는 받은 CSV 파일 하나로 스킬과 에이전트를 만들었습니다. 실제 업무 데이터는 <b>구글 시트</b> · <b>공공 서비스</b> · <b>웹페이지</b>에 흩어져 있습니다. 오늘은 세 곳에서 데이터를 <b>코드를 저장하지 않고 말(프롬프트)로</b> 가져와, 결과 요약을 <b>슬랙</b>으로 받아 봅니다.</p>
+  <p class="lead">교육 편에서는 받은 CSV 파일 하나로 스킬과 에이전트를 만들었습니다. 실제 업무 데이터는 <b>구글 시트</b> · <b>공공 서비스</b> · <b>웹페이지</b>에 흩어져 있습니다. 오늘은 세 곳에서 데이터를 <b>코드를 저장하지 않고 말(프롬프트)로</b> 가져와, 마지막에 <b>엑셀 한 파일로 모읍니다</b>.</p>
   <div class="hero">
     <b>끝나면 이렇게 됩니다</b>
     <ul>
       <li>구글 시트를 <b>커넥터(MCP)</b>로 연결해, 파일을 내려받지 않고 Claude 가 바로 읽게 했다.</li>
       <li>커넥터가 없는 법령 정보를 <b>API 키</b>로 받아 왔고, 키를 채팅에 붙이지 않고 <code class="k">.env</code> 에 두는 습관을 들였다.</li>
       <li>API 도 커넥터도 없는 교육청 보도자료를 <b>허락부터 확인하고</b> 가져와, <b>빠짐없이 왔는지 검산</b>했다.</li>
-      <li>세 결과가 모두 <b>슬랙 채널에 요약으로</b> 도착했다.</li>
+      <li>세 결과가 <b>엑셀 한 파일</b>(시트 3장)에 모였다.</li>
     </ul>
   </div>
 
   <h3>세 가지 길 — 언제 무엇을 쓰나</h3>
   <div class="tbl"><table>
     <tr><th>길</th><th>한 줄 설명</th><th>쓰는 때</th><th>오늘 실습</th></tr>
-    <tr><td><b>MCP</b></td><td>Claude 에 손발을 붙인다. 연결해 두면 말로 시켰을 때 Claude 가 직접 가서 읽는다</td><td>연결 도구(커넥터)가 이미 있을 때 · 지금 보고 묻고 끝낼 때</td><td>구글 시트 (4~5단계)</td></tr>
-    <tr><td><b>API</b></td><td>서비스가 열어 둔 데이터 창구에 <b>키</b>를 들고 가서 받아 온다</td><td>커넥터는 없지만 서비스가 API 를 줄 때 · 나중에 매일 자동으로 돌릴 때</td><td>국가법령정보 (6단계)</td></tr>
-    <tr><td><b>크롤링</b></td><td>사람이 보는 화면(웹페이지)에서 글자를 긁어 온다</td><td>커넥터도 API 도 없는 <b>공개</b> 페이지 · <b>허락을 확인한 뒤에만</b></td><td>교육청 보도자료 (7~8단계)</td></tr>
+    <tr><td><b>MCP</b></td><td>Claude 에 손발을 붙인다. 연결해 두면 말로 시켰을 때 Claude 가 직접 가서 읽는다</td><td>연결 도구(커넥터)가 이미 있을 때 · 지금 보고 묻고 끝낼 때</td><td>구글 시트 (3~4단계)</td></tr>
+    <tr><td><b>API</b></td><td>서비스가 열어 둔 데이터 창구에 <b>키</b>를 들고 가서 받아 온다</td><td>커넥터는 없지만 서비스가 API 를 줄 때 · 나중에 매일 자동으로 돌릴 때</td><td>국가법령정보 (5단계)</td></tr>
+    <tr><td><b>크롤링</b></td><td>사람이 보는 화면(웹페이지)에서 글자를 긁어 온다</td><td>커넥터도 API 도 없는 <b>공개</b> 페이지 · <b>허락을 확인한 뒤에만</b></td><td>교육청 보도자료 (6~7단계)</td></tr>
   </table></div>
   <div class="box tip"><b>고르는 순서</b>커넥터가 있으면 MCP → 없으면 API → 둘 다 없으면 허락을 확인하고 크롤링.</div>
 
@@ -194,32 +194,32 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <ol class="flow">
     <li><b>가져오기</b> — 카드를 복사해 붙여넣습니다. Claude 가 알아서 가져옵니다.</li>
     <li><b>확인</b> — 제대로, 빠짐없이 왔는지 봅니다. 오류가 없다고 다 맞는 것은 아닙니다.</li>
-    <li><b>슬랙</b> — 원본이 아니라 <b>요약만</b> 슬랙 채널로 보냅니다.</li>
+    <li><b>저장</b> — 작업 폴더에 CSV 파일로 남깁니다. 8단계에서 셋을 엑셀 한 파일로 모읍니다.</li>
   </ol>
-  <div class="box tip"><b>매일 저절로 돌게 하려면</b>오늘은 매번 말로 시킵니다. 같은 일을 스크립트로 저장해 매일 정해진 시각에 돌리는 자동화는 <b>Advance 과정</b>에서 합니다.</div>
+  <div class="box tip"><b>매일 저절로 돌게 하려면</b>오늘은 매번 말로 시킵니다. 같은 수집을 스크립트로 저장해 매일 정해진 시각에 돌리고, 결과를 슬랙으로 알려 받는 <b>자동화</b>는 Advance 과정에서 합니다.</div>
 
   <h3>준비물</h3>
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
     <tr><td><b>교육 편 완료</b></td><td>Claude Code 가 도는 작업 폴더. 아직이면 <a href="claude-code-skills-agents.html">교육 편</a>부터</td></tr>
-    <tr><td><b>강사가 준 <code class="k">.env</code></b></td><td>실습 슬랙 채널 주소(웹훅)와 교육용 법령 API 키(OC)가 들어 있는 파일. 공유 드라이브 「초급 준비물/체험」 폴더에 있습니다. <b>열어서 내용을 채팅에 붙이지 않습니다</b></td></tr>
-    <tr><td>회사 구글 계정</td><td>4단계 커넥터 연결에 씁니다</td></tr>
+    <tr><td><b>강사가 준 <code class="k">.env</code></b></td><td>교육용 법령 API 키(<code class="k">LAW_OC</code>)가 들어 있는 파일. 공유 드라이브 「초급 준비물/체험」 폴더에 있습니다. <b>열어서 내용을 채팅에 붙이지 않습니다</b></td></tr>
+    <tr><td>회사 구글 계정</td><td>3단계 커넥터 연결에 씁니다</td></tr>
     <tr><td>이메일 주소</td><td>2단계 국가법령정보 가입에 씁니다</td></tr>
-    <tr><td>실습 시트 링크</td><td>5단계에서 읽을 구글 시트. 진행자가 수업 중에 알려 줍니다</td></tr>
+    <tr><td>실습 시트 링크</td><td>4단계에서 읽을 구글 시트. 진행자가 수업 중에 알려 줍니다</td></tr>
   </table></div>
-  <div class="box warn"><b>주의</b>슬랙에는 <b>요약만</b> 보냅니다. 원본 데이터 · 개인정보 · 회사 숫자는 보내지 않습니다. 실습 채널은 교육생 모두가 봅니다.</div>
+  <div class="box warn"><b>주의</b>가져온 파일은 작업 폴더에만 둡니다. 회사 밖으로 보내거나 인터넷에 올리지 않습니다.</div>
 </section>
 
 <details class="grp" id="g1">
-<summary><span class="gno">①</span> 준비 <small>1~3단계 · 25분</small></summary>
+<summary><span class="gno">①</span> 준비 <small>1~2단계 · 15분</small></summary>
 <section class="part" id="p1">
-  <h2><small>PART 1</small>준비 (1~3단계)</h2>
+  <h2><small>PART 1</small>준비 (1~2단계)</h2>
   <p class="lead">VS Code(또는 Cursor)에서 교육 편 작업 폴더를 열고, 강사가 준 <code class="k">.env</code> 파일을 <b>그 폴더 맨 위</b>에 넣어 둡니다. 탐색기에 <code class="k">.env</code> 가 보이면 준비 끝입니다.</p>
 
   <article class="step" id="s1" data-step="1">
     <header><span class="no">1</span><h3>Python 설치</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>Claude 는 데이터를 가져오고 정리할 때 먼저 Python 을 고릅니다. 없으면 시도 → 실패 → 다른 도구로 바꾸기를 거치느라 시간이 더 걸립니다. <b>설치가 안 돼도 오늘 실습은 진행됩니다</b> — 막히면 넘어가고 강사에게 알립니다.</p>
+      <p>Claude 는 데이터를 가져오고 정리할 때 먼저 Python 을 고릅니다. 8단계에서 <b>엑셀 파일</b>을 만들 때도 Python 이 가장 쉽습니다. <b>설치가 안 돼도 1~7단계는 진행됩니다</b> — 막히면 넘어가고 강사에게 알립니다.</p>
       <div class="row"><b>방법</b><div><ol>
         <li><a href="https://www.python.org/downloads/windows/" target="_blank" rel="noopener">python.org Windows 다운로드</a> 에서 최신 안정판의 <b>Windows installer (64-bit)</b> 를 받습니다.</li>
         <li>설치 파일을 열고 첫 화면 <b>맨 아래 「Add python.exe to PATH」를 체크</b>한 뒤 <b>Install Now</b>. 내 계정에만 깔리는 방식이라 관리자 권한이 없어도 됩니다.</li>
@@ -245,31 +245,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="box tip"><b>OC 가 뭔가요</b>이 API 의 키는 <code class="k">OC</code> 라는 이름으로, 가입한 이메일의 <b>@ 앞부분</b>입니다. 내 신청이 승인되면 <code class="k">.env</code> 의 교육용 OC 를 내 것으로 바꿔 끼우면 됩니다.</div>
     </div>
   </article>
-
-  <article class="step" id="s3" data-step="3">
-    <header><span class="no">3</span><h3>슬랙 연결 — 테스트 한 줄</h3><label><input type="checkbox">완료</label></header>
-    <div class="body">
-      <p><b>웹훅</b>은 「이 주소로 글을 보내면 정해진 슬랙 채널에 올라가는」 우편함 주소입니다. 강사가 실습 채널의 웹훅 주소를 <code class="k">.env</code> 에 넣어 두었습니다. 주소를 아는 사람은 누구나 그 채널에 글을 보낼 수 있으므로 <b>채팅이나 다른 파일에 붙이지 않습니다</b>.</p>
-      <div class="row"><b>방법</b><div><ol>
-        <li>작업 폴더에서 <code class="k">claude</code> → 붙여넣습니다. <b>내 이름</b>은 바꿔 넣습니다.
-          <div class="cmd"><code>이 폴더의 .env 에 있는 SLACK_WEBHOOK_URL 로 「연결 테스트 — 내 이름」 한 줄을 슬랙에 보내 줘. 한글이 깨지지 않게 UTF-8 로 보내고, 웹훅 주소는 화면에 쓰지 마. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
-        <li>실습 슬랙 채널을 엽니다.</li>
-      </ol></div></div>
-      <div class="row"><b>확인</b><div><p>슬랙 채널에 「연결 테스트 — 내 이름」이 올라왔다.</p></div></div>
-      <div class="box warn"><b>주의</b>Claude 가 웹훅 주소를 화면에 그대로 찍었다면 강사에게 알립니다(주소를 새로 바꿔야 합니다).</div>
-    </div>
-  </article>
 </section>
 </details>
 
 <details class="grp" id="g2">
-<summary><span class="gno">②</span> MCP <small>4~5단계 · 15분</small></summary>
+<summary><span class="gno">②</span> MCP <small>3~4단계 · 15분</small></summary>
 <section class="part" id="p2">
-  <h2><small>PART 2</small>MCP — 커넥터로 가져오기 (4~5단계)</h2>
+  <h2><small>PART 2</small>MCP — 커넥터로 가져오기 (3~4단계)</h2>
   <p class="lead">MCP 는 Claude 에 붙이는 <b>손발</b>입니다. 붙이는 방법은 여러 가지인데, 오늘은 가장 쉬운 <b>커넥터</b> 하나만 직접 해 봅니다.</p>
 
-  <article class="step" id="s4" data-step="4">
-    <header><span class="no">4</span><h3>MCP 종류 보기 · 구글 커넥터 연결</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s3" data-step="3">
+    <header><span class="no">3</span><h3>MCP 종류 보기 · 구글 커넥터 연결</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="tbl"><table>
         <tr><th>종류</th><th>붙이는 법</th><th>예시</th><th>오늘</th></tr>
@@ -283,20 +269,20 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li>VS Code 터미널에서 Claude Code 를 다시 켭니다(<code class="k">exit</code> → <code class="k">claude</code>). 그다음 <code class="k">/mcp</code> 를 입력합니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p><code class="k">/mcp</code> 목록에 Google Drive 가 연결된 상태로 보인다.</p></div></div>
-      <div class="box warn"><b>허용 화면에서 막히면</b>회사 계정은 관리자가 외부 앱 연결을 막아 두었을 수 있습니다. 5단계는 강사 화면으로 보고 6단계로 넘어갑니다.</div>
+      <div class="box warn"><b>허용 화면에서 막히면</b>회사 계정은 관리자가 외부 앱 연결을 막아 두었을 수 있습니다. 4단계는 강사 화면으로 보고 5단계로 넘어갑니다.</div>
       <div class="box tip"><b>연결하면 볼 수 있는 범위</b>커넥터를 연결하면 Claude 가 <b>내 드라이브 전체</b>를 볼 수 있습니다. 시킬 때는 파일 이름을 콕 집어 말합니다.</div>
     </div>
   </article>
 
-  <article class="step" id="s5" data-step="5">
-    <header><span class="no">5</span><h3>구글 시트 읽고 요약 → 슬랙</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s4" data-step="4">
+    <header><span class="no">4</span><h3>구글 시트 읽고 저장</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
         <li>진행자가 알려 준 <b>실습 시트</b>를 브라우저로 한 번 열어 둡니다(내 드라이브 「공유 문서함」에 들어옵니다).</li>
         <li>붙여넣습니다. <b>시트 이름</b>은 진행자가 알려 준 이름으로 바꿉니다.
-          <div class="cmd"><code>구글 드라이브에서 「시트 이름」 시트를 찾아 읽고, 핵심을 3줄로 요약해 줘. 요약을 화면에 먼저 보여 준 다음, 이 폴더 .env 의 SLACK_WEBHOOK_URL 로 「[MCP] 내 이름」 머리말을 붙여 슬랙에 보내 줘. 웹훅 주소는 화면에 쓰지 마.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>구글 드라이브에서 「시트 이름」 시트를 찾아 읽고, 핵심을 3줄로 요약해 줘. 그다음 시트 내용을 이 폴더에 시트.csv 로 저장하고, 시트에 보이는 행 수와 CSV 행 수가 같은지 알려 줘.</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>화면의 요약과 슬랙에 올라온 요약이 같다. 시트를 <b>내려받지 않았는데</b> 읽었다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>시트를 <b>내려받지 않았는데</b> 요약이 나왔다. <code class="k">시트.csv</code> 가 생겼고 행 수가 시트와 같다.</p></div></div>
       <details class="q"><summary>심화 — 같은 시트에서 다른 것 묻기</summary>
         <p>「그 시트에서 가장 최근에 바뀐 행이 뭐야?」처럼 이어서 물어봅니다. 커넥터가 연결돼 있으면 파일을 다시 받을 필요 없이 대화로 이어집니다.</p></details>
     </div>
@@ -305,13 +291,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g3">
-<summary><span class="gno">③</span> API <small>6단계 · 15분</small></summary>
+<summary><span class="gno">③</span> API <small>5단계 · 15분</small></summary>
 <section class="part" id="p3">
-  <h2><small>PART 3</small>API — 키로 받아 오기 (6단계)</h2>
+  <h2><small>PART 3</small>API — 키로 받아 오기 (5단계)</h2>
   <p class="lead">법령 정보는 커넥터가 없습니다. 대신 국가법령정보가 <b>API</b> 를 열어 두었습니다. 키(<code class="k">OC</code>)를 들고 가서 받아 옵니다. 키는 <code class="k">.env</code> 의 <code class="k">LAW_OC</code> 에 있습니다.</p>
 
-  <article class="step" id="s6" data-step="6">
-    <header><span class="no">6</span><h3>내 부서 법령 조회 → 슬랙</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s5" data-step="5">
+    <header><span class="no">5</span><h3>내 부서 법령 조회 · 저장</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <p>부서마다 자주 보는 법이 다릅니다. 아래에서 내 부서 법령 하나를 고릅니다. 카드는 같고 <b>법령 이름만</b> 바꿉니다.</p>
       <div class="tbl"><table>
@@ -324,9 +310,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       </table></div>
       <div class="row"><b>방법</b><div><ol>
         <li>붙여넣습니다. 「법령 이름」을 위 표에서 고른 것으로 바꿉니다.
-          <div class="cmd"><code>이 폴더 .env 의 LAW_OC 를 OC 값으로 써서 국가법령정보 OPEN API(http://www.law.go.kr/DRF/lawSearch.do · target=law · type=JSON)에서 「법령 이름」을 찾아 줘. 현행 법령의 공포일자 · 시행일자 · 제개정 구분을 표로 보여 주고, 같은 내용을 「[API] 내 이름」 머리말을 붙여 .env 의 SLACK_WEBHOOK_URL 로 슬랙에 보내 줘. OC 값과 웹훅 주소는 화면에 쓰지 마. 판례는 조회하지 마. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>이 폴더 .env 의 LAW_OC 를 OC 값으로 써서 국가법령정보 OPEN API(http://www.law.go.kr/DRF/lawSearch.do · target=law · type=JSON)에서 「법령 이름」을 찾아 줘. 현행 법령의 법령명 · 공포일자 · 시행일자 · 제개정 구분을 표로 보여 주고, 같은 내용을 이 폴더에 법령.csv 로 저장해 줘. OC 값은 화면에 쓰지 마. 판례는 조회하지 마. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>법령 이름 · 공포일자 · 시행일자가 화면과 슬랙에 같은 값으로 나온다. <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 에서 같은 법을 검색해 시행일자가 맞는지 한 번 대조한다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>법령 이름 · 공포일자 · 시행일자가 화면과 <code class="k">법령.csv</code> 에 같은 값으로 들어 있다. <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 에서 같은 법을 검색해 시행일자가 맞는지 한 번 대조한다.</p></div></div>
       <div class="box warn"><b>주의</b>조회 결과는 <b>법률 자문이 아닙니다.</b> 업무 판단은 원문과 담당 부서 확인을 거칩니다.</div>
       <details class="q"><summary>심화 — 바뀐 내용까지 받아 보기</summary>
         <p>「방금 찾은 법령의 본문 API(lawService.do)로 최근 개정 이유를 받아 3줄로 요약해 줘」라고 이어서 시킵니다. 판례 본문은 화면이 늦게 채워지는 구조라 이 방법으로는 잘 안 옵니다 — 그래서 오늘은 법령만 봅니다.</p></details>
@@ -336,13 +322,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g4">
-<summary><span class="gno">④</span> 크롤링 <small>7~8단계 · 20분</small></summary>
+<summary><span class="gno">④</span> 크롤링 <small>6~7단계 · 20분</small></summary>
 <section class="part" id="p4">
-  <h2><small>PART 4</small>크롤링 — 화면에서 가져오기 (7~8단계)</h2>
+  <h2><small>PART 4</small>크롤링 — 화면에서 가져오기 (6~7단계)</h2>
   <p class="lead">교육청 보도자료는 커넥터도 API 도 없습니다. 사람이 보는 웹페이지에서 가져와야 합니다. 크롤링은 <b>긁는 법보다 두 가지 습관</b>이 중요합니다 — <b>① 가져와도 되는지 먼저 확인</b>, <b>② 빠짐없이 왔는지 검산</b>.</p>
 
-  <article class="step" id="s7" data-step="7">
-    <header><span class="no">7</span><h3>가져와도 되는지 먼저 확인</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s6" data-step="6">
+    <header><span class="no">6</span><h3>가져와도 되는지 먼저 확인</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <p>사이트는 <code class="k">robots.txt</code> 라는 파일에 「자동으로 가져가도 되는 곳 · 안 되는 곳」을 적어 둡니다. 같은 교육청 사이트라도 답이 다릅니다.</p>
       <div class="row"><b>강사 시연</b><div><p>강사가 robots.txt 로 <b>게시판을 막아 둔</b> 교육청을 보여 줍니다. 「여기는 확인만 하고 가져오지 않는다」로 끝냅니다. 따라 하지 않습니다.</p></div></div>
@@ -355,16 +341,16 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     </div>
   </article>
 
-  <article class="step" id="s8" data-step="8">
-    <header><span class="no">8</span><h3>보도자료 목록 → 검산 → 슬랙</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s7" data-step="7">
+    <header><span class="no">7</span><h3>보도자료 목록 → 검산 → 저장</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
         <li>붙여넣습니다.
           <div class="cmd"><code>서울시교육청 보도자료 목록 1페이지 https://enews.sen.go.kr/news/list.do?step1=3&amp;step2=1 를 요약하지 말고 원본 HTML 그대로 받아서, 글마다 제목 · 날짜 · 링크를 보도자료.csv 로 저장해 줘. 저장한 뒤 CSV 의 글 수와 페이지에 보이는 글 수를 비교해서, 다르면 이유를 알려 줘. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
         <li>글 수가 맞으면 붙여넣습니다.
-          <div class="cmd"><code>보도자료.csv 에서 수학 · 과학 · 입시 · 진로와 관련된 글만 골라 제목 · 날짜 · 링크를 「[크롤링] 내 이름」 머리말을 붙여 .env 의 SLACK_WEBHOOK_URL 로 슬랙에 보내 줘. 관련 글이 하나도 없으면 「관련 글 없음」이라고 보내. 웹훅 주소는 화면에 쓰지 마.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>보도자료.csv 에 「관련」 열을 추가해서, 제목을 보고 수학 · 과학 · 입시 · 진로와 관련된 글이면 O, 아니면 빈칸으로 채워 줘. 관련 글이 몇 개인지와 그 제목을 보여 줘.</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>CSV 글 수가 페이지에 보이는 글 수와 같다. 슬랙에 관련 글만 올라왔다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>CSV 글 수가 페이지에 보이는 글 수와 같다. 「관련」 열이 채워졌다.</p></div></div>
       <div class="box tip"><b>글 수가 두 배로 나왔다면</b>이 페이지는 같은 글이 <b>카드 모양</b>과 <b>목록 모양</b>으로 두 번 들어 있습니다. 그대로 세면 실제보다 두 배가 됩니다. 「같은 글은 하나로 줄여 줘」라고 다시 시킵니다. <b>오류 없이 끝났다고 맞게 가져온 것은 아닙니다</b> — 그래서 검산을 합니다.</div>
       <details class="q"><summary>심화 — 판단을 AI 가 하는 이유</summary>
         <p>「수학 · 과학 · 입시 관련」은 제목에 그 단어가 없어도 뜻으로 고릅니다(예: 「고교학점제 설명회」 = 입시). 단어 검색으로는 못 하는 일이라, 크롤링에 Claude 를 붙이는 이유가 여기 있습니다.</p></details>
@@ -374,14 +360,29 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g5">
-<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 10분</small></summary>
+<summary><span class="gno">⑤</span> 모으기 · 마무리 <small>8~9단계 · 20분</small></summary>
 <section class="part" id="p5">
-  <h2><small>PART 5</small>마무리 (9단계)</h2>
+  <h2><small>PART 5</small>모으기 · 마무리 (8~9단계)</h2>
+
+  <article class="step" id="s8" data-step="8">
+    <header><span class="no">8</span><h3>세 결과를 엑셀 한 파일로</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>수집의 끝은 <b>한곳에 쌓기</b>입니다. 세 길로 가져온 결과를 엑셀 한 파일에 시트 3장으로 모읍니다.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li>붙여넣습니다.
+          <div class="cmd"><code>이 폴더의 시트.csv · 법령.csv · 보도자료.csv 를 오늘_수집.xlsx 한 파일로 모아 줘. 시트 이름은 시트 · 법령 · 보도자료로 하고, 첫 줄은 고정하고 열 너비를 내용에 맞춰 줘. python 으로 하고, 엑셀용 도구(openpyxl)가 없으면 설치해도 돼. 다 되면 시트마다 행 수를 CSV 와 비교해서 알려 줘.</code><button type="button">복사</button></div></li>
+        <li>탐색기에서 <code class="k">오늘_수집.xlsx</code> 를 엑셀로 엽니다.</li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>시트가 3장이고, 시트마다 행 수가 CSV 와 같다. 한글이 깨지지 않았다.</p></div></div>
+      <div class="box warn"><b>Python 이 없으면</b>1단계 설치가 안 된 PC 는 엑셀 대신 「세 CSV 를 오늘_수집 폴더 하나에 모아 줘」로 마칩니다.</div>
+      <div class="box tip"><b>없는 파일이 있으면</b>4단계나 5단계를 강사 화면으로 넘겼다면 있는 CSV 만 모읍니다. 카드는 그대로 붙여넣으면 Claude 가 없는 파일을 알려 줍니다.</div>
+    </div>
+  </article>
 
   <article class="step" id="s9" data-step="9">
     <header><span class="no">9</span><h3>웹앱 배포 다시 보기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>입문 체험A 에서 만든 Apps Script 웹앱을 <b>다른 사람이 쓰게</b> 열 때 헷갈리는 세 가지만 다시 봅니다. 모아 온 결과를 동료와 나누는 마지막 길입니다.</p>
+      <p>입문 체험A 에서 만든 Apps Script 웹앱을 <b>다른 사람이 쓰게</b> 열 때 헷갈리는 세 가지만 다시 봅니다.</p>
       <div class="tbl"><table>
         <tr><th>설정</th><th>고를 것</th><th>차이</th></tr>
         <tr><td>액세스 권한</td><td>조직 내 모든 사용자 / 링크가 있는 모든 사용자</td><td>회사 자료면 <b>조직 내</b>. 「모든 사용자」는 회사 밖에서도 열린다</td></tr>
@@ -406,7 +407,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   </table></div>
   <div class="tbl"><table>
     <tr><th>오늘 만든 것</th><th>다음 과정(Advance)에서</th></tr>
-    <tr><td>세 길로 가져온 결과를 슬랙으로 받았다 — 매번 말로 시켰다</td><td>같은 일을 <b>스크립트로 저장</b>하고 <b>작업 스케줄러</b>로 매일 정해진 시각에 돌린다. 슬랙 웹훅은 그대로 다시 쓴다</td></tr>
+    <tr><td>세 길로 가져와 엑셀 한 파일로 모았다 — 매번 말로 시켰다</td><td>같은 수집을 <b>스크립트로 저장</b>하고 <b>작업 스케줄러</b>로 매일 정해진 시각에 돌린다. 사람이 화면 앞에 없으니 결과는 <b>슬랙으로 알려 받는다</b></td></tr>
   </table></div>
   <div class="box tip"><b>수업 끝</b>작업 폴더의 <code class="k">.env</code> 는 <b>다른 곳에 복사하거나 올리지 않습니다.</b> 2단계 신청이 승인되면 <code class="k">LAW_OC</code> 를 내 것으로 바꿉니다. 수고하셨습니다.</div>
 </section>
@@ -419,15 +420,15 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
     <tr><td>「.env 가 없다」고 한다</td><td>다른 폴더를 열었다 · 파일을 폴더 맨 위가 아닌 곳에 넣었다</td><td>탐색기 맨 위에 <code class="k">.env</code> 가 보이는지 확인 · 그 폴더에서 <code class="k">claude</code></td></tr>
-    <tr><td>슬랙에 글이 안 올라온다</td><td>웹훅 주소가 잘못 들어갔다 · 회사망이 막았다</td><td>Claude 가 받은 응답(<code class="k">ok</code> 여부)을 보여 달라고 한다. 그래도 안 되면 강사에게</td></tr>
-    <tr><td>슬랙 글의 한글이 깨진다</td><td>UTF-8 이 아니게 보냈다</td><td>「UTF-8 로 다시 보내 줘」</td></tr>
     <tr><td><code class="k">/mcp</code> 에 Google Drive 가 없다</td><td>연결 뒤 Claude Code 를 다시 켜지 않았다 · 다른 계정으로 로그인했다</td><td><code class="k">exit</code> → <code class="k">claude</code> · claude.ai 와 Claude Code 가 같은 계정인지 확인</td></tr>
     <tr><td>시트를 못 찾는다</td><td>공유받은 시트를 한 번도 열지 않았다 · 이름이 다르다</td><td>브라우저로 시트를 한 번 열고, 이름을 그대로 복사해 다시 시킨다</td></tr>
     <tr><td>법령 조회에서 「사용자 정보 검증에 실패」</td><td>OC 값이 틀렸다 · 승인 전인 내 OC 로 바꿨다</td><td>받은 <code class="k">.env</code> 원본의 교육용 OC 로 되돌린다</td></tr>
     <tr><td>법령이 여러 개 나온다</td><td>이름이 비슷한 시행령 · 시행규칙이 같이 걸렸다</td><td>「법률만」이라고 덧붙인다</td></tr>
     <tr><td>크롤링 CSV 글 수가 두 배다</td><td>같은 글이 카드 · 목록 두 모양으로 들어 있다</td><td>「같은 글은 하나로 줄여 줘」</td></tr>
-    <tr><td>Claude 가 프로그램(라이브러리)을 설치하자고 한다</td><td>카드의 「새 프로그램은 설치하지 마」가 빠졌다</td><td>거절하고 카드를 그대로 다시 붙여넣는다</td></tr>
-    <tr><td><code class="k">python --version</code> 이 안 된다 · 스토어 창이 뜬다</td><td>설치 때 「Add python.exe to PATH」를 체크하지 않았다 · 터미널을 새로 열지 않았다</td><td>VS Code 를 껐다 켠다. 그래도 안 되면 설치 파일을 다시 열어 Uninstall → 체크하고 다시 설치. 오늘 실습은 Python 없이도 된다</td></tr>
+    <tr><td>CSV 를 엑셀로 열면 한글이 깨진다</td><td>BOM 없는 UTF-8 로 저장됐다</td><td>「엑셀에서 한글이 안 깨지게 UTF-8 BOM 으로 다시 저장해 줘」</td></tr>
+    <tr><td>8단계에서 엑셀 파일을 못 만든다</td><td>Python 이 없다 · 회사 PC 가 도구(openpyxl) 설치를 막았다</td><td>「세 CSV 를 오늘_수집 폴더 하나에 모아 줘」로 마친다</td></tr>
+    <tr><td>1~7단계에서 Claude 가 프로그램(라이브러리)을 설치하자고 한다</td><td>카드의 「새 프로그램은 설치하지 마」가 빠졌다</td><td>거절하고 카드를 그대로 다시 붙여넣는다</td></tr>
+    <tr><td><code class="k">python --version</code> 이 안 된다 · 스토어 창이 뜬다</td><td>설치 때 「Add python.exe to PATH」를 체크하지 않았다 · 터미널을 새로 열지 않았다</td><td>VS Code 를 껐다 켠다. 그래도 안 되면 설치 파일을 다시 열어 Uninstall → 체크하고 다시 설치</td></tr>
     <tr><td>Claude 가 <code class="k">python3</code> 을 쓰다 막힌다</td><td>윈도우의 <code class="k">python3</code> 은 스토어 바로가기다</td><td>「python3 말고 python 으로 해」</td></tr>
   </table></div>
 </section>
@@ -441,8 +442,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.1</b></td><td>2026-10-06</td><td>
+      <ul><li>슬랙을 뺐다 — 수집 과정에서는 결과를 화면에서 바로 보므로 알림이 필요 없다. 슬랙 알림은 매일 자동으로 도는 Advance 과정에서 배운다</li>
+      <li>각 단계 끝을 「슬랙으로 보내기」에서 「CSV 로 저장」으로 바꿨다. 새 8단계 「세 결과를 엑셀 한 파일로」 — 수집의 끝은 한곳에 쌓기</li>
+      <li>옛 3단계(슬랙 연결)를 지우고 번호를 당겼다. 전체 9단계 그대로 · 진행 체크를 새로 시작한다</li></ul></td></tr>
     <tr><td><b>v1.0</b></td><td>2026-10-06</td><td>
-      <ul><li>첫 판(초안). 초급 체험을 「외부 데이터 연결」로 새로 만들었다 — 준비(Python · 법령 API 신청 체험 · 슬랙 웹훅) · MCP(종류 표 · 구글 커넥터 · 구글 시트) · API(국가법령정보 · 부서별 법령) · 크롤링(robots.txt 확인 · 서울시교육청 보도자료 · 검산) · 웹앱 배포 다시 보기. 9단계</li>
+      <ul><li>첫 판(초안). 초급 체험을 「외부 데이터 연결」로 새로 만들었다 — 준비(Python · 법령 API 신청 체험) · MCP(종류 표 · 구글 커넥터 · 구글 시트) · API(국가법령정보 · 부서별 법령) · 크롤링(robots.txt 확인 · 서울시교육청 보도자료 · 검산) · 웹앱 배포 다시 보기</li>
       <li>옛 초급 체험(서브 에이전트 · 에이전트 팀)은 마스터 과정 체험으로 옮겼다</li></ul></td></tr>
   </table></div>
   <p style="font-size:13px;color:var(--sub)">기준 버전: Claude Code 2.1.291</p>
@@ -450,7 +455,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 
 <script>
 (function(){
-  var KEY='cc-basic-data-steps-v1';
+  var KEY='cc-basic-data-steps-v2';
   var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
   var saved={};
   try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
