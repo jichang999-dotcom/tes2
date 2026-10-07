@@ -202,7 +202,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
     <tr><td><b>교육 편 완료</b></td><td>Claude Code 가 도는 작업 폴더. 아직이면 <a href="claude-code-skills-agents.html">교육 편</a>부터</td></tr>
-    <tr><td><b>강사가 준 <code class="k">.env</code></b></td><td>교육용 법령 API 키(<code class="k">LAW_OC</code>)가 들어 있는 파일. 공유 드라이브 「초급 준비물/체험/api」 폴더에 있습니다. <b>열어서 내용을 채팅에 붙이지 않습니다</b></td></tr>
+    <tr><td><b>교육용 OC</b></td><td>법령 API 키. 강사가 수업 중에 알려 줍니다. 5단계에서 <code class="k">.env</code> 파일에 직접 적어 넣고, <b>채팅에는 붙이지 않습니다</b></td></tr>
     <tr><td>회사 구글 계정</td><td>3단계 커넥터 연결에 씁니다</td></tr>
     <tr><td>이메일 주소</td><td>2단계 국가법령정보 가입에 씁니다</td></tr>
     <tr><td>내 이름 구글 시트</td><td>4단계에서 새 시트(탭)를 만들고 데이터를 넣을 파일. 진행자가 내 이름으로 미리 만들어 둡니다</td></tr>
@@ -215,7 +215,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <summary><span class="gno">①</span> 준비 <small>1~2단계 · 15분</small></summary>
 <section class="part" id="p1">
   <h2><small>PART 1</small>준비 (1~2단계)</h2>
-  <p class="lead">VS Code(또는 Cursor)에서 교육 편 작업 폴더를 열고, 강사가 준 <code class="k">.env</code> 파일을 <b>그 폴더 맨 위</b>에 넣어 둡니다. 탐색기에 <code class="k">.env</code> 가 보이면 준비 끝입니다.</p>
+  <p class="lead">VS Code(또는 Cursor)에서 교육 편 작업 폴더를 열면 준비 끝입니다. 오늘 만드는 파일(CSV · <code class="k">.env</code> · 엑셀)은 모두 이 폴더에 생깁니다.</p>
 
   <article class="step" id="s1" data-step="1">
     <header><span class="no">1</span><h3>Python 설치</h3><label><input type="checkbox">완료</label></header>
@@ -235,7 +235,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <article class="step" id="s2" data-step="2">
     <header><span class="no">2</span><h3>법령 API 키 신청 해 보기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>API 를 쓰려면 서비스에 가입하고 <b>활용 신청</b>을 해서 승인을 받아야 합니다. 이 서비스는 <b>신청하면 바로 자동 승인</b>됩니다. <b>오늘 실습은 강사가 준 교육용 키</b>(받은 <code class="k">.env</code> 안)로 하고, 여기서는 <b>신청 절차를 직접 한 번 해 봅니다</b>.</p>
+      <p>API 를 쓰려면 서비스에 가입하고 <b>활용 신청</b>을 해서 승인을 받아야 합니다. 이 서비스는 <b>신청하면 바로 자동 승인</b>됩니다. <b>오늘 실습은 강사가 알려 주는 교육용 키</b>(5단계에서 <code class="k">.env</code> 에 넣습니다)로 하고, 여기서는 <b>신청 절차를 직접 한 번 해 봅니다</b>.</p>
       <div class="row"><b>방법</b><div><ol>
         <li><a href="https://open.law.go.kr" target="_blank" rel="noopener">국가법령정보 공동활용(open.law.go.kr)</a> 에 회원가입하고 로그인합니다.</li>
         <li>상단 메뉴의 <b>OPEN API</b> → <b>OPEN API 신청</b>으로 갑니다.</li>
@@ -299,7 +299,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <summary><span class="gno">③</span> API <small>5단계 · 15분</small></summary>
 <section class="part" id="p3">
   <h2><small>PART 3</small>API — 키로 받아 오기 (5단계)</h2>
-  <p class="lead">법령 정보는 커넥터가 없습니다. 대신 국가법령정보가 <b>API</b> 를 열어 두었습니다. 키(<code class="k">OC</code>)를 들고 가서 받아 옵니다. 키는 <code class="k">.env</code> 의 <code class="k">LAW_OC</code> 에 있습니다.</p>
+  <p class="lead">법령 정보는 커넥터가 없습니다. 대신 국가법령정보가 <b>API</b> 를 열어 두었습니다. 키(<code class="k">OC</code>)를 들고 가서 받아 옵니다. 키는 먼저 <code class="k">.env</code> 파일의 <code class="k">LAW_OC</code> 에 넣어 둡니다 — 코드와 채팅에 키를 직접 쓰지 않으려는 것입니다.</p>
 
   <article class="step" id="s5" data-step="5">
     <header><span class="no">5</span><h3>내 부서 법령 조회 · 저장</h3><label><input type="checkbox">완료</label></header>
@@ -314,7 +314,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <tr><td>연구소</td><td>저작권법</td></tr>
       </table></div>
       <div class="row"><b>방법</b><div><ol>
-        <li>붙여넣습니다. 「법령 이름」을 위 표에서 고른 것으로 바꿉니다.
+        <li><b>.env 만들기</b> — 붙여넣습니다. 값은 비워 둔 칸만 만들게 합니다.
+          <div class="cmd"><code>이 폴더 맨 위에 .env 파일을 만들고 LAW_OC= 한 줄을 넣어 줘. 값은 비워 둬. 이미 .env 가 있으면 다른 줄은 건드리지 말고 LAW_OC= 줄만 추가해 줘. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
+        <li>왼쪽 탐색기에서 <code class="k">.env</code> 를 열고 <code class="k">LAW_OC=</code> 바로 뒤에 <b>강사가 알려 준 OC</b> 를 붙여 씁니다(따옴표 · 띄어쓰기 없이). <kbd>Ctrl</kbd>+<kbd>S</kbd> 로 저장합니다. 키는 <b>채팅이 아니라 파일에</b> 직접 씁니다.</li>
+        <li><b>법령 조회</b> — 붙여넣습니다. 「법령 이름」을 위 표에서 고른 것으로 바꿉니다.
           <div class="cmd"><code>이 폴더 .env 의 LAW_OC 를 OC 값으로 써서 국가법령정보 OPEN API(http://www.law.go.kr/DRF/lawSearch.do · target=law · type=JSON)에서 「법령 이름」을 찾아 줘. 현행 법령의 법령명 · 공포일자 · 시행일자 · 제개정 구분을 표로 보여 주고, 같은 내용을 이 폴더에 법령.csv 로 저장해 줘. OC 값은 화면에 쓰지 마. 판례는 조회하지 마. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>법령 이름 · 공포일자 · 시행일자가 화면과 <code class="k">법령.csv</code> 에 같은 값으로 들어 있다. <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 에서 같은 법을 검색해 시행일자가 맞는지 한 번 대조한다.</p></div></div>
@@ -424,10 +427,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2><small>PART 6</small>막혔을 때</h2>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
-    <tr><td>「.env 가 없다」고 한다</td><td>다른 폴더를 열었다 · 파일을 폴더 맨 위가 아닌 곳에 넣었다</td><td>탐색기 맨 위에 <code class="k">.env</code> 가 보이는지 확인 · 그 폴더에서 <code class="k">claude</code></td></tr>
+    <tr><td>「.env 가 없다」고 한다</td><td>다른 폴더에서 5단계 .env 카드를 돌렸다 · 저장(<kbd>Ctrl</kbd>+<kbd>S</kbd>)을 안 했다</td><td>탐색기 맨 위에 <code class="k">.env</code> 가 보이는지 확인 · 그 폴더에서 <code class="k">claude</code></td></tr>
     <tr><td><code class="k">/mcp</code> 에 Google Drive 가 없다</td><td>연결 뒤 Claude Code 를 다시 켜지 않았다 · 다른 계정으로 로그인했다</td><td><code class="k">exit</code> → <code class="k">claude</code> · claude.ai 와 Claude Code 가 같은 계정인지 확인</td></tr>
     <tr><td>시트를 못 찾는다</td><td>공유받은 시트를 한 번도 열지 않았다 · 이름이 다르다</td><td>브라우저로 시트를 한 번 열고, 이름을 그대로 복사해 다시 시킨다</td></tr>
-    <tr><td>법령 조회에서 「사용자 정보 검증에 실패」</td><td>OC 값이 틀렸다 · 내 OC 로 바꿨다면 철자가 다르다</td><td>받은 <code class="k">.env</code> 원본의 교육용 OC 로 되돌린다</td></tr>
+    <tr><td>법령 조회에서 「사용자 정보 검증에 실패」</td><td>OC 값이 틀렸다 · 내 OC 로 바꿨다면 철자가 다르다</td><td><code class="k">.env</code> 의 값을 강사가 알려 준 교육용 OC 로 다시 쓰고 저장한다</td></tr>
     <tr><td>법령이 여러 개 나온다</td><td>이름이 비슷한 시행령 · 시행규칙이 같이 걸렸다</td><td>「법률만」이라고 덧붙인다</td></tr>
     <tr><td>크롤링 CSV 글 수가 두 배다</td><td>같은 글이 카드 · 목록 두 모양으로 들어 있다</td><td>「같은 글은 하나로 줄여 줘」</td></tr>
     <tr><td>CSV 를 엑셀로 열면 한글이 깨진다</td><td>BOM 없는 UTF-8 로 저장됐다</td><td>「엑셀에서 한글이 안 깨지게 UTF-8 BOM 으로 다시 저장해 줘」</td></tr>
@@ -448,7 +451,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.3</b></td><td>2026-10-07</td><td>
-      <ul><li>준비물: 강사가 준 <code class="k">.env</code> 위치를 「초급 준비물/체험/api」 폴더로 바꿨다</li>
+      <ul><li>5단계 맨 앞에 「.env 만들기」 카드를 넣었다 — 빈 <code class="k">LAW_OC=</code> 칸만 만들게 하고, 강사가 알려 준 OC 는 교육생이 파일에 직접 쓴다. 준비물의 「강사가 준 .env 파일」은 「교육용 OC(수업 중 안내)」로 바꿨다</li>
       <li>4단계를 「내 구글 시트에 시트 만들고 데이터 넣기」로 바꿨다 — 내 시트 링크 + ① 새 시트(탭) 만들기 ② 데이터 넣기(시트.csv 저장 포함). 지우기는 뺐다</li>
       <li>4단계: 폴더 밖 읽기 선택창이 뜨면 1번 · 데이터는 지어내도 되는 것으로(날씨 같은 바깥 데이터는 5단계 몫) 두 줄을 넣었다 (2.1.292 실측)</li>
       <li>4단계를 「내 구글 시트에 데이터 만들고 지우기」로 바꿨다 — 복사 카드 없이 내 이름 시트 링크를 붙여 말로 ① 만들기(시트.csv 저장 포함) ② 지우기. 3단계는 Google Sheets 도 연결한다(칸 쓰기 · 지우기는 Sheets 연결이 한다)</li>
