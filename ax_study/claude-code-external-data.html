@@ -148,7 +148,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="ghead">② MCP <small>3~4단계</small></li>
   <li><a href="#p2">PART 2 MCP — 커넥터로 가져오기</a></li>
   <li class="sub"><a href="#s3">3. MCP 종류 보기 · 구글 커넥터 연결</a></li>
-  <li class="sub"><a href="#s4">4. 구글 시트 읽고 저장</a></li>
+  <li class="sub"><a href="#s4">4. 내 구글 시트에 데이터 만들고 지우기</a></li>
   <li class="ghead">③ API <small>5단계</small></li>
   <li><a href="#p3">PART 3 API — 키로 받아 오기</a></li>
   <li class="sub"><a href="#s5">5. 내 부서 법령 조회 · 저장</a></li>
@@ -205,7 +205,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td><b>강사가 준 <code class="k">.env</code></b></td><td>교육용 법령 API 키(<code class="k">LAW_OC</code>)가 들어 있는 파일. 공유 드라이브 「초급 준비물/체험」 폴더에 있습니다. <b>열어서 내용을 채팅에 붙이지 않습니다</b></td></tr>
     <tr><td>회사 구글 계정</td><td>3단계 커넥터 연결에 씁니다</td></tr>
     <tr><td>이메일 주소</td><td>2단계 국가법령정보 가입에 씁니다</td></tr>
-    <tr><td>실습 시트 링크</td><td>4단계에서 읽을 구글 시트. 진행자가 수업 중에 알려 줍니다</td></tr>
+    <tr><td>내 이름 구글 시트</td><td>4단계에서 데이터를 만들고 지울 시트. 진행자가 내 이름으로 미리 만들어 둡니다</td></tr>
     <tr><td>입문 체험A 웹앱</td><td>9단계에서 배포 설정을 다시 봅니다. 없으면 강사 화면으로 봅니다</td></tr>
   </table></div>
   <div class="box warn"><b>주의</b>가져온 파일은 작업 폴더에만 둡니다. 회사 밖으로 보내거나 인터넷에 올리지 않습니다.</div>
@@ -268,26 +268,25 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       </table></div>
       <div class="row"><b>방법</b><div><ol>
         <li>브라우저에서 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> 에 로그인 → 왼쪽 아래 내 이름 → <b>설정</b> → <b>커넥터</b>.</li>
-        <li><b>Google Drive</b> 의 <b>연결</b>을 누르고, <b>회사 구글 계정</b>으로 로그인해 권한을 <b>허용</b>합니다.</li>
+        <li><b>Google Drive</b> 와 <b>Google Sheets</b> 를 각각 <b>연결</b>하고, <b>회사 구글 계정</b>으로 로그인해 권한을 <b>허용</b>합니다. 시트 안의 칸을 쓰고 지우는 것은 Google Sheets 연결이 합니다.</li>
         <li>VS Code 터미널에서 Claude Code 를 다시 켭니다(<code class="k">exit</code> → <code class="k">claude</code>). 그다음 <code class="k">/mcp</code> 를 입력합니다.</li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p><code class="k">/mcp</code> 목록에 Google Drive 가 연결된 상태로 보인다.</p></div></div>
+      <div class="row"><b>확인</b><div><p><code class="k">/mcp</code> 목록에 Google Drive 와 Google Sheets 가 둘 다 연결된 상태로 보인다.</p></div></div>
       <div class="box warn"><b>허용 화면에서 막히면</b>회사 계정은 관리자가 외부 앱 연결을 막아 두었을 수 있습니다. 4단계는 강사 화면으로 보고 5단계로 넘어갑니다.</div>
       <div class="box tip"><b>연결하면 볼 수 있는 범위</b>커넥터를 연결하면 Claude 가 <b>내 드라이브 전체</b>를 볼 수 있습니다. 시킬 때는 파일 이름을 콕 집어 말합니다.</div>
     </div>
   </article>
 
   <article class="step" id="s4" data-step="4">
-    <header><span class="no">4</span><h3>구글 시트 읽고 저장</h3><label><input type="checkbox">완료</label></header>
+    <header><span class="no">4</span><h3>내 구글 시트에 데이터 만들고 지우기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
+      <p>진행자가 <b>내 이름으로 된 구글 시트</b>를 하나씩 만들어 두었습니다. 카드 없이 <b>내 말로</b> 시켜 봅니다.</p>
       <div class="row"><b>방법</b><div><ol>
-        <li>진행자가 알려 준 <b>실습 시트</b>를 브라우저로 한 번 열어 둡니다(내 드라이브 「공유 문서함」에 들어옵니다).</li>
-        <li>붙여넣습니다. <b>시트 이름</b>은 진행자가 알려 준 이름으로 바꿉니다.
-          <div class="cmd"><code>구글 드라이브에서 「시트 이름」 시트를 찾아 읽고, 핵심을 3줄로 요약해 줘. 그다음 시트 내용을 이 폴더에 시트.csv 로 저장하고, 시트에 보이는 행 수와 CSV 행 수가 같은지 알려 줘. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
+        <li><b>데이터 만들기</b> — 브라우저에서 내 이름 시트를 열고 주소창의 <b>링크를 복사</b>합니다. Claude Code 에 링크를 붙여넣고, 어떤 데이터를 만들지 말로 시킵니다(예: 우리 팀 이번 주 일정 5줄 · 자주 쓰는 거래처 목록). 끝에 <b>「같은 내용을 이 폴더에 시트.csv 로도 저장해 줘」</b>를 덧붙입니다 — 8단계에서 씁니다. 시트 화면에 데이터가 채워지는지 봅니다.</li>
+        <li><b>데이터 지우기</b> — 방금 만든 데이터를 지워 달라고 말합니다. 시트 화면에서 사라지는지 봅니다. 지우는 것은 <b>시트 안의 내용</b>이고, 시트 파일은 남겨 둡니다.</li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>시트를 <b>내려받지 않았는데</b> 요약이 나왔다. <code class="k">시트.csv</code> 가 생겼고 행 수가 시트와 같다.</p></div></div>
-      <details class="q"><summary>심화 — 같은 시트에서 다른 것 묻기</summary>
-        <p>「그 시트에서 가장 최근에 바뀐 행이 뭐야?」처럼 이어서 물어봅니다. 커넥터가 연결돼 있으면 파일을 다시 받을 필요 없이 대화로 이어집니다.</p></details>
+      <div class="row"><b>확인</b><div><p>내가 시킨 데이터가 시트에 <b>바로</b> 나타났다가 지우라고 하자 사라졌다. 이 폴더에 <code class="k">시트.csv</code> 가 남아 있다.</p></div></div>
+      <div class="box tip"><b>링크로 콕 집어 말하는 이유</b>오늘은 여러 사람이 같은 연결로 실습합니다. 시트 이름만 말하면 다른 사람 시트를 건드릴 수 있으니 <b>내 시트 링크</b>를 붙여서 시킵니다.</div>
     </div>
   </article>
 </section>
@@ -446,7 +445,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.3</b></td><td>2026-10-07</td><td>
-      <ul><li>1단계 주의 상자를 「왜 Python 을 쓰나요」(이유 3가지)로 바꿨다. python3 안내는 「막혔을 때」 표에 그대로 있다</li>
+      <ul><li>4단계를 「내 구글 시트에 데이터 만들고 지우기」로 바꿨다 — 복사 카드 없이 내 이름 시트 링크를 붙여 말로 ① 만들기(시트.csv 저장 포함) ② 지우기. 3단계는 Google Sheets 도 연결한다(칸 쓰기 · 지우기는 Sheets 연결이 한다)</li>
+      <li>1단계 주의 상자를 「왜 Python 을 쓰나요」(이유 3가지)로 바꿨다. python3 안내는 「막혔을 때」 표에 그대로 있다</li>
       <li>「세 가지 길」 표: 한 줄 설명 맨 위에 MCP · API · 크롤링의 원래 이름과 뜻을 넣었다</li>
       <li>「세 가지 길」 표: 「쓰는 때」 열을 빼고 길마다 「이런 것도 연결된다」 예시 3개를 넣었다 (크롤링의 「공개 · 허락 확인」은 설명 칸으로 옮김)</li><li>2단계: 법령 API 는 신청하면 바로 자동 승인된다(실측) — 「승인까지 시간이 걸린다」를 고쳤다</li>
       <li>2단계: OC 칸 입력법과 「공동활용 법령종류 = 전체선택(최소 현행법령 목록 JSON)」을 넣었다</li></ul></td></tr>
