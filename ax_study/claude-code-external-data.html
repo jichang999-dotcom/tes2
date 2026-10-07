@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.2 · 2026-10-07</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.3 · 2026-10-07</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -235,15 +235,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <article class="step" id="s2" data-step="2">
     <header><span class="no">2</span><h3>법령 API 키 신청 해 보기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>API 를 쓰려면 서비스에 가입하고 <b>활용 신청</b>을 해서 승인을 받아야 합니다. 승인까지 시간이 걸리므로 <b>오늘 실습은 강사가 미리 승인받은 교육용 키</b>(받은 <code class="k">.env</code> 안)로 하고, 여기서는 <b>신청 절차를 직접 한 번 해 봅니다</b>. 승인은 수업이 끝난 뒤에 나도 됩니다.</p>
+      <p>API 를 쓰려면 서비스에 가입하고 <b>활용 신청</b>을 해서 승인을 받아야 합니다. 이 서비스는 <b>신청하면 바로 자동 승인</b>됩니다. <b>오늘 실습은 강사가 준 교육용 키</b>(받은 <code class="k">.env</code> 안)로 하고, 여기서는 <b>신청 절차를 직접 한 번 해 봅니다</b>.</p>
       <div class="row"><b>방법</b><div><ol>
         <li><a href="https://open.law.go.kr" target="_blank" rel="noopener">국가법령정보 공동활용(open.law.go.kr)</a> 에 회원가입하고 로그인합니다.</li>
         <li>상단 메뉴의 <b>OPEN API</b> → <b>OPEN API 신청</b>으로 갑니다.</li>
         <li>활용 목적에 「업무 자료 조회 교육 실습」처럼 적고, 화면이 요구하는 항목을 채워 신청합니다. 무엇을 넣을지 모르겠으면 강사 화면을 따라 합니다.</li>
-        <li>신청 내역에서 상태가 「신청」 또는 「승인」으로 보이면 끝입니다.</li>
+        <li><b>API인증키(OC)</b> 칸에 가입한 이메일의 <b>@ 앞부분</b>을 넣고 [중복확인]을 누릅니다. 이미 쓰는 값이라고 나오면 뒤에 글자를 조금 붙입니다.</li>
+        <li><b>공동활용 법령종류</b>는 맨 위 <b>「전체선택」</b>을 체크합니다. 최소한 <b>대한민국 현행법령 → 목록 JSON</b> 은 체크돼 있어야 5단계 법령 조회가 됩니다.</li>
+        <li>신청 내역에서 승인여부가 「승인」, 활용상태가 「연결」로 보이면 끝입니다. 바로 보입니다.</li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>신청 내역에 내 신청이 한 줄 보인다.</p></div></div>
-      <div class="box tip"><b>OC 가 뭔가요</b>이 API 의 키는 <code class="k">OC</code> 라는 이름으로, 가입한 이메일의 <b>@ 앞부분</b>입니다. 내 신청이 승인되면 <code class="k">.env</code> 의 교육용 OC 를 내 것으로 바꿔 끼우면 됩니다.</div>
+      <div class="row"><b>확인</b><div><p>신청 내역에 내 신청이 승인여부 「승인」으로 한 줄 보인다.</p></div></div>
+      <div class="box tip"><b>OC 가 뭔가요</b>이 API 의 키는 <code class="k">OC</code> 라는 이름으로, 신청 때 직접 정한 값(이메일 @ 앞부분)이 그대로 키입니다. 따로 발급되는 긴 키는 없고, 잊으면 <b>마이페이지 → API인증키관리</b>에서 봅니다. 자동 승인이라 <code class="k">.env</code> 의 교육용 OC 를 내 것으로 바로 바꿔 끼워도 됩니다.</div>
     </div>
   </article>
 </section>
@@ -410,7 +412,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><th>오늘 만든 것</th><th>다음 과정(Advance)에서</th></tr>
     <tr><td>세 길로 가져와 엑셀 한 파일로 모았다 — 매번 말로 시켰다</td><td>같은 수집을 <b>스크립트로 저장</b>하고 <b>작업 스케줄러</b>로 매일 정해진 시각에 돌린다. 사람이 화면 앞에 없으니 결과는 <b>슬랙으로 알려 받는다</b></td></tr>
   </table></div>
-  <div class="box tip"><b>수업 끝</b>작업 폴더의 <code class="k">.env</code> 는 <b>다른 곳에 복사하거나 올리지 않습니다.</b> 2단계 신청이 승인되면 <code class="k">LAW_OC</code> 를 내 것으로 바꿉니다. 수고하셨습니다.</div>
+  <div class="box tip"><b>수업 끝</b>작업 폴더의 <code class="k">.env</code> 는 <b>다른 곳에 복사하거나 올리지 않습니다.</b> 계속 쓰려면 <code class="k">LAW_OC</code> 를 2단계에서 신청한 내 OC 로 바꿉니다. 수고하셨습니다.</div>
 </section>
 </details>
 
@@ -423,7 +425,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>「.env 가 없다」고 한다</td><td>다른 폴더를 열었다 · 파일을 폴더 맨 위가 아닌 곳에 넣었다</td><td>탐색기 맨 위에 <code class="k">.env</code> 가 보이는지 확인 · 그 폴더에서 <code class="k">claude</code></td></tr>
     <tr><td><code class="k">/mcp</code> 에 Google Drive 가 없다</td><td>연결 뒤 Claude Code 를 다시 켜지 않았다 · 다른 계정으로 로그인했다</td><td><code class="k">exit</code> → <code class="k">claude</code> · claude.ai 와 Claude Code 가 같은 계정인지 확인</td></tr>
     <tr><td>시트를 못 찾는다</td><td>공유받은 시트를 한 번도 열지 않았다 · 이름이 다르다</td><td>브라우저로 시트를 한 번 열고, 이름을 그대로 복사해 다시 시킨다</td></tr>
-    <tr><td>법령 조회에서 「사용자 정보 검증에 실패」</td><td>OC 값이 틀렸다 · 승인 전인 내 OC 로 바꿨다</td><td>받은 <code class="k">.env</code> 원본의 교육용 OC 로 되돌린다</td></tr>
+    <tr><td>법령 조회에서 「사용자 정보 검증에 실패」</td><td>OC 값이 틀렸다 · 내 OC 로 바꿨다면 철자가 다르다</td><td>받은 <code class="k">.env</code> 원본의 교육용 OC 로 되돌린다</td></tr>
     <tr><td>법령이 여러 개 나온다</td><td>이름이 비슷한 시행령 · 시행규칙이 같이 걸렸다</td><td>「법률만」이라고 덧붙인다</td></tr>
     <tr><td>크롤링 CSV 글 수가 두 배다</td><td>같은 글이 카드 · 목록 두 모양으로 들어 있다</td><td>「같은 글은 하나로 줄여 줘」</td></tr>
     <tr><td>CSV 를 엑셀로 열면 한글이 깨진다</td><td>BOM 없는 UTF-8 로 저장됐다</td><td>「엑셀에서 한글이 안 깨지게 UTF-8 BOM 으로 다시 저장해 줘」</td></tr>
@@ -443,6 +445,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.3</b></td><td>2026-10-07</td><td>
+      <ul><li>2단계: 법령 API 는 신청하면 바로 자동 승인된다(실측) — 「승인까지 시간이 걸린다」를 고쳤다</li>
+      <li>2단계: OC 칸 입력법과 「공동활용 법령종류 = 전체선택(최소 현행법령 목록 JSON)」을 넣었다</li></ul></td></tr>
     <tr><td><b>v1.2</b></td><td>2026-10-07</td><td>
       <ul><li>4 · 6단계 카드에도 「새 프로그램은 설치하지 마」를 넣었다 — 막혔을 때 표의 「카드를 그대로 다시 붙여넣는다」가 이 두 단계에서는 듣지 않았다</li>
       <li>준비물에 「입문 체험A 웹앱」(9단계)을 넣었다</li></ul></td></tr>
