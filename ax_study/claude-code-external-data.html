@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.1 · 2026-10-06</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.2 · 2026-10-07</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -206,6 +206,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>회사 구글 계정</td><td>3단계 커넥터 연결에 씁니다</td></tr>
     <tr><td>이메일 주소</td><td>2단계 국가법령정보 가입에 씁니다</td></tr>
     <tr><td>실습 시트 링크</td><td>4단계에서 읽을 구글 시트. 진행자가 수업 중에 알려 줍니다</td></tr>
+    <tr><td>입문 체험A 웹앱</td><td>9단계에서 배포 설정을 다시 봅니다. 없으면 강사 화면으로 봅니다</td></tr>
   </table></div>
   <div class="box warn"><b>주의</b>가져온 파일은 작업 폴더에만 둡니다. 회사 밖으로 보내거나 인터넷에 올리지 않습니다.</div>
 </section>
@@ -280,7 +281,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>방법</b><div><ol>
         <li>진행자가 알려 준 <b>실습 시트</b>를 브라우저로 한 번 열어 둡니다(내 드라이브 「공유 문서함」에 들어옵니다).</li>
         <li>붙여넣습니다. <b>시트 이름</b>은 진행자가 알려 준 이름으로 바꿉니다.
-          <div class="cmd"><code>구글 드라이브에서 「시트 이름」 시트를 찾아 읽고, 핵심을 3줄로 요약해 줘. 그다음 시트 내용을 이 폴더에 시트.csv 로 저장하고, 시트에 보이는 행 수와 CSV 행 수가 같은지 알려 줘.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>구글 드라이브에서 「시트 이름」 시트를 찾아 읽고, 핵심을 3줄로 요약해 줘. 그다음 시트 내용을 이 폴더에 시트.csv 로 저장하고, 시트에 보이는 행 수와 CSV 행 수가 같은지 알려 줘. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>시트를 <b>내려받지 않았는데</b> 요약이 나왔다. <code class="k">시트.csv</code> 가 생겼고 행 수가 시트와 같다.</p></div></div>
       <details class="q"><summary>심화 — 같은 시트에서 다른 것 묻기</summary>
@@ -334,7 +335,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>강사 시연</b><div><p>강사가 robots.txt 로 <b>게시판을 막아 둔</b> 교육청을 보여 줍니다. 「여기는 확인만 하고 가져오지 않는다」로 끝냅니다. 따라 하지 않습니다.</p></div></div>
       <div class="row"><b>방법</b><div><ol>
         <li>붙여넣습니다.
-          <div class="cmd"><code>https://enews.sen.go.kr/robots.txt 를 읽고, 서울시교육청 보도자료 목록 https://enews.sen.go.kr/news/list.do?step1=3&amp;step2=1 을 자동으로 가져와도 되는지 판단해 줘. 근거가 된 줄을 그대로 보여 줘. 아직 목록은 가져오지 마.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>https://enews.sen.go.kr/robots.txt 를 읽고, 서울시교육청 보도자료 목록 https://enews.sen.go.kr/news/list.do?step1=3&amp;step2=1 을 자동으로 가져와도 되는지 판단해 줘. 근거가 된 줄을 그대로 보여 줘. 아직 목록은 가져오지 마. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>「<code class="k">/news/</code> 가 허용(Allow)돼 있어 가져와도 된다」와 근거 줄이 나온다.</p></div></div>
       <div class="box warn"><b>하지 않는 것</b>로그인해야 보이는 페이지 · 개인정보가 있는 페이지 · robots.txt 나 이용 약관이 막은 페이지. 한 번에 수십 페이지를 가져오지 않습니다(오늘은 목록 1페이지만).</div>
@@ -442,6 +443,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.2</b></td><td>2026-10-07</td><td>
+      <ul><li>4 · 6단계 카드에도 「새 프로그램은 설치하지 마」를 넣었다 — 막혔을 때 표의 「카드를 그대로 다시 붙여넣는다」가 이 두 단계에서는 듣지 않았다</li>
+      <li>준비물에 「입문 체험A 웹앱」(9단계)을 넣었다</li></ul></td></tr>
     <tr><td><b>v1.1</b></td><td>2026-10-06</td><td>
       <ul><li>슬랙을 뺐다 — 수집 과정에서는 결과를 화면에서 바로 보므로 알림이 필요 없다. 슬랙 알림은 매일 자동으로 도는 Advance 과정에서 배운다</li>
       <li>각 단계 끝을 「슬랙으로 보내기」에서 「CSV 로 저장」으로 바꿨다. 새 8단계 「세 결과를 엑셀 한 파일로」 — 수집의 끝은 한곳에 쌓기</li>
