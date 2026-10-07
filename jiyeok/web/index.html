@@ -165,6 +165,10 @@ main{padding:10px 16px 0; max-width:1920px; margin:0 auto}
 .map-shell{position:relative}
 .map-reset-button{position:absolute;top:6px;left:6px;z-index:490;border:1px solid var(--line);border-radius:7px;background:rgba(255,255,255,.94);color:var(--brand);padding:5px 9px;font-size:10px;font-weight:800;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .map-reset-button:hover{background:var(--s100);border-color:var(--s350)}
+.map-multi-button{left:78px}
+.map-multi-button[aria-pressed="true"]{background:var(--brand);color:#fff;border-color:var(--brand)}
+.map-drill-button{top:auto;bottom:14px;left:50%;transform:translateX(-50%);padding:8px 14px;font-size:12px;background:var(--brand);color:#fff;border-color:var(--brand)}
+.map-drill-button:hover{background:var(--brand);opacity:.9}
 .main-basemaps{position:absolute;top:6px;right:6px;z-index:490;padding:2px 3px;background:rgba(255,255,255,.9);border-radius:6px;box-shadow:0 1px 4px rgba(0,0,0,.18)}
 .stage.adm-inline>.card{height:calc(100vh - 163px);min-height:500px}
 .inline-poi{height:100%;min-height:0;display:flex;flex-direction:column}
@@ -190,14 +194,14 @@ main{padding:10px 16px 0; max-width:1920px; margin:0 auto}
 .legend .lgnote{font-size:10px; color:var(--muted); font-weight:400}
 
 /* ---------- 랭킹 ---------- */
-.rank{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px 4px;padding:4px 6px 7px;overflow:visible}
+.rank{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 10px;padding:8px 10px 10px;overflow:visible}
 .rank .row{
-  display:grid; grid-template-columns:14px 18px minmax(0,1fr) auto auto; align-items:center; gap:3px;
-  padding:2px 3px; border-radius:5px; cursor:pointer; border:1px solid transparent;
-  font-size:11px;line-height:1.15;min-height:20px;
+  display:grid; grid-template-columns:16px 22px minmax(0,1fr) auto auto; align-items:center; gap:6px;
+  padding:5px 8px; border-radius:6px; cursor:pointer; border:1px solid transparent;
+  font-size:12px;line-height:1.2;min-height:30px;
 }
 .rank .row.selected{background:#e8f2fe; border-color:var(--s350)}
-.rank .pick{width:13px;height:13px;accent-color:var(--brand);cursor:pointer;margin:0}
+.rank .pick{width:15px;height:15px;accent-color:var(--brand);cursor:pointer;margin:0}
 .rank .row:hover{background:var(--s100); border-color:var(--s200)}
 .rank .no{color:var(--muted); font-weight:700; font-variant-numeric:tabular-nums; text-align:right}
 .rank .nm{font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -496,6 +500,8 @@ footer{display:none}
         <div class="map-shell">
           <div id="map"></div>
           <button type="button" class="map-reset-button" data-dashboard-reset>새로고침</button>
+          <button type="button" class="map-reset-button map-multi-button" data-map-multi aria-pressed="false" title="켜면 Ctrl 없이 클릭만으로 여러 지역을 고른다">다중 선택</button>
+          <button type="button" class="map-reset-button map-drill-button hidden" id="mapDrillButton"></button>
           <div class="basemaps main-basemaps" id="mainBasemaps"></div>
         </div>
         <div class="legend" id="legend"></div>
@@ -506,6 +512,7 @@ footer{display:none}
         <div class="poi-map-shell">
           <div id="map2"></div>
           <button type="button" class="map-reset-button" data-dashboard-reset>새로고침</button>
+          <button type="button" class="map-reset-button map-multi-button" data-map-multi aria-pressed="false" title="켜면 Ctrl 없이 클릭만으로 여러 지역을 고른다">다중 선택</button>
           <div class="basemaps poi-basemaps" id="basemaps"></div>
         </div>
       </div>
@@ -1065,7 +1072,7 @@ function drawChoropleth(geo, metrics, onClick, filterFn){
       lyr.on("mouseout",  () => lyr.setStyle(selectedRegionStyle(p.code,metrics)));
       lyr.on("click", e => {
         const original=e.originalEvent||{};
-        if(original.ctrlKey||original.metaKey){
+        if(original.ctrlKey||original.metaKey||mapMultiPick){
           if(original.preventDefault) original.preventDefault();
           toggleMapRegionSelection(p.code);
         }else onClick(p);
@@ -1158,6 +1165,30 @@ function updateRankSelectionDisplay(){
     if(checkbox) checkbox.checked=selected;
   });
   drawRegionFilterSteps();
+  syncMapDrillButton();
+}
+let mapMultiPick=false;
+/* 시군구를 2개 이상 고른 상태 = 그 안에서 동을 고르려는 것 (A안, 2026-10-07).
+   목록 패널을 닫거나 지도 하단 버튼을 누르면 고른 시군구들의 행정동 지도로 내려간다. */
+function multiSggPending(){
+  const ctx=state.selectionContext;
+  return !!(ctx && ctx.level==="sgg" && state.sggs.length>=2);
+}
+function drillIntoSelectedSggs(){
+  if(multiSggPending()) viewSggSelection(state.sggs);
+}
+function closeRankFilter(){
+  const panel=document.getElementById("rankFilterPanel");
+  const wasOpen=panel && !panel.classList.contains("hidden");
+  setRankFilterOpen(false);
+  if(wasOpen) drillIntoSelectedSggs();
+}
+function syncMapDrillButton(){
+  const btn=document.getElementById("mapDrillButton");
+  if(!btn) return;
+  const on=multiSggPending();
+  btn.classList.toggle("hidden",!on);
+  if(on) btn.textContent=`선택한 ${state.sggs.length}개 시군구의 행정동 고르기 →`;
 }
 function toggleMapRegionSelection(code){
   const ctx=state.selectionContext;
@@ -1286,22 +1317,32 @@ function initPoiBrandFilters(){
 }
 document.addEventListener("pointerdown",e=>{
   const bar=document.getElementById("regionFilterbar");
-  if(bar && !bar.contains(e.target)) setRankFilterOpen(false);
+  if(bar && !bar.contains(e.target) && !e.target.closest("#mapDrillButton")) closeRankFilter();
   const age=document.getElementById("ageFilter");
   if(age && !age.contains(e.target)) setAgeFilterOpen(false);
   if(!e.target.closest(".poi-brand-filter")) setPoiBrandFilterOpen(null,false);
 },true);
 document.getElementById("rankFilterClose").onclick=e=>{
   e.stopPropagation();
-  setRankFilterOpen(false);
+  closeRankFilter();
 };
+document.getElementById("mapDrillButton").onclick=e=>{
+  e.stopPropagation();
+  setRankFilterOpen(false);
+  drillIntoSelectedSggs();
+};
+document.querySelectorAll("[data-map-multi]").forEach(b=>b.onclick=e=>{
+  e.stopPropagation();
+  mapMultiPick=!mapMultiPick;
+  document.querySelectorAll("[data-map-multi]").forEach(x=>x.setAttribute("aria-pressed",String(mapMultiPick)));
+});
 document.getElementById("ageFilterClose").onclick=e=>{
   e.stopPropagation();
   setAgeFilterOpen(false);
 };
 document.addEventListener("keydown",e=>{
   if(e.key!=="Escape") return;
-  setRankFilterOpen(false);
+  closeRankFilter();
   setAgeFilterOpen(false);
   setPoiBrandFilterOpen(null,false);
 });
@@ -1310,10 +1351,11 @@ function drawRank(title, rows, onClick){
   lastRank = {title, rows, onClick};
   document.getElementById("rankTitle").textContent = title;
   document.getElementById("rankHint").textContent =
-    `${curMetric.label} 기준 · 일반 지도 클릭은 1개 선택 · Ctrl+지도 클릭은 다중 선택`;
+    `${curMetric.label} 기준 · 지도 클릭은 1개 선택 · Ctrl+클릭 또는 [다중 선택] 켜고 클릭하면 여러 개`;
   document.getElementById("rankFilterCount").textContent = state.selectedCodes.size
     ? `${state.selectedCodes.size}개 선택` : `${rows.length}개 지역`;
   drawRegionFilterSteps();
+  syncMapDrillButton();
   const actions = document.getElementById("rankActions");
   actions.innerHTML = rows.length ? `<button data-act="all">전체 선택</button><button data-act="clear">체크 해제</button>` : "";
   const allBtn = actions.querySelector('[data-act="all"]');
@@ -1544,12 +1586,6 @@ async function viewSggSelection(sggs,preselectedCodes=null){
   const openAdm=code=>{
     const row=rows.find(r=>String(r.code)===String(code));
     if(!row) return;
-    const sggParent=parents.find(r=>String(r.code)===row._parentSggCode);
-    if(sggParent){
-      state.sggs=[sggParent]; state.sgg=sggParent;
-      const sidoParent=state.sidos.find(r=>String(sggParent.code).slice(0,2)===String(r.code));
-      if(sidoParent){ state.sidos=[sidoParent]; state.sido=sidoParent; }
-    }
     viewAdm({code:String(row.code),name:row.name});
   };
   drawChoropleth(geo, met, p => openAdm(p.code));
@@ -2306,7 +2342,7 @@ function drawPoi(poi, admCode, admGeoOverride=null){
         const original=e.originalEvent||{};
         if(original.preventDefault) original.preventDefault();
         if(original.stopPropagation) original.stopPropagation();
-        if(original.ctrlKey||original.metaKey){
+        if(original.ctrlKey||original.metaKey||mapMultiPick){
           toggleMapRegionSelection(f.properties.code);
           return;
         }
@@ -2314,14 +2350,6 @@ function drawPoi(poi, admCode, admGeoOverride=null){
         const ctx=state.selectionContext;
         const row=ctx&&ctx.rows.find(r=>String(r.code)===code);
         if(!row) return;
-        const sggCode=code.slice(0,5);
-        const sggParent=state.sggs.find(r=>String(r.code)===sggCode) ||
-          (state.sgg&&String(state.sgg.code)===sggCode?state.sgg:null);
-        if(sggParent){
-          state.sggs=[sggParent]; state.sgg=sggParent;
-          const sidoParent=state.sidos.find(r=>sggCode.slice(0,2)===String(r.code));
-          if(sidoParent){ state.sidos=[sidoParent]; state.sido=sidoParent; }
-        }
         viewAdm({code,name:row.name});
       });
       }
