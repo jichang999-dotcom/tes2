@@ -316,11 +316,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>방법</b><div><ol>
         <li><b>.env 만들기</b> — 붙여넣습니다. 값은 비워 둔 칸만 만들게 합니다.
           <div class="cmd"><code>이 폴더 맨 위에 .env 파일을 만들고 LAW_OC= 한 줄을 넣어 줘. 값은 비워 둬. 이미 .env 가 있으면 다른 줄은 건드리지 말고 LAW_OC= 줄만 추가해 줘. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
-        <li>왼쪽 탐색기에서 <code class="k">.env</code> 를 열고 <code class="k">LAW_OC=</code> 바로 뒤에 <b>강사가 알려 준 OC</b> 를 붙여 씁니다(따옴표 · 띄어쓰기 없이). <kbd>Ctrl</kbd>+<kbd>S</kbd> 로 저장합니다. 키는 <b>채팅이 아니라 파일에</b> 직접 씁니다.</li>
+        <li>왼쪽 탐색기에서 <code class="k">.env</code> 를 열고 <code class="k">LAW_OC=</code> 바로 뒤에 <b>강사가 알려 준 OC</b> 를 붙여 씁니다(따옴표 · 띄어쓰기 없이). 윈도우 단축키 <kbd>Ctrl</kbd>+<kbd>S</kbd> 로 저장합니다(맥은 <kbd>Cmd</kbd>+<kbd>S</kbd>). 위쪽 탭의 파일 이름 옆 <b>●</b> 가 사라지면 저장된 것입니다. 키는 <b>채팅이 아니라 파일에</b> 직접 씁니다.</li>
         <li><b>법령 조회</b> — 붙여넣습니다. 「법령 이름」을 위 표에서 고른 것으로 바꿉니다.
-          <div class="cmd"><code>이 폴더 .env 의 LAW_OC 를 OC 값으로 써서 국가법령정보 OPEN API(http://www.law.go.kr/DRF/lawSearch.do · target=law · type=JSON)에서 「법령 이름」을 찾아 줘. 현행 법령의 법령명 · 공포일자 · 시행일자 · 제개정 구분을 표로 보여 주고, 같은 내용을 이 폴더에 법령.csv 로 저장해 줘. OC 값은 화면에 쓰지 마. 판례는 조회하지 마. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>이 폴더 .env 의 LAW_OC 를 OC 값으로 써서 국가법령정보 OPEN API(http://www.law.go.kr/DRF/lawSearch.do · target=law · type=JSON)에서 「법령 이름」을 찾아 줘. 현행 법령의 법령명 · 공포일자 · 시행일자 · 제개정 구분을 표로 보여 주고, law 폴더를 만들어서 법령.csv 로 저장해 줘. OC 값은 화면에 쓰지 마. 판례는 조회하지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>법령 이름 · 공포일자 · 시행일자가 화면과 <code class="k">법령.csv</code> 에 같은 값으로 들어 있다. <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 에서 같은 법을 검색해 시행일자가 맞는지 한 번 대조한다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>법령 이름 · 공포일자 · 시행일자가 화면과 <code class="k">law\법령.csv</code> 에 같은 값으로 들어 있다. <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 에서 같은 법을 검색해 시행일자가 맞는지 한 번 대조한다.</p></div></div>
       <div class="box warn"><b>주의</b>조회 결과는 <b>법률 자문이 아닙니다.</b> 업무 판단은 원문과 담당 부서 확인을 거칩니다.</div>
       <details class="q"><summary>심화 — 바뀐 내용까지 받아 보기</summary>
         <p>「방금 찾은 법령의 본문 API(lawService.do)로 최근 개정 이유를 받아 3줄로 요약해 줘」라고 이어서 시킵니다. 판례 본문은 화면이 늦게 채워지는 구조라 이 방법으로는 잘 안 옵니다 — 그래서 오늘은 법령만 봅니다.</p></details>
@@ -378,7 +378,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <p>수집의 끝은 <b>한곳에 쌓기</b>입니다. 세 길로 가져온 결과를 엑셀 한 파일에 시트 3장으로 모읍니다.</p>
       <div class="row"><b>방법</b><div><ol>
         <li>붙여넣습니다.
-          <div class="cmd"><code>이 폴더의 시트.csv · 법령.csv · 보도자료.csv 를 오늘_수집.xlsx 한 파일로 모아 줘. 시트 이름은 시트 · 법령 · 보도자료로 하고, 첫 줄은 고정하고 열 너비를 내용에 맞춰 줘. python 으로 하고, 엑셀용 도구(openpyxl)가 없으면 설치해도 돼. 다 되면 시트마다 행 수를 CSV 와 비교해서 알려 줘.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>이 폴더의 시트.csv · law 폴더의 법령.csv · 이 폴더의 보도자료.csv 를 오늘_수집.xlsx 한 파일로 모아 줘. 시트 이름은 시트 · 법령 · 보도자료로 하고, 첫 줄은 고정하고 열 너비를 내용에 맞춰 줘. python 으로 하고, 엑셀용 도구(openpyxl)가 없으면 설치해도 돼. 다 되면 시트마다 행 수를 CSV 와 비교해서 알려 줘.</code><button type="button">복사</button></div></li>
         <li>탐색기에서 <code class="k">오늘_수집.xlsx</code> 를 엑셀로 엽니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>시트가 3장이고, 시트마다 행 수가 CSV 와 같다. 한글이 깨지지 않았다.</p></div></div>
@@ -451,7 +451,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.3</b></td><td>2026-10-07</td><td>
-      <ul><li>5단계 맨 앞에 「.env 만들기」 카드를 넣었다 — 빈 <code class="k">LAW_OC=</code> 칸만 만들게 하고, 강사가 알려 준 OC 는 교육생이 파일에 직접 쓴다. 준비물의 「강사가 준 .env 파일」은 「교육용 OC(수업 중 안내)」로 바꿨다</li>
+      <ul><li>5단계: 저장 단축키를 윈도우 기준(Ctrl+S · 맥 Cmd+S)으로 적고, 법령 조회 카드가 law 폴더를 만들어 law\법령.csv 로 저장하게 바꿨다(8단계 카드도 그 경로로)</li>
+      <li>5단계 맨 앞에 「.env 만들기」 카드를 넣었다 — 빈 <code class="k">LAW_OC=</code> 칸만 만들게 하고, 강사가 알려 준 OC 는 교육생이 파일에 직접 쓴다. 준비물의 「강사가 준 .env 파일」은 「교육용 OC(수업 중 안내)」로 바꿨다</li>
       <li>4단계를 「내 구글 시트에 시트 만들고 데이터 넣기」로 바꿨다 — 내 시트 링크 + ① 새 시트(탭) 만들기 ② 데이터 넣기(시트.csv 저장 포함). 지우기는 뺐다</li>
       <li>4단계: 폴더 밖 읽기 선택창이 뜨면 1번 · 데이터는 지어내도 되는 것으로(날씨 같은 바깥 데이터는 5단계 몫) 두 줄을 넣었다 (2.1.292 실측)</li>
       <li>4단계를 「내 구글 시트에 데이터 만들고 지우기」로 바꿨다 — 복사 카드 없이 내 이름 시트 링크를 붙여 말로 ① 만들기(시트.csv 저장 포함) ② 지우기. 3단계는 Google Sheets 도 연결한다(칸 쓰기 · 지우기는 Sheets 연결이 한다)</li>
