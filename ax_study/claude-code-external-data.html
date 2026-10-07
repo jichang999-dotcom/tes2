@@ -152,13 +152,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="ghead">③ API <small>5단계</small></li>
   <li><a href="#p3">PART 3 API — 키로 받아 오기</a></li>
   <li class="sub"><a href="#s5">5. 개인정보 보호법 확인 · 시트에 넣기</a></li>
-  <li class="ghead">④ 크롤링 <small>6~7단계</small></li>
+  <li class="ghead">④ 크롤링 <small>6~8단계</small></li>
   <li><a href="#p4">PART 4 크롤링 — 화면에서 가져오기</a></li>
   <li class="sub"><a href="#s6">6. 가져와도 되는지 먼저 확인</a></li>
   <li class="sub"><a href="#s7">7. 학원 공고 목록 → 검산 → 저장</a></li>
-  <li class="ghead">⑤ 모으기 · 마무리 <small>8~9단계</small></li>
-  <li><a href="#p5">PART 5 모으기 · 마무리</a></li>
-  <li class="sub"><a href="#s8">8. 크롤링 결과를 구글 시트에 업데이트</a></li>
+  <li class="sub"><a href="#s8">8. 크롤링 결과를 구글 시트에 적재</a></li>
+  <li class="ghead">⑤ 마무리 <small>9단계</small></li>
+  <li><a href="#p5">PART 5 마무리</a></li>
   <li class="sub"><a href="#s9">9. 웹앱 배포 다시 보기</a></li>
   <li class="sub"><a href="#wrap">마무리 — 세 길 중 무엇을 고를까</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
@@ -332,9 +332,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g4">
-<summary><span class="gno">④</span> 크롤링 <small>6~7단계 · 20분</small></summary>
+<summary><span class="gno">④</span> 크롤링 <small>6~8단계 · 30분</small></summary>
 <section class="part" id="p4">
-  <h2><small>PART 4</small>크롤링 — 화면에서 가져오기 (6~7단계)</h2>
+  <h2><small>PART 4</small>크롤링 — 화면에서 가져와 시트에 적재 (6~8단계)</h2>
   <p class="lead">서울시교육청 고시 · 공고 게시판의 <b>학원 관련 공고</b>는 커넥터도 API 도 없습니다. 사람이 보는 웹페이지에서 가져와야 합니다. 크롤링은 <b>긁는 법보다 두 가지 습관</b>이 중요합니다 — <b>① 가져와도 되는지 먼저 확인</b>, <b>② 빠짐없이 왔는지 검산</b>.</p>
 
   <article class="step" id="s6" data-step="6">
@@ -366,18 +366,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <p>「학원 운영과 관련 있나」는 제목에 「학원」이 있어도 아닐 수 있고(대학원 · 학교법인), 없어도 맞을 수 있습니다(예: 「교습소 · 개인과외 신고 안내」). 단어 검색으로는 못 하는 일이라, 크롤링에 Claude 를 붙이는 이유가 여기 있습니다.</p></details>
     </div>
   </article>
-</section>
-</details>
-
-<details class="grp" id="g5">
-<summary><span class="gno">⑤</span> 모으기 · 마무리 <small>8~9단계 · 20분</small></summary>
-<section class="part" id="p5">
-  <h2><small>PART 5</small>모으기 · 마무리 (8~9단계)</h2>
 
   <article class="step" id="s8" data-step="8">
-    <header><span class="no">8</span><h3>크롤링 결과를 구글 시트에 업데이트</h3><label><input type="checkbox">완료</label></header>
+    <header><span class="no">8</span><h3>크롤링 결과를 구글 시트에 적재</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>수집의 끝은 <b>한곳에 쌓기</b>입니다. 7단계에서 크롤링한 학원 공고를 4단계 <b>내 구글 시트</b>에 「학원공고」 시트(탭)로 올립니다. 다시 크롤링하면 같은 카드로 <b>업데이트</b>합니다.</p>
+      <p>크롤링의 끝은 <b>적재</b> — 쓸 수 있는 곳에 쌓는 것입니다. 7단계에서 추출한 학원 공고를 4단계 <b>내 구글 시트</b>에 「학원공고」 시트(탭)로 올립니다. 다시 크롤링하면 같은 카드로 <b>업데이트</b>합니다.</p>
       <div class="row"><b>방법</b><div><ol>
         <li>4단계에서 쓴 <b>내 이름 구글 시트 링크</b>를 맨 앞에 붙이고, 이어서 붙여넣습니다.
           <div class="cmd"><code>이 구글 시트 파일 안에 「학원공고」라는 시트를 새로 만들고, 이 폴더 crawling 폴더의 학원공고.csv 내용을 첫 줄 제목까지 그대로 넣어 줘. 「학원공고」 시트가 이미 있으면 새로 만들지 말고 내용을 지운 뒤 다시 넣어 업데이트해 줘. 다 되면 넣은 행 수가 CSV 행 수와 같은지 알려 줘.</code><button type="button">복사</button></div></li>
@@ -387,6 +380,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="box tip"><b>구글 연결이 안 됐다면</b>3단계를 강사 화면으로 넘겼다면 이 단계도 강사 화면으로 봅니다. <code class="k">crawling\학원공고.csv</code> 가 남아 있으면 오늘 수집은 끝난 것입니다.</div>
     </div>
   </article>
+</section>
+</details>
+
+<details class="grp" id="g5">
+<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 10분</small></summary>
+<section class="part" id="p5">
+  <h2><small>PART 5</small>마무리 (9단계)</h2>
 
   <article class="step" id="s9" data-step="9">
     <header><span class="no">9</span><h3>웹앱 배포 다시 보기</h3><label><input type="checkbox">완료</label></header>
@@ -453,7 +453,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.3</b></td><td>2026-10-07</td><td>
-      <ul><li>7단계 결과를 <code class="k">crawling</code> 폴더에 저장. 8단계를 「세 결과를 엑셀 한 파일로」에서 <b>「크롤링 결과를 구글 시트에 업데이트」</b>로 바꿨다 — 4단계 내 시트에 「학원공고」 탭, 이미 있으면 지우고 다시 넣기(2회 실측 · 11행 일치 · 탭 1개 유지). 엑셀 · openpyxl 설치 · Python 없을 때 상자를 뺐다</li>
+      <ul><li>8단계를 PART 4 크롤링 안으로 옮기고 제목을 「크롤링 결과를 구글 시트에 적재」로(크롤링 = 추출 → 검산 → 적재). PART 4 = 6~8단계 · 30분, PART 5 = 마무리 9단계 · 10분. 단계 번호는 그대로</li>
+      <li>7단계 결과를 <code class="k">crawling</code> 폴더에 저장. 8단계를 「세 결과를 엑셀 한 파일로」에서 <b>「크롤링 결과를 구글 시트에 업데이트」</b>로 바꿨다 — 4단계 내 시트에 「학원공고」 탭, 이미 있으면 지우고 다시 넣기(2회 실측 · 11행 일치 · 탭 1개 유지). 엑셀 · openpyxl 설치 · Python 없을 때 상자를 뺐다</li>
       <li>6 · 7단계 크롤링 소재를 서울시교육청 보도자료 → <b>고시 · 공고 게시판 「학원」 검색 목록</b>(www.sen.go.kr · q_bbsSn=1100)으로 바꿨다 — robots 는 게시판 번호까지 본다 · 학원공고.csv(번호 · 부서 · 제목 · 날짜 · 링크, 작성자 이름 제외) · 검산 = 글 수 10 + 번호 연속 · 「관련」 = 학원 · 교습소 운영 O / 대학원 · 학교법인 빈칸(1회 실측 6/10). 8단계 시트 이름도 학원공고로</li>
       <li>5단계: 저장 단축키를 윈도우 기준(Ctrl+S · 맥 Cmd+S)으로 적고, 법령 조회 카드가 law 폴더를 만들어 law\법령.csv 로 저장하게 바꿨다(8단계 카드도 그 경로로). 법령 조회 카드를 「개인정보 보호법 조문을 받아 사람인 같은 채용 사이트 수집이 이 법에 걸리는지 확인」으로 바꿨다(본문 API lawService.do · 근거 조문 표 → law\법령.csv · 1회 실측 17개 조문 · 약 1분 30초). 4번 「구글 시트에 넣기」 카드 추가 — 4단계 내 시트에 「개인정보보호법」 탭을 만들고 법령.csv 를 넣는다(1회 실측 18행 일치 · 약 1분)</li>
       <li>5단계 맨 앞에 「.env 만들기」 카드를 넣었다 — 빈 <code class="k">LAW_OC=</code> 칸만 만들게 하고, 강사가 알려 준 OC 는 교육생이 파일에 직접 쓴다. 준비물의 「강사가 준 .env 파일」은 「교육용 OC(수업 중 안내)」로 바꿨다</li>
