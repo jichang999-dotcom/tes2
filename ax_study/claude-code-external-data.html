@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.3 · 2026-10-07</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.4 · 2026-10-08</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -159,7 +159,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="sub"><a href="#s8">8. 크롤링 결과를 구글 시트에 적재</a></li>
   <li class="ghead">⑤ 마무리 <small>9단계</small></li>
   <li><a href="#p5">PART 5 마무리</a></li>
-  <li class="sub"><a href="#s9">9. 웹앱 배포 다시 보기</a></li>
+  <li class="sub"><a href="#s9">9. 수집 결과 페이지 배포</a></li>
   <li class="sub"><a href="#wrap">마무리 — 세 길 중 무엇을 고를까</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
   <li><a href="#p9">PART 6 막혔을 때</a></li>
@@ -206,9 +206,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>회사 구글 계정</td><td>3단계 커넥터 연결에 씁니다</td></tr>
     <tr><td>이메일 주소</td><td>2단계 국가법령정보 가입에 씁니다</td></tr>
     <tr><td>내 이름 구글 시트</td><td>4단계에서 새 시트(탭)를 만들고 데이터를 넣을 파일. 진행자가 내 이름으로 미리 만들어 둡니다</td></tr>
-    <tr><td>입문 체험A 웹앱</td><td>9단계에서 배포 설정을 다시 봅니다. 없으면 강사 화면으로 봅니다</td></tr>
+    <tr><td>입문 체험A 웹앱</td><td>9단계에서 구글 웹앱 배포 설정을 다시 봅니다. 없으면 강사 화면으로 봅니다</td></tr>
   </table></div>
-  <div class="box warn"><b>주의</b>가져온 파일은 작업 폴더에만 둡니다. 회사 밖으로 보내거나 인터넷에 올리지 않습니다.</div>
+  <div class="box warn"><b>주의</b>가져온 파일은 작업 폴더에만 둡니다. 회사 밖으로 보내거나 인터넷에 올리지 않습니다. 예외는 9단계 하나 — 공개 자료(법령 · 교육청 공고)로 만든 결과 페이지만 배포해 봅니다.</div>
 </section>
 
 <details class="grp" id="g1">
@@ -387,26 +387,45 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g5">
-<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 10분</small></summary>
+<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 15분</small></summary>
 <section class="part" id="p5">
   <h2><small>PART 5</small>마무리 (9단계)</h2>
 
   <article class="step" id="s9" data-step="9">
-    <header><span class="no">9</span><h3>웹앱 배포 다시 보기</h3><label><input type="checkbox">완료</label></header>
+    <header><span class="no">9</span><h3>수집 결과 페이지 배포</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>입문 체험A 에서 만든 Apps Script 웹앱을 <b>다른 사람이 쓰게</b> 열 때 헷갈리는 세 가지만 다시 봅니다.</p>
+      <p>5단계 법령과 7단계 학원 공고를 <b>웹페이지 한 장</b>으로 만들어 동료에게 보여 줍니다. 같은 페이지라도 <b>어디에 올리느냐</b>에 따라 누가 보는지 · 언제까지 열리는지가 다릅니다. 세 가지로 내보내 보고 비교합니다.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li><b>페이지 만들기</b> — 붙여넣습니다. 1분 남짓 걸립니다. 다 되면 탐색기에서 <code class="k">publish\수집결과.html</code> 을 오른쪽 클릭 → <b>Reveal in File Explorer</b>(파일 탐색기에 표시) → 더블클릭해 브라우저로 봅니다.
+          <div class="cmd"><code>law\법령.csv 와 crawling\학원공고.csv 로 결과 페이지를 publish\수집결과.html 한 파일로 만들어. 외부 파일 · 인터넷 라이브러리 없이 한 장에 다 넣고, 맨 위에 수집 날짜와 출처를 적어. 링크는 누르면 새 창으로 열리게 해. 새 프로그램은 설치하지 마</code><button type="button">복사</button></div></li>
+        <li><b>구글 웹앱으로 배포</b> — 회사 구글 계정으로 <a href="https://script.google.com" target="_blank" rel="noopener">script.google.com</a> → <b>새 프로젝트</b>.
+          <ol>
+            <li><code class="k">Code.gs</code> 내용을 지우고 아래를 붙여넣습니다.
+              <div class="cmd"><code style="white-space:pre-wrap">function doGet() {
+  return HtmlService.createHtmlOutputFromFile('수집결과').setTitle('수집 결과');
+}</code><button type="button">복사</button></div></li>
+            <li>파일 옆 <b>+</b> → <b>HTML</b> → 이름 <code class="k">수집결과</code>. VS Code 에서 <code class="k">publish\수집결과.html</code> 을 열어 <kbd>Ctrl</kbd>+<kbd>A</kbd> · <kbd>Ctrl</kbd>+<kbd>C</kbd> → 새 HTML 파일 내용을 지우고 붙여넣고 저장합니다.</li>
+            <li><b>배포</b> → <b>새 배포</b> → 유형 <b>웹 앱</b> → 아래 표대로 고르고 배포 → 승인 → 웹앱 주소를 동료에게 보냅니다.</li>
+          </ol></li>
+        <li><b>Claude 웹사이트로 배포</b> — 붙여넣습니다. 게시한 페이지는 처음엔 <b>나만</b> 봅니다. 받은 링크를 열어 공유를 켠 뒤 동료에게 보냅니다.
+          <div class="cmd"><code>publish\수집결과.html 을 Claude 아티팩트로 게시해 줘. 게시한 링크를 알려 줘.</code><button type="button">복사</button></div></li>
+        <li><b>사내 로컬 서버 (강사 시연)</b> — 강사가 자기 PC 를 서버로 띄워 보여 줍니다. 따라 하지 않습니다. 강사가 알려 준 주소(<code class="k">http://강사PC주소:8000/수집결과.html</code>)를 내 브라우저로 열어 봅니다.</li>
+      </ol></div></div>
       <div class="tbl"><table>
-        <tr><th>설정</th><th>고를 것</th><th>차이</th></tr>
+        <tr><th>구글 웹앱 설정</th><th>고를 것</th><th>차이</th></tr>
         <tr><td>액세스 권한</td><td>조직 내 모든 사용자 / 링크가 있는 모든 사용자</td><td>회사 자료면 <b>조직 내</b>. 「모든 사용자」는 회사 밖에서도 열린다</td></tr>
         <tr><td>실행 계정</td><td>나 / 웹앱에 액세스하는 사용자</td><td>「나」면 내 권한으로 시트를 읽고 쓴다. 「액세스하는 사용자」면 그 사람에게 시트 권한이 있어야 한다</td></tr>
         <tr><td>고친 뒤 반영</td><td><b>배포 관리</b> → 연필 → 새 버전</td><td>「새 배포」를 누르면 <b>주소가 바뀌어</b> 나눠 준 링크가 옛 판을 보여 준다</td></tr>
       </table></div>
-      <div class="row"><b>방법</b><div><ol>
-        <li>체험A 웹앱의 Apps Script 편집기를 엽니다(없으면 강사 화면으로 봅니다).</li>
-        <li><b>배포</b> → <b>배포 관리</b>에서 위 세 가지가 어떻게 되어 있는지 확인합니다.</li>
-        <li>동료에게 웹앱 주소를 보내 동료 계정으로 열리는지 봅니다.</li>
-      </ol></div></div>
-      <div class="row"><b>확인</b><div><p>동료 계정으로 웹앱이 열린다. 「새 배포」와 「새 버전」의 차이를 말할 수 있다.</p></div></div>
+      <div class="tbl"><table>
+        <tr><th>비교</th><th>구글 웹앱</th><th>Claude 웹사이트</th><th>사내 로컬 서버</th></tr>
+        <tr><td>「회사 사람만」 막는 법</td><td>액세스 권한 「조직 내」 (회사 구글 로그인)</td><td>공유 범위 지정 (Claude 계정)</td><td>사내망 안에서만 열림 (로그인 없음)</td></tr>
+        <tr><td>자료가 있는 곳</td><td>회사 구글 계정</td><td>회사 밖 (claude.ai) → <b>공개 자료만</b></td><td>내 PC</td></tr>
+        <tr><td>내 PC 를 끄면</td><td>계속 열린다</td><td>계속 열린다</td><td><b>사라진다</b></td></tr>
+        <tr><td>내용을 고치면</td><td>붙여넣고 <b>새 버전</b></td><td>다시 게시 (주소 그대로)</td><td>파일만 바꾸면 새로고침에 반영</td></tr>
+      </table></div>
+      <div class="row"><b>확인</b><div><p>브라우저로 연 페이지 맨 위에 수집 날짜와 출처가 있고, 법령 조문 표와 학원 공고 10건이 다 보인다. 공고 제목을 누르면 새 창으로 원문이 열린다. 웹앱 주소와 Claude 링크가 <b>동료 계정에서</b> 열린다. 세 방식의 차이(막는 법 · 자료 위치 · PC 를 끄면)를 말할 수 있다.</p></div></div>
+      <div class="box warn"><b>주의</b>로컬 서버는 띄운 폴더 안의 파일을 <b>전부</b> 보여 줍니다. 작업 폴더를 그대로 띄우면 <code class="k">.env</code>(API 키)까지 사내에 열립니다 — 그래서 강사는 <code class="k">publish</code> 폴더만 띄웁니다. 회사 자료로 만든 페이지는 Claude 웹사이트에 올리지 않습니다.</div>
     </div>
   </article>
 
@@ -455,6 +474,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.4</b></td><td>2026-10-08</td><td>
+      <ul><li>9단계를 「웹앱 배포 다시 보기」에서 <b>「수집 결과 페이지 배포」</b>로 바꿨다 — 법령 · 학원 공고 CSV 로 <code class="k">publish\수집결과.html</code> 한 장을 만들고(카드 3회 검증 3/3 · 17조문 · 공고 10건 · 링크 새 창 · 외부 파일 0 · .env 값 0) 구글 웹앱 · Claude 웹사이트로 배포, 사내 로컬 서버는 강사 시연. 세 방식 비교표를 넣었다. PART 5 = 15분</li>
+      <li>준비물 아래 주의 상자에 「9단계 공개 자료 페이지만 배포」 예외를 적었다</li></ul></td></tr>
     <tr><td><b>v1.3</b></td><td>2026-10-07</td><td>
       <ul><li>7단계 카드 두 장을 한 장으로 합쳤다 — 1 목록 저장(crawling\학원공고.csv) 2 검산(안 맞으면 멈춤) 3 관련 판단 4 관련 글만 본문 3줄 요약, 번호 순서로 적은 여러 줄 카드. 1회 실측: 10건 · 45~36 연속 · O 6 · 요약 6 · 이름 0 · 약 2분</li>
       <li>(앞 판) 7단계 두 번째 카드 = 「관련」 판단 + 관련 O 글만 상세 페이지 본문을 3줄 요약(「본문 요약」 열 · 작성자 이름 · 메뉴 글자 제외 · 첨부는 받지 않고 「내용은 첨부에 있음」 · 글 사이 1초). 6단계 카드는 목록 + 상세 글 주소 둘 다 허락 확인. 1회 실측: O 6 · 요약 6 · 이름 0 · 약 1분 10초</li>
@@ -481,7 +503,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <ul><li>첫 판(초안). 초급 체험을 「외부 데이터 연결」로 새로 만들었다 — 준비(Python · 법령 API 신청 체험) · MCP(종류 표 · 구글 커넥터 · 구글 시트) · API(국가법령정보 · 부서별 법령) · 크롤링(robots.txt 확인 · 서울시교육청 보도자료 · 검산) · 웹앱 배포 다시 보기</li>
       <li>옛 초급 체험(서브 에이전트 · 에이전트 팀)은 마스터 과정 체험으로 옮겼다</li></ul></td></tr>
   </table></div>
-  <p style="font-size:13px;color:var(--sub)">기준 버전: Claude Code 2.1.291</p>
+  <p style="font-size:13px;color:var(--sub)">기준 버전: Claude Code 2.1.293</p>
 </dialog>
 
 <script>
