@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.4 · 2026-10-08</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.5 · 2026-10-08</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -387,7 +387,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g5">
-<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 15분</small></summary>
+<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 20분</small></summary>
 <section class="part" id="p5">
   <h2><small>PART 5</small>마무리 (9단계)</h2>
 
@@ -409,7 +409,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           </ol></li>
         <li><b>Claude 웹사이트로 배포</b> — 붙여넣습니다. 게시한 페이지는 처음엔 <b>나만</b> 봅니다. 받은 링크를 열어 공유를 켠 뒤 동료에게 보냅니다.
           <div class="cmd"><code>publish\수집결과.html 을 Claude 아티팩트로 게시해 줘. 게시한 링크를 알려 줘.</code><button type="button">복사</button></div></li>
-        <li><b>사내 로컬 서버 (강사 시연)</b> — 강사가 자기 PC 를 서버로 띄워 보여 줍니다. 따라 하지 않습니다. 강사가 알려 준 주소(<code class="k">http://강사PC주소:8000/수집결과.html</code>)를 내 브라우저로 열어 봅니다.</li>
+        <li><b>사내 로컬 서버로 배포</b> — 내 PC 를 서버로 띄워 옆자리 동료가 열어 보게 합니다.
+          <ol>
+            <li><b>내 IP 주소 알기</b> — 붙여넣습니다. 나온 주소(예: <code class="k">192.168.122.12</code>)를 적어 둡니다.
+              <div class="cmd"><code>동료가 내 PC 에 접속할 때 쓸 사내 IP 주소(IPv4)를 하나만 알려 줘. 지금 연결된 와이파이나 유선 것으로 고르고, 설정은 아무것도 바꾸지 마.</code><button type="button">복사</button></div></li>
+            <li><b>서버 켜기</b> — Claude 가 돌고 있는 터미널 말고, 터미널 패널 오른쪽 위 <b>+</b> 로 <b>새 터미널</b>을 엽니다. 거기에 그대로 붙여넣고 <kbd>Enter</kbd>. <code class="k">Serving HTTP on … port 8000</code> 이 나오면 켜진 것입니다. 이 창은 닫지 않습니다.
+              <div class="cmd"><code>python -m http.server 8000 --directory publish</code><button type="button">복사</button></div>
+              Windows 보안 창(방화벽)이 뜨면 <b>허용</b>을 누릅니다.</li>
+            <li><b>동료에게 열어 보게 하기</b> — <code class="k">http://내IP주소:8000/</code> 를 메신저로 보냅니다. 동료 화면에 파일 목록이 뜨고 <b>수집결과.html 하나만</b> 보이면, 눌러서 페이지를 엽니다.</li>
+            <li><b>키가 안 새는지 확인</b> — 동료에게 <code class="k">http://내IP주소:8000/.env</code> 도 열어 보게 합니다. <b>404 · File not found</b> 가 나와야 맞습니다.</li>
+            <li><b>서버 끄기</b> — 서버 터미널을 클릭하고 <kbd>Ctrl</kbd>+<kbd>C</kbd>. 동료가 새로고침하면 이제 안 열립니다.</li>
+          </ol></li>
       </ol></div></div>
       <div class="tbl"><table>
         <tr><th>구글 웹앱 설정</th><th>고를 것</th><th>차이</th></tr>
@@ -419,13 +429,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       </table></div>
       <div class="tbl"><table>
         <tr><th>비교</th><th>구글 웹앱</th><th>Claude 웹사이트</th><th>사내 로컬 서버</th></tr>
-        <tr><td>「회사 사람만」 막는 법</td><td>액세스 권한 「조직 내」 (회사 구글 로그인)</td><td>공유 범위 지정 (Claude 계정)</td><td>사내망 안에서만 열림 (로그인 없음)</td></tr>
+        <tr><td>「회사 사람만」 막는 법</td><td>액세스 권한 「조직 내」 (회사 구글 로그인)</td><td>공유 범위 지정 (Claude 계정)</td><td>사내망 안에서만 열림 (로그인 없음 · 같은 망이면 누구나)</td></tr>
         <tr><td>자료가 있는 곳</td><td>회사 구글 계정</td><td>회사 밖 (claude.ai) → <b>공개 자료만</b></td><td>내 PC</td></tr>
         <tr><td>내 PC 를 끄면</td><td>계속 열린다</td><td>계속 열린다</td><td><b>사라진다</b></td></tr>
         <tr><td>내용을 고치면</td><td>붙여넣고 <b>새 버전</b></td><td>다시 게시 (주소 그대로)</td><td>파일만 바꾸면 새로고침에 반영</td></tr>
       </table></div>
-      <div class="row"><b>확인</b><div><p>브라우저로 연 페이지 맨 위에 수집 날짜와 출처가 있고, 법령 조문 표와 학원 공고 10건이 다 보인다. 공고 제목을 누르면 새 창으로 원문이 열린다. 웹앱 주소와 Claude 링크가 <b>동료 계정에서</b> 열린다. 세 방식의 차이(막는 법 · 자료 위치 · PC 를 끄면)를 말할 수 있다.</p></div></div>
-      <div class="box warn"><b>주의</b>로컬 서버는 띄운 폴더 안의 파일을 <b>전부</b> 보여 줍니다. 작업 폴더를 그대로 띄우면 <code class="k">.env</code>(API 키)까지 사내에 열립니다 — 그래서 강사는 <code class="k">publish</code> 폴더만 띄웁니다. 회사 자료로 만든 페이지는 Claude 웹사이트에 올리지 않습니다.</div>
+      <div class="row"><b>확인</b><div><p>브라우저로 연 페이지 맨 위에 수집 날짜와 출처가 있고, 법령 조문 표와 학원 공고 10건이 다 보인다. 공고 제목을 누르면 새 창으로 원문이 열린다. 웹앱 주소와 Claude 링크가 <b>동료 계정에서</b> 열린다. 로컬 서버 주소가 <b>동료 PC 에서</b> 열리고, <code class="k">/.env</code> 는 404 이며, 서버를 끄면 안 열린다. 세 방식의 차이(막는 법 · 자료 위치 · PC 를 끄면)를 말할 수 있다.</p></div></div>
+      <div class="box warn"><b>주의</b>로컬 서버는 띄운 폴더 안의 파일을 <b>전부</b>, 같은 망의 <b>누구에게나</b> 보여 줍니다. 명령 끝의 <code class="k">--directory publish</code> 를 빼면 작업 폴더 전체 — <code class="k">.env</code>(API 키)까지 사내에 열립니다. 이 부분은 지우거나 바꾸지 않습니다. 서버 터미널에서 <kbd>Ctrl</kbd>+<kbd>C</kbd> 를 누를 것 — Claude 터미널에서 누르면 Claude 가 꺼집니다. 회사 자료로 만든 페이지는 Claude 웹사이트에 올리지 않습니다.</div>
     </div>
   </article>
 
@@ -461,6 +471,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>8단계에서 「학원공고」 탭이 두 개 생겼다</td><td>「이미 있으면 업데이트」 문장을 빼고 붙여넣었다</td><td>「학원공고 (1) 시트는 지우고 학원공고 하나만 남겨 줘」</td></tr>
     <tr><td>1~7단계에서 Claude 가 프로그램(라이브러리)을 설치하자고 한다</td><td>카드의 「새 프로그램은 설치하지 마」가 빠졌다</td><td>거절하고 카드를 그대로 다시 붙여넣는다</td></tr>
     <tr><td><code class="k">python --version</code> 이 안 된다 · 스토어 창이 뜬다</td><td>설치 때 「Add python.exe to PATH」를 체크하지 않았다 · 터미널을 새로 열지 않았다</td><td>VS Code 를 껐다 켠다. 그래도 안 되면 설치 파일을 다시 열어 Uninstall → 체크하고 다시 설치</td></tr>
+    <tr><td>9단계 동료 PC 에서 로컬 서버 주소가 안 열린다</td><td>방화벽 창에서 허용을 안 눌렀다 · 동료가 다른 망(손님 와이파이 등)이다 · 주소를 잘못 적었다</td><td>내 PC 브라우저로 <code class="k">http://localhost:8000/</code> 이 열리는지 먼저 본다 → 열리면 같은 와이파이인지 · IP 를 다시 확인. 그래도 안 되면 회사 PC 정책으로 막힌 것이라 강사 화면으로 본다</td></tr>
+    <tr><td>9단계 서버 켜기에서 포트를 이미 쓰고 있다고 나온다</td><td>다른 터미널에 서버가 이미 켜져 있다</td><td>그 터미널에서 <kbd>Ctrl</kbd>+<kbd>C</kbd> · 또는 명령의 <code class="k">8000</code> 을 <code class="k">8001</code> 로 바꾸고 주소도 <code class="k">:8001</code> 로</td></tr>
     <tr><td>Claude 가 <code class="k">python3</code> 을 쓰다 막힌다</td><td>윈도우의 <code class="k">python3</code> 은 스토어 바로가기다</td><td>「python3 말고 python 으로 해」</td></tr>
   </table></div>
 </section>
@@ -474,8 +486,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.5</b></td><td>2026-10-08</td><td>
+      <ul><li>9단계 사내 로컬 서버를 강사 시연에서 <b>교육생 실습</b>으로 바꿨다 — IP 주소 카드(3회 검증 3/3) → 새 터미널에서 <code class="k">python -m http.server 8000 --directory publish</code> → 동료가 <code class="k">http://내IP:8000/</code> 로 열기 → <code class="k">/.env</code> 404 확인 → <kbd>Ctrl</kbd>+<kbd>C</kbd> 로 끄기 (실측: publish 만 열림 · .env · 상위 폴더 우회 404). PART 5 = 20분</li>
+      <li>막혔을 때 표에 로컬 서버 두 줄(동료 PC 에서 안 열림 · 포트 사용 중)을 넣었다</li></ul></td></tr>
     <tr><td><b>v1.4</b></td><td>2026-10-08</td><td>
-      <ul><li>9단계를 「웹앱 배포 다시 보기」에서 <b>「수집 결과 페이지 배포」</b>로 바꿨다 — 법령 · 학원 공고 CSV 로 <code class="k">publish\수집결과.html</code> 한 장을 만들고(카드 3회 검증 3/3 · 17조문 · 공고 10건 · 링크 새 창 · 외부 파일 0 · .env 값 0) 구글 웹앱 · Claude 웹사이트로 배포, 사내 로컬 서버는 강사 시연. 세 방식 비교표를 넣었다. PART 5 = 15분</li>
+      <ul><li>9단계를 「웹앱 배포 다시 보기」에서 <b>「수집 결과 페이지 배포」</b>로 바꿨다 — 법령 · 학원 공고 CSV 로 <code class="k">publish\수집결과.html</code> 한 장을 만들고(카드 3회 검증 3/3 · 17조문 · 공고 10건 · 링크 새 창 · 외부 파일 0 · .env 값 0) 구글 웹앱 · Claude 웹사이트로 배포, 사내 로컬 서버는 강사 시연(v1.5 에서 교육생 실습으로). 세 방식 비교표를 넣었다. PART 5 = 15분</li>
       <li>준비물 아래 주의 상자에 「9단계 공개 자료 페이지만 배포」 예외를 적었다</li></ul></td></tr>
     <tr><td><b>v1.3</b></td><td>2026-10-07</td><td>
       <ul><li>7단계 카드 두 장을 한 장으로 합쳤다 — 1 목록 저장(crawling\학원공고.csv) 2 검산(안 맞으면 멈춤) 3 관련 판단 4 관련 글만 본문 3줄 요약, 번호 순서로 적은 여러 줄 카드. 1회 실측: 10건 · 45~36 연속 · O 6 · 요약 6 · 이름 0 · 약 2분</li>
