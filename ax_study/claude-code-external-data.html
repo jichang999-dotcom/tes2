@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.6 · 2026-10-08</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.7 · 2026-10-08</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -426,7 +426,14 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
               <li><b>내 IP 주소가 그대로다</b> — 재부팅하거나 다른 와이파이 · 유선으로 바꾸면 주소가 달라질 수 있습니다. 그러면 1번 카드로 새 주소를 확인해 다시 보냅니다.</li>
               <li><b>동료가 같은 사내망에 있다</b> — 손님 와이파이 · 재택 · 회사 밖에서는 열리지 않습니다.</li>
             </ol>
-            그래서 「어제 보낸 주소가 오늘은 안 열린다」가 흔합니다. 로컬 서버는 <b>지금 옆 사람에게 잠깐 보여 줄 때</b> 씁니다. 늘 열려 있어야 하면 구글 웹앱이나 Claude 웹사이트로 배포합니다(PC 를 자동으로 켜 두고 서버를 저절로 띄우는 것은 Advance 과정에서).</div></li>
+            그래서 「어제 보낸 주소가 오늘은 안 열린다」가 흔합니다. 로컬 서버는 <b>지금 옆 사람에게 잠깐 보여 줄 때</b> 씁니다. 늘 열려 있어야 하면 구글 웹앱이나 Claude 웹사이트로 배포합니다(PC 를 자동으로 켜 두고 서버를 저절로 띄우는 것은 Advance 과정에서).</div>
+          <details class="q"><summary>명령을 치지 않고 Claude 에게 켜고 끄게 하기</summary>
+            <p>위 2번 명령 대신 아래 카드를 붙여넣으면 Claude 가 서버를 켜고, 주소와 <code class="k">/.env</code> 404 까지 확인해 줍니다. 서버는 <b>따로 창</b>으로 떠서 Claude 를 꺼도 계속 돕니다 — 그 창을 닫거나 끄기 카드를 붙여넣으면 꺼집니다.</p>
+            <div class="cmd"><code>publish 폴더만 사내에서 열리게 8000 포트로 웹 서버를 켜 줘. 작업 폴더 전체나 .env 는 열리면 안 돼. 서버는 따로 창으로 띄워서 네가 꺼져도 계속 돌게 하고, 켜지면 동료에게 보낼 주소(http://내 사내 IP:8000/)를 알려 줘. 그 주소가 열리는지, 주소 끝에 /.env 를 붙이면 404 가 나오는지도 확인해 줘. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div>
+            <p>끌 때:</p>
+            <div class="cmd"><code>아까 켠 8000 포트 웹 서버를 꺼 줘. 다른 프로그램은 건드리지 마. 끈 뒤 그 주소가 더 이상 안 열리는지 확인해 줘.</code><button type="button">복사</button></div>
+            <p>창이 따로 떠 있어서 <b>잊고 켜 둔 채 두기 쉽습니다.</b> 다 보여 줬으면 꼭 끕니다.</p>
+          </details></li>
       </ol></div></div>
       <div class="tbl"><table>
         <tr><th>구글 웹앱 설정</th><th>고를 것</th><th>차이</th></tr>
@@ -494,6 +501,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.7</b></td><td>2026-10-08</td><td>
+      <ul><li>9단계 로컬 서버 아래에 접힌 상자 「명령을 치지 않고 Claude 에게 켜고 끄게 하기」를 넣었다 — 켜기 카드(publish 만 · 따로 창 · 주소 · /.env 404 확인) · 끄기 카드. 실습은 명령을 붙여넣는 방식 그대로</li></ul></td></tr>
     <tr><td><b>v1.6</b></td><td>2026-10-08</td><td>
       <ul><li>9단계 로컬 서버에 「PC 만 켜져 있으면 열리나요? — 아닙니다」 상자를 넣었다 — 서버 명령 실행 중 · 같은 IP · 같은 사내망 세 가지가 동시에 맞아야 열린다(VS Code 닫기 · 절전 · 재부팅 · 와이파이 변경이면 끊김). 비교표 「내 PC 를 끄면」 줄을 「언제 열리나」로 바꾸고, 확인 · 막혔을 때 표에도 같은 내용을 넣었다</li></ul></td></tr>
     <tr><td><b>v1.5</b></td><td>2026-10-08</td><td>
