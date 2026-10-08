@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.7 · 2026-10-08</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.8 · 2026-10-08</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -411,7 +411,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <div class="cmd"><code>publish\수집결과.html 을 Claude 아티팩트로 게시해 줘. 게시한 링크를 알려 줘.</code><button type="button">복사</button></div></li>
         <li><b>사내 로컬 서버로 배포</b> — 내 PC 를 서버로 띄워 옆자리 동료가 열어 보게 합니다.
           <ol>
-            <li><b>내 IP 주소 알기</b> — 붙여넣습니다. 나온 주소(예: <code class="k">192.168.122.12</code>)를 적어 둡니다.
+            <li><b>내 IP 주소 알기</b> — 붙여넣습니다. 나온 주소를 적어 둡니다.
               <div class="cmd"><code>동료가 내 PC 에 접속할 때 쓸 사내 IP 주소(IPv4)를 하나만 알려 줘. 지금 연결된 와이파이나 유선 것으로 고르고, 설정은 아무것도 바꾸지 마.</code><button type="button">복사</button></div></li>
             <li><b>서버 켜기</b> — Claude 가 돌고 있는 터미널 말고, 터미널 패널 오른쪽 위 <b>+</b> 로 <b>새 터미널</b>을 엽니다. 거기에 그대로 붙여넣고 <kbd>Enter</kbd>. <code class="k">Serving HTTP on … port 8000</code> 이 나오면 켜진 것입니다. 이 창은 닫지 않습니다.
               <div class="cmd"><code>python -m http.server 8000 --directory publish</code><button type="button">복사</button></div>
@@ -501,6 +501,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.8</b></td><td>2026-10-08</td><td>
+      <ul><li>9단계 로컬 서버 「내 IP 주소 알기」에서 예시 주소를 뺐다</li></ul></td></tr>
     <tr><td><b>v1.7</b></td><td>2026-10-08</td><td>
       <ul><li>9단계 로컬 서버 아래에 접힌 상자 「명령을 치지 않고 Claude 에게 켜고 끄게 하기」를 넣었다 — 켜기 카드(publish 만 · 따로 창 · 주소 · /.env 404 확인) · 끄기 카드. 실습은 명령을 붙여넣는 방식 그대로</li></ul></td></tr>
     <tr><td><b>v1.6</b></td><td>2026-10-08</td><td>
