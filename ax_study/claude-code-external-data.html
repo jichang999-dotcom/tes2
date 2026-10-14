@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.9 · 2026-10-08</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.10 · 2026-10-14</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -161,6 +161,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li><a href="#p5">PART 5 마무리</a></li>
   <li class="sub"><a href="#s9">9. 수집 결과 페이지 배포</a></li>
   <li class="sub"><a href="#wrap">마무리 — 세 길 중 무엇을 고를까</a></li>
+  <li class="sub"><a href="#naver">강사 시연 — 로그인이 필요한 곳 (네이버 카페)</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
   <li><a href="#p9">PART 6 막혔을 때</a></li>
 </ol>
@@ -387,7 +388,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g5">
-<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 20분</small></summary>
+<summary><span class="gno">⑤</span> 마무리 <small>9단계 · 시연 · 25분</small></summary>
 <section class="part" id="p5">
   <h2><small>PART 5</small>마무리 (9단계)</h2>
 
@@ -464,6 +465,16 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><th>오늘 만든 것</th><th>다음 과정(Advance)에서</th></tr>
     <tr><td>세 길로 가져와 구글 시트에 쌓았다 — 매번 말로 시켰다</td><td>같은 수집을 <b>스크립트로 저장</b>하고 <b>작업 스케줄러</b>로 매일 정해진 시각에 돌린다. 사람이 화면 앞에 없으니 결과는 <b>슬랙으로 알려 받는다</b></td></tr>
   </table></div>
+  <h3 id="naver">강사 시연 — 로그인이 필요한 곳 (네이버 카페)</h3>
+  <p>오늘 크롤링한 교육청 게시판은 <b>로그인 없이</b> 누구나 보는 곳이었습니다. 회원만 보는 곳(네이버 카페)은 어떻게 가져올까요? <b>강사 화면으로만 봅니다</b> — 따라 하지 않습니다.</p>
+  <div class="tbl"><table>
+    <tr><th>순서</th><th>무엇을</th><th>누가</th></tr>
+    <tr><td>1</td><td>로그인 창이 뜨면 <b>사람이 직접</b> 로그인한다. 로그인 상태는 폴더(세션)에 저장된다</td><td>강사</td></tr>
+    <tr><td>2</td><td>저장된 로그인으로 카페 검색 화면을 열어 글 · 댓글을 읽는다 (Playwright)</td><td>Claude 가 만든 스크립트</td></tr>
+    <tr><td>3</td><td>결과 파일을 읽고 이번 달 글을 요약한다</td><td>Claude</td></tr>
+  </table></div>
+  <div class="box tip"><b>길이 막히면 다른 길</b>브라우저 확장(Claude in Chrome)은 네이버를 막아 두었고, 카페 검색 API 는 결과가 0건으로 옵니다. 그래서 사람이 보는 <b>화면을 직접 읽는</b> 길로 갔습니다 — 위 판단표의 세 길이 다 막힐 때도 있습니다.</div>
+  <div class="box warn"><b>주의</b>Claude 에게 <b>아이디 · 비밀번호를 주지 않습니다</b>(로그인은 사람이). 로그인이 저장된 세션 폴더는 내 계정 열쇠라 <b>복사 · 공유 · 업로드하지 않습니다</b>. 회원 전용 글은 공개 페이지가 아니므로 카페 규칙을 먼저 보고, 내 계정으로 볼 수 있는 범위만 업무에 씁니다.</div>
   <div class="box tip"><b>수업 끝</b>작업 폴더의 <code class="k">.env</code> 는 <b>다른 곳에 복사하거나 올리지 않습니다.</b> 계속 쓰려면 <code class="k">LAW_OC</code> 를 2단계에서 신청한 내 OC 로 바꿉니다. 수고하셨습니다.</div>
 </section>
 </details>
@@ -501,6 +512,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.10</b></td><td>2026-10-14</td><td>
+      <ul><li><b>추가</b> 마무리 끝에 강사 시연 「로그인이 필요한 곳 (네이버 카페)」 — 로그인은 사람이 · 저장된 세션으로 화면 읽기 · 요약. 따라 하지 않는 시연이라 단계 번호는 그대로(9단계)</li></ul></td></tr>
     <tr><td><b>v1.9</b></td><td>2026-10-08</td><td>
       <ul><li>9단계 결과 파일 이름을 <code class="k">publish\index.html</code> 로 바꿨다 — 로컬 서버 주소(<code class="k">http://내IP주소:8000/</code>)만 열어도 파일 목록 없이 페이지가 바로 열린다. 9-1 카드 3회 다시 검증 3/3. 구글 웹앱의 HTML 파일 이름(<code class="k">수집결과</code>)은 그대로</li></ul></td></tr>
     <tr><td><b>v1.8</b></td><td>2026-10-08</td><td>
