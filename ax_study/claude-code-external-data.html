@@ -124,13 +124,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
  section.part{break-before:page}
  section.part:first-of-type{break-before:auto}
 }
-.flow{margin:12px 0 16px}.flow-scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}.flow svg{display:block;width:100%;min-width:640px;height:auto;font-family:inherit}.flow rect{stroke-width:1.5}.f-in rect{fill:var(--accent-soft);stroke:var(--accent)}.f-mid rect{fill:var(--bg);stroke:var(--sub)}.f-out rect{fill:var(--ok-soft);stroke:var(--ok)}.flow text{text-anchor:middle;fill:var(--ink)}.f-head{font-size:17px;font-weight:700;fill:var(--sub)!important}.f-t{font-size:20px;font-weight:700}.f-s{font-size:14px;fill:var(--sub)!important}.f-q{font-size:16px;fill:var(--sub)!important}.f-line path{stroke:var(--sub);stroke-width:2}.f-arrowhead{fill:var(--sub)}
+.flow{margin:12px 0 16px}.flow-scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}.flow svg{display:block;width:100%;max-width:720px;min-width:600px;margin:0 auto;height:auto;font-family:inherit}.flow rect{stroke-width:1.5}.f-in rect{fill:var(--accent-soft);stroke:var(--accent)}.f-mid rect{fill:var(--bg);stroke:var(--sub)}.f-out rect{fill:var(--ok-soft);stroke:var(--ok)}.flow text{text-anchor:middle;fill:var(--ink)}.f-head{font-size:17px;font-weight:700;fill:var(--sub)!important}.f-t{font-size:20px;font-weight:700}.f-s{font-size:14px;fill:var(--sub)!important}.f-q{font-size:16px;fill:var(--sub)!important}.f-line path{stroke:var(--sub);stroke-width:2}.f-arrowhead{fill:var(--sub)}
 </style>
 </head>
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.15 · 2026-10-14</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.16 · 2026-10-14</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -529,6 +529,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.16</b></td><td>2026-10-14</td><td>
+      <ul><li><b>바뀜</b> 흐름 그림이 넓은 화면에서 커지지 않게 최대 폭 720px · 가운데 정렬 (글씨가 너무 컸다)</li></ul></td></tr>
     <tr><td><b>v1.15</b></td><td>2026-10-14</td><td>
       <ul><li><b>바뀜</b> 흐름 그림의 수집 3칸 설명을 「언제 쓰나」 질문으로 (커넥터가 있나? · API 를 열어 두었나? · robots.txt · 약관이 허용하나?)</li><li><b>삭제</b> 마무리의 판단표(질문 · 예 · 아니오)와 「오늘 만든 것 / 다음 과정」 표</li></ul></td></tr>
     <tr><td><b>v1.14</b></td><td>2026-10-14</td><td>
