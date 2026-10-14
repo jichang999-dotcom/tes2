@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.12 · 2026-10-14</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.13 · 2026-10-14</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -502,7 +502,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>2</td><td>저장된 로그인으로 카페 검색 화면을 열어 글 · 댓글을 읽는다 (Playwright)</td><td>Claude 가 만든 스크립트</td></tr>
     <tr><td>3</td><td>결과 파일을 읽고 이번 달 글을 요약한다</td><td>Claude</td></tr>
   </table></div>
-  <div class="box tip"><b>Playwright 가 뭔가요?</b>프로그램이 <b>브라우저를 직접 띄워 사람처럼</b> 주소를 열고 · 누르고 · 화면 글자를 읽게 하는 무료 도구입니다(마이크로소프트). 처음 한 번 사람이 로그인하면 그 상태를 <b>폴더(세션)에 저장</b>해 두고, 다음부터는 그 폴더로 브라우저를 열어 <b>로그인된 채로</b> 시작합니다 — 그래서 비밀번호를 코드에 적지 않습니다. 스크립트는 Claude 가 만들고 사람은 실행만 합니다. 사람이 보는 화면을 읽는 방식이라 <b>사이트 화면이 바뀌면 스크립트도 고쳐야</b> 합니다.</div>
+  <div class="box tip"><b>Playwright 가 뭔가요?</b>프로그램이 <b>브라우저를 직접 띄워 사람처럼</b> 주소를 열고 · 누르고 · 화면 글자를 읽게 하는 무료 도구입니다(마이크로소프트). 처음 한 번 사람이 로그인하면 그 상태를 <b>폴더(세션)에 저장</b>해 두고, 다음부터는 그 폴더로 브라우저를 열어 <b>로그인된 채로</b> 시작합니다 — 그래서 비밀번호를 코드에 적지 않습니다. 스크립트는 Claude 가 만들고 사람은 실행만 합니다. 사람이 보는 화면을 읽는 방식이라 <b>사이트 화면이 바뀌면 스크립트도 고쳐야</b> 합니다. 쓰려면 <b>따로 설치</b>합니다 — <code class="k">pip install playwright</code> → <code class="k">playwright install chromium</code>(전용 브라우저 약 150MB · 안내는 <a href="https://playwright.dev" target="_blank" rel="noopener">playwright.dev</a>). 오늘은 강사 PC 에만 깔려 있어 화면으로만 봅니다.</div>
   <div class="box warn"><b>주의</b>Claude 에게 <b>아이디 · 비밀번호를 주지 않습니다</b>(로그인은 사람이). 로그인이 저장된 세션 폴더는 내 계정 열쇠라 <b>복사 · 공유 · 업로드하지 않습니다</b>. 회원 전용 글은 공개 페이지가 아니므로 카페 규칙을 먼저 보고, 내 계정으로 볼 수 있는 범위만 업무에 씁니다.</div>
   <div class="box tip"><b>수업 끝</b>작업 폴더의 <code class="k">.env</code> 는 <b>다른 곳에 복사하거나 올리지 않습니다.</b> 계속 쓰려면 <code class="k">LAW_OC</code> 를 2단계에서 신청한 내 OC 로 바꿉니다. 수고하셨습니다.</div>
 </section>
@@ -541,6 +541,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.13</b></td><td>2026-10-14</td><td>
+      <ul><li><b>추가</b> 「Playwright 가 뭔가요?」 상자에 설치 안내 한 줄 — <code>pip install playwright</code> → <code>playwright install chromium</code>(약 150MB) · 오늘은 강사 PC 에서만</li></ul></td></tr>
     <tr><td><b>v1.12</b></td><td>2026-10-14</td><td>
       <ul><li><b>바뀜</b> 강사 시연의 「길이 막히면 다른 길」 상자를 빼고 「Playwright 가 뭔가요?」 설명으로 바꿨다</li></ul></td></tr>
     <tr><td><b>v1.11</b></td><td>2026-10-14</td><td>
