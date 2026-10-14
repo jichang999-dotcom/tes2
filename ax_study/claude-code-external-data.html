@@ -124,13 +124,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
  section.part{break-before:page}
  section.part:first-of-type{break-before:auto}
 }
-.flow{margin:12px 0 16px}.flow-scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}.flow svg{display:block;width:100%;min-width:640px;height:auto;font-family:inherit}.flow rect{stroke-width:1.5}.f-in rect{fill:var(--accent-soft);stroke:var(--accent)}.f-mid rect{fill:var(--bg);stroke:var(--sub)}.f-out rect{fill:var(--ok-soft);stroke:var(--ok)}.flow text{text-anchor:middle;fill:var(--ink)}.f-head{font-size:17px;font-weight:700;fill:var(--sub)!important}.f-t{font-size:20px;font-weight:700}.f-s{font-size:14px;fill:var(--sub)!important}.f-line path{stroke:var(--sub);stroke-width:2}.f-arrowhead{fill:var(--sub)}
+.flow{margin:12px 0 16px}.flow-scroll{overflow-x:auto;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:8px}.flow svg{display:block;width:100%;min-width:640px;height:auto;font-family:inherit}.flow rect{stroke-width:1.5}.f-in rect{fill:var(--accent-soft);stroke:var(--accent)}.f-mid rect{fill:var(--bg);stroke:var(--sub)}.f-out rect{fill:var(--ok-soft);stroke:var(--ok)}.flow text{text-anchor:middle;fill:var(--ink)}.f-head{font-size:17px;font-weight:700;fill:var(--sub)!important}.f-t{font-size:20px;font-weight:700}.f-s{font-size:14px;fill:var(--sub)!important}.f-q{font-size:16px;fill:var(--sub)!important}.f-line path{stroke:var(--sub);stroke-width:2}.f-arrowhead{fill:var(--sub)}
 </style>
 </head>
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.14 · 2026-10-14</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.15 · 2026-10-14</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -460,12 +460,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="flow-scroll"><svg viewBox="0 0 1000 330" role="img" xmlns="http://www.w3.org/2000/svg">
     <title>수집 3가지 → CSV · 구글 시트 → publish\index.html → 배포 3가지</title>
     <defs><marker id="fa" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="f-arrowhead"/></marker></defs>
-    <text x="115" y="24" class="f-head">가져오기 (수집 3가지)</text>
+    <text x="130" y="24" class="f-head">가져오기 (수집 3가지)</text>
     <text x="885" y="24" class="f-head">배포 3가지</text>
     <g class="f-in">
-      <rect x="10" y="42" width="210" height="76" rx="10"/><text x="115" y="74" class="f-t">MCP</text><text x="115" y="98" class="f-s">구글 시트 커넥터 · 3~4단계</text>
-      <rect x="10" y="132" width="210" height="76" rx="10"/><text x="115" y="164" class="f-t">API</text><text x="115" y="188" class="f-s">국가법령정보 · 5단계</text>
-      <rect x="10" y="222" width="210" height="76" rx="10"/><text x="115" y="254" class="f-t">크롤링</text><text x="115" y="278" class="f-s">교육청 학원 공고 · 6~8단계</text>
+      <rect x="6" y="42" width="248" height="76" rx="10"/><text x="130" y="68" class="f-t">MCP</text><text x="130" y="91" class="f-q">Claude 에 연결할</text><text x="130" y="109" class="f-q">커넥터가 있나?</text>
+      <rect x="6" y="132" width="248" height="76" rx="10"/><text x="130" y="158" class="f-t">API</text><text x="130" y="181" class="f-q">서비스가 API 를</text><text x="130" y="199" class="f-q">열어 두었나?</text>
+      <rect x="6" y="222" width="248" height="76" rx="10"/><text x="130" y="248" class="f-t">크롤링</text><text x="130" y="271" class="f-q">공개 페이지이고 robots.txt ·</text><text x="130" y="289" class="f-q">약관이 허용하나?</text>
     </g>
     <g class="f-mid">
       <rect x="290" y="112" width="180" height="116" rx="10"/><text x="380" y="150" class="f-t">모으기</text><text x="380" y="176" class="f-s">CSV 저장</text><text x="380" y="198" class="f-s">+ 내 구글 시트 탭</text>
@@ -477,23 +477,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <rect x="780" y="222" width="210" height="76" rx="10"/><text x="885" y="254" class="f-t">사내 로컬 서버</text><text x="885" y="278" class="f-s">내 PC 켜 둔 동안만</text>
     </g>
     <g class="f-line" marker-end="url(#fa)">
-      <path d="M220 80 C255 80 255 150 288 160" fill="none"/><path d="M220 170 L288 170" fill="none"/><path d="M220 260 C255 260 255 190 288 180" fill="none"/>
+      <path d="M254 80 C272 80 272 150 288 160" fill="none"/><path d="M254 170 L288 170" fill="none"/><path d="M254 260 C272 260 272 190 288 180" fill="none"/>
       <path d="M470 170 L528 170" fill="none"/>
       <path d="M710 160 C745 150 745 80 778 80" fill="none"/><path d="M710 170 L778 170" fill="none"/><path d="M710 180 C745 190 745 260 778 260" fill="none"/>
     </g>
     <text x="500" y="320" class="f-s">말로 시켜 가져오고 → 한곳에 모으고 → 한 장으로 만들어 → 보여 줄 사람에 맞게 내보낸다</text>
   </svg></div>
   </figure>
-  <div class="tbl"><table>
-    <tr><th>질문</th><th>예</th><th>아니오</th></tr>
-    <tr><td>Claude 에 연결할 커넥터가 있나?</td><td><b>MCP</b> — 연결하고 말로 시킨다</td><td>다음 질문</td></tr>
-    <tr><td>서비스가 API 를 열어 두었나?</td><td><b>API</b> — 키를 신청하고 <code class="k">.env</code> 에 둔다</td><td>다음 질문</td></tr>
-    <tr><td>공개 페이지이고 robots.txt · 약관이 허용하나?</td><td><b>크롤링</b> — 목록만, 검산까지</td><td><b>가져오지 않는다</b></td></tr>
-  </table></div>
-  <div class="tbl"><table>
-    <tr><th>오늘 만든 것</th><th>다음 과정(Advance)에서</th></tr>
-    <tr><td>세 길로 가져와 구글 시트에 쌓았다 — 매번 말로 시켰다</td><td>같은 수집을 <b>스크립트로 저장</b>하고 <b>작업 스케줄러</b>로 매일 정해진 시각에 돌린다. 사람이 화면 앞에 없으니 결과는 <b>슬랙으로 알려 받는다</b></td></tr>
-  </table></div>
   <h3 id="naver">강사 시연 — 로그인이 필요한 곳 (네이버 카페)</h3>
   <p>오늘 크롤링한 교육청 게시판은 <b>로그인 없이</b> 누구나 보는 곳이었습니다. 회원만 보는 곳(네이버 카페)은 어떻게 가져올까요? <b>강사 화면으로만 봅니다</b> — 따라 하지 않습니다.</p>
   <div class="tbl"><table>
@@ -539,6 +529,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.15</b></td><td>2026-10-14</td><td>
+      <ul><li><b>바뀜</b> 흐름 그림의 수집 3칸 설명을 「언제 쓰나」 질문으로 (커넥터가 있나? · API 를 열어 두었나? · robots.txt · 약관이 허용하나?)</li><li><b>삭제</b> 마무리의 판단표(질문 · 예 · 아니오)와 「오늘 만든 것 / 다음 과정」 표</li></ul></td></tr>
     <tr><td><b>v1.14</b></td><td>2026-10-14</td><td>
       <ul><li><b>삭제</b> 마무리 끝의 「주의」(아이디 · 비밀번호 · 세션 폴더) 상자와 「수업 끝」(.env 반출 금지) 상자</li></ul></td></tr>
     <tr><td><b>v1.13</b></td><td>2026-10-14</td><td>
