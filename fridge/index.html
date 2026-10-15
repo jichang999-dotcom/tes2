@@ -26,7 +26,7 @@
 <div id="list"></div>
 
 <script type="module">
-import { ics, today } from './logic.js';
+import { dayBefore, ics, today } from './logic.js';
 
 navigator.storage?.persist?.();
 const db = await new Promise((ok, no) => {
@@ -65,7 +65,7 @@ cam.onchange = async () => {
 
 async function render() {
   const items = await tx('readonly', (s) => s.getAll());
-  // 유통기한 임박 순, 미입력은 맨 뒤
+  // 사용기한 임박 순, 미입력은 맨 뒤
   items.sort((a, b) => (a.exp || '9999').localeCompare(b.exp || '9999') || b.id - a.id);
   list.querySelectorAll('img').forEach((i) => URL.revokeObjectURL(i.src));
   list.replaceChildren(...items.map(card));
@@ -77,15 +77,15 @@ function addToCalendar(text) {
 }
 
 function card(item) {
-  const over = item.exp && item.exp <= today();
+  const over = item.exp && dayBefore(item.exp) <= today(); // D-1부터 빨간 표시
   const el = document.createElement('section');
   el.className = 'card' + (over ? ' over' : '');
   el.innerHTML = `
     <img>
     <div>
       <span>입고 ${item.inDate}</span>
-      <label>유통 마지막일 <input type="date" value="${item.exp}"></label>
-      ${over ? '<span class="warn">⚠️ 오늘까지 / 지남</span>' : ''}
+      <label>사용기한 <input type="date" value="${item.exp}"></label>
+      ${over ? '<span class="warn">⚠️ 사용기한 임박 / 지남</span>' : ''}
       <label>🔔 알림 시간 <input type="time" value="${item.time || '09:00'}"></label>
       <button>꺼냄(삭제)</button>
     </div>`;
@@ -100,13 +100,13 @@ function card(item) {
     render();
   };
 
-  // 3. 유통 마지막일: iOS는 빈 칸을 누르기만 해도 오늘 날짜를 채우므로
+  // 3. 사용기한: iOS는 빈 칸을 누르기만 해도 오늘 날짜를 채우므로
   //    값이 바뀌는 순간(change)이 아니라 선택창이 닫힐 때(blur) 판단한다
   let before;
   date.onfocus = () => (before = date.value);
   date.onblur = () => {
     const v = date.value;
-    if (!before && v === today() && !confirm('유통 마지막일을 오늘로 등록할까요?')) return (date.value = '');
+    if (!before && v === today() && !confirm('사용기한을 오늘로 등록할까요?')) return (date.value = '');
     if (v && v !== item.exp) commit({ exp: v });
   };
   time.onblur = () => time.value && time.value !== (item.time || '09:00') && commit({ time: time.value });
