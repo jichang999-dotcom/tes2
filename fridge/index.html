@@ -15,9 +15,9 @@
   .card.over { border-color: #c00; background: #fee; }
   .card img { width: 96px; height: 96px; object-fit: cover; border-radius: 8px; }
   .card div { flex: 1; display: flex; flex-direction: column; gap: 6px; }
-  input[type=date] { font-size: 16px; padding: 4px; }
+  input[type=date], input[type=time] { font-size: 16px; padding: 4px; }
   .warn { color: #c00; font-weight: bold; }
-  button, .cal { font-size: 15px; padding: 6px; border-radius: 6px; border: 1px solid #aaa; background: #f4f4f4; color: #000; text-align: center; text-decoration: none; }
+  button { font-size: 15px; padding: 6px; border-radius: 6px; border: 1px solid #aaa; background: #f4f4f4; color: #000; text-align: center; text-decoration: none; }
 </style>
 </head>
 <body>
@@ -71,6 +71,11 @@ async function render() {
   list.replaceChildren(...items.map(card));
 }
 
+// 4. .ics 를 열면 아이폰이 「캘린더에 추가」 화면을 띄운다
+function addToCalendar(text) {
+  location.href = URL.createObjectURL(new Blob([text], { type: 'text/calendar' }));
+}
+
 function card(item) {
   const over = item.exp && item.exp <= today();
   const el = document.createElement('section');
@@ -81,15 +86,30 @@ function card(item) {
       <span>입고 ${item.inDate}</span>
       <label>유통 마지막일 <input type="date" value="${item.exp}"></label>
       ${over ? '<span class="warn">⚠️ 오늘까지 / 지남</span>' : ''}
-      ${item.exp ? `<a class="cal" href="data:text/calendar;charset=utf-8,${encodeURIComponent(ics(item.id, item.exp, item.inDate))}">📅 캘린더에 알림 추가</a>` : ''}
+      <label>🔔 알림 시간 <input type="time" value="${item.time || '09:00'}"></label>
       <button>꺼냄(삭제)</button>
     </div>`;
   el.querySelector('img').src = URL.createObjectURL(item.photo);
-  // 3. 유통 마지막일 입력
-  el.querySelector('input').onchange = async (e) => {
-    await tx('readwrite', (s) => s.put({ ...item, exp: e.target.value }));
+  const [date, time] = el.querySelectorAll('input');
+
+  // 날짜·시간을 저장하고 바로 캘린더에 등록 (같은 UID라 다시 등록하면 일정이 갱신됨)
+  const commit = async (patch) => {
+    const next = { ...item, time: time.value || '09:00', ...patch, seq: (item.seq || 0) + 1 };
+    await tx('readwrite', (s) => s.put(next));
+    if (next.exp) addToCalendar(ics(next.id, next.exp, next.inDate, next.time, next.seq));
     render();
   };
+
+  // 3. 유통 마지막일: iOS는 빈 칸을 누르기만 해도 오늘 날짜를 채우므로
+  //    값이 바뀌는 순간(change)이 아니라 선택창이 닫힐 때(blur) 판단한다
+  let before;
+  date.onfocus = () => (before = date.value);
+  date.onblur = () => {
+    const v = date.value;
+    if (!before && v === today() && !confirm('유통 마지막일을 오늘로 등록할까요?')) return (date.value = '');
+    if (v && v !== item.exp) commit({ exp: v });
+  };
+  time.onblur = () => time.value && time.value !== (item.time || '09:00') && commit({ time: time.value });
   el.querySelector('button').onclick = async () => {
     if (!confirm('꺼냈나요? 사진이 삭제됩니다.\n캘린더 일정은 캘린더 앱에서 따로 지워주세요.')) return;
     await tx('readwrite', (s) => s.delete(item.id));
