@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.19 · 2026-10-16</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.20 · 2026-10-16</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -347,9 +347,37 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <p>사이트는 <code class="k">robots.txt</code> 라는 파일에 「자동으로 가져가도 되는 곳 · 안 되는 곳」을 적어 둡니다. 같은 교육청 사이트라도 답이 다릅니다.</p>
       <div class="row"><b>강사 시연</b><div><p>강사가 robots.txt 로 <b>게시판을 막아 둔</b> 교육청을 보여 줍니다. 「여기는 확인만 하고 가져오지 않는다」로 끝냅니다. 따라 하지 않습니다.</p></div></div>
       <div class="row"><b>방법</b><div><ol>
-        <li>붙여넣습니다.
+        <li>먼저 눈으로 봅니다. 브라우저 주소창에 <a href="https://www.sen.go.kr/robots.txt" target="_blank" rel="noopener">https://www.sen.go.kr/robots.txt</a> 를 열면 41줄짜리 글이 나옵니다. 어느 사이트든 <b>사이트 주소 뒤에 <code class="k">/robots.txt</code></b> 만 붙이면 됩니다. 읽는 법은 아래 접힌 상자에 있습니다.</li>
+        <li>붙여넣습니다. Claude 의 답과 내가 본 줄이 같은지 맞춰 봅니다.
           <div class="cmd"><code>https://www.sen.go.kr/robots.txt 를 읽고, 서울시교육청 고시·공고 게시판에서 「학원」으로 검색한 목록 https://www.sen.go.kr/user/bbs/BD_selectBbsList.do?q_bbsSn=1100&amp;q_searchKeyTy=ttl___1002&amp;q_searchVal=학원 과, 목록의 글을 눌렀을 때 열리는 상세 글 주소(BD_selectBbs.do) 를 자동으로 가져와도 되는지 판단해 줘. 근거가 된 줄을 그대로 보여 줘. 아직 목록은 가져오지 마. 새 프로그램은 설치하지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
+      <details class="q"><summary>robots.txt 읽는 법 — 41줄 중 볼 것은 Disallow 4줄</summary>
+        <p>한 줄에 하나씩 「<b>Allow</b>(가져가도 됨) · <b>Disallow</b>(안 됨): 사이트 주소 뒤에 붙는 부분」을 적은 목록입니다. 줄끼리 겹치면 <b>더 길고 구체적인 줄</b>이 이깁니다. 화면에 <b>₩</b> 가 보이면 역슬래시(\)입니다 — 한글 윈도우 글꼴에서 그렇게 보입니다.</p>
+        <div class="tbl"><table>
+          <tr><th>줄</th><th>뜻</th><th>오늘 실습과</th></tr>
+          <tr><td><code class="k">User-agent: *</code></td><td>아래 규칙은 <b>모든 프로그램</b>(검색엔진 · 크롤러 · Claude)에 적용된다</td><td>우리도 해당</td></tr>
+          <tr><td><code class="k">Allow: /</code></td><td>사이트 <b>전체를 기본으로 허용</b></td><td>출발점은 「다 된다」</td></tr>
+          <tr><td><code class="k">Allow: /sen/</code> ~ <code class="k">Allow: /www/useinfo/</code> (30여 줄)</td><td>메뉴를 하나씩 다시 허용. 이미 <code class="k">Allow: /</code> 가 있어 사실상 중복</td><td>건너뛴다</td></tr>
+          <tr><td><code class="k">Disallow: /work/</code></td><td>내부 업무 페이지는 안 됨 (바로 위 <code class="k">Allow: /work/search/recInfo/</code> 는 그중 한 곳만 예외)</td><td>관계없음</td></tr>
+          <tr><td><code class="k">Disallow: /user/bbs/BD_.*\?q_bbsSn=(1079|108[0-9]|109[0-1])</code></td><td><b>게시판 번호 1079 · 1080~1089 · 1090~1091 은 안 됨</b></td><td><b>핵심 줄</b> — 오늘 게시판은 1100</td></tr>
+          <tr><td><code class="k">Disallow: /view/</code></td><td>보기 전용 페이지는 안 됨</td><td>관계없음</td></tr>
+          <tr><td><code class="k">Disallow: /*\.(gif|png|…|hwp|pdf|zip|js)$</code></td><td>이미지 · 첨부파일(hwp · pdf · zip 등)은 안 됨</td><td>7단계 「첨부파일은 받지 마」의 근거</td></tr>
+          <tr><td><code class="k">sitemap:</code></td><td>사이트 지도 파일 위치. 허락과 무관</td><td>건너뛴다</td></tr>
+        </table></div>
+        <p><b>한글로 풀면 — 어디는 되고 어디는 안 되나</b></p>
+        <div class="tbl"><table>
+          <tr><th>게시판 · 페이지</th><th>가져가도 되나</th><th>근거 줄</th></tr>
+          <tr><td>사이트 전체 (아래에서 막지 않은 곳)</td><td><b>된다</b></td><td><code class="k">Allow: /</code></td></tr>
+          <tr><td><b>게시판 1100 — 새소식/공지 › 공지사항</b> (오늘 실습 · 고시 · 공고가 올라오는 곳)</td><td><b>된다</b></td><td>막은 번호에 없음</td></tr>
+          <tr><td>게시판 1092 교육공무직원시험안내 · 1093 지방공무원시험안내 · 1094 교원임용시험안내 · 1097 검정고시안내 · 1098 회의/행사안내 · 1099 인사알림</td><td><b>된다</b></td><td>막은 번호에 없음</td></tr>
+          <tr><td>게시판 1073 ~ 1078</td><td><b>된다</b> (따로 한 줄씩 적어 둠)</td><td><code class="k">Allow: …q_bbsSn=1073</code> ~ <code class="k">1078</code></td></tr>
+          <tr><td><b>게시판 1079 ~ 1091</b> (13개)</td><td><b>안 된다</b></td><td><code class="k">Disallow: /user/bbs/BD_…(1079|108[0-9]|109[0-1])</code></td></tr>
+          <tr><td>내부 업무 페이지 (<code class="k">/work/</code>) — 단, <code class="k">/work/search/recInfo/</code> 한 곳은 예외로 됨</td><td><b>안 된다</b></td><td><code class="k">Disallow: /work/</code></td></tr>
+          <tr><td>보기 전용 페이지 (<code class="k">/view/</code>)</td><td><b>안 된다</b></td><td><code class="k">Disallow: /view/</code></td></tr>
+          <tr><td>첨부파일 · 이미지 (hwp · pdf · zip · ppt · xls · jpg · png 등)</td><td><b>안 된다</b></td><td><code class="k">Disallow: /*\.(gif|…|zip|js)$</code></td></tr>
+        </table></div>
+        <p>robots.txt 에는 <b>번호만</b> 있고 게시판 이름은 없습니다. 이름은 사이트 메뉴에서 그 번호의 주소를 보고 압니다. 막힌 1079 ~ 1091 은 이름을 알려고 열어 보지도 않습니다.</p>
+        <p><b>결론</b>: 기본은 전체 허용 → 게시판은 1079~1091 번만 막힘 → 오늘 주소는 <code class="k">q_bbsSn=1100</code> 이라 <b>목록 · 글은 가져와도 된다</b>. 첨부파일은 막혀 있어 받지 않는다. 요령은 하나 — <b>Disallow 줄만 보고, 내가 가져올 주소가 거기 걸리는지</b> 본다. (2026-10-16 확인 · 사이트가 바꾸면 내용이 달라질 수 있습니다)</p></details>
       <div class="row"><b>확인</b><div><p>「<code class="k">Allow: /</code> 가 있고, 막아 둔 게시판 번호(<code class="k">q_bbsSn=1079~1091</code>)에 이 게시판(1100)이 없어 목록 · 상세 글 둘 다 가져와도 된다」와 근거 줄이 나온다. 게시판마다 허락이 다를 수 있어 <b>번호까지</b> 본다.</p></div></div>
       <div class="box warn"><b>하지 않는 것</b>로그인해야 보이는 페이지 · 개인정보가 있는 페이지 · robots.txt 나 이용 약관이 막은 페이지. 한 번에 수십 페이지를 가져오지 않습니다(오늘은 목록 1페이지만).</div>
     </div>
@@ -517,6 +545,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.20</b></td><td>2026-10-16</td><td>
+      <ul><li><b>추가</b> 6단계 1번 「주소창에 robots.txt 직접 열어 보기」(사이트 주소 뒤에 /robots.txt) — 기존 판단 카드는 2번으로</li><li><b>추가</b> 6단계 접힌 상자 「robots.txt 읽는 법」 — 서울시교육청 실제 줄을 묶음별로 뜻 · 실습과의 관계 표로 풀고 · 「한글로 풀면」 표(게시판 1100 공지사항 · 1092~1099 시험안내 등 = 된다 / 1079~1091 · /work/ · /view/ · 첨부파일 = 안 된다) 결론(Disallow 4줄만 본다 · 1100 은 1079~1091 밖 · 첨부는 막힘). ₩ = 역슬래시 안내</li></ul></td></tr>
     <tr><td><b>v1.19</b></td><td>2026-10-16</td><td>
       <ul><li><b>추가</b> 1단계 설치 첫 화면 캡처 — ① Add python.exe to PATH 체크 → ② Install Now 위치 표시. 「Use admin privileges」 칸은 체크하지 않는다는 한 줄</li></ul></td></tr>
     <tr><td><b>v1.18</b></td><td>2026-10-16</td><td>
