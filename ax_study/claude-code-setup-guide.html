@@ -665,7 +665,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="row"><b>방법</b><div><ol>
     <li><a href="https://drive.google.com/drive/folders/192wXqwNxdIP44v7ZKGDK92KD148cDt3w?usp=sharing" target="_blank" rel="noopener">공유 폴더</a>의 Starter › 교육 › hooks 폴더에서 <code class="k">notify.ps1</code> 을 받는다. (다운로드 폴더에 저장된다)</li>
     <li>Claude Code 입력창에 아래 문장을 붙여넣고 <kbd>Enter</kbd>
-      <div class="cmd"><code>다운로드 폴더에 있는 notify.ps1 을 내 사용자 폴더의 .claude\hooks 폴더로 옮겨줘(폴더가 없으면 만들어). 그리고 전역 설정 파일(내 사용자 폴더의 .claude\settings.json)에 훅 두 개를 추가해줘. Stop 훅은 powershell -NoProfile -ExecutionPolicy Bypass -File "옮긴 notify.ps1 경로" stop 을 실행하고, Notification 훅은 같은 명령에 stop 대신 notify 를 넣어 실행해. 기존 설정은 지우지 말고 합쳐줘.</code><button type="button">복사</button></div></li>
+      <div class="cmd"><code style="white-space:pre-wrap">다운로드 폴더에 있는 notify.ps1 을 내 사용자 폴더의 .claude\hooks 폴더로 옮겨줘(폴더가 없으면 만들어). 그리고 전역 설정 파일(내 사용자 폴더의 .claude\settings.json)에 훅 두 개를 추가해줘. Stop 훅은 powershell -NoProfile -ExecutionPolicy Bypass -File "옮긴 notify.ps1 경로" stop 을 실행하고, Notification 훅은 같은 명령에 stop 대신 notify 를 넣어 실행해. 기존 설정은 지우지 말고 합쳐줘.</code><button type="button">복사</button></div></li>
     <li>Claude Code 를 다시 실행한다. (<code class="k">/exit</code> → <code class="k">claude</code>)</li></ol></div></div>
   <div class="row"><b>확인</b><div><ul>
     <li>아무 질문이나 하고 바로 다른 창을 눌러 둔다. 답변이 끝나면 화면 오른쪽 아래에 <b>작업 폴더 이름</b>과 「응답 완료, 입력을 기다리는 중」 알림이 뜨고 소리가 난다.</li>
