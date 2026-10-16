@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.18 · 2026-10-16</span></h1>
+  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.19 · 2026-10-16</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 12 단계</span></div>
@@ -689,35 +689,37 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <!-- ============ 7 ============ -->
 <section class="part" id="p7">
   <h2><small>PART 7</small>다음 단계</h2>
-  <p class="lead">이 가이드는 「혼자 쓸 수 있는 상태」까지다. 그다음은 세 단계로 나눠 배운다.</p>
+  <p class="lead">이 가이드는 「혼자 쓸 수 있는 상태」까지다. 그다음은 세 단계로 나눠 배운다. 단계마다 <b>교육 편</b>(배우기)과 <b>체험 편</b>(직접 만들기)이 있다.</p>
   <div class="tbl"><table>
     <tr><th>단계</th><th>주제</th><th>무엇이 달라지나</th></tr>
 
-    <tr><td rowspan="3"><b>초급</b></td>
+    <tr><td rowspan="4"><b>초급</b><br><small>기준과 담당 · 수집과 공유</small><br><small><a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-skills-agents.html" target="_blank" rel="noopener">교육</a> · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-external-data.html" target="_blank" rel="noopener">체험</a></small></td>
         <td>스킬<br><small>skills</small></td>
-        <td>역할·작업 절차·전문 지식을 <b>한 묶음으로 만들어 Claude 에게 장착한다.</b></td></tr>
-    <tr><td>싱글 에이전트<br><small>AI 개성 부여</small></td>
-        <td>매번 설명하는 대신 <b>Claude 에게 직함을 준다.</b> (예: 데이터 검증 담당)</td></tr>
-    <tr><td>서브 에이전트</td>
-        <td>혼자 하던 일을 <b>여러 명이 나눠 맡고, 나는 결론만 받는다.</b></td></tr>
+        <td>세는 법·기준 같은 업무 지식을 <b>한 묶음으로 만들어 Claude 에게 장착한다.</b> 매번 다시 설명하지 않는다.</td></tr>
+    <tr><td>에이전트<br><small>담당 만들기</small></td>
+        <td>매번 시키는 대신 <b>Claude 에게 직함을 준다.</b> (예: 리포트 담당 — 집계하고 결론 3줄만 보고)</td></tr>
+    <tr><td>외부 데이터 수집<br><small>MCP · API · 크롤링</small></td>
+        <td>파일을 옮겨 주지 않아도 <b>구글 시트·공공 API·공개 게시판에서 직접 가져와</b> 내 시트에 쌓는다.</td></tr>
+    <tr><td>결과 페이지 배포</td>
+        <td>모은 결과를 <b>링크 하나로 보여 준다.</b> (구글 웹앱 · Claude 아티팩트 · 사내 로컬 서버)</td></tr>
 
-    <tr><td rowspan="4"><b>중급</b></td>
-        <td>윈도우 스케줄러</td>
-        <td><b>출근하면 어제치 보고서가 이미 만들어져 있다.</b></td></tr>
-    <tr><td>깃허브</td>
-        <td>잘못 고쳐도 <b>어제로 되돌릴 수 있고,</b> 결과는 주소 하나로 공유된다.</td></tr>
-    <tr><td>MCP</td>
-        <td>파일을 옮겨 주지 않아도 <b>Claude 가 슬랙·드라이브·DB 를 직접 본다.</b></td></tr>
-    <tr><td>API<br><small>AI 연결, 외부데이터</small></td>
-        <td><b>Claude 밖의 AI 와 데이터까지</b> 내 작업에 끌어온다.</td></tr>
+    <tr><td rowspan="4"><b>중급</b><br><small>기록과 공유 · 출근과 보고</small><br><small>교육 (준비 중) · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-agent-team.html" target="_blank" rel="noopener">체험</a></small></td>
+        <td>Git · GitHub</td>
+        <td>잘못 고쳐도 <b>어제로 되돌릴 수 있고,</b> 설정과 결과가 안전하게 보관된다.</td></tr>
+    <tr><td>클라우드 루틴 · 비공개 발행</td>
+        <td><b>PC 를 꺼도</b> 정해진 시각에 결과가 갱신되고, 회사 사람만 보는 화면으로 공유된다.</td></tr>
+    <tr><td>AI 직원<br><small>claude -p · 윈도우 스케줄러 · 슬랙 웹훅</small></td>
+        <td><b>출근하면 리포트가 이미 만들어져 있고</b> 슬랙으로 결론이 와 있다.</td></tr>
+    <tr><td>서브 에이전트 · 에이전트 팀</td>
+        <td>혼자 하던 일을 <b>작성·검산 담당이 나눠 맡고,</b> 팀원끼리 서로 고쳐 보낸다.</td></tr>
 
-    <tr><td rowspan="3"><b>고급</b></td>
-        <td>팀 에이전트</td>
-        <td>혼자 부리던 AI 를 <b>팀장·팀원으로 굴린다.</b></td></tr>
-    <tr><td>하네스 엔지니어링<br><small>보안, 규칙 등</small></td>
-        <td><b>지켜보지 않아도 사고가 안 나도록</b> 울타리를 친다.</td></tr>
-    <tr><td>클라우드 개발환경</td>
-        <td><b>노트북을 닫아도 일이 계속된다.</b></td></tr>
+    <tr><td rowspan="3"><b>고급</b><br><small>규칙 · 규정 · 권한과 협업</small><br><small>(준비 중)</small></td>
+        <td>규칙 4단계<br><small>CLAUDE.md · 룰 · 훅 · 하네스</small></td>
+        <td><b>지켜보지 않아도 Claude 가 규칙을 지키도록</b> 부탁에서 강제까지 단계별로 묶는다.</td></tr>
+    <tr><td>권한 · 보안</td>
+        <td>사람 없이 도는 실행에도 <b>쓸 수 있는 도구와 폴더를 좁혀</b> 사고를 막는다.</td></tr>
+    <tr><td>함께 쓰는 앱과 도구<br><small>Supabase · 플러그인 · 슬랙 봇</small></td>
+        <td>혼자 쓰던 것을 <b>팀이 같이 쓰는 앱·도구로</b> 만든다.</td></tr>
   </table></div>
   <p style="color:var(--sub);font-size:13px">화면은 2026-09-15~21, Claude Code 2.1.272~273 · VS Code 1.138 기준입니다. 버전이 바뀌면 문구가 조금 다를 수 있습니다.</p>
 </section>
@@ -771,6 +773,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
+    <tr><td><b>v1.19</b></td><td>2026-10-16</td><td>
+      <ul>
+        <li><b>바뀜</b> PART 7 「다음 단계」 표를 지금 과정 구성으로 다시 썼다. <b>초급</b> = 스킬 · 에이전트 · 외부 데이터 수집 · 결과 페이지 배포 / <b>중급</b> = Git · GitHub · 클라우드 루틴 · AI 직원 · 서브 에이전트와 팀 / <b>고급</b> = 규칙 4단계 · 권한과 보안 · 함께 쓰는 앱과 도구</li>
+        <li><b>추가</b> 이미 열린 과정(초급 교육 · 초급 체험 · 중급 체험)은 표에서 바로 가는 링크</li>
+        <li><b>그대로</b> 단계 번호 1~12 · PART 번호는 그대로다</li>
+      </ul></td></tr>
     <tr><td><b>v1.18</b></td><td>2026-10-16</td><td>
       <ul>
         <li><b>추가</b> PART 5 「일할 때」에 <b>작업이 끝나면 알림 받기 (훅)</b>(선택). 답변이 끝나거나 권한 확인이 필요할 때 윈도우 알림과 소리가 난다. 공유 폴더 hooks 폴더의 <code class="k">notify.ps1</code> 을 받고 문장 한 줄을 붙여넣으면 된다</li>
