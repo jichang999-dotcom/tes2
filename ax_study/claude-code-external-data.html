@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.20 · 2026-10-16</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.21 · 2026-10-19</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -179,7 +179,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <li>구글 시트를 <b>커넥터(MCP)</b>로 연결해, 파일을 내려받지 않고 Claude 가 바로 읽게 했다.</li>
       <li>커넥터가 없는 법령 정보를 <b>API 키</b>로 받아 왔고, 키를 채팅에 붙이지 않고 <code class="k">.env</code> 에 두는 습관을 들였다.</li>
       <li>API 도 커넥터도 없는 교육청 학원 공고를 <b>허락부터 확인하고</b> 가져와, <b>빠짐없이 왔는지 검산</b>했다.</li>
-      <li>API · 크롤링 결과가 <b>내 구글 시트</b>에 탭으로 쌓였다(개인정보보호법 · 학원공고).</li>
+      <li>API · 크롤링 결과를 <b>내 이름 시트</b>에 차례로 올려 업데이트했다(개인정보보호법 → 학원공고).</li>
     </ul>
   </div>
 
@@ -196,7 +196,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <ol class="flow">
     <li><b>가져오기</b> — 카드를 복사해 붙여넣습니다. Claude 가 알아서 가져옵니다.</li>
     <li><b>확인</b> — 제대로, 빠짐없이 왔는지 봅니다. 오류가 없다고 다 맞는 것은 아닙니다.</li>
-    <li><b>저장</b> — 작업 폴더에 CSV 파일로 남깁니다. API · 크롤링 결과는 4단계 내 구글 시트에 탭으로도 올립니다(5 · 8단계).</li>
+    <li><b>저장</b> — 작업 폴더에 CSV 파일로 남깁니다. API · 크롤링 결과는 4단계에서 만든 내 이름 시트에도 올립니다(5 · 8단계).</li>
   </ol>
   <div class="box tip"><b>매일 저절로 돌게 하려면</b>오늘은 매번 말로 시킵니다. 같은 수집을 스크립트로 저장해 매일 정해진 시각에 돌리고, 결과를 슬랙으로 알려 받는 <b>자동화</b>는 Advance 과정에서 합니다.</div>
 
@@ -207,7 +207,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td><b>교육용 OC</b></td><td>법령 API 키. 강사가 수업 중에 알려 줍니다. 5단계에서 <code class="k">.env</code> 파일에 직접 적어 넣고, <b>채팅에는 붙이지 않습니다</b></td></tr>
     <tr><td>회사 구글 계정</td><td>3단계 커넥터 연결에 씁니다</td></tr>
     <tr><td>이메일 주소</td><td>2단계 국가법령정보 가입에 씁니다</td></tr>
-    <tr><td>내 이름 구글 시트</td><td>4단계에서 새 시트(탭)를 만들고 데이터를 넣을 파일. 진행자가 내 이름으로 미리 만들어 둡니다</td></tr>
+    <tr><td>공용 구글 시트 링크</td><td>4단계에서 내 이름 시트(탭)를 만들 파일. <b>강사 계정</b>으로 실습하면 강사가 보낸 <b>쪽지</b>에서 링크를 확인합니다. <b>본인 계정</b>이면 4단계에서 새 스프레드시트를 직접 만듭니다</td></tr>
     <tr><td>입문 체험A 웹앱</td><td>9단계에서 구글 웹앱 배포 설정을 다시 봅니다. 없으면 강사 화면으로 봅니다</td></tr>
   </table></div>
   <div class="box warn"><b>주의</b>가져온 파일은 작업 폴더에만 둡니다. 회사 밖으로 보내거나 인터넷에 올리지 않습니다. 예외는 9단계 하나 — 공개 자료(법령 · 교육청 공고)로 만든 결과 페이지만 배포해 봅니다.</div>
@@ -284,16 +284,22 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <article class="step" id="s4" data-step="4">
     <header><span class="no">4</span><h3>내 구글 시트에 시트 만들고 데이터 넣기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>진행자가 <b>내 이름으로 된 구글 시트</b>를 하나씩 만들어 두었습니다. 브라우저에서 열고 주소창의 <b>링크를 복사</b>한 뒤, Claude Code 에 링크를 붙여넣고 아래 두 가지를 <b>내 말로</b> 이어서 적습니다.</p>
+      <p>구글 시트 파일 하나에 <b>내 이름으로 된 시트(아래쪽 탭)</b>를 만들고 데이터를 넣습니다. 이 시트를 5 · 8단계에서도 씁니다. 쓸 파일은 계정에 따라 다릅니다.</p>
+      <div class="tbl"><table>
+        <tr><th>3단계에서 연결한 계정</th><th>쓸 파일</th></tr>
+        <tr><td><b>강사 계정</b></td><td>강사가 보낸 <b>쪽지</b>에서 <b>공용 구글 시트 링크</b>를 확인합니다. 모두가 같은 파일에 각자 이름 시트를 만듭니다</td></tr>
+        <tr><td><b>본인 계정</b></td><td>브라우저에서 <b>새 구글 스프레드시트</b>를 하나 만듭니다(구글 드라이브 → 새로 만들기 → Google 스프레드시트, 또는 주소창에 <code class="k">sheets.new</code>)</td></tr>
+      </table></div>
+      <p>그 파일을 브라우저에서 열고 주소창의 <b>링크를 복사</b>한 뒤, Claude Code 에 링크를 붙여넣고 아래 두 가지를 <b>내 말로</b> 이어서 적습니다.</p>
       <div class="row"><b>방법</b><div><ol>
-        <li><b>시트 만들기</b> — 그 파일 안에 새 시트(아래쪽 탭)를 만들어 달라고 합니다. 예) 「이번주일정이라는 시트를 만들어줘」</li>
-        <li><b>데이터 넣기</b> — 만든 시트에 넣을 데이터를 말합니다. 예) 「우리 팀 이번 주 일정을 5줄 넣어줘」. 끝에 <b>「같은 내용을 이 폴더에 시트.csv 로도 저장해 줘」</b>를 덧붙입니다 — 단계 끝은 CSV 로 남기는 것이 오늘의 같은 틀입니다.</li>
+        <li><b>시트 만들기</b> — 그 파일 안에 <b>내 이름</b>으로 새 시트(아래쪽 탭)를 만들어 달라고 합니다. 예) 「홍길동이라는 시트를 만들어줘」</li>
+        <li><b>데이터 넣기</b> — 만든 내 이름 시트에 넣을 데이터를 말합니다. 예) 「그 시트에 우리 팀 이번 주 일정을 5줄 넣어줘」. 끝에 <b>「같은 내용을 이 폴더에 시트.csv 로도 저장해 줘」</b>를 덧붙입니다 — 단계 끝은 CSV 로 남기는 것이 오늘의 같은 틀입니다.</li>
       </ol>
-      <p>보내는 모양 예시:<br><code class="k">https://docs.google.com/spreadsheets/d/…(내 시트 링크)</code><br><code class="k">1. 이번주일정이라는 시트를 만들어줘</code><br><code class="k">2. 우리 팀 이번 주 일정을 5줄 넣어줘. 같은 내용을 이 폴더에 시트.csv 로도 저장해 줘</code></p>
+      <p>보내는 모양 예시:<br><code class="k">https://docs.google.com/spreadsheets/d/…(공용 시트 또는 새로 만든 시트 링크)</code><br><code class="k">1. 홍길동이라는 시트를 만들어줘</code><br><code class="k">2. 그 시트에 우리 팀 이번 주 일정을 5줄 넣어줘. 같은 내용을 이 폴더에 시트.csv 로도 저장해 줘</code></p>
       <p>데이터는 <b>내가 내용을 주거나 지어내도 되는 것</b>으로 합니다 — 날씨처럼 바깥에서 가져와야 하는 데이터는 출처가 없어 값을 지어낼 수 있고, 그건 5단계(API)의 몫입니다.</p></div></div>
-      <div class="row"><b>확인</b><div><p>브라우저의 내 시트 아래쪽에 <b>새 탭</b>이 생겼고, 그 안에 시킨 데이터가 들어 있다. 이 폴더에 <code class="k">시트.csv</code> 가 생겼다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>브라우저의 그 파일 아래쪽에 <b>내 이름 탭</b>이 생겼고, 그 안에 시킨 데이터가 들어 있다. 이 폴더에 <code class="k">시트.csv</code> 가 생겼다.</p></div></div>
       <div class="box warn"><b>「Read outside the working directories」 창이 뜨면</b>Claude 가 구글 시트 사용법 안내서(스킬)를 읽으러 작업 폴더 밖으로 나가서 묻는 창입니다. <b>1번(Yes, and keep allowing)</b>을 고릅니다. 읽기만 허용되고, 다음부터는 묻지 않습니다.</div>
-      <div class="box tip"><b>링크로 콕 집어 말하는 이유</b>오늘은 여러 사람이 같은 연결로 실습합니다. 시트 이름만 말하면 다른 사람 시트를 건드릴 수 있으니 <b>내 시트 링크</b>를 붙여서 시킵니다.</div>
+      <div class="box tip"><b>링크와 내 이름으로 콕 집어 말하는 이유</b>강사 계정은 여러 사람이 같은 연결 · 같은 파일로 실습합니다. 파일은 <b>링크</b>로, 시트는 <b>내 이름</b>으로 집어 말해야 다른 사람 시트를 건드리지 않습니다. 다른 사람 이름 탭은 열어 보기만 합니다.</div>
     </div>
   </article>
 </section>
@@ -323,10 +329,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li>왼쪽 탐색기에서 <code class="k">.env</code> 를 열고 <code class="k">LAW_OC=</code> 바로 뒤에 <b>강사가 알려 준 OC</b> 를 붙여 씁니다(따옴표 · 띄어쓰기 없이). 윈도우 단축키 <kbd>Ctrl</kbd>+<kbd>S</kbd> 로 저장합니다(맥은 <kbd>Cmd</kbd>+<kbd>S</kbd>). 위쪽 탭의 파일 이름 옆 <b>●</b> 가 사라지면 저장된 것입니다. 키는 <b>채팅이 아니라 파일에</b> 직접 씁니다.</li>
         <li><b>법령 조회</b> — 그대로 붙여넣습니다. 1~2분 걸립니다.
           <div class="cmd"><code>법령은 개인정보 보호법을 찾아보자. 이 폴더 .env 의 LAW_OC 를 OC 값으로 써서 국가법령정보 OPEN API(http://www.law.go.kr/DRF/lawSearch.do · target=law · type=JSON)에서 그 법령을 찾고, 본문 API(http://www.law.go.kr/DRF/lawService.do · target=law · type=JSON)로 조문을 받아 줘. 그 조문을 근거로 「사람인 같은 채용 사이트에서 데이터를 수집하면 개인정보 보호법에 걸리는지」 확인해 줘. 근거 조문 번호 · 조문 제목 · 핵심 내용 · 수집과의 관계를 표로 보여 주고, law 폴더를 만들어서 법령.csv 로 저장해 줘. OC 값은 화면에 쓰지 마. 판례는 조회하지 마.</code><button type="button">복사</button></div></li>
-        <li><b>구글 시트에 넣기</b> — 4단계에서 쓴 <b>내 이름 구글 시트 링크</b>를 맨 앞에 붙이고, 이어서 붙여넣습니다. API 로 받은 결과를 MCP 로 시트에 쌓는 것입니다.
-          <div class="cmd"><code>이 구글 시트 파일 안에 「개인정보보호법」이라는 시트를 새로 만들고, 이 폴더 law 폴더의 법령.csv 내용을 첫 줄 제목까지 그대로 넣어 줘. 다 되면 넣은 행 수가 CSV 행 수와 같은지 알려 줘.</code><button type="button">복사</button></div></li>
+        <li><b>구글 시트에 넣기</b> — 맨 앞 줄에 4단계에서 쓴 <b>시트 링크</b>, 둘째 줄에 <code class="k">내 시트: 홍길동</code> 처럼 <b>내 이름</b>을 적고, 이어서 붙여넣습니다. API 로 받은 결과를 MCP 로 내 이름 시트에 업데이트하는 것입니다.
+          <div class="cmd"><code>이 구글 시트 파일에서 위에 적은 「내 시트」 이름의 시트만 써. 그 시트 내용을 모두 지우고, 이 폴더 law 폴더의 법령.csv 내용을 첫 줄 제목까지 그대로 넣어 업데이트해 줘. 새 시트는 만들지 말고 다른 시트는 건드리지 마. 다 되면 넣은 행 수가 CSV 행 수와 같은지 알려 줘.</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>근거 조문 표(조문 번호 · 제목 · 핵심 내용 · 수집과의 관계)가 화면과 <code class="k">law\법령.csv</code> 에 같이 들어 있다. 내 구글 시트 아래쪽에 <b>「개인정보보호법」 탭</b>이 생겼고, 행 수가 CSV 와 같다. 표에서 조문 하나(예: 제15조)를 골라 <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 원문과 내용이 맞는지 한 번 대조한다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>근거 조문 표(조문 번호 · 제목 · 핵심 내용 · 수집과의 관계)가 화면과 <code class="k">law\법령.csv</code> 에 같이 들어 있다. <b>내 이름 탭</b>의 내용이 법령 표로 바뀌었고, 행 수가 CSV 와 같다. 새 탭은 생기지 않았다. 표에서 조문 하나(예: 제15조)를 골라 <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 원문과 내용이 맞는지 한 번 대조한다.</p></div></div>
       <div class="box warn"><b>주의</b>조회 결과는 <b>법률 자문이 아닙니다.</b> 업무 판단은 원문과 담당 부서 확인을 거칩니다.</div>
       <details class="q"><summary>심화 — 바뀐 내용까지 받아 보기</summary>
         <p>「방금 찾은 법령의 본문 API(lawService.do)로 최근 개정 이유를 받아 3줄로 요약해 줘」라고 이어서 시킵니다. 판례 본문은 화면이 늦게 채워지는 구조라 이 방법으로는 잘 안 옵니다 — 그래서 오늘은 법령만 봅니다.</p></details>
@@ -405,13 +411,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <article class="step" id="s8" data-step="8">
     <header><span class="no">8</span><h3>크롤링 결과를 구글 시트에 적재</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>크롤링의 끝은 <b>적재</b> — 쓸 수 있는 곳에 쌓는 것입니다. 7단계에서 추출한 학원 공고를 4단계 <b>내 구글 시트</b>에 「학원공고」 시트(탭)로 올립니다. 다시 크롤링하면 같은 카드로 <b>업데이트</b>합니다.</p>
+      <p>크롤링의 끝은 <b>적재</b> — 쓸 수 있는 곳에 쌓는 것입니다. 7단계에서 추출한 학원 공고를 4단계에서 만든 <b>내 이름 시트</b>에 올립니다. 다시 크롤링하면 같은 카드로 <b>업데이트</b>합니다.</p>
       <div class="row"><b>방법</b><div><ol>
-        <li>4단계에서 쓴 <b>내 이름 구글 시트 링크</b>를 맨 앞에 붙이고, 이어서 붙여넣습니다.
-          <div class="cmd"><code>이 구글 시트 파일 안에 「학원공고」라는 시트를 새로 만들고, 이 폴더 crawling 폴더의 학원공고.csv 내용을 첫 줄 제목까지 그대로 넣어 줘. 「학원공고」 시트가 이미 있으면 새로 만들지 말고 내용을 지운 뒤 다시 넣어 업데이트해 줘. 다 되면 넣은 행 수가 CSV 행 수와 같은지 알려 줘.</code><button type="button">복사</button></div></li>
-        <li>브라우저에서 내 시트를 열어 아래쪽 「학원공고」 탭을 봅니다. 카드를 한 번 더 붙여넣으면 탭이 새로 생기지 않고 같은 탭이 다시 채워지는 것도 확인합니다.</li>
+        <li>맨 앞 줄에 4단계에서 쓴 <b>시트 링크</b>, 둘째 줄에 <code class="k">내 시트: 홍길동</code> 처럼 <b>내 이름</b>을 적고, 이어서 붙여넣습니다.
+          <div class="cmd"><code>이 구글 시트 파일에서 위에 적은 「내 시트」 이름의 시트만 써. 그 시트 내용을 모두 지우고, 이 폴더 crawling 폴더의 학원공고.csv 내용을 첫 줄 제목까지 그대로 넣어 업데이트해 줘. 새 시트는 만들지 말고 다른 시트는 건드리지 마. 다 되면 넣은 행 수가 CSV 행 수와 같은지 알려 줘.</code><button type="button">복사</button></div></li>
+        <li>브라우저에서 그 파일을 열어 아래쪽 <b>내 이름 탭</b>을 봅니다. 카드를 한 번 더 붙여넣으면 탭이 새로 생기지 않고 같은 탭이 다시 채워지는 것도 확인합니다.</li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>내 시트에 「학원공고」 탭이 하나 있고, 행 수가 CSV 와 같다(제목 포함 11행). 「관련」 · 「본문 요약」 열도 그대로 들어 있다. 두 번 돌려도 탭이 하나다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>내 이름 탭의 내용이 학원 공고로 바뀌었고, 행 수가 CSV 와 같다(제목 포함 11행). 「관련」 · 「본문 요약」 열도 그대로 들어 있다. 두 번 돌려도 새 탭이 생기지 않는다.</p></div></div>
       <div class="box tip"><b>구글 연결이 안 됐다면</b>3단계를 강사 화면으로 넘겼다면 이 단계도 강사 화면으로 봅니다. <code class="k">crawling\학원공고.csv</code> 가 남아 있으면 오늘 수집은 끝난 것입니다.</div>
     </div>
   </article>
@@ -493,7 +499,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <text x="270" y="26" class="f-head">가져오기 (수집 3가지)</text>
     <text x="1390" y="26" class="f-head">배포 3가지</text>
     <g class="f-in"><rect x="10" y="52" width="120" height="56" rx="10"/><text x="70" y="88" class="f-t">MCP</text><rect x="10" y="142" width="120" height="56" rx="10"/><text x="70" y="178" class="f-t">API</text><rect x="10" y="232" width="120" height="56" rx="10"/><text x="70" y="268" class="f-t">크롤링</text></g>
-    <g class="f-mid"><rect x="580" y="115" width="160" height="110" rx="10"/><text x="660" y="155" class="f-t">모으기</text><text x="660" y="182" class="f-s">CSV 저장</text><text x="660" y="204" class="f-s">+ 내 구글 시트 탭</text><rect x="800" y="115" width="170" height="110" rx="10"/><text x="885" y="155" class="f-t">페이지 한 장</text><text x="885" y="182" class="f-s">publish\index.html</text><text x="885" y="204" class="f-s">9단계</text></g>
+    <g class="f-mid"><rect x="580" y="115" width="160" height="110" rx="10"/><text x="660" y="155" class="f-t">모으기</text><text x="660" y="182" class="f-s">CSV 저장</text><text x="660" y="204" class="f-s">+ 내 이름 시트</text><rect x="800" y="115" width="170" height="110" rx="10"/><text x="885" y="155" class="f-t">페이지 한 장</text><text x="885" y="182" class="f-s">publish\index.html</text><text x="885" y="204" class="f-s">9단계</text></g>
     <g class="f-out"><rect x="1290" y="52" width="200" height="56" rx="10"/><text x="1390" y="88" class="f-t">구글 웹앱</text><rect x="1290" y="142" width="200" height="56" rx="10"/><text x="1390" y="178" class="f-t">Claude 아티팩트</text><rect x="1290" y="232" width="200" height="56" rx="10"/><text x="1390" y="268" class="f-t">사내 로컬 서버</text></g>
     <g class="f-line" marker-end="url(#fa)"><path d="M130 80 L520 80 C550 80 550 160 578 165" fill="none"/><path d="M130 170 L578 170" fill="none"/><path d="M130 260 L520 260 C550 260 550 180 578 175" fill="none"/><path d="M740 170 L798 170" fill="none"/><path d="M970 165 C1000 160 1000 80 1030 80 L1288 80" fill="none"/><path d="M970 170 L1288 170" fill="none"/><path d="M970 175 C1000 180 1000 260 1030 260 L1288 260" fill="none"/></g>
     <g><text x="325" y="70" class="f-q">Claude 에 연결할 커넥터가 있나?</text><text x="325" y="160" class="f-q">서비스가 API 를 열어 두었나?</text><text x="325" y="250" class="f-q">공개 페이지이고 robots.txt · 약관이 허용하나?</text><text x="1160" y="70" class="f-q">회사 계정만 · 늘 열림</text><text x="1160" y="160" class="f-q">공개 자료만 · 링크 공유</text><text x="1160" y="250" class="f-q">내 PC 켜 둔 동안만</text></g>
@@ -526,7 +532,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>크롤링 CSV 글 수가 10 이 아니다 · 번호가 빈다</td><td>목록 표 밖의 글(공지 · 메뉴)까지 셌다 · 다른 페이지를 받았다</td><td>「목록 표 안의 글만, 1페이지만 다시 저장해 줘」</td></tr>
     <tr><td>학원 공고에 대학원 · 학교법인이 섞였다</td><td>게시판 검색은 글자로 찾는다(정상)</td><td>7단계 두 번째 카드(「관련」 열)로 뜻을 고른다</td></tr>
     <tr><td>CSV 를 엑셀로 열면 한글이 깨진다</td><td>BOM 없는 UTF-8 로 저장됐다</td><td>「엑셀에서 한글이 안 깨지게 UTF-8 BOM 으로 다시 저장해 줘」</td></tr>
-    <tr><td>8단계에서 「학원공고」 탭이 두 개 생겼다</td><td>「이미 있으면 업데이트」 문장을 빼고 붙여넣었다</td><td>「학원공고 (1) 시트는 지우고 학원공고 하나만 남겨 줘」</td></tr>
+    <tr><td>5 · 8단계에서 내 이름 탭이 아니라 새 탭이 생겼다</td><td>둘째 줄 「내 시트: (내 이름)」을 빼고 붙여넣었다</td><td>「방금 만든 시트는 지우고, 내 시트 (내 이름) 에 다시 넣어 줘」</td></tr>
     <tr><td>1~7단계에서 Claude 가 프로그램(라이브러리)을 설치하자고 한다</td><td>카드의 「새 프로그램은 설치하지 마」가 빠졌다</td><td>거절하고 카드를 그대로 다시 붙여넣는다</td></tr>
     <tr><td><code class="k">python --version</code> 이 안 된다 · 스토어 창이 뜬다</td><td>설치 때 「Add python.exe to PATH」를 체크하지 않았다 · 터미널을 새로 열지 않았다</td><td>VS Code 를 껐다 켠다. 그래도 안 되면 설치 파일을 다시 열어 Uninstall → 체크하고 다시 설치</td></tr>
     <tr><td>9단계 동료 PC 에서 로컬 서버 주소가 안 열린다</td><td>방화벽 창에서 허용을 안 눌렀다 · 동료가 다른 망(손님 와이파이 등)이다 · 주소를 잘못 적었다</td><td>내 PC 브라우저로 <code class="k">http://localhost:8000/</code> 이 열리는지 먼저 본다 → 열리면 같은 와이파이인지 · IP 를 다시 확인. 그래도 안 되면 회사 PC 정책으로 막힌 것이라 강사 화면으로 본다</td></tr>
@@ -545,6 +551,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.21</b></td><td>2026-10-19</td><td>
+      <ul><li><b>변경</b> 4단계 — 진행자가 미리 만든 내 이름 파일 대신 <b>구글 시트 파일 하나에 내 이름 시트(탭)</b>를 만든다. 강사 계정 = 쪽지로 받은 공용 구글 시트 링크 · 본인 계정 = 새 스프레드시트를 직접 만든다(계정별 표)</li><li><b>변경</b> 5 · 8단계 — 「개인정보보호법」 · 「학원공고」 새 탭 대신 <b>내 이름 시트</b>를 지우고 다시 넣어 업데이트한다(둘째 줄 「내 시트: 이름」 · 카드 문장 교체 · 공용 파일에서 남의 탭을 덮어쓰지 않게). 준비물 · 막혔을 때 표도 맞췄다</li></ul></td></tr>
     <tr><td><b>v1.20</b></td><td>2026-10-16</td><td>
       <ul><li><b>추가</b> 6단계 1번 「주소창에 robots.txt 직접 열어 보기」(사이트 주소 뒤에 /robots.txt) — 기존 판단 카드는 2번으로</li><li><b>추가</b> 6단계 접힌 상자 「robots.txt 읽는 법」 — 서울시교육청 실제 줄을 묶음별로 뜻 · 실습과의 관계 표로 풀고 · 「한글로 풀면」 표(게시판 1100 공지사항 · 1092~1099 시험안내 등 = 된다 / 1079~1091 · /work/ · /view/ · 첨부파일 = 안 된다) 결론(Disallow 4줄만 본다 · 1100 은 1079~1091 밖 · 첨부는 막힘). ₩ = 역슬래시 안내</li></ul></td></tr>
     <tr><td><b>v1.19</b></td><td>2026-10-16</td><td>
