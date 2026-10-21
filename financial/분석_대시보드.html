@@ -505,6 +505,7 @@
   <button class="tab-btn" onclick="switchTab('maejip')" id="btn-maejip">📥 매집</button>
   <button class="tab-btn active-swing" onclick="switchTab('swing')" id="btn-swing">🎯 손익비</button>
   <button class="tab-btn" onclick="switchTab('bowl3')" id="btn-bowl3">🍚 밥그릇3</button>
+  <button class="tab-btn" onclick="switchTab('overnight')" id="btn-overnight">🌙 오버나잇</button>
   <button class="tab-btn" onclick="switchTab('danta')" id="btn-danta">⚡ 단타</button>
   <button class="tab-btn" onclick="switchTab('closed')" id="btn-closed">🏁 종료</button>
   <button class="tab-btn" onclick="switchTab('summary')" id="btn-summary">📊 요약</button>
@@ -840,11 +841,41 @@
 </section>
 </div><!-- /tab-bowl3 -->
 
+<!-- ===== 🌙 오버나잇 탭 (2026-10-21 · build_danta_tab.js 가 15:10·09:15·08:30 마다 표 교체) ===== -->
+<div class="tab-content" id="tab-overnight">
+<section id="overnight-tab-summary">
+  <h3 style="margin:8px 0;">🌙 오버나잇 <span class="hd-note">(15:10 종목 제시 · 2026-10-21 19:30 · 시장 20일 -16.37% · 당일 2.79% (참고))</span></h3>
+  <table class="stock-table" style="font-size:0.88em;">
+    <thead><tr><th>순위</th><th>종목</th><th>테마</th><th>15:10 가격</th><th>등락</th><th>거래량</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td data-label="순위">1</td><td data-label="종목"><strong>HT로보틱스</strong> <span class="hd-note">코스닥</span></td><td data-label="테마">2차전지<br>전기차</td><td data-label="15:10 가격">11,500</td><td data-label="등락">+17.7%</td><td data-label="거래량">3.2배</td><td data-label="판정">🟢 종가 매수</td></tr>
+      <tr><td data-label="순위">2</td><td data-label="종목"><strong>큐리옥스바이오시스템즈</strong> <span class="hd-note">코스닥</span></td><td data-label="테마">-</td><td data-label="15:10 가격">63,500</td><td data-label="등락">+17.6%</td><td data-label="거래량">3.2배</td><td data-label="판정">🟢 종가 매수</td></tr>
+      <tr><td data-label="순위">3</td><td data-label="종목"><strong>디케이락</strong> <span class="hd-note">코스닥</span></td><td data-label="테마">피팅(관이음쇠)/밸브<br>남-북-러 가스관사업</td><td data-label="15:10 가격">12,300</td><td data-label="등락">+17.1%</td><td data-label="거래량">3배</td><td data-label="판정">🟢 종가 매수</td></tr>
+    </tbody>
+  </table>
+  <p class="hd-note">15:10 현재 +10~29.5% · 고가권(고가−현재가 ≤ 당일 범위 10%) · 거래량 20일 평균 2.7배+ · 시총 1,000억+ → 거래량 배수 순 5종 · 국면 필터 없음 · 매매 = 15:20~15:30 종가 단일가 매수 → 다음 날 시가 매도 · 근거 = 일봉 백테스트(2024-10~2026-10, 종가 마감 기준) 1,122건 평균 +0.75%(비용 뒤 +0.50%), 지수 20일 −5% 이하 국면은 −0.14% · 15:10 판정 자체는 백테스트 안 함</p>
+</section>
+</div><!-- /tab-overnight -->
+
 <!-- ===== ⚡ 단타(돌파임박) 탭 (2026-10-21 · build_danta_tab.js 가 08:30 마다 표 교체) ===== -->
 <div class="tab-content" id="tab-danta">
 <section id="danta-tab-summary">
-  <h3 style="margin:8px 0;">⚡ 단타 · 돌파임박</h3>
-  <p class="hd-note">다음 08:30 회차부터 표시</p>
+  <h3 style="margin:8px 0;">⚡ 단타 · 09:15 매수 추천 <span class="hd-note">(아직 없음)</span></h3>
+  <table class="stock-table" style="font-size:0.88em;">
+    <thead><tr><th>순위</th><th>종목</th><th>시가</th><th>09:15</th><th>15분 거래량</th><th>외+기</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td colspan="7">없음</td></tr>
+    </tbody>
+  </table>
+  <p class="hd-note">전 영업일 🌙 오버나잇 종목 중 09:15 가격 &gt; 시가 · 09:00~09:15 거래량 ≥ 20일 평균 20% · 외국인+기관 순매수 &gt; 0(오늘 행 없으면 신호일) → 09:15 매수 → 당일 종가 매도 · 백테스트 안 함(일봉상 같은 신호의 다음 날 장중은 평균 −0.67%)</p>
+  <h3 style="margin:16px 0 8px;">⚡ 돌파임박 <span class="hd-note">(오늘 없음)</span></h3>
+  <table class="stock-table" style="font-size:0.88em;">
+    <thead><tr><th>순위</th><th>종목</th><th>테마</th><th>신호일 종가</th><th>장기선</th><th>장기선까지</th><th>거래량</th><th>수급 강도</th></tr></thead>
+    <tbody>
+      <tr><td colspan="8">없음</td></tr>
+    </tbody>
+  </table>
+  <p class="hd-note">종가가 장기선(max MA112·224) −10% 이내 아래 · 양봉·몸통 50%+ · MA20·MA60 위·MA20 상승 · 시총 1,000억+ · 외국인+기관 5일·당일 &gt; 0 · 수급 강도 순 · 매매 = 다음 날 시가 매수 → 3일 안 +5% 익절, 아니면 3일째 종가 · ⚠️ 백테스트 2,353건 +5% 도달 24%·평균 −0.05%(비용 뒤 −0.30%) = 우위 없음 · 표시 전용</p>
 </section>
 </div><!-- /tab-danta -->
 
@@ -3515,6 +3546,7 @@ function switchTab(type) {
     maejip: document.getElementById('tab-maejip'),
     swing: document.getElementById('tab-swing'),
     bowl3: document.getElementById('tab-bowl3'),
+    overnight: document.getElementById('tab-overnight'),
     danta: document.getElementById('tab-danta'),
     closed: document.getElementById('tab-closed'),
     summary: document.getElementById('tab-summary')
@@ -3523,11 +3555,12 @@ function switchTab(type) {
     maejip: document.getElementById('btn-maejip'),
     swing: document.getElementById('btn-swing'),
     bowl3: document.getElementById('btn-bowl3'),
+    overnight: document.getElementById('btn-overnight'),
     danta: document.getElementById('btn-danta'),
     closed: document.getElementById('btn-closed'),
     summary: document.getElementById('btn-summary')
   };
-  var activeClass = { maejip: 'active-maejip', swing: 'active-swing', bowl3: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
+  var activeClass = { maejip: 'active-maejip', swing: 'active-swing', bowl3: 'active-swing', overnight: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
 
   Object.keys(tabs).forEach(function(k) {
     if (k === type) {
