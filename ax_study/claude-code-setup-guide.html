@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.19 · 2026-10-16</span></h1>
+  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.20 · 2026-10-22</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 12 단계</span></div>
@@ -703,12 +703,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>결과 페이지 배포</td>
         <td>모은 결과를 <b>링크 하나로 보여 준다.</b> (구글 웹앱 · Claude 아티팩트 · 사내 로컬 서버)</td></tr>
 
-    <tr><td rowspan="4"><b>중급</b><br><small>기록과 공유 · 출근과 보고</small><br><small>교육 (준비 중) · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-agent-team.html" target="_blank" rel="noopener">체험</a></small></td>
+    <tr><td rowspan="4"><b>중급</b><br><small>자동화 · 직원 만들기</small><br><small>교육 (준비 중) · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-agent-team.html" target="_blank" rel="noopener">체험</a></small></td>
         <td>Git · GitHub</td>
         <td>잘못 고쳐도 <b>어제로 되돌릴 수 있고,</b> 설정과 결과가 안전하게 보관된다.</td></tr>
-    <tr><td>클라우드 루틴 · 비공개 발행</td>
-        <td><b>PC 를 꺼도</b> 정해진 시각에 결과가 갱신되고, 회사 사람만 보는 화면으로 공유된다.</td></tr>
-    <tr><td>AI 직원<br><small>claude -p · 윈도우 스케줄러 · 슬랙 웹훅</small></td>
+    <tr><td>예약 실행 · 알림<br><small>윈도우 스케줄러 · 클라우드 루틴 · 슬랙 웹훅</small></td>
+        <td><b>내가 시키지 않아도</b> 정해진 시각에 내 PC 나 클라우드에서 일이 돌고, 결과가 슬랙으로 온다.</td></tr>
+    <tr><td>AI 직원<br><small>에이전트 · 허용 도구 · claude -p</small></td>
         <td><b>출근하면 리포트가 이미 만들어져 있고</b> 슬랙으로 결론이 와 있다.</td></tr>
     <tr><td>서브 에이전트 · 에이전트 팀</td>
         <td>혼자 하던 일을 <b>작성·검산 담당이 나눠 맡고,</b> 팀원끼리 서로 고쳐 보낸다.</td></tr>
@@ -773,6 +773,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
+    <tr><td><b>v1.20</b></td><td>2026-10-22</td><td>
+      <ul>
+        <li><b>바뀜</b> PART 7 「다음 단계」 표의 <b>중급</b> 줄 — 과정 이름을 「자동화 · 직원 만들기」로, 「클라우드 루틴 · 비공개 발행」 줄을 「예약 실행 · 알림」(윈도우 스케줄러 · 클라우드 루틴 · 슬랙 웹훅)으로 바꿨다. AI 직원 줄의 기술 이름도 에이전트 · 허용 도구 · claude -p 로 맞췄다</li>
+      </ul></td></tr>
     <tr><td><b>v1.19</b></td><td>2026-10-16</td><td>
       <ul>
         <li><b>바뀜</b> PART 7 「다음 단계」 표를 지금 과정 구성으로 다시 썼다. <b>초급</b> = 스킬 · 에이전트 · 외부 데이터 수집 · 결과 페이지 배포 / <b>중급</b> = Git · GitHub · 클라우드 루틴 · AI 직원 · 서브 에이전트와 팀 / <b>고급</b> = 규칙 4단계 · 권한과 보안 · 함께 쓰는 앱과 도구</li>
