@@ -187,7 +187,6 @@
   .tab-btn { padding: 6px 18px; border: 1px solid #30363d; background: #161b22; color: #8b949e; font-size: 0.9em; font-weight: bold; cursor: pointer; transition: all 0.2s; }
   .tab-btn:first-child { border-radius: 6px 0 0 6px; }
   .tab-btn:last-child { border-radius: 0 6px 6px 0; }
-  .tab-btn.active-maejip { background: #3fb95033; color: #3fb950; border-color: #3fb950; }
   .tab-btn.active-swing { background: #1f6feb33; color: #58a6ff; border-color: #1f6feb; }
   .tab-btn.active-long { background: #da363333; color: #f85149; border-color: #da3633; }
   .tab-btn.active-candidate { background: #f0883e33; color: #f0883e; border-color: #f0883e; }
@@ -502,7 +501,6 @@
 <!-- ===== 종목 1: 한화솔루션 ===== -->
 <h2 style="display:inline-block;">종목 분석</h2>
 <div class="tab-group">
-  <button class="tab-btn" onclick="switchTab('maejip')" id="btn-maejip">📥 매집</button>
   <button class="tab-btn active-swing" onclick="switchTab('swing')" id="btn-swing">🎯 손익비</button>
   <button class="tab-btn" onclick="switchTab('bowl3')" id="btn-bowl3">🍚 밥그릇3</button>
   <button class="tab-btn" onclick="switchTab('overnight')" id="btn-overnight">🌙 오버나잇</button>
@@ -530,15 +528,6 @@
   <div class="stock-filter-count" id="stock-filter-count" aria-live="polite">0 / 0개</div>
 </div>
 
-<!-- ===== 📥 매집 탭 (build_maejip.js 가 #maejip-section 교체 · 개장일 16:30) ===== -->
-<div class="tab-content" id="tab-maejip">
-<section id="maejip-section">
-  <h2 style="color:#3fb950;">📥 매집 리포트 <span class="hd-note">(2026-10-23 장마감 후 · 매수 체결 보유 종목)</span></h2>
-  <p style="font-size:0.9em;color:#8b949e;margin:0 0 12px;">개장일 16:30 토스 수급(투자자·프로그램·공매도) 캡처 → 보유 종목마다 수급(매집·중립·이탈)과 매도 압력을 풀어쓴 리포트. 매매 지시가 아닌 수급 해석이며, 가격 룰(진입·손절·목표)은 스윙 카드가 기준입니다.</p>
-  <p style="color:#8b949e;">보유(체결) 종목 없음</p>
-</section>
-</div><!-- /tab-maejip -->
-
 <!-- ===== 스윙 탭 ===== -->
 <div class="tab-content active" id="tab-swing">
 <section id="rr-swing-summary">
@@ -549,11 +538,11 @@
     <tbody>
       <tr><td data-label="순위">1</td><td data-label="충족"><strong style="white-space:nowrap;">⚪ 대기 (외국인·프로그램❌)</strong><br><div style="display:inline-block;text-align:left;"><span style="white-space:nowrap;">🟢 가격</span><br><span style="white-space:nowrap;">🟢 양봉(참고)</span><br><span style="white-space:nowrap;">🟢 거래량</span><br><span style="white-space:nowrap;">🔴 외국인</span><br><span style="white-space:nowrap;">🔴 프로그램</span></div></td><td data-label="종목"><strong>엠에스씨</strong> <span class="hd-note">코스닥</span></td><td data-label="테마">음식료업종</td><td data-label="경과">D+4</td><td data-label="신호일">10-02</td><td data-label="1차">7,300</td><td data-label="2차">7,250</td><td data-label="3차">7,190</td><td data-label="손절">7,040</td><td data-label="목표">7,990</td><td data-label="손절 폭">−3.6%</td><td data-label="손익비">2.65</td><td data-label="승률">36%</td><td data-label="재무·공시">✅ 3년 성장</td></tr>
       <tr><td data-label="순위">2</td><td data-label="충족"><strong style="white-space:nowrap;">🟡 2/3 매수가능 (거래량❌) · 양봉</strong><br><div style="display:inline-block;text-align:left;"><span style="white-space:nowrap;">🟢 가격</span><br><span style="white-space:nowrap;">🟢 양봉(참고)</span><br><span style="white-space:nowrap;">🔴 거래량</span><br><span style="white-space:nowrap;">🟢 외국인</span><br><span style="white-space:nowrap;">🟢 프로그램</span></div></td><td data-label="종목"><strong>잇츠한불</strong> <span class="hd-note">코스피</span></td><td data-label="테마">-</td><td data-label="경과">D+4</td><td data-label="신호일">10-06</td><td data-label="1차">11,200</td><td data-label="2차">11,070</td><td data-label="3차">10,890</td><td data-label="손절">10,670</td><td data-label="목표">11,930</td><td data-label="손절 폭">−4.7%</td><td data-label="손익비">1.38</td><td data-label="승률">36%</td><td data-label="재무·공시">✅ 3년 성장</td></tr>
-      <tr><td data-label="순위">3</td><td data-label="충족"><strong style="white-space:nowrap;">⚪ 대기 (외국인·프로그램❌)</strong><br><div style="display:inline-block;text-align:left;"><span style="white-space:nowrap;">🟢 가격</span><br><span style="white-space:nowrap;">🔴 양봉(참고)</span><br><span style="white-space:nowrap;">🟢 거래량</span><br><span style="white-space:nowrap;">🔴 외국인</span><br><span style="white-space:nowrap;">🔴 프로그램</span></div></td><td data-label="종목"><strong>셀트리온</strong> <span class="hd-note">코스피</span></td><td data-label="테마">바이오시밀러<br>밸류업</td><td data-label="경과">D+2</td><td data-label="신호일">10-16</td><td data-label="1차">197,400</td><td data-label="2차">196,600</td><td data-label="3차">195,600</td><td data-label="손절">191,600</td><td data-label="목표">222,500</td><td data-label="손절 폭">−2.9%</td><td data-label="손익비">4.33</td><td data-label="승률">37%</td><td data-label="재무·공시">❌ 순이익 증가 아님</td></tr>
+      <tr><td data-label="순위">3</td><td data-label="충족"><strong style="white-space:nowrap;">⚪ 대기 (가격·외국인·프로그램❌)</strong><br><div style="display:inline-block;text-align:left;"><span style="white-space:nowrap;">🔴 가격</span><br><span style="white-space:nowrap;">🟢 양봉(참고)</span><br><span style="white-space:nowrap;">🟢 거래량</span><br><span style="white-space:nowrap;">🔴 외국인</span><br><span style="white-space:nowrap;">🔴 프로그램</span></div></td><td data-label="종목"><strong>셀트리온</strong> <span class="hd-note">코스피</span></td><td data-label="테마">바이오시밀러<br>밸류업</td><td data-label="경과">D+2</td><td data-label="신호일">10-16</td><td data-label="1차">197,400</td><td data-label="2차">196,600</td><td data-label="3차">195,600</td><td data-label="손절">191,600</td><td data-label="목표">222,500</td><td data-label="손절 폭">−2.9%</td><td data-label="손익비">4.33</td><td data-label="승률">37%</td><td data-label="재무·공시">❌ 순이익 증가 아님</td></tr>
       <tr><td data-label="순위">4</td><td data-label="충족"><strong style="white-space:nowrap;">⚪ 대기 (가격·외국인·프로그램❌)</strong><br><div style="display:inline-block;text-align:left;"><span style="white-space:nowrap;">🔴 가격</span><br><span style="white-space:nowrap;">🔴 양봉(참고)</span><br><span style="white-space:nowrap;">🟢 거래량</span><br><span style="white-space:nowrap;">🔴 외국인</span><br><span style="white-space:nowrap;">🔴 프로그램</span></div></td><td data-label="종목"><strong>한선엔지니어링</strong> <span class="hd-note">코스닥</span></td><td data-label="테마">피팅<br>고체산화물 연료전지</td><td data-label="경과">D+0</td><td data-label="신호일">10-16</td><td data-label="1차">15,960</td><td data-label="2차">15,780</td><td data-label="3차">15,520</td><td data-label="손절">15,200</td><td data-label="목표">17,890</td><td data-label="손절 폭">−4.8%</td><td data-label="손익비">2.54</td><td data-label="승률">37%</td><td data-label="재무·공시">❌ 순이익 증가 아님</td></tr>
     </tbody>
   </table>
-  <p class="hd-note">충족 = 최신 15:30·19:00 분석 기준 매수 판정(가격 + 거래량·외국인·프로그램 3개 중 3개 🟢 매수 · 2개 🟡 매수가능 · 그 외 ⚪ 대기, 양봉은 참고) + 조건별 판정(🟢 충족 · 🔴 미충족 · ⚪ 판정 불가) · 경과 D+N = 편입 후 거래일 · 승률 = 신호 봉이 비슷한 과거 사례 중 60일 안 +10% 선도달 비율 · 1차·2차·3차(1:1:2)·손절·목표는 §4.4 기계 산식 · 재무 = 3개년 매출·순이익 연속 증가(표시만) · 올해 악재 공시 종목은 편입 전 제외</p>
+  <p class="hd-note">충족 = 최신 16:30·19:00 분석 기준 매수 판정(가격 + 거래량·외국인·프로그램 3개 중 3개 🟢 매수 · 2개 🟡 매수가능 · 그 외 ⚪ 대기, 양봉은 참고) + 조건별 판정(🟢 충족 · 🔴 미충족 · ⚪ 판정 불가) · 경과 D+N = 편입 후 거래일 · 승률 = 신호 봉이 비슷한 과거 사례 중 60일 안 +10% 선도달 비율 · 1차·2차·3차(1:1:2)·손절·목표는 §4.4 기계 산식 · 재무 = 3개년 매출·순이익 연속 증가(표시만) · 올해 악재 공시 종목은 편입 전 제외</p>
 </section>
 
 
@@ -599,13 +588,14 @@
   </table>
   <!-- 🛡️ AI 추천전략 박스 (자동 생성 · patchAiStrategyBoxes · 수기 편집 금지 — 다음 회차에 덮어씀) -->
   <div class="warn-box" style="background:#1e1a2e;border-left:4px solid #a371f7;margin-bottom:12px;">
-    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 16:54 회차 원문 · claude_dante_analyze.js)</span></strong>
+    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 17:14 회차 원문 · claude_dante_analyze.js)</span></strong>
     <table style="margin:8px 0;font-size:0.88em;">
       <thead><tr><th>구분</th><th>내용</th></tr></thead>
       <tbody>
         <tr><td style="text-align:left;width:120px;">🔔 판정</td><td style="text-align:left;">⏸ 보류 (관망) · ✅ 일치 (신뢰도 ⭐⭐) — 보류 ↔ 추세 약화</td></tr>
-        <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">1차 11,200 지정가 유지하되 손절 10,670까지 1.7%라 체결 시 손익비 급감 — 거래량이 17,340~37,200주로 정상화되고 MA224(10,794) 종가 지지 확인 후에만 진입</td></tr>
-        <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">종가 10,670 이탈 시 시나리오 폐기</td></tr>
+        <tr><td style="text-align:left;width:120px;">🎯 기본 행동</td><td style="text-align:left;">1차 11,200 지정가 유지</td></tr>
+        <tr><td style="text-align:left;width:120px;">⚠️ 조건</td><td style="text-align:left;">거래량 17,340~37,200주 범위 안 양봉 + 외국인·프로그램 동시 순매수일 때만 진입</td></tr>
+        <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">손절 10,670(현재가 −1.7%) 종가 이탈 시 시나리오 폐기</td></tr>
       </tbody>
     </table>
   </div>
@@ -651,13 +641,13 @@
   </table>
   <!-- 🛡️ AI 추천전략 박스 (자동 생성 · patchAiStrategyBoxes · 수기 편집 금지 — 다음 회차에 덮어씀) -->
   <div class="warn-box" style="background:#1e1a2e;border-left:4px solid #a371f7;margin-bottom:12px;">
-    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 16:54 회차 원문 · claude_dante_analyze.js)</span></strong>
+    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 17:14 회차 원문 · claude_dante_analyze.js)</span></strong>
     <table style="margin:8px 0;font-size:0.88em;">
       <thead><tr><th>구분</th><th>내용</th></tr></thead>
       <tbody>
         <tr><td style="text-align:left;width:120px;">🔔 판정</td><td style="text-align:left;">⏸ 보류 (관망) · ✅ 일치 (신뢰도 ⭐⭐) — 보류 ↔ 추세 약화</td></tr>
-        <tr><td style="text-align:left;width:120px;">🎯 기본 행동</td><td style="text-align:left;">1차 7,300 진입은 외국인·프로그램 당일 순매수 전환 확인 후</td></tr>
-        <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">손절 7,040(현재가 −2.2%) 근접 — MA224 7,088 종가 이탈 시 경계 강화</td></tr>
+        <tr><td style="text-align:left;width:120px;">🎯 기본 행동</td><td style="text-align:left;">1차 7,300 지정가 유지하되 외국인·프로그램 당일 순매수 전환 확인 후에만 진입</td></tr>
+        <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">손절 7,040(현재가 −2.2%) 종가 이탈 모니터링</td></tr>
       </tbody>
     </table>
   </div>
@@ -673,7 +663,7 @@
     <div>
       <h3 style="margin:0;">셀트리온 <span class="hd-note">(068270)</span> ⏸ 미체결 · 🤖 자동 편입 <span class="hd-note">(10-21 🎯 손익비)</span><span class="dplus" style="margin-left:6px;padding:1px 6px;border-radius:8px;background:#1f2937;color:#58a6ff;font-size:0.8em;">D+2</span></h3>
       <span class="badge badge-swing">스윙 <span class="chip-note">(활성 · 미체결)</span></span>
-      <span class="badge badge-proximity" style="background:#3a2e0d;color:#d29922;">📍 조건대기 3/4위 · T2 <span class="chip-note">(1차 197,400원 · 이격 2.08% · 조건 2/5)</span></span>
+      <span class="badge badge-proximity" style="background:#3a2e0d;color:#d29922;">📍 조건대기 3/4위 · T2 <span class="chip-note">(1차 197,400원 · 이격 2.03% · 조건 2/5)</span></span>
     </div>
     <div class="weight-info">
       비중: <span class="weight-chip">1 : 1 : 2</span>
@@ -687,7 +677,7 @@
     </div>
   </div>
   <div class="summary-grid">
-    <div class="summary-item"><div class="label">현재가 <span class="hd-note">(10-23)</span></div><div class="value loss">193,300원 <span class="value-note">(-0.51%)</span> <span class="value-note">(평가 0원 (미체결))</span></div></div>
+    <div class="summary-item"><div class="label">현재가 <span class="hd-note">(10-23)</span></div><div class="value loss">193,400원 <span class="value-note">(-0.46%)</span> <span class="value-note">(평가 0원 (미체결))</span></div></div>
     <div class="summary-item"><div class="label">현재 위치</div><div class="value" style="color:#d29922;">MA112+224 +1.95% 위 <span class="value-note">(🤖 자동 산출 · 차트 판독 없음)</span></div></div>
     <div class="summary-item"><div class="label">공구리</div><div class="value" style="color:#f0883e;">193,621원 <span class="value-note">(MA112+224 · 10-20 확정봉)</span></div></div>
     <div class="summary-item"><div class="label">손절라인</div><div class="value stop">191,600원 <span class="value-note">(MA112+224 종가 이탈 −1%, 후퇴 금지)</span></div></div>
@@ -703,13 +693,14 @@
   </table>
   <!-- 🛡️ AI 추천전략 박스 (자동 생성 · patchAiStrategyBoxes · 수기 편집 금지 — 다음 회차에 덮어씀) -->
   <div class="warn-box" style="background:#1e1a2e;border-left:4px solid #a371f7;margin-bottom:12px;">
-    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 16:54 회차 원문 · claude_dante_analyze.js)</span></strong>
+    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 17:14 회차 원문 · claude_dante_analyze.js)</span></strong>
     <table style="margin:8px 0;font-size:0.88em;">
       <thead><tr><th>구분</th><th>내용</th></tr></thead>
       <tbody>
-        <tr><td style="text-align:left;width:120px;">🔔 판정</td><td style="text-align:left;">⏸ 보류 (관망) · ✅ 일치 (신뢰도 ⭐⭐) — 보류 ↔ 추세 약화</td></tr>
-        <tr><td style="text-align:left;width:120px;">🚫 금지</td><td style="text-align:left;">손절 191,600까지 0.9% — 신규 진입 자제, 양봉 + 외국인·프로그램 동시 순매수 회복 시에만 1차 197,400 재검토</td></tr>
-        <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">종가 191,600 이탈 시 시나리오 폐기</td></tr>
+        <tr><td style="text-align:left;width:120px;">🔔 판정</td><td style="text-align:left;">⏸ 보류 (관망) · ⚠️ 불일치 (재검토 필요) — 보류 ↔ 추세 유효(진입 게이트 미충족)</td></tr>
+        <tr><td style="text-align:left;width:120px;">🚫 금지</td><td style="text-align:left;">신규 진입 자제</td></tr>
+        <tr><td style="text-align:left;width:120px;">🎯 기본 행동</td><td style="text-align:left;">종가 193,621 회복 + 양봉 + 외국인·프로그램 동시 순매수 시에만 1차 197,400 재검토</td></tr>
+        <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">손절 191,600 종가 이탈 시 시나리오 폐기</td></tr>
       </tbody>
     </table>
   </div>
@@ -755,13 +746,13 @@
   </table>
   <!-- 🛡️ AI 추천전략 박스 (자동 생성 · patchAiStrategyBoxes · 수기 편집 금지 — 다음 회차에 덮어씀) -->
   <div class="warn-box" style="background:#1e1a2e;border-left:4px solid #a371f7;margin-bottom:12px;">
-    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 16:54 회차 원문 · claude_dante_analyze.js)</span></strong>
+    🛡️ <strong>AI 추천전략 <span class="hd-note">(슬랙 2026-10-23 17:14 회차 원문 · claude_dante_analyze.js)</span></strong>
     <table style="margin:8px 0;font-size:0.88em;">
       <thead><tr><th>구분</th><th>내용</th></tr></thead>
       <tbody>
         <tr><td style="text-align:left;width:120px;">🔔 판정</td><td style="text-align:left;">🚫 손절 검토 · ✅ 일치 (신뢰도 ⭐⭐⭐) — 손절 검토 ↔ 추세 이탈</td></tr>
         <tr><td style="text-align:left;width:120px;">🛑 무효화</td><td style="text-align:left;">1~3차 지정가 전부 취소 검토 — 08:30 KRX 확정 종가 &lt; 15,200이면 auto_intake 퇴출 ④ 대상</td></tr>
-        <tr><td style="text-align:left;width:120px;">🎯 기본 행동</td><td style="text-align:left;">토스 종가(NXT 포함) 기준이라 KRX 종가 재확인</td></tr>
+        <tr><td style="text-align:left;width:120px;">🎯 기본 행동</td><td style="text-align:left;">재진입은 15,354 재돌파 + 외국인 순매수 확인 후 재산출</td></tr>
       </tbody>
     </table>
   </div>
@@ -787,7 +778,7 @@
       <tr><td data-label="순위">5</td><td data-label="충족"><strong style="white-space:nowrap;">⚪ 대기 (가격·거래량❌)</strong><br><div style="display:inline-block;text-align:left;"><span style="white-space:nowrap;">🔴 가격</span><br><span style="white-space:nowrap;">🔴 양봉(참고)</span><br><span style="white-space:nowrap;">🔴 거래량</span><br><span style="white-space:nowrap;">🟢 외국인</span><br><span style="white-space:nowrap;">🟢 프로그램</span></div></td><td data-label="종목"><strong>와이씨</strong> <span class="hd-note">코스닥</span></td><td data-label="테마">HBM<br>반도체 장비</td><td data-label="경과">D+0</td><td data-label="점수">12.5</td><td data-label="현재가">12,900</td><td data-label="1차">12,610</td><td data-label="2차">12,470</td><td data-label="3차">12,260</td><td data-label="손절">12,010</td><td data-label="목표">14,000</td><td data-label="손절 폭">−4.8%</td><td data-label="손익비">2.32</td><td data-label="재무·공시">➖ 3년 연속 증가 아님<br>✅ 공시 청정</td></tr>
     </tbody>
   </table>
-  <p class="hd-note">밥그릇3 = 3구간 눌림 — 1구간(−40% 하락) · 2구간(하락 기간 0.5배 이상 박스) 뒤 장기선(112·224) 동시 돌파 후 20거래일 안 장기선까지 첫 눌림 + 양봉 + 외국인·기관 5일 순매수 + 올해 악재 공시 0건 (재무 3년 성장은 표시만) · 점수 = 외국인+기관 5일 순매수 ÷ 20일 평균 거래량(%) · 눌림일부터 20거래일 노출 · 충족 = 최신 15:30·19:00 분석 기준 매수 판정(가격 + 거래량·외국인·프로그램 3개 중 3개 🟢 매수 · 2개 🟡 매수가능 · 그 외 ⚪ 대기, 양봉은 참고) + 조건별 판정(🟢 충족 · 🔴 미충족 · ⚪ 판정 불가) · 경과 D+N = 탭에 들어온 뒤 거래일 · 1차·2차·3차·손절·목표는 들어온 날 §4.4 기계 산식으로 고정 · 08:30 KRX 종가 &lt; 손절이면 삭제(Slack 알림) 후 20거래일 재진입 금지 · 표시 전용(스윙 탭 자동 편입 아님)</p>
+  <p class="hd-note">밥그릇3 = 3구간 눌림 — 1구간(−40% 하락) · 2구간(하락 기간 0.5배 이상 박스) 뒤 장기선(112·224) 동시 돌파 후 20거래일 안 장기선까지 첫 눌림 + 양봉 + 외국인·기관 5일 순매수 + 올해 악재 공시 0건 (재무 3년 성장은 표시만) · 점수 = 외국인+기관 5일 순매수 ÷ 20일 평균 거래량(%) · 눌림일부터 20거래일 노출 · 충족 = 최신 16:30·19:00 분석 기준 매수 판정(가격 + 거래량·외국인·프로그램 3개 중 3개 🟢 매수 · 2개 🟡 매수가능 · 그 외 ⚪ 대기, 양봉은 참고) + 조건별 판정(🟢 충족 · 🔴 미충족 · ⚪ 판정 불가) · 경과 D+N = 탭에 들어온 뒤 거래일 · 1차·2차·3차·손절·목표는 들어온 날 §4.4 기계 산식으로 고정 · 08:30 KRX 종가 &lt; 손절이면 삭제(Slack 알림) 후 20거래일 재진입 금지 · 표시 전용(스윙 탭 자동 편입 아님)</p>
 </section>
 </div><!-- /tab-bowl3 -->
 
@@ -3192,7 +3183,7 @@
 
 <!-- AUTO:ENTRY_GATE_SUMMARY:START -->
 <section id="entry-gate-summary">
-  <h2 style="color:#3fb950;">진입조건 5개 충족 현황 <span class="hd-note">(2026-10-23 16:54 분석)</span></h2>
+  <h2 style="color:#3fb950;">진입조건 5개 충족 현황 <span class="hd-note">(2026-10-23 17:14 분석)</span></h2>
   <div class="card">
     <div class="summary-grid" style="margin-top:0;">
       <div class="summary-item"><div class="label">5/5 매수 가능</div><div class="value" style="color:#f85149;">0종</div></div>
@@ -3228,9 +3219,9 @@
       <tr>
         <td><strong>셀트리온</strong></td>
         <td style="text-align:center;">미체결</td>
-        <td style="text-align:right;">193,300</td>
-        <td style="text-align:center;"><strong style="color:#3fb950;">PASS</strong></td>
+        <td style="text-align:right;">193,400</td>
         <td style="text-align:center;"><strong style="color:#f85149;">FAIL</strong></td>
+        <td style="text-align:center;"><strong style="color:#3fb950;">PASS</strong></td>
         <td style="text-align:center;"><strong style="color:#3fb950;">PASS</strong></td>
         <td style="text-align:center;"><strong style="color:#f85149;">FAIL</strong></td>
         <td style="text-align:center;"><strong style="color:#f85149;">FAIL</strong></td>
@@ -3258,7 +3249,7 @@
       </tbody>
     </table>
     <ul style="margin:12px 0 0 20px;color:#8b949e;font-size:0.88em;">
-      <li>잇츠한불 거래량: 47,510주, 최소 17,340주 미달</li>
+      <li>잇츠한불 거래량: 47,564주, 최소 17,340주 미달</li>
       <li>외국인 순매수 조건 PASS: 1/4종</li>
       <li>결론: 5/5 충족 0종 - 신규매수 및 추가매수 없음</li>
     </ul>
@@ -3481,7 +3472,6 @@ function initializeStockFilters() {
 
 function switchTab(type) {
   var tabs = {
-    maejip: document.getElementById('tab-maejip'),
     swing: document.getElementById('tab-swing'),
     bowl3: document.getElementById('tab-bowl3'),
     overnight: document.getElementById('tab-overnight'),
@@ -3490,7 +3480,6 @@ function switchTab(type) {
     summary: document.getElementById('tab-summary')
   };
   var btns = {
-    maejip: document.getElementById('btn-maejip'),
     swing: document.getElementById('btn-swing'),
     bowl3: document.getElementById('btn-bowl3'),
     overnight: document.getElementById('btn-overnight'),
@@ -3498,7 +3487,7 @@ function switchTab(type) {
     closed: document.getElementById('btn-closed'),
     summary: document.getElementById('btn-summary')
   };
-  var activeClass = { maejip: 'active-maejip', swing: 'active-swing', bowl3: 'active-swing', overnight: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
+  var activeClass = { swing: 'active-swing', bowl3: 'active-swing', overnight: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
 
   Object.keys(tabs).forEach(function(k) {
     if (k === type) {
@@ -3533,7 +3522,6 @@ function toggleAllCards(expand) {
     if (expand) card.classList.remove('collapsed');
     else card.classList.add('collapsed');
   });
-  document.querySelectorAll('details.maejip-card').forEach(function(d) { d.open = expand; });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
