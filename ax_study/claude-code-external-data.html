@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.22 · 2026-10-20</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.23 · 2026-10-26</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -171,31 +171,51 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 
 <main>
 <section class="part" id="p0">
-  <h2><small>시작 전</small>업무 데이터는 파일 하나에 모여 있지 않습니다</h2>
-  <p class="lead">교육 편에서는 받은 CSV 파일 하나로 스킬과 에이전트를 만들었습니다. 실제 업무 데이터는 <b>구글 시트</b> · <b>공공 서비스</b> · <b>웹페이지</b>에 흩어져 있습니다. 오늘은 세 곳에서 데이터를 <b>코드를 저장하지 않고 말(프롬프트)로</b> 가져와, <b>내 구글 시트 한 파일에 탭으로 쌓습니다</b>.</p>
+  <h2><small>시작 전</small>오늘 배울 것 — 흩어진 데이터를 말로 모아 공유하기</h2>
+  <p class="lead">교육 편에서는 강사가 준 <b>CSV 파일 하나</b>로 일했습니다. 하지만 실제 업무 데이터는 한 파일에 모여 있지 않습니다 — 팀이 쓰는 <b>구글 시트</b>에, 정부 · 공공기관의 <b>데이터 서비스</b>에, 누구나 보는 <b>웹페이지</b>에 흩어져 있습니다. 오늘은 이 세 곳에서 데이터를 가져와 <b>내 구글 시트 한 곳에 모으고</b>, 마지막에 <b>결과 페이지 한 장으로 공유</b>합니다. 코드는 직접 짜지 않습니다 — 카드 문장을 붙여넣어 <b>Claude 에게 말로 시키기만</b> 합니다.</p>
+
+  <h3>오늘 배우는 세 가지 — 한 줄로</h3>
+  <div class="tbl"><table>
+    <tr><th>이름</th><th>쉽게 말하면</th><th>오늘 실습</th></tr>
+    <tr><td><b>MCP</b><br><small>(커넥터)</small></td><td>Claude 에게 <b>출입증</b>을 주는 것. 한 번 연결해 두면 파일을 내려받지 않아도 Claude 가 직접 구글 시트에 들어가 읽고 씁니다</td><td>구글 시트 (3~4단계)</td></tr>
+    <tr><td><b>API</b></td><td>서비스가 열어 둔 <b>데이터 창구</b>. <b>열쇠(키)</b>를 들고 가면 정해진 모양으로 데이터를 내어 줍니다</td><td>국가법령정보 (5단계)</td></tr>
+    <tr><td><b>크롤링</b></td><td>사람이 화면을 보고 <b>옮겨 적던 일을 프로그램이 대신</b>하는 것. 창구가 없을 때 쓰고, <b>가져와도 되는지 먼저 확인</b>합니다</td><td>교육청 학원 공고 (6~8단계)</td></tr>
+  </table></div>
+  <div class="box tip"><b>고르는 순서</b>출입증(커넥터)이 있으면 MCP → 없으면 창구(API) → 둘 다 없으면 허락을 확인하고 크롤링.</div>
+
   <div class="hero">
     <b>끝나면 이렇게 됩니다</b>
     <ul>
-      <li>구글 시트를 <b>커넥터(MCP)</b>로 연결해, 파일을 내려받지 않고 Claude 가 바로 읽게 했다.</li>
-      <li>커넥터가 없는 법령 정보를 <b>API 키</b>로 받아 왔고, 키를 채팅에 붙이지 않고 <code class="k">.env</code> 에 두는 습관을 들였다.</li>
-      <li>API 도 커넥터도 없는 교육청 학원 공고를 <b>허락부터 확인하고</b> 가져와, <b>빠짐없이 왔는지 검산</b>했다.</li>
-      <li>API · 크롤링 결과를 <b>내 이름 시트</b>에 차례로 올려 업데이트했다(개인정보보호법 → 학원공고).</li>
+      <li><b>구글 시트</b>를 Claude 에 연결해, 말 한마디로 시트를 만들고 내용을 채웠다. (MCP)</li>
+      <li><b>법령 정보</b>를 열쇠(키)로 받아 왔다. 열쇠는 채팅창이 아니라 <code class="k">.env</code> 파일에 따로 두었다. (API)</li>
+      <li><b>교육청 학원 공고</b>를 가져와도 되는지 먼저 확인하고 가져와, <b>빠진 글이 없는지</b> 세어 봤다. (크롤링)</li>
+      <li>가져온 것을 모두 <b>내 이름 시트</b> 한 곳에 모으고, <b>결과 페이지 한 장</b>으로 만들어 다른 사람에게 보여 줬다. (배포)</li>
     </ul>
   </div>
 
-  <h3>세 가지 길 — 언제 무엇을 쓰나</h3>
+  <h3>처음 보는 말</h3>
   <div class="tbl"><table>
-    <tr><th>길</th><th>한 줄 설명</th><th>오늘 실습</th><th>이런 것도 연결된다</th></tr>
-    <tr><td><b>MCP</b></td><td><b>Model Context Protocol</b> — AI 가 바깥 도구 · 데이터에 연결하는 표준 규약<br>Claude 에 손발을 붙인다. 연결해 두면 말로 시켰을 때 Claude 가 직접 가서 읽는다</td><td>구글 시트 (3~4단계)</td><td>슬랙 (채널 대화 요약) · 노션 (페이지 · 회의록 찾기) · 지라 (이슈 목록 모으기)</td></tr>
-    <tr><td><b>API</b></td><td><b>Application Programming Interface</b> — 프로그램끼리 데이터를 주고받도록 서비스가 정해 둔 창구<br>서비스가 열어 둔 데이터 창구에 <b>키</b>를 들고 가서 받아 온다</td><td>국가법령정보 (5단계)</td><td>공공데이터포털 (학교 · 인구 통계) · 한국은행 경제통계 (물가 · 금리) · 네이버 데이터랩 (검색어 추이)</td></tr>
-    <tr><td><b>크롤링</b></td><td><b>Web Crawling</b> — 프로그램이 웹페이지를 차례로 돌아다니며 내용을 모으는 것 (약어 아님)<br>사람이 보는 화면(웹페이지)에서 글자를 긁어 온다. <b>공개</b> 페이지만 · <b>허락을 확인한 뒤에만</b></td><td>교육청 학원 공고 (6~7단계)</td><td>경쟁사 홈페이지 공지 · 이벤트 · 지자체 공고 게시판 · 업계 뉴스 목록</td></tr>
+    <tr><th>말</th><th>뜻</th></tr>
+    <tr><td><b>카드</b></td><td>가이드 안 회색 상자 문장. [복사] → Claude Code 에 붙여넣으면 됩니다</td></tr>
+    <tr><td><b>CSV</b></td><td>쉼표로 칸을 나눈 표 파일. 엑셀 · 구글 시트로 바로 열립니다. 단계마다 결과를 이 파일로 남깁니다</td></tr>
+    <tr><td><b>내 이름 시트</b></td><td>구글 시트 파일 아래쪽의 <b>탭 한 장</b>. 여러 사람이 한 파일을 같이 쓰므로, 내 이름을 붙인 탭에만 씁니다</td></tr>
+    <tr><td><code class="k">.env</code></td><td>열쇠(키) · 비밀번호를 적어 두는 메모 파일. Claude 가 여기서 꺼내 쓰게 해, 열쇠를 채팅에 붙이지 않습니다</td></tr>
+    <tr><td><b>robots.txt</b></td><td>사이트가 「여기는 프로그램으로 가져가도 된다 / 안 된다」를 적어 둔 안내문. 크롤링 전에 봅니다(6단계)</td></tr>
   </table></div>
-  <div class="box tip"><b>고르는 순서</b>커넥터가 있으면 MCP → 없으면 API → 둘 다 없으면 허락을 확인하고 크롤링.</div>
 
-  <h3>모든 단계가 같은 틀입니다</h3>
+  <details class="q"><summary>세 가지를 조금 더 자세히 (영어 이름 · 다른 예)</summary>
+  <div class="tbl"><table>
+    <tr><th>이름</th><th>영어 이름과 뜻</th><th>이런 것도 연결된다</th></tr>
+    <tr><td><b>MCP</b></td><td><b>Model Context Protocol</b> — AI 가 바깥 도구 · 데이터에 연결하는 표준 규칙</td><td>슬랙 (채널 대화 요약) · 노션 (페이지 · 회의록 찾기) · 지라 (이슈 목록 모으기)</td></tr>
+    <tr><td><b>API</b></td><td><b>Application Programming Interface</b> — 프로그램끼리 데이터를 주고받도록 서비스가 정해 둔 창구</td><td>공공데이터포털 (학교 · 인구 통계) · 한국은행 경제통계 (물가 · 금리) · 네이버 데이터랩 (검색어 추이)</td></tr>
+    <tr><td><b>크롤링</b></td><td><b>Web Crawling</b> — 프로그램이 웹페이지를 돌아다니며 내용을 모으는 것 (약어 아님). <b>공개</b> 페이지만 · <b>허락을 확인한 뒤에만</b></td><td>경쟁사 홈페이지 공지 · 이벤트 · 지자체 공고 게시판 · 업계 뉴스 목록</td></tr>
+  </table></div>
+  </details>
+
+  <h3>모든 단계가 같은 3박자입니다</h3>
   <ol class="flow">
     <li><b>가져오기</b> — 카드를 복사해 붙여넣습니다. Claude 가 알아서 가져옵니다.</li>
-    <li><b>확인</b> — 제대로, 빠짐없이 왔는지 봅니다. 오류가 없다고 다 맞는 것은 아닙니다.</li>
+    <li><b>확인</b> — 제대로, 빠짐없이 왔는지 봅니다. <b>오류 없이 끝났다고 다 맞는 것은 아닙니다.</b></li>
     <li><b>저장</b> — 작업 폴더에 CSV 파일로 남깁니다. API · 크롤링 결과는 4단계에서 만든 내 이름 시트에도 올립니다(5 · 8단계).</li>
   </ol>
   <div class="box tip"><b>매일 저절로 돌게 하려면</b>오늘은 매번 말로 시킵니다. 같은 수집을 스크립트로 저장해 매일 정해진 시각에 돌리고, 결과를 슬랙으로 알려 받는 <b>자동화</b>는 Advance 과정에서 합니다.</div>
@@ -561,6 +581,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.23</b></td><td>2026-10-26</td><td>
+      <ul><li><b>바뀜</b> 시작 전 — 제목 「오늘 배울 것」 · 초심자용으로 다시 씀: 세 가지(MCP = 출입증 · API = 데이터 창구 · 크롤링 = 옮겨 적기 대신) 한 줄 표를 맨 앞에 · 「끝나면 이렇게 됩니다」에 결과 페이지 배포 추가</li><li><b>추가</b> 「처음 보는 말」 표(카드 · CSV · 내 이름 시트 · .env · robots.txt) · 영어 이름 · 다른 예는 접힌 상자로</li></ul></td></tr>
     <tr><td><b>v1.22</b></td><td>2026-10-20</td><td>
       <ul><li><b>추가</b> 5단계 접힌 상자 「수집이 실제로 다툼이 된 사례」 — 잡코리아 – 사람인 · 야놀자 – 여기어때 표, 처벌과 배상은 다르다</li><li><b>추가</b> 6단계 「하지 않는 것」 — 가져와도 된다와 다시 공개 · 판매해도 된다는 다른 질문</li><li><b>추가</b> 9단계 「남의 글을 다시 공개해도 되나요?」 — 공공기관 글은 원칙적으로 자유이용(저작권법 제24조의2) · 출처 · 수집 날짜 · 요약 + 링크 · 개인이 쓴 글은 다시 공개하지 않는다</li><li><b>추가</b> 마무리 흐름 그림 크롤링 칸에 「다시 공개 · 판매는 따로 확인」 · 네이버 카페 시연 아래 주의 상자(로그인 뒤 글 = 쓴 사람의 저작물 · 내부 참고용 요약만)</li></ul></td></tr>
     <tr><td><b>v1.21</b></td><td>2026-10-19</td><td>
