@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.24 · 2026-10-26</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.25 · 2026-10-26</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -142,17 +142,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <ol>
   <li class="ghead">시작 전</li>
   <li><a href="#p0">세 가지 길 · 같은 틀 · 준비물</a></li>
-  <li class="ghead">① 준비 <small>1~2단계</small></li>
+  <li class="ghead">① 준비 <small>1단계</small></li>
   <li><a href="#p1">PART 1 준비</a></li>
   <li class="sub"><a href="#s1">1. Python 설치</a></li>
-  <li class="sub"><a href="#s2">2. 법령 API 키 신청 해 보기</a></li>
-  <li class="ghead">② MCP <small>3~4단계</small></li>
+  <li class="ghead">② MCP <small>2~3단계</small></li>
   <li><a href="#p2">PART 2 MCP — 커넥터로 가져오기</a></li>
-  <li class="sub"><a href="#s3">3. MCP 종류 보기 · 구글 커넥터 연결</a></li>
-  <li class="sub"><a href="#s4">4. 내 구글 시트에 시트 만들고 데이터 넣기</a></li>
+  <li class="sub"><a href="#s2">2. MCP 종류 보기 · 구글 커넥터 연결</a></li>
+  <li class="sub"><a href="#s3">3. 내 구글 시트에 시트 만들고 데이터 넣기</a></li>
   <li class="sub"><a href="#chrome">선택. Claude in Chrome 으로 구글 API 연결</a></li>
-  <li class="ghead">③ API <small>5단계</small></li>
+  <li class="ghead">③ API <small>4~5단계</small></li>
   <li><a href="#p3">PART 3 API — 키로 받아 오기</a></li>
+  <li class="sub"><a href="#s4">4. 법령 API 키 신청 해 보기</a></li>
   <li class="sub"><a href="#s5">5. 개인정보 보호법 확인 · 시트에 넣기</a></li>
   <li class="ghead">④ 크롤링 <small>6~8단계</small></li>
   <li><a href="#p4">PART 4 크롤링 — 화면에서 가져오기</a></li>
@@ -175,12 +175,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2><small>시작 전</small>오늘 배울 것 — 흩어진 데이터를 말로 모아 공유하기</h2>
   <p class="lead">교육 편에서는 강사가 준 <b>CSV 파일 하나</b>로 일했습니다. 하지만 실제 업무 데이터는 한 파일에 모여 있지 않습니다 — 팀이 쓰는 <b>구글 시트</b>에, 정부 · 공공기관의 <b>데이터 서비스</b>에, 누구나 보는 <b>웹페이지</b>에 흩어져 있습니다. 오늘은 이 세 곳에서 데이터를 가져와 <b>내 구글 시트 한 곳에 모으고</b>, 마지막에 <b>결과 페이지 한 장으로 공유</b>합니다. 코드는 직접 짜지 않습니다 — 카드 문장을 붙여넣어 <b>Claude 에게 말로 시키기만</b> 합니다.</p>
 
-  <h3>오늘 배우는 세 가지 — 한 줄로</h3>
+  <h3>오늘 배우는 세 가지</h3>
   <div class="tbl"><table>
-    <tr><th>이름</th><th>쉽게 말하면</th><th>오늘 실습</th></tr>
-    <tr><td><b>MCP</b><br><small>(커넥터)</small></td><td>Claude 에게 <b>출입증</b>을 주는 것. 한 번 연결해 두면 파일을 내려받지 않아도 Claude 가 직접 구글 시트에 들어가 읽고 씁니다</td><td>구글 시트 (3~4단계)</td></tr>
-    <tr><td><b>API</b></td><td>서비스가 열어 둔 <b>데이터 창구</b>. <b>열쇠(키)</b>를 들고 가면 정해진 모양으로 데이터를 내어 줍니다</td><td>국가법령정보 (5단계)</td></tr>
-    <tr><td><b>크롤링</b></td><td>사람이 화면을 보고 <b>옮겨 적던 일을 프로그램이 대신</b>하는 것. 창구가 없을 때 쓰고, <b>가져와도 되는지 먼저 확인</b>합니다</td><td>교육청 학원 공고 (6~8단계)</td></tr>
+    <tr><th>이름</th><th>영어 이름과 뜻</th><th>이런 것도 연결된다</th></tr>
+    <tr><td><b>MCP</b></td><td><b>Model Context Protocol</b> — AI 가 바깥 도구 · 데이터에 연결하는 표준 규칙</td><td>슬랙 (채널 대화 요약) · 노션 (페이지 · 회의록 찾기) · 지라 (이슈 목록 모으기)</td></tr>
+    <tr><td><b>API</b></td><td><b>Application Programming Interface</b> — 프로그램끼리 데이터를 주고받도록 서비스가 정해 둔 창구</td><td>공공데이터포털 (학교 · 인구 통계) · 한국은행 경제통계 (물가 · 금리) · 네이버 데이터랩 (검색어 추이)</td></tr>
+    <tr><td><b>크롤링</b></td><td><b>Web Crawling</b> — 프로그램이 웹페이지를 돌아다니며 내용을 모으는 것 (약어 아님). <b>공개</b> 페이지만 · <b>허락을 확인한 뒤에만</b></td><td>경쟁사 홈페이지 공지 · 이벤트 · 지자체 공고 게시판 · 업계 뉴스 목록</td></tr>
   </table></div>
   <div class="box tip"><b>고르는 순서</b>출입증(커넥터)이 있으면 MCP → 없으면 창구(API) → 둘 다 없으면 허락을 확인하고 크롤링.</div>
 
@@ -194,7 +194,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>할 수 있는 일</td><td>읽기 + <b>쓰기</b>(시트에 넣기 · 고치기)</td><td>주로 <b>읽기</b>(서비스가 열어 둔 데이터만)</td></tr>
     <tr><td>결과가 가는 곳</td><td>구글 시트에 <b>바로</b></td><td>내 PC 로 받아 <b>CSV 파일</b>로 저장 → 필요하면 시트로 옮긴다</td></tr>
     <tr><td>있는 곳</td><td>구글 · 슬랙 · 노션처럼 <b>커넥터가 나와 있는 서비스</b>만</td><td>공공기관 · 기업이 <b>창구를 열어 둔 곳</b>이면 어디든 — 훨씬 많다</td></tr>
-    <tr><td>오늘</td><td>3~4단계 구글 시트</td><td>5단계 국가법령정보</td></tr>
+    <tr><td>오늘</td><td>2~3단계 구글 시트</td><td>4~5단계 국가법령정보</td></tr>
   </table></div>
 
   <div class="hero">
@@ -217,20 +217,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td><b>robots.txt</b></td><td>사이트가 「여기는 프로그램으로 가져가도 된다 / 안 된다」를 적어 둔 안내문. 크롤링 전에 봅니다(6단계)</td></tr>
   </table></div>
 
-  <details class="q"><summary>세 가지를 조금 더 자세히 (영어 이름 · 다른 예)</summary>
-  <div class="tbl"><table>
-    <tr><th>이름</th><th>영어 이름과 뜻</th><th>이런 것도 연결된다</th></tr>
-    <tr><td><b>MCP</b></td><td><b>Model Context Protocol</b> — AI 가 바깥 도구 · 데이터에 연결하는 표준 규칙</td><td>슬랙 (채널 대화 요약) · 노션 (페이지 · 회의록 찾기) · 지라 (이슈 목록 모으기)</td></tr>
-    <tr><td><b>API</b></td><td><b>Application Programming Interface</b> — 프로그램끼리 데이터를 주고받도록 서비스가 정해 둔 창구</td><td>공공데이터포털 (학교 · 인구 통계) · 한국은행 경제통계 (물가 · 금리) · 네이버 데이터랩 (검색어 추이)</td></tr>
-    <tr><td><b>크롤링</b></td><td><b>Web Crawling</b> — 프로그램이 웹페이지를 돌아다니며 내용을 모으는 것 (약어 아님). <b>공개</b> 페이지만 · <b>허락을 확인한 뒤에만</b></td><td>경쟁사 홈페이지 공지 · 이벤트 · 지자체 공고 게시판 · 업계 뉴스 목록</td></tr>
-  </table></div>
-  </details>
-
   <h3>모든 단계가 같은 3박자입니다</h3>
   <ol class="flow">
     <li><b>가져오기</b> — 카드를 복사해 붙여넣습니다. Claude 가 알아서 가져옵니다.</li>
     <li><b>확인</b> — 제대로, 빠짐없이 왔는지 봅니다. <b>오류 없이 끝났다고 다 맞는 것은 아닙니다.</b></li>
-    <li><b>저장</b> — 작업 폴더에 CSV 파일로 남깁니다. API · 크롤링 결과는 4단계에서 만든 내 이름 시트에도 올립니다(5 · 8단계).</li>
+    <li><b>저장</b> — 작업 폴더에 CSV 파일로 남깁니다. API · 크롤링 결과는 3단계에서 만든 내 이름 시트에도 올립니다(5 · 8단계).</li>
   </ol>
   <div class="box tip"><b>매일 저절로 돌게 하려면</b>오늘은 매번 말로 시킵니다. 같은 수집을 스크립트로 저장해 매일 정해진 시각에 돌리고, 결과를 슬랙으로 알려 받는 <b>자동화</b>는 Advance 과정에서 합니다.</div>
 
@@ -239,18 +230,18 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><th>준비물</th><th>설명</th></tr>
     <tr><td><b>교육 편 완료</b></td><td>Claude Code 가 도는 작업 폴더. 아직이면 <a href="claude-code-skills-agents.html">교육 편</a>부터</td></tr>
     <tr><td><b>교육용 OC</b></td><td>법령 API 키. 강사가 수업 중에 알려 줍니다. 5단계에서 <code class="k">.env</code> 파일에 직접 적어 넣고, <b>채팅에는 붙이지 않습니다</b></td></tr>
-    <tr><td>회사 구글 계정</td><td>3단계 커넥터 연결에 씁니다</td></tr>
-    <tr><td>이메일 주소</td><td>2단계 국가법령정보 가입에 씁니다</td></tr>
-    <tr><td>공용 구글 시트 링크</td><td>4단계에서 내 이름 시트(탭)를 만들 파일. <b>강사 계정</b>으로 실습하면 강사가 보낸 <b>쪽지</b>에서 링크를 확인합니다. <b>본인 계정</b>이면 4단계에서 새 스프레드시트를 직접 만듭니다</td></tr>
+    <tr><td>회사 구글 계정</td><td>2단계 커넥터 연결에 씁니다</td></tr>
+    <tr><td>이메일 주소</td><td>4단계 국가법령정보 가입에 씁니다</td></tr>
+    <tr><td>공용 구글 시트 링크</td><td>3단계에서 내 이름 시트(탭)를 만들 파일. <b>강사 계정</b>으로 실습하면 강사가 보낸 <b>쪽지</b>에서 링크를 확인합니다. <b>본인 계정</b>이면 3단계에서 새 스프레드시트를 직접 만듭니다</td></tr>
     <tr><td>입문 체험A 웹앱</td><td>9단계에서 구글 웹앱 배포 설정을 다시 봅니다. 없으면 강사 화면으로 봅니다</td></tr>
   </table></div>
   <div class="box warn"><b>주의</b>가져온 파일은 작업 폴더에만 둡니다. 회사 밖으로 보내거나 인터넷에 올리지 않습니다. 예외는 9단계 하나 — 공개 자료(법령 · 교육청 공고)로 만든 결과 페이지만 배포해 봅니다.</div>
 </section>
 
 <details class="grp" id="g1">
-<summary><span class="gno">①</span> 준비 <small>1~2단계 · 15분</small></summary>
+<summary><span class="gno">①</span> 준비 <small>1단계 · 15분</small></summary>
 <section class="part" id="p1">
-  <h2><small>PART 1</small>준비 (1~2단계)</h2>
+  <h2><small>PART 1</small>준비 (1단계)</h2>
   <p class="lead">VS Code(또는 Cursor)에서 교육 편 작업 폴더를 열면 준비 끝입니다. 오늘 만드는 파일(CSV · <code class="k">.env</code>)은 모두 이 폴더에 생깁니다.</p>
 
   <article class="step" id="s1" data-step="1">
@@ -270,33 +261,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     </div>
   </article>
 
-  <article class="step" id="s2" data-step="2">
-    <header><span class="no">2</span><h3>법령 API 키 신청 해 보기</h3><label><input type="checkbox">완료</label></header>
-    <div class="body">
-      <p>API 를 쓰려면 서비스에 가입하고 <b>활용 신청</b>을 해서 승인을 받아야 합니다. 이 서비스는 <b>신청하면 바로 자동 승인</b>됩니다. <b>오늘 실습은 강사가 알려 주는 교육용 키</b>(5단계에서 <code class="k">.env</code> 에 넣습니다)로 하고, 여기서는 <b>신청 절차를 직접 한 번 해 봅니다</b>.</p>
-      <div class="row"><b>방법</b><div><ol>
-        <li><a href="https://open.law.go.kr" target="_blank" rel="noopener">국가법령정보 공동활용(open.law.go.kr)</a> 에 회원가입하고 로그인합니다.</li>
-        <li>상단 메뉴의 <b>OPEN API</b> → <b>OPEN API 신청</b>으로 갑니다.</li>
-        <li>활용 목적에 「업무 자료 조회 교육 실습」처럼 적고, 화면이 요구하는 항목을 채워 신청합니다. 무엇을 넣을지 모르겠으면 강사 화면을 따라 합니다.</li>
-        <li><b>API인증키(OC)</b> 칸에 가입한 이메일의 <b>@ 앞부분</b>을 넣고 [중복확인]을 누릅니다. 이미 쓰는 값이라고 나오면 뒤에 글자를 조금 붙입니다.</li>
-        <li><b>공동활용 법령종류</b>는 맨 위 <b>「전체선택」</b>을 체크합니다. 최소한 <b>대한민국 현행법령 → 목록 JSON</b> 은 체크돼 있어야 5단계 법령 조회가 됩니다.</li>
-        <li>신청 내역에서 승인여부가 「승인」, 활용상태가 「연결」로 보이면 끝입니다. 바로 보입니다.</li>
-      </ol></div></div>
-      <div class="row"><b>확인</b><div><p>신청 내역에 내 신청이 승인여부 「승인」으로 한 줄 보인다.</p></div></div>
-      <div class="box tip"><b>OC 가 뭔가요</b>이 API 의 키는 <code class="k">OC</code> 라는 이름으로, 신청 때 직접 정한 값(이메일 @ 앞부분)이 그대로 키입니다. 따로 발급되는 긴 키는 없고, 잊으면 <b>마이페이지 → API인증키관리</b>에서 봅니다. 자동 승인이라 <code class="k">.env</code> 의 교육용 OC 를 내 것으로 바로 바꿔 끼워도 됩니다.</div>
-    </div>
-  </article>
 </section>
 </details>
 
 <details class="grp" id="g2">
-<summary><span class="gno">②</span> MCP <small>3~4단계 · 15분</small></summary>
+<summary><span class="gno">②</span> MCP <small>2~3단계 · 15분</small></summary>
 <section class="part" id="p2">
-  <h2><small>PART 2</small>MCP — 커넥터로 가져오기 (3~4단계)</h2>
+  <h2><small>PART 2</small>MCP — 커넥터로 가져오기 (2~3단계)</h2>
   <p class="lead">MCP 는 Claude 에 붙이는 <b>손발</b>입니다. 붙이는 방법은 여러 가지인데, 오늘은 가장 쉬운 <b>커넥터</b> 하나만 직접 해 봅니다.</p>
 
-  <article class="step" id="s3" data-step="3">
-    <header><span class="no">3</span><h3>MCP 종류 보기 · 구글 커넥터 연결</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s2" data-step="2">
+    <header><span class="no">2</span><h3>MCP 종류 보기 · 구글 커넥터 연결</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="tbl"><table>
         <tr><th>종류</th><th>붙이는 법</th><th>예시</th><th>오늘</th></tr>
@@ -310,17 +285,17 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li>VS Code 터미널에서 Claude Code 를 다시 켭니다(<code class="k">exit</code> → <code class="k">claude</code>). 그다음 <code class="k">/mcp</code> 를 입력합니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p><code class="k">/mcp</code> 목록에 Google Drive 와 Google Sheets 가 둘 다 연결된 상태로 보인다.</p></div></div>
-      <div class="box warn"><b>허용 화면에서 막히면</b>회사 계정은 관리자가 외부 앱 연결을 막아 두었을 수 있습니다. 4단계는 강사 화면으로 보고 5단계로 넘어갑니다.</div>
+      <div class="box warn"><b>허용 화면에서 막히면</b>회사 계정은 관리자가 외부 앱 연결을 막아 두었을 수 있습니다. 3단계는 강사 화면으로 보고 4단계로 넘어갑니다.</div>
       <div class="box tip"><b>연결하면 볼 수 있는 범위</b>커넥터를 연결하면 Claude 가 <b>내 드라이브 전체</b>를 볼 수 있습니다. 시킬 때는 파일 이름을 콕 집어 말합니다.</div>
     </div>
   </article>
 
-  <article class="step" id="s4" data-step="4">
-    <header><span class="no">4</span><h3>내 구글 시트에 시트 만들고 데이터 넣기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s3" data-step="3">
+    <header><span class="no">3</span><h3>내 구글 시트에 시트 만들고 데이터 넣기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <p>구글 시트 파일 하나에 <b>내 이름으로 된 시트(아래쪽 탭)</b>를 만들고 데이터를 넣습니다. 이 시트를 5 · 8단계에서도 씁니다. 쓸 파일은 계정에 따라 다릅니다.</p>
       <div class="tbl"><table>
-        <tr><th>3단계에서 연결한 계정</th><th>쓸 파일</th></tr>
+        <tr><th>2단계에서 연결한 계정</th><th>쓸 파일</th></tr>
         <tr><td><b>강사 계정</b></td><td>강사가 보낸 <b>쪽지</b>에서 <b>공용 구글 시트 링크</b>를 확인합니다. 모두가 같은 파일에 각자 이름 시트를 만듭니다</td></tr>
         <tr><td><b>본인 계정</b></td><td>브라우저에서 <b>새 구글 스프레드시트</b>를 하나 만듭니다(구글 드라이브 → 새로 만들기 → Google 스프레드시트, 또는 주소창에 <code class="k">sheets.new</code>)</td></tr>
       </table></div>
@@ -340,9 +315,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <article class="step" id="chrome">
     <header><span class="no">+</span><h3>선택 — Claude in Chrome 으로 구글 API 연결 (회사 계정)</h3></header>
     <div class="body">
-      <p><b>시간이 남으면 합니다.</b> 4단계까지 끝났으면 다음으로 넘어가도 됩니다. 3단계 커넥터는 <b>로그인만</b> 하면 끝났지만, 커넥터가 없는 일(내 PC 의 Python 이 구글 시트 · 드라이브 · Gmail 을 직접 다루기)은 구글 클라우드(GCP)에서 <b>API 연결 설정</b>을 해야 합니다. 그 설정 화면을 Claude 가 <b>내 크롬을 직접 움직여</b> 대신 눌러 줍니다.</p>
+      <p><b>시간이 남으면 합니다.</b> 3단계까지 끝났으면 다음으로 넘어가도 됩니다. 2단계 커넥터는 <b>로그인만</b> 하면 끝났지만, 커넥터가 없는 일(내 PC 의 Python 이 구글 시트 · 드라이브 · Gmail 을 직접 다루기)은 구글 클라우드(GCP)에서 <b>API 연결 설정</b>을 해야 합니다. 그 설정 화면을 Claude 가 <b>내 크롬을 직접 움직여</b> 대신 눌러 줍니다.</p>
       <div class="tbl"><table>
-        <tr><th>비교</th><th>커넥터 (3단계)</th><th>Claude in Chrome</th></tr>
+        <tr><th>비교</th><th>커넥터 (2단계)</th><th>Claude in Chrome</th></tr>
         <tr><td>만든 곳</td><td>Anthropic · 서비스 회사</td><td>Anthropic (크롬 확장 프로그램 「Claude」)</td></tr>
         <tr><td>붙는 곳</td><td><b>Claude 계정</b> — 같은 계정이면 다른 PC 에도 따라온다</td><td><b>이 PC 의 크롬</b> — PC 마다 확장을 깔고 로그인해야 한다</td></tr>
         <tr><td>움직이는 것</td><td>연결할 때 로그인한 그 서비스 계정</td><td><b>내 크롬에 로그인돼 있는 것 전부</b> (내 이름으로 클릭 · 입력)</td></tr>
@@ -412,10 +387,27 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g3">
-<summary><span class="gno">③</span> API <small>5단계 · 15분</small></summary>
+<summary><span class="gno">③</span> API <small>4~5단계 · 15분</small></summary>
 <section class="part" id="p3">
-  <h2><small>PART 3</small>API — 키로 받아 오기 (5단계)</h2>
+  <h2><small>PART 3</small>API — 키로 받아 오기 (4~5단계)</h2>
   <p class="lead">법령 정보는 커넥터가 없습니다. 대신 국가법령정보가 <b>API</b> 를 열어 두었습니다. 키(<code class="k">OC</code>)를 들고 가서 받아 옵니다. 키는 먼저 <code class="k">.env</code> 파일의 <code class="k">LAW_OC</code> 에 넣어 둡니다 — 코드와 채팅에 키를 직접 쓰지 않으려는 것입니다.</p>
+
+  <article class="step" id="s4" data-step="4">
+    <header><span class="no">4</span><h3>법령 API 키 신청 해 보기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>API 를 쓰려면 서비스에 가입하고 <b>활용 신청</b>을 해서 승인을 받아야 합니다. 이 서비스는 <b>신청하면 바로 자동 승인</b>됩니다. <b>오늘 실습은 강사가 알려 주는 교육용 키</b>(5단계에서 <code class="k">.env</code> 에 넣습니다)로 하고, 여기서는 <b>신청 절차를 직접 한 번 해 봅니다</b>.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li><a href="https://open.law.go.kr" target="_blank" rel="noopener">국가법령정보 공동활용(open.law.go.kr)</a> 에 회원가입하고 로그인합니다.</li>
+        <li>상단 메뉴의 <b>OPEN API</b> → <b>OPEN API 신청</b>으로 갑니다.</li>
+        <li>활용 목적에 「업무 자료 조회 교육 실습」처럼 적고, 화면이 요구하는 항목을 채워 신청합니다. 무엇을 넣을지 모르겠으면 강사 화면을 따라 합니다.</li>
+        <li><b>API인증키(OC)</b> 칸에 가입한 이메일의 <b>@ 앞부분</b>을 넣고 [중복확인]을 누릅니다. 이미 쓰는 값이라고 나오면 뒤에 글자를 조금 붙입니다.</li>
+        <li><b>공동활용 법령종류</b>는 맨 위 <b>「전체선택」</b>을 체크합니다. 최소한 <b>대한민국 현행법령 → 목록 JSON</b> 은 체크돼 있어야 5단계 법령 조회가 됩니다.</li>
+        <li>신청 내역에서 승인여부가 「승인」, 활용상태가 「연결」로 보이면 끝입니다. 바로 보입니다.</li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>신청 내역에 내 신청이 승인여부 「승인」으로 한 줄 보인다.</p></div></div>
+      <div class="box tip"><b>OC 가 뭔가요</b>이 API 의 키는 <code class="k">OC</code> 라는 이름으로, 신청 때 직접 정한 값(이메일 @ 앞부분)이 그대로 키입니다. 따로 발급되는 긴 키는 없고, 잊으면 <b>마이페이지 → API인증키관리</b>에서 봅니다. 자동 승인이라 <code class="k">.env</code> 의 교육용 OC 를 내 것으로 바로 바꿔 끼워도 됩니다.</div>
+    </div>
+  </article>
 
   <article class="step" id="s5" data-step="5">
     <header><span class="no">5</span><h3>개인정보 보호법 확인 · 시트에 넣기</h3><label><input type="checkbox">완료</label></header>
@@ -435,7 +427,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li>왼쪽 탐색기에서 <code class="k">.env</code> 를 열고 <code class="k">LAW_OC=</code> 바로 뒤에 <b>강사가 알려 준 OC</b> 를 붙여 씁니다(따옴표 · 띄어쓰기 없이). 윈도우 단축키 <kbd>Ctrl</kbd>+<kbd>S</kbd> 로 저장합니다(맥은 <kbd>Cmd</kbd>+<kbd>S</kbd>). 위쪽 탭의 파일 이름 옆 <b>●</b> 가 사라지면 저장된 것입니다. 키는 <b>채팅이 아니라 파일에</b> 직접 씁니다.</li>
         <li><b>법령 조회</b> — 그대로 붙여넣습니다. 1~2분 걸립니다.
           <div class="cmd"><code>법령은 개인정보 보호법을 찾아보자. 이 폴더 .env 의 LAW_OC 를 OC 값으로 써서 국가법령정보 OPEN API(http://www.law.go.kr/DRF/lawSearch.do · target=law · type=JSON)에서 그 법령을 찾고, 본문 API(http://www.law.go.kr/DRF/lawService.do · target=law · type=JSON)로 조문을 받아 줘. 그 조문을 근거로 「사람인 같은 채용 사이트에서 데이터를 수집하면 개인정보 보호법에 걸리는지」 확인해 줘. 근거 조문 번호 · 조문 제목 · 핵심 내용 · 수집과의 관계를 표로 보여 주고, law 폴더를 만들어서 법령.csv 로 저장해 줘. OC 값은 화면에 쓰지 마. 판례는 조회하지 마.</code><button type="button">복사</button></div></li>
-        <li><b>구글 시트에 넣기</b> — 맨 앞 줄에 4단계에서 쓴 <b>시트 링크</b>, 둘째 줄에 <code class="k">내 시트: 홍길동</code> 처럼 <b>내 이름</b>을 적고, 이어서 붙여넣습니다. API 로 받은 결과를 MCP 로 내 이름 시트에 업데이트하는 것입니다.
+        <li><b>구글 시트에 넣기</b> — 맨 앞 줄에 3단계에서 쓴 <b>시트 링크</b>, 둘째 줄에 <code class="k">내 시트: 홍길동</code> 처럼 <b>내 이름</b>을 적고, 이어서 붙여넣습니다. API 로 받은 결과를 MCP 로 내 이름 시트에 업데이트하는 것입니다.
           <div class="cmd"><code>이 구글 시트 파일에서 위에 적은 「내 시트」 이름의 시트만 써. 그 시트 내용을 모두 지우고, 이 폴더 law 폴더의 법령.csv 내용을 첫 줄 제목까지 그대로 넣어 업데이트해 줘. 새 시트는 만들지 말고 다른 시트는 건드리지 마. 다 되면 넣은 행 수가 CSV 행 수와 같은지 알려 줘.</code><button type="button">복사</button></div></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>근거 조문 표(조문 번호 · 제목 · 핵심 내용 · 수집과의 관계)가 화면과 <code class="k">law\법령.csv</code> 에 같이 들어 있다. <b>내 이름 탭</b>의 내용이 법령 표로 바뀌었고, 행 수가 CSV 와 같다. 새 탭은 생기지 않았다. 표에서 조문 하나(예: 제15조)를 골라 <a href="https://www.law.go.kr" target="_blank" rel="noopener">국가법령정보센터</a> 원문과 내용이 맞는지 한 번 대조한다.</p></div></div>
@@ -525,14 +517,14 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <article class="step" id="s8" data-step="8">
     <header><span class="no">8</span><h3>크롤링 결과를 구글 시트에 적재</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>크롤링의 끝은 <b>적재</b> — 쓸 수 있는 곳에 쌓는 것입니다. 7단계에서 추출한 학원 공고를 4단계에서 만든 <b>내 이름 시트</b>에 올립니다. 다시 크롤링하면 같은 카드로 <b>업데이트</b>합니다.</p>
+      <p>크롤링의 끝은 <b>적재</b> — 쓸 수 있는 곳에 쌓는 것입니다. 7단계에서 추출한 학원 공고를 3단계에서 만든 <b>내 이름 시트</b>에 올립니다. 다시 크롤링하면 같은 카드로 <b>업데이트</b>합니다.</p>
       <div class="row"><b>방법</b><div><ol>
-        <li>맨 앞 줄에 4단계에서 쓴 <b>시트 링크</b>, 둘째 줄에 <code class="k">내 시트: 홍길동</code> 처럼 <b>내 이름</b>을 적고, 이어서 붙여넣습니다.
+        <li>맨 앞 줄에 3단계에서 쓴 <b>시트 링크</b>, 둘째 줄에 <code class="k">내 시트: 홍길동</code> 처럼 <b>내 이름</b>을 적고, 이어서 붙여넣습니다.
           <div class="cmd"><code>이 구글 시트 파일에서 위에 적은 「내 시트」 이름의 시트만 써. 그 시트 내용을 모두 지우고, 이 폴더 crawling 폴더의 학원공고.csv 내용을 첫 줄 제목까지 그대로 넣어 업데이트해 줘. 새 시트는 만들지 말고 다른 시트는 건드리지 마. 다 되면 넣은 행 수가 CSV 행 수와 같은지 알려 줘.</code><button type="button">복사</button></div></li>
         <li>브라우저에서 그 파일을 열어 아래쪽 <b>내 이름 탭</b>을 봅니다. 카드를 한 번 더 붙여넣으면 탭이 새로 생기지 않고 같은 탭이 다시 채워지는 것도 확인합니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>내 이름 탭의 내용이 학원 공고로 바뀌었고, 행 수가 CSV 와 같다(제목 포함 11행). 「관련」 · 「본문 요약」 열도 그대로 들어 있다. 두 번 돌려도 새 탭이 생기지 않는다.</p></div></div>
-      <div class="box tip"><b>구글 연결이 안 됐다면</b>3단계를 강사 화면으로 넘겼다면 이 단계도 강사 화면으로 봅니다. <code class="k">crawling\학원공고.csv</code> 가 남아 있으면 오늘 수집은 끝난 것입니다.</div>
+      <div class="box tip"><b>구글 연결이 안 됐다면</b>2단계를 강사 화면으로 넘겼다면 이 단계도 강사 화면으로 봅니다. <code class="k">crawling\학원공고.csv</code> 가 남아 있으면 오늘 수집은 끝난 것입니다.</div>
     </div>
   </article>
 </section>
@@ -667,6 +659,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.25</b></td><td>2026-10-26</td><td>
+      <ul><li><b>바뀜</b> 「법령 API 키 신청 해 보기」를 준비(PART 1)에서 API(PART 3) 맨 앞으로 옮겼다 — 단계 번호가 바뀜: 준비 1 · MCP 2~3 · API 4~5 (6단계부터 그대로). 진행 체크를 새로 시작합니다</li><li><b>바뀜</b> 시작 전 「오늘 배우는 세 가지」 표 = 영어 이름과 뜻 · 이런 것도 연결된다 (접힌 상자를 펼쳐 본문으로)</li></ul></td></tr>
     <tr><td><b>v1.24</b></td><td>2026-10-26</td><td>
       <ul><li><b>추가</b> PART 2 끝 선택 단계 「Claude in Chrome 으로 구글 API 연결 (회사 계정)」 — 커넥터와 비교표 · 구글 API 연결 매뉴얼(회사판)의 프롬프트 1 GCP 설정 · 프롬프트 2 로컬 인증 · 확인 한 줄 · 주의 · 막히면. 진행 체크 단계 수는 그대로(9단계)</li></ul></td></tr>
     <tr><td><b>v1.23</b></td><td>2026-10-26</td><td>
@@ -742,7 +736,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 
 <script>
 (function(){
-  var KEY='cc-basic-data-steps-v2';
+  var KEY='cc-basic-data-steps-v3';
   var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
   var saved={};
   try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
