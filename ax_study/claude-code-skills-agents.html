@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 교육 — 스킬과 에이전트 <span class="ver">v1.6 · 2026-10-27</span></h1>
+  <h1>Claude Code 초급 교육 — 스킬과 에이전트 <span class="ver">v1.7 · 2026-10-28</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="교육 편 다음에 하는 체험 편">체험 편</a>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -198,14 +198,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><th>구분</th><th>스킬</th><th>에이전트 (싱글)</th></tr>
     <tr><td>마케팅팀 비유</td><td>팀 공용 <b>캠페인 운영 매뉴얼</b> (성과 지표 계산 기준 · 브랜드 톤)</td><td>대행사 담당자 <b>한 명에게 맡긴 성과 리포트</b></td></tr>
     <tr><td>마케팅팀 예시</td><td><code class="k">ad-metrics</code> — CTR · CPA · ROAS 를 <b>팀 기준대로 계산하는 법</b> (테스트 캠페인 제외 · 전환은 신청 완료만)</td><td>캠페인 리포트 담당 — 채널별 성과를 <b>대신 정리해 리포트 HTML</b> + 예산 조정 제안 1줄</td></tr>
-    <tr><td>오늘 실습</td><td><code class="k">jig-metrics</code> — <b>세는 법</b></td><td>직영 리포트 담당 — <b>대신 세어 리포트 HTML</b></td></tr>
-    <tr><td>한 줄 정의</td><td>Claude 가 읽고 <b>내 대화창에서</b> 그대로 따르는 절차 묶음</td><td><b>따로 생긴 Claude</b> 가 일하고 <b>결론만</b> 돌려준다</td></tr>
-    <tr><td>일하는 곳</td><td>지금 내 대화창 (대화 내용을 같이 씀)</td><td>별도 공간 (대화 내용이 따로)</td></tr>
     <tr><td>파일</td><td><code class="k">.claude/skills/&lt;이름&gt;/SKILL.md</code></td><td><code class="k">.claude/agents/&lt;이름&gt;.md</code></td></tr>
     <tr><td>언제 불려오나</td><td>description 에 맞는 상황이 되면 자동 · <code class="k">/이름</code></td><td>자동 또는 이름을 대고 부름</td></tr>
-    <tr><td>내가 보는 것</td><td>과정 전부</td><td>결론만</td></tr>
     <tr><td>써야 할 때</td><td>「CPA 는 이렇게 계산해, 테스트 캠페인은 빼」를 매번 다시 쓰고 있을 때</td><td>채널 여러 개 성과 파일을 열어 정리하는 일을 내 대화창 밖으로 보내고 싶을 때</td></tr>
-    <tr><td>대가</td><td>내 대화창이 길어진다</td><td>중간에 끼어들 수 없다</td></tr>
+    <tr><td>주의사항</td><td>내 대화창에서 같이 일하므로 과정이 다 보이는 대신 <b>대화창이 길어진다</b> · 내 대화 내용도 함께 읽으니 앞에서 한 말과 섞일 수 있다</td><td>따로 일하고 <b>결론만</b> 돌려주므로 <b>중간에 끼어들 수 없다</b> · 내 대화 내용을 모르니 기준 · 파일 이름 · 저장 위치를 <b>부를 때 다 적어 준다</b></td></tr>
   </table></div>
   <article class="step" id="s1" data-step="1">
     <header><span class="no">1</span><h3>차이를 한 문장으로</h3><label><input type="checkbox">완료</label></header>
@@ -398,7 +394,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <p>끝나면 탐색기에서 <code class="k">리포트\리포트_v1.html</code> 을 더블클릭해 브라우저로 엽니다.</p></div></div>
       <div class="row"><b>확인</b><div><p>화면에 에이전트가 일한다는 표시가 잠깐 뜨고, <b>숫자를 세는 과정은 내 창에 안 나오고</b> 결론 3줄만 돌아온다. 리포트의 숫자가 정답표와 같다.</p></div></div>
       <div class="row"><b>관찰표</b><div><p>받은 <code class="k">관찰표.txt</code> 의 <b>「싱글」 칸</b>을 채웁니다. 에이전트가 끝날 때 화면에 뜨는 <b>도구 사용 수 · 토큰 · 걸린 시간</b>을 옮겨 적고, 「내가 중간에서 전달한 횟수」「중간에 끼어들 수 있었나」도 적습니다. 체험 편에서 서브 · 팀 칸을 채워 <b>나란히 비교</b>합니다 — 지우지 마세요.</p></div></div>
-      <div class="box tip"><b>무엇을 본 건가요</b>에이전트는 CSV 를 <b>자기 공간에서</b> 세었습니다. 내 대화창에는 결론만 남아서 창이 깨끗합니다. PART 1 표의 「내가 보는 것: 결론만」이 이것입니다.</div>
+      <div class="box tip"><b>무엇을 본 건가요</b>에이전트는 CSV 를 <b>자기 공간에서</b> 세었습니다. 내 대화창에는 결론만 남아서 창이 깨끗합니다. PART 1 표 「주의사항」의 「결론만 돌려준다」가 이것입니다.</div>
     </div>
   </article>
 </section>
@@ -490,6 +486,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.7</b></td><td>2026-10-28</td><td>
+      <ul><li>PART 1 비교표: 오늘 실습 · 한 줄 정의 · 일하는 곳 · 내가 보는 것 · 대가 줄 삭제 · 「주의사항」 줄 추가</li></ul></td></tr>
     <tr><td><b>v1.6</b></td><td>2026-10-27</td><td>
       <ul><li>PART 1 숙제 체크 삭제 · 스킬과 에이전트 비교표(옛 PART 4)를 PART 1 로 옮김(1단계 = 차이를 한 문장으로) · 뒤 PART 는 4~7, 단계는 10~14 로 한 칸씩 당김 · 진행 체크 키 v4</li></ul></td></tr>
     <tr><td><b>v1.5</b></td><td>2026-10-27</td><td>
