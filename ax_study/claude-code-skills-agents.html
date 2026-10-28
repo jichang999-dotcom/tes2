@@ -129,57 +129,47 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 교육 — 스킬과 에이전트 <span class="ver">v1.7 · 2026-10-28</span></h1>
+  <h1>Claude Code 초급 교육 — 스킬과 에이전트 <span class="ver">v1.8 · 2026-10-28</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="교육 편 다음에 하는 체험 편">체험 편</a>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
-  <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 15 단계</span></div>
+  <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 13 단계</span></div>
 </header>
 
 <div class="wrap">
 <nav class="toc" id="toc" aria-label="목차">
 <ol>
-  <li class="ghead">① 준비 <small>1~3단계</small></li>
+  <li class="ghead">① 준비 <small>1~2단계</small></li>
   <li><a href="#p1">PART 1 스킬과 에이전트</a></li>
-  <li class="sub"><a href="#s1">1. 차이를 한 문장으로</a></li>
   <li><a href="#p2">PART 2 시작 전</a></li>
-  <li class="sub"><a href="#s2">2. 셀프체크 4줄</a></li>
-  <li class="sub"><a href="#s3">3. 교육 프로젝트 폴더 만들고 열기</a></li>
-  <li class="ghead">② 스킬 <small>4~9단계</small></li>
+  <li class="sub"><a href="#s1">1. 셀프체크 4줄</a></li>
+  <li class="sub"><a href="#s2">2. 교육 프로젝트 폴더 만들고 열기</a></li>
+  <li class="ghead">② 스킬 <small>3~8단계</small></li>
   <li><a href="#p3">PART 3 스킬 만들기</a></li>
-  <li class="sub"><a href="#s4">4. 대화로 먼저 세어 보기</a></li>
-  <li class="sub"><a href="#s5">5. 회사 기준을 알려 주고 다시 세기</a></li>
-  <li class="sub"><a href="#s6">6. 방금 정한 세는 법을 스킬로 만들기</a></li>
-  <li class="sub"><a href="#s7">7. 구조 확인하고 /이름 으로 불러 보기</a></li>
-  <li class="sub"><a href="#s8">8. 트리거 점검 · 수정</a></li>
-  <li class="sub"><a href="#s9">9. 트리거 테스트 3종</a></li>
-  <li class="ghead">③ 에이전트 <small>10~13단계</small></li>
+  <li class="sub"><a href="#s3">3. 대화로 먼저 세어 보기</a></li>
+  <li class="sub"><a href="#s4">4. 회사 기준을 알려 주고 다시 세기</a></li>
+  <li class="sub"><a href="#s5">5. 방금 정한 세는 법을 스킬로 만들기</a></li>
+  <li class="sub"><a href="#s6">6. 구조 확인하고 /이름 으로 불러 보기</a></li>
+  <li class="sub"><a href="#s7">7. 트리거 점검 · 수정</a></li>
+  <li class="sub"><a href="#s8">8. 트리거 테스트 3종</a></li>
+  <li class="ghead">③ 에이전트 <small>9~12단계</small></li>
   <li><a href="#p4">PART 4 첫 에이전트</a></li>
-  <li class="sub"><a href="#s10">10. 말로 부탁해서 에이전트 만들기</a></li>
-  <li class="sub"><a href="#s11">11. 일 맡기고 결론만 받기 · 관찰표 첫 칸</a></li>
+  <li class="sub"><a href="#s9">9. 말로 부탁해서 에이전트 만들기</a></li>
+  <li class="sub"><a href="#s10">10. 일 맡기고 결론만 받기 · 관찰표 첫 칸</a></li>
   <li><a href="#p5">PART 5 다듬기</a></li>
-  <li class="sub"><a href="#s12">12. 판단 기준과 출력 형식 넣기</a></li>
-  <li class="sub"><a href="#s13">13. v2 만들어 v1 과 나란히 보기</a></li>
+  <li class="sub"><a href="#s11">11. 판단 기준과 출력 형식 넣기</a></li>
+  <li class="sub"><a href="#s12">12. v2 만들어 v1 과 나란히 보기</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
   <li><a href="#p6">PART 6 막혔을 때</a></li>
-  <li class="ghead">④ 마무리 <small>14단계</small></li>
+  <li class="ghead">④ 마무리 <small>13단계</small></li>
   <li><a href="#p7">PART 7 마무리</a></li>
-  <li class="sub"><a href="#s14">14. 오늘 만든 것 정리하고 체험 편 준비</a></li>
+  <li class="sub"><a href="#s13">13. 오늘 만든 것 정리하고 체험 편 준비</a></li>
 </ol>
 <button type="button" class="expand-btn" id="expandBtn">모두 펼치기</button>
 </nav>
 
 <main>
 <section class="part" id="p0">
-  <p class="lead">입문 과정을 마친 사람이 <b>직영 데이터</b>로 <b>스킬</b>(매번 하는 설명을 묶어 두기)과 <b>에이전트</b>(일을 따로 맡기기)를 직접 만들어 보는 교육입니다. 여기서 만든 폴더 · 스킬 · 에이전트는 <b>체험 편에서 그대로 이어 씁니다.</b> 각 단계 오른쪽 위 <b>완료</b>를 체크하면 위쪽 막대에 진행률이 표시됩니다.</p>
-  <div class="hero">
-    <b>끝나면 이렇게 됩니다</b>
-    <ul>
-      <li>과목수 · 학생수를 <b>회사 기준대로 세는 법</b>을 스킬로 만들었고, 부르지 않아도 「몇 명 다녀?」에 불려온다.</li>
-      <li>데이터를 대신 세어 <b>리포트 HTML</b> 을 만드는 에이전트를 만들었고, 대화창에는 <b>결론 3줄만</b> 받아 봤다.</li>
-      <li>에이전트를 다듬어 <b>학년치환</b>까지 된 리포트 v2 를 만들었다.</li>
-    </ul>
-  </div>
   <h3>준비물</h3>
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
@@ -190,7 +180,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </section>
 
 <details class="grp" id="g1">
-<summary><span class="gno">①</span> 준비 <small>1~3단계 · 10분</small></summary>
+<summary><span class="gno">①</span> 준비 <small>1~2단계 · 10분</small></summary>
 <section class="part" id="p1">
   <h2><small>PART 1</small>스킬과 에이전트는 무엇이 다른가</h2>
   <p class="lead">둘 다 파일 맨 위 <code class="k">description</code> 으로 불려오고 모양도 닮았습니다. 차이는 <b>어디서 일하느냐</b>입니다.</p>
@@ -203,20 +193,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>써야 할 때</td><td>「CPA 는 이렇게 계산해, 테스트 캠페인은 빼」를 매번 다시 쓰고 있을 때</td><td>채널 여러 개 성과 파일을 열어 정리하는 일을 내 대화창 밖으로 보내고 싶을 때</td></tr>
     <tr><td>주의사항</td><td>내 대화창에서 같이 일하므로 과정이 다 보이는 대신 <b>대화창이 길어진다</b> · 내 대화 내용도 함께 읽으니 앞에서 한 말과 섞일 수 있다</td><td>따로 일하고 <b>결론만</b> 돌려주므로 <b>중간에 끼어들 수 없다</b> · 내 대화 내용을 모르니 기준 · 파일 이름 · 저장 위치를 <b>부를 때 다 적어 준다</b></td></tr>
   </table></div>
-  <article class="step" id="s1" data-step="1">
-    <header><span class="no">1</span><h3>차이를 한 문장으로</h3><label><input type="checkbox">완료</label></header>
-    <div class="body">
-      <div class="row"><b>방법</b><div><p>표를 보고 옆 사람에게 한 문장으로 말합니다. 예: 「스킬은 세는 법을 내 창에서 같이 쓰는 것이고, 에이전트는 세는 일을 따로 맡기고 결론만 받는 것이다.」</p></div></div>
-      <div class="row"><b>확인</b><div><p>「어디서 일하나」를 넣어 한 문장으로 말했다.</p></div></div>
-      <div class="box warn"><b>주의</b>인터넷 강의에서 「에이전트끼리 서로 대화한다」는 말을 들었다면, 그건 <b>에이전트 팀</b>이라는 별도 기능입니다. 오늘 만드는 에이전트는 <b>부른 쪽에게만</b> 결과를 돌려줍니다. 팀은 체험 편에서 합니다.</div>
-    </div>
-  </article>
 </section>
 
 <section class="part" id="p2">
   <h2><small>PART 2</small>시작 전</h2>
-  <article class="step" id="s2" data-step="2">
-    <header><span class="no">2</span><h3>셀프체크 4줄</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s1" data-step="1">
+    <header><span class="no">1</span><h3>셀프체크 4줄</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>확인</b><div><ol>
         <li>작업 폴더에서 <code class="k">claude</code> 를 치면 켜진다.</li>
@@ -235,22 +217,18 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <li><b>마무리</b> — 오늘 만든 것 정리 · 체험 편 준비 (PART 7)</li>
   </ol>
 
-  <article class="step" id="s3" data-step="3">
-    <header><span class="no">3</span><h3>교육 프로젝트 폴더 만들고 열기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s2" data-step="2">
+    <header><span class="no">2</span><h3>교육 프로젝트 폴더 만들고 열기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
-        <li>VS Code(또는 Cursor)에서 입문에서 만든 작업 폴더(예: <code class="k">claude_work</code>)를 열고, 터미널에서 <code class="k">claude</code> 를 켭니다.</li>
-        <li>받은 <code class="k">직영_실습데이터.csv</code> · <code class="k">열사전.txt</code> 의 경로를 확인합니다. 윈도우 탐색기에서 파일을 고르고 <kbd>Ctrl</kbd>+<kbd>Shift</kbd>+<kbd>C</kbd>(경로로 복사)를 누르면 경로가 복사됩니다.</li>
-        <li>아래를 복사해 <b>두 경로를 내 경로로 바꿔서</b> 보냅니다. 폴더를 만들고 옮기는 명령을 실행해도 되느냐고 물으면 <b>Yes</b>.
-          <div class="cmd"><code>이 폴더 안에 basic_data 폴더를 만들고, 아래 두 파일을 그 안으로 옮겨 줘. 다 옮기면 basic_data 안의 파일 목록을 보여 줘.
-- C:\Users\User\Desktop\Basic\교육\직영_실습데이터.csv
-- C:\Users\User\Desktop\Basic\교육\열사전.txt</code><button type="button">복사</button></div></li>
-        <li>목록에 두 파일이 보이면 <code class="k">exit</code> → <b>[파일] → [폴더 열기]</b> → <code class="k">basic_data</code> 를 엽니다.</li>
+        <li>윈도우 탐색기에서 입문에서 만든 작업 폴더(예: <code class="k">claude_work</code>) 안에 <code class="k">basic_data</code> 폴더를 새로 만듭니다.</li>
+        <li>받은 <code class="k">직영_실습데이터.csv</code> · <code class="k">열사전.txt</code> 두 파일을 <code class="k">basic_data</code> 안으로 끌어다 넣습니다.</li>
+        <li>VS Code(또는 Cursor)에서 <b>[파일] → [폴더 열기]</b> → <code class="k">basic_data</code> 를 엽니다.</li>
         <li>터미널에서 <code class="k">claude</code> 입력 → <kbd>Enter</kbd>. 폴더 신뢰를 물으면 <b>Yes</b>.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>왼쪽 탐색기에 <code class="k">직영_실습데이터.csv</code> 와 <code class="k">열사전.txt</code> 가 보이고, Claude Code 입력창이 떠 있다.</p></div></div>
-      <div class="box warn"><b>왜 다시 켜나요</b>스킬과 에이전트는 <b>claude 를 켠 폴더</b>의 <code class="k">.claude</code> 에 생깁니다. <code class="k">claude_work</code> 에서 켠 채로 계속하면 엉뚱한 곳에 생깁니다.</div>
-      <div class="box tip"><b>열사전.txt 를 한 번 훑어보세요</b>오늘 쓰는 열(학생코드 · COLC · 요일 · 시작시간 · 학년 · 학급수강상태 · 프로그램명)의 뜻이 들어 있습니다. 회사 기준 세는 법 · 학년치환은 일부러 넣지 않았습니다 — 4단계 · 11단계에서 Claude 가 기준 없이 하는 모습을 보려고요. 기준은 5단계 · 12단계 카드에 있습니다.</div>
+      <div class="box warn"><b>왜 basic_data 에서 켜나요</b>스킬과 에이전트는 <b>claude 를 켠 폴더</b>의 <code class="k">.claude</code> 에 생깁니다. <code class="k">claude_work</code> 에서 켠 채로 계속하면 엉뚱한 곳에 생깁니다.</div>
+      <div class="box tip"><b>열사전.txt 를 한 번 훑어보세요</b>오늘 쓰는 열(학생코드 · COLC · 요일 · 시작시간 · 학년 · 학급수강상태 · 프로그램명)의 뜻이 들어 있습니다. 회사 기준 세는 법 · 학년치환은 일부러 넣지 않았습니다 — 3단계 · 10단계에서 Claude 가 기준 없이 하는 모습을 보려고요. 기준은 4단계 · 11단계 카드에 있습니다.</div>
       <div class="box tip"><b>왜 새 폴더인가요</b>스킬과 에이전트가 이 폴더의 <code class="k">.claude</code> 에 생깁니다. 체험 편에서 이 폴더를 그대로 다시 엽니다.</div>
     </div>
   </article>
@@ -258,24 +236,24 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g2">
-<summary><span class="gno">②</span> 스킬 <small>4~9단계 · 30분</small></summary>
+<summary><span class="gno">②</span> 스킬 <small>3~8단계 · 30분</small></summary>
 <section class="part" id="p3">
   <h2><small>PART 3</small>스킬 만들기</h2>
   <p class="lead"><b>스킬 = 매번 치는 설명과 절차를 묶어 둔 것</b>입니다. 한 번 만들어 두면 같은 설명을 다시 치지 않아도 되고, 그 상황이 오면 Claude 가 알아서 꺼내 씁니다.</p>
   <div class="box tip"><b>순서</b>처음부터 스킬을 설계하지 않습니다. <b>① 대화로 한 번 세어 보고 → ② 틀린 곳을 고쳐 주고 → ③ 「방금 정한 세는 법을 스킬로」.</b></div>
 
-  <article class="step" id="s4" data-step="4">
-    <header><span class="no">4</span><h3>대화로 먼저 세어 보기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s3" data-step="3">
+    <header><span class="no">3</span><h3>대화로 먼저 세어 보기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><p>[복사] → Claude Code 입력창에 붙여넣기 → <kbd>Enter</kbd>.</p>
         <div class="cmd"><code>직영_실습데이터.csv 에서 202609 의 과목수와 학생수를 세 줘. 파일이 크니까 통째로 읽지 말고 Node 명령으로 세어 줘(Python 은 쓰지 마). 어떻게 셌는지도 한 줄로 알려 줘.</code><button type="button">복사</button></div></div></div>
-      <div class="row"><b>확인</b><div><p>숫자 두 개와 「어떻게 셌는지」가 나온다. 이 숫자를 적어 둡니다 — 5단계에서 회사 기준으로 다시 세면 얼마나 달라지는지 봅니다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>숫자 두 개와 「어떻게 셌는지」가 나온다. 이 숫자를 적어 둡니다 — 4단계에서 회사 기준으로 다시 세면 얼마나 달라지는지 봅니다.</p></div></div>
       <div class="box tip"><b>무엇을 본 건가요</b>과목수를 어떻게 세라고 말하지 않았으니 Claude 가 <b>제 나름대로</b> 셌습니다. 행을 셌을 수도, 학급을 셌을 수도 있습니다. 회사 기준은 Claude 가 스스로 알 수 없습니다 — 그래서 알려 줘야 합니다.</div>
     </div>
   </article>
 
-  <article class="step" id="s5" data-step="5">
-    <header><span class="no">5</span><h3>회사 기준을 알려 주고 다시 세기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s4" data-step="4">
+    <header><span class="no">4</span><h3>회사 기준을 알려 주고 다시 세기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><div class="cmd"><code>우리 회사 기준으로 다시 세 줘.
 - 공통: 프로그램명에 아래 말이 들어간 행은 뺀다 (과목이 아니다)
@@ -284,19 +262,19 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   요일 열이 「요일」이면 COLC + 요일 + 시작시간 + 종료시간, 월~일이면 COLC + 요일 + 시작시간 조합의 중복을 뺀 개수
 - 학생수: 과목수와 같은 행(수강 + 반이동 아닌 이수)을 센터별로 학생코드 중복을 빼고 센 뒤, 센터 값을 더한다 (전체에서 한 번에 세지 않는다)
 202609 의 과목수와 학생수를 알려 줘.</code><button type="button">복사</button></div></div></div>
-      <div class="row"><b>확인</b><div><p>두 숫자가 <code class="k">정답표.txt</code> 의 202609 값과 같다(지금 쓰는 직영 대시보드와 같은 기준이라 대시보드 숫자와도 같다). 과목수가 4단계보다 크게 줄었다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>두 숫자가 <code class="k">정답표.txt</code> 의 202609 값과 같다(지금 쓰는 직영 대시보드와 같은 기준이라 대시보드 숫자와도 같다). 과목수가 3단계보다 크게 줄었다.</p></div></div>
       <div class="box tip"><b>얼마나 달라지나요</b>셔틀 · 클리닉처럼 <b>과목이 아닌 것</b>, 반을 옮기며 남은 <b>이수 기록</b>까지 과목으로 세어지고 있었습니다. 행 수에 비해 과목수가 약 5분의 1 줄어듭니다. 이 기준은 <b>매번 다시 설명해야 하는 회사 규칙</b>입니다 — 스킬로 묶기 딱 좋은 것입니다.</div>
     </div>
   </article>
 
-  <article class="step" id="s6" data-step="6">
-    <header><span class="no">6</span><h3>방금 정한 세는 법을 스킬로 만들기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s5" data-step="5">
+    <header><span class="no">5</span><h3>방금 정한 세는 법을 스킬로 만들기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><div class="cmd"><code>방금 정한 세는 법을 스킬로 만들어 줘.
 - 지금 이 폴더(basic_data) 안에 .claude/skills/jig-metrics/SKILL.md 로 만든다. 위 폴더로 올라가지 않는다
 - name 은 jig-metrics
 - description 에는 무엇을 하는지 + 언제 쓰는지 + 내가 실제로 할 말(「학생수 세 줘」「과목수 알려줘」「몇 명 다녀?」「직영 인원」)을 한국어로 넣는다
-- 본문에는 5단계에서 정한 기준 전부(제외 프로그램 9개 · 과목수의 수강/이수/반이동 조건과 요일 규칙 · 학생수 조건)와 「파일을 통째로 읽지 말고 Node 명령으로 센다(Python 은 쓰지 않는다)」를 넣는다</code><button type="button">복사</button></div>
+- 본문에는 4단계에서 정한 기준 전부(제외 프로그램 9개 · 과목수의 수강/이수/반이동 조건과 요일 규칙 · 학생수 조건)와 「파일을 통째로 읽지 말고 Node 명령으로 센다(Python 은 쓰지 않는다)」를 넣는다</code><button type="button">복사</button></div>
         <p>파일을 만들어도 되는지 물으면 <b>Yes</b>.</p></div></div>
       <div class="row"><b>확인</b><div><p>왼쪽 탐색기에 <code class="k">.claude</code> → <code class="k">skills</code> → <code class="k">jig-metrics</code> → <code class="k">SKILL.md</code> 가 생긴다.</p></div></div>
       <div class="box warn"><b>스킬 이름 규칙 (중요)</b>공식 문서 기준으로 스킬의 <code class="k">name</code> 은 <b>최대 64자</b>이고 <b>영문 소문자 · 숫자 · 하이픈(-)만</b> 쓸 수 있습니다. 한글 · 대문자 · 띄어쓰기 · 밑줄(_)은 안 됩니다. 예: <code class="k">jig-metrics</code> (O) · <code class="k">직영지표</code> · <code class="k">Jig_Metrics</code> (X). 폴더 이름도 <code class="k">name</code> 과 같게 둡니다.</div>
@@ -304,8 +282,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     </div>
   </article>
 
-  <article class="step" id="s7" data-step="7">
-    <header><span class="no">7</span><h3>구조 확인하고 /이름 으로 불러 보기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s6" data-step="6">
+    <header><span class="no">6</span><h3>구조 확인하고 /이름 으로 불러 보기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
         <li>폴더 모양이 <code class="k">skills/jig-metrics/SKILL.md</code> 인지 봅니다. 파일 이름은 <b>대문자 <code class="k">SKILL.md</code></b> 여야 합니다.</li>
@@ -318,10 +296,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     </div>
   </article>
 
-  <article class="step" id="s8" data-step="8">
-    <header><span class="no">8</span><h3>트리거 점검 · 수정</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s7" data-step="7">
+    <header><span class="no">7</span><h3>트리거 점검 · 수정</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p><b>트리거 = <code class="k">SKILL.md</code> 맨 위의 <code class="k">description</code> 한 줄입니다.</b> Claude 는 평소에 스킬 본문을 읽지 않고, 이름과 이 한 줄만 보고 「지금 이걸 쓸 때인가」를 고릅니다. 6단계에서 스킬을 만들 때 Claude 가 이 줄을 <b>자동으로 써 두었습니다</b> — 여기서는 그 내용이 맞는지 보고 빠진 것을 채웁니다. 9단계에서 실제로 불려오는지 시험합니다.</p>
+      <p><b>트리거 = <code class="k">SKILL.md</code> 맨 위의 <code class="k">description</code> 한 줄입니다.</b> Claude 는 평소에 스킬 본문을 읽지 않고, 이름과 이 한 줄만 보고 「지금 이걸 쓸 때인가」를 고릅니다. 5단계에서 스킬을 만들 때 Claude 가 이 줄을 <b>자동으로 써 두었습니다</b> — 여기서는 그 내용이 맞는지 보고 빠진 것을 채웁니다. 8단계에서 실제로 불려오는지 시험합니다.</p>
       <div class="row"><b>방법</b><div><p><code class="k">SKILL.md</code> 를 열어 맨 위 <code class="k">---</code> 사이의 <code class="k">description</code> 줄만 읽습니다. 세 가지가 들어 있는지 체크합니다.</p>
         <div class="tbl"><table>
           <tr><th>들어 있어야 할 것</th><th>예</th></tr>
@@ -330,12 +308,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <tr><td>내가 실제로 할 말</td><td>「학생수 세 줘」「몇 명 다녀?」「과목수 알려줘」</td></tr>
         </table></div>
         <p>빠진 게 있으면 말로 고칩니다: <code class="k">jig-metrics 스킬 description 에 ○○를 더해 줘</code></p></div></div>
-      <div class="row"><b>확인</b><div><p>트리거(description 한 줄)에 세 가지가 다 있다. 이름(<code class="k">name</code>)은 64자 이하 · 영문 소문자 · 숫자 · 하이픈만이다 (6단계 이름 규칙).</p></div></div>
+      <div class="row"><b>확인</b><div><p>트리거(description 한 줄)에 세 가지가 다 있다. 이름(<code class="k">name</code>)은 64자 이하 · 영문 소문자 · 숫자 · 하이픈만이다 (5단계 이름 규칙).</p></div></div>
     </div>
   </article>
 
-  <article class="step" id="s9" data-step="9">
-    <header><span class="no">9</span><h3>트리거 테스트 3종</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s8" data-step="8">
+    <header><span class="no">8</span><h3>트리거 테스트 3종</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <p>이번에는 <b><code class="k">/jig-metrics</code> 를 치지 않고</b> 말만 합니다. 스킬이 저절로 불려오는지 봅니다. 한 번 할 때마다 <code class="k">/clear</code> 로 대화를 비우고 합니다.</p>
       <div class="tbl"><table>
@@ -360,14 +338,14 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g3">
-<summary><span class="gno">③</span> 에이전트 <small>10~13단계 · 25분</small></summary>
+<summary><span class="gno">③</span> 에이전트 <small>9~12단계 · 25분</small></summary>
 <section class="part" id="p4">
   <h2><small>PART 4</small>내 첫 에이전트 만들기</h2>
   <p class="lead">데이터를 <b>대신 세어 리포트 HTML</b> 을 만드는 담당을 만듭니다. 큰 CSV 를 내 대화창에서 세면 창이 길어지지만, 에이전트에게 맡기면 <b>결론 3줄</b>만 돌아오고 리포트는 파일로 남습니다.</p>
   <div class="box warn"><b>중요</b>이 에이전트는 <b>체험 편 전체의 재료</b>입니다. 여기서 막히면 5분 규칙대로 정답 파일로 갈아타고 넘어갑니다.</div>
 
-  <article class="step" id="s10" data-step="10">
-    <header><span class="no">10</span><h3>말로 부탁해서 에이전트 만들기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s9" data-step="9">
+    <header><span class="no">9</span><h3>말로 부탁해서 에이전트 만들기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
         <li>아래를 복사해 붙여넣습니다. 파일을 만들어도 되느냐고 물으면 <b>Yes</b>.
@@ -387,8 +365,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     </div>
   </article>
 
-  <article class="step" id="s11" data-step="11">
-    <header><span class="no">11</span><h3>일 맡기고 결론만 받기 · 관찰표 첫 칸</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s10" data-step="10">
+    <header><span class="no">10</span><h3>일 맡기고 결론만 받기 · 관찰표 첫 칸</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><div class="cmd"><code>직영_실습데이터.csv 로 월별 과목수 · 학생수 리포트를 만들어 줘. 직영 리포트 담당 에이전트에게 맡기고, 리포트/리포트_v1.html 로 저장해.</code><button type="button">복사</button></div>
         <p>끝나면 탐색기에서 <code class="k">리포트\리포트_v1.html</code> 을 더블클릭해 브라우저로 엽니다.</p></div></div>
@@ -402,9 +380,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <section class="part" id="p5">
   <h2><small>PART 5</small>에이전트 다듬기</h2>
   <p class="lead">처음 만든 에이전트는 시킬 때마다 모양이 조금씩 다릅니다. <b>판단 기준을 적고, 출력 형식을 고정</b>하면 매번 같은 모양으로 옵니다. 오늘은 <b>학년치환</b>을 판단 기준에 넣습니다.</p>
-  <div class="box tip"><b>학년치환이 왜 필요한가요</b>이 데이터의 학년 열은 <b>지금 학년</b>이 모든 달에 똑같이 들어 있습니다. 그래서 1년 전 같은 달 줄에도 지금 학년이 적혀 있습니다. 그대로 세면 지난해 달의 학년이 한 칸씩 밀립니다. 기준은 아래 12단계 카드에 들어 있습니다. <code class="k">열사전.txt</code> 에는 일부러 넣지 않았습니다 — 넣어 두면 v1 때부터 Claude 가 알아서 내려 버려 v1 · v2 차이가 사라집니다.</div>
-  <article class="step" id="s12" data-step="12">
-    <header><span class="no">12</span><h3>판단 기준과 출력 형식 넣기</h3><label><input type="checkbox">완료</label></header>
+  <div class="box tip"><b>학년치환이 왜 필요한가요</b>이 데이터의 학년 열은 <b>지금 학년</b>이 모든 달에 똑같이 들어 있습니다. 그래서 1년 전 같은 달 줄에도 지금 학년이 적혀 있습니다. 그대로 세면 지난해 달의 학년이 한 칸씩 밀립니다. 기준은 아래 11단계 카드에 들어 있습니다. <code class="k">열사전.txt</code> 에는 일부러 넣지 않았습니다 — 넣어 두면 v1 때부터 Claude 가 알아서 내려 버려 v1 · v2 차이가 사라집니다.</div>
+  <article class="step" id="s11" data-step="11">
+    <header><span class="no">11</span><h3>판단 기준과 출력 형식 넣기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><div class="cmd"><code>직영 리포트 담당 에이전트 파일을 다듬어 줘.
 - 판단 기준 1 학년치환: 학년 열에는 달마다의 학년이 아니라 지금 학년이 모든 달에 똑같이 들어 있다. 학년은 매년 1월 1일에 바뀐다. 기준 연도 = 데이터에서 가장 최근 편성년월의 연도. 편성년월의 연도가 기준 연도보다 1년 앞이면 한 학년, 2년 앞이면 두 학년 내린다.
@@ -420,8 +398,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>확인</b><div><p>에이전트 파일에 「판단 기준」「출력 형식」 부분이 생겼다.</p></div></div>
     </div>
   </article>
-  <article class="step" id="s13" data-step="13">
-    <header><span class="no">13</span><h3>v2 만들어 v1 과 나란히 보기</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s12" data-step="12">
+    <header><span class="no">12</span><h3>v2 만들어 v1 과 나란히 보기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><p><code class="k">/clear</code> 후 붙여넣습니다.</p>
         <div class="cmd"><code>직영 리포트 담당 에이전트에게 학년별 학생수까지 넣은 리포트를 다시 만들게 해 줘.</code><button type="button">복사</button></div>
@@ -439,32 +417,32 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2><small>PART 6</small>막혔을 때</h2>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
-    <tr><td>과목수 · 학생수가 정답표보다 훨씬 크다</td><td>행 수를 셌다 · 중복을 안 뺐다 · 제외 조건이 빠졌다</td><td>5단계 기준을 다시 붙여넣는다 · 스킬이 불려왔는지 본다</td></tr>
-    <tr><td>셔틀 · 클리닉이 과목에 들어 있다</td><td>스킬이 안 불려왔다</td><td>9단계 「안 되면 여기부터」 · <code class="k">/jig-metrics</code> 로 직접 부른다</td></tr>
-    <tr><td>지난 달 학년이 한 칸 밀려 있다</td><td>학년치환을 안 했다</td><td>12단계 판단 기준 1</td></tr>
+    <tr><td>과목수 · 학생수가 정답표보다 훨씬 크다</td><td>행 수를 셌다 · 중복을 안 뺐다 · 제외 조건이 빠졌다</td><td>4단계 기준을 다시 붙여넣는다 · 스킬이 불려왔는지 본다</td></tr>
+    <tr><td>셔틀 · 클리닉이 과목에 들어 있다</td><td>스킬이 안 불려왔다</td><td>8단계 「안 되면 여기부터」 · <code class="k">/jig-metrics</code> 로 직접 부른다</td></tr>
+    <tr><td>지난 달 학년이 한 칸 밀려 있다</td><td>학년치환을 안 했다</td><td>11단계 판단 기준 1</td></tr>
     <tr><td>Claude 가 CSV 를 통째로 읽느라 오래 걸린다</td><td>「Node 명령으로 세라」가 빠졌다</td><td>문장에 「통째로 읽지 말고 Node 명령으로 세어」를 넣는다</td></tr>
     <tr><td>「python 을 찾을 수 없다」 · Microsoft Store 가 열린다</td><td>Claude 가 Python 으로 세려 했다 (Python 은 체험 10단계에서 깐다)</td><td>「Python 말고 Node 로 세어 줘」라고 다시 말한다</td></tr>
     <tr><td><code class="k">/skills</code> 에 내 스킬이 없다</td><td>폴더 모양이 틀렸다 · 켜 둔 창이 아직 모른다</td><td><code class="k">.claude/skills/&lt;이름&gt;/SKILL.md</code> 확인 → <code class="k">exit</code> 후 다시 켜기</td></tr>
     <tr><td>스킬 파일은 있는데 인식이 안 된다</td><td>파일 이름이 <code class="k">skill.md</code> · <code class="k">Skill.md</code></td><td>대문자 <code class="k">SKILL.md</code> 로 바꾼다</td></tr>
     <tr><td>상관없는 말에도 스킬이 뜬다</td><td>description 이 너무 넓다</td><td>「이럴 땐 쓰지 않는다」 한 줄</td></tr>
-    <tr><td>스킬 · 에이전트가 엉뚱한 폴더에 생겼다</td><td><code class="k">basic_data</code> 가 아닌 곳에서 <code class="k">claude</code> 를 켰다</td><td>3단계대로 그 폴더를 열고 다시 켠다</td></tr>
+    <tr><td>스킬 · 에이전트가 엉뚱한 폴더에 생겼다</td><td><code class="k">basic_data</code> 가 아닌 곳에서 <code class="k">claude</code> 를 켰다</td><td>2단계대로 그 폴더를 열고 다시 켠다</td></tr>
     <tr><td>에이전트가 「실행 도구가 없어 셀 수 없다」고 돌아온다</td><td>에이전트 파일 <code class="k">tools</code> 줄에 이 PC 의 실행 도구가 없다(Git Bash 가 없는 PC 는 PowerShell)</td><td><code class="k">tools</code> 줄을 <code class="k">Read, Glob, Grep, Write, Bash, PowerShell</code> 로 → <code class="k">exit</code> → <code class="k">claude</code></td></tr>
     <tr><td>에이전트 목록에 리포트 담당이 없다</td><td>파일이 <code class="k">.claude/agents/</code> 에 없다 · 만든 뒤 다시 켜지 않았다</td><td>탐색기에서 파일 확인 → <code class="k">exit</code> → <code class="k">claude</code> · 또는 정답 파일</td></tr>
     <tr><td>에이전트 대신 내 창에서 직접 센다</td><td>이름을 대지 않았다</td><td>「직영 리포트 담당 에이전트에게 맡겨」를 문장에 넣는다</td></tr>
-    <tr><td>리포트 파일이 안 생긴다</td><td>에이전트에 쓰기 · 실행 도구가 없다</td><td>10단계 도구 선택 다시 · 또는 정답 파일</td></tr>
-    <tr><td>리포트가 덮어써졌다</td><td>판단 기준 2 가 없다</td><td>12단계. 덮어쓴 파일은 에이전트에게 다시 만들게 한다</td></tr>
+    <tr><td>리포트 파일이 안 생긴다</td><td>에이전트에 쓰기 · 실행 도구가 없다</td><td>9단계 도구 선택 다시 · 또는 정답 파일</td></tr>
+    <tr><td>리포트가 덮어써졌다</td><td>판단 기준 2 가 없다</td><td>11단계. 덮어쓴 파일은 에이전트에게 다시 만들게 한다</td></tr>
     <tr><td><code class="k">/rewind</code> 로 되돌렸는데 파일이 안 돌아온다</td><td>명령으로 바뀐 파일은 <code class="k">/rewind</code> 가 되돌리지 못한다</td><td>그래서 「덮어쓰지 말고 새 이름으로」를 판단 기준에 둔다</td></tr>
-    <tr><td>결과 모양이 매번 다르다</td><td>출력 형식이 파일에 없다</td><td>12단계</td></tr>
+    <tr><td>결과 모양이 매번 다르다</td><td>출력 형식이 파일에 없다</td><td>11단계</td></tr>
   </table></div>
 </section>
 </details>
 
 <details class="grp" id="g4">
-<summary><span class="gno">④</span> 마무리 <small>14단계 · 5분</small></summary>
+<summary><span class="gno">④</span> 마무리 <small>13단계 · 5분</small></summary>
 <section class="part" id="p7">
   <h2><small>PART 7</small>마무리</h2>
-  <article class="step" id="s14" data-step="14">
-    <header><span class="no">14</span><h3>오늘 만든 것 정리하고 체험 편 준비</h3><label><input type="checkbox">완료</label></header>
+  <article class="step" id="s13" data-step="13">
+    <header><span class="no">13</span><h3>오늘 만든 것 정리하고 체험 편 준비</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>확인</b><div><ol>
         <li><code class="k">.claude\skills\jig-metrics\SKILL.md</code> — 세는 법 스킬</li>
@@ -486,6 +464,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.8</b></td><td>2026-10-28</td><td>
+      <ul><li>첫 화면 소개 문단 · 「끝나면 이렇게 됩니다」 상자 삭제 · 1단계 「차이를 한 문장으로」 삭제(비교표는 PART 1 에 그대로) → 단계 1~13 으로 한 칸씩 당김 · 진행 체크 키 v5</li><li>폴더 만들기 단계: 파일 경로를 넣어 보내던 프롬프트 삭제(사람마다 경로가 달라 오류) → 탐색기에서 <code class="k">basic_data</code> 폴더를 만들고 두 파일을 직접 넣기</li></ul></td></tr>
     <tr><td><b>v1.7</b></td><td>2026-10-28</td><td>
       <ul><li>PART 1 비교표: 오늘 실습 · 한 줄 정의 · 일하는 곳 · 내가 보는 것 · 대가 줄 삭제 · 「주의사항」 줄 추가</li></ul></td></tr>
     <tr><td><b>v1.6</b></td><td>2026-10-27</td><td>
@@ -532,7 +512,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 
 <script>
 (function(){
-  var KEY='cc-basic-steps-v4';
+  var KEY='cc-basic-steps-v5';
   var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
   var saved={};
   try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
