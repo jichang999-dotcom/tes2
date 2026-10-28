@@ -503,8 +503,7 @@
 <div class="tab-group">
   <button class="tab-btn active-swing" onclick="switchTab('swing')" id="btn-swing">🎯 손익비</button>
   <button class="tab-btn" onclick="switchTab('bowl3')" id="btn-bowl3">🍚 밥그릇3</button>
-  <button class="tab-btn" onclick="switchTab('overnight')" id="btn-overnight">🌙 오버나잇</button>
-  <button class="tab-btn" onclick="switchTab('danta')" id="btn-danta">⚡ 단타</button>
+  <button class="tab-btn" onclick="switchTab('danta')" id="btn-danta">⚡ 단타인기</button>
   <button class="tab-btn" onclick="switchTab('closed')" id="btn-closed">🏁 종료</button>
   <button class="tab-btn" onclick="switchTab('summary')" id="btn-summary">📊 요약</button>
   <button class="tab-btn" onclick="switchTab('usa')" id="btn-usa">🇺🇸 USA</button>
@@ -626,39 +625,22 @@
 </section>
 </div><!-- /tab-bowl3 -->
 
-<!-- ===== 🌙 오버나잇 탭 (2026-10-21 · build_danta_tab.js 가 15:10·09:15·08:30 마다 표 교체) ===== -->
-<div class="tab-content" id="tab-overnight">
-<section id="overnight-tab-summary">
-  <h3 style="margin:8px 0;">🌙 오버나잇 <span class="hd-note">(15:10 종목 제시 · 2026-10-27 15:10 · 시장 20일 -20.06% · 당일 1.58% (참고))</span></h3>
-  <table class="stock-table" style="font-size:0.88em;">
-    <thead><tr><th>순위</th><th>종목</th><th>테마</th><th>15:10 가격</th><th>등락</th><th>거래량</th><th>손절가</th><th>판정</th></tr></thead>
-    <tbody>
-      <tr><td data-label="순위">1</td><td data-label="종목"><strong>나무가</strong> <span class="hd-note">코스닥</span></td><td data-label="테마">증강현실<br>카메라모듈/부품</td><td data-label="15:10 가격">17,090</td><td data-label="등락">+25.7%</td><td data-label="거래량">68.7배</td><td data-label="손절가">16,740</td><td data-label="판정">🟢 종가 매수</td></tr>
-    </tbody>
-  </table>
-  <p class="hd-note">15:10 현재 +10~29.5% · 고가권(고가−현재가 ≤ 당일 범위 10%) · 거래량 20일 평균 2.7배+ · 시총 1,000억+ → 거래량 배수 순 5종 · 국면 필터 없음 · 매매 = 15:20~15:30 종가 단일가 매수 → 다음 날 시가 매도 · 손절가 = 15:10 가격 −2%(호가 단위 내림, 백테스트상 손절은 시가 매도보다 불리 — 참고용) · 근거 = 일봉 백테스트(2024-10~2026-10, 종가 마감 기준) 1,122건 평균 +0.75%(비용 뒤 +0.50%), 지수 20일 −5% 이하 국면은 −0.14% · 15:10 판정 자체는 백테스트 안 함</p>
-</section>
-</div><!-- /tab-overnight -->
-
-<!-- ===== ⚡ 단타(돌파임박) 탭 (2026-10-21 · build_danta_tab.js 가 08:30 마다 표 교체) ===== -->
+<!-- ===== ⚡ 단타인기 탭 (2026-10-28 개편 · build_danta_tab.js 가 평일 09:10 표 교체) ===== -->
 <div class="tab-content" id="tab-danta">
 <section id="danta-tab-summary">
-  <h3 style="margin:8px 0;">⚡ 단타 · 09:15 매수 추천 <span class="hd-note">(2026-10-28 · danta_close_2026-10-27.json)</span></h3>
+  <h3 style="margin:8px 0;">⚡ 단타인기 <span class="hd-note">(2026-10-28 14:08 네이버 증권)</span></h3>
   <table class="stock-table" style="font-size:0.88em;">
-    <thead><tr><th>순위</th><th>종목</th><th>시가</th><th>09:15</th><th>15분 거래량</th><th>프로그램</th><th>판매/구매대기</th><th>판정</th></tr></thead>
+    <thead><tr><th>순위</th><th>종목</th><th>테마</th><th>거래대금 순위</th><th>인기 순위</th><th>가격</th><th>등락</th><th>거래대금</th></tr></thead>
     <tbody>
-      <tr><td data-label="순위">1</td><td data-label="종목"><strong>나무가</strong> <span class="hd-note">코스닥</span></td><td data-label="시가">19,270</td><td data-label="09:15">18,310</td><td data-label="15분 거래량">1052%</td><td data-label="프로그램">-43,494</td><td data-label="판매/구매대기">3,114 / 11,487</td><td data-label="판정">❌ 09:15 ≤ 시가 · 프로그램 -43,494주 · 판매대기 3,114 ≤ 구매대기 11,487</td></tr>
+      <tr><td data-label="순위">1</td><td data-label="종목"><span class="hd-note">코스피</span> <strong>삼성전자우</strong></td><td data-label="테마">S7</td><td data-label="거래대금 순위">5위</td><td data-label="인기 순위">4위</td><td data-label="가격">190,500</td><td data-label="등락">+11.34%</td><td data-label="거래대금">6,781억</td></tr>
+      <tr><td data-label="순위">2</td><td data-label="종목"><span class="hd-note">코스닥</span> <strong>대한광통신</strong></td><td data-label="테마">방위산업/전쟁 및 테러<br>5G</td><td data-label="거래대금 순위">11위</td><td data-label="인기 순위">10위</td><td data-label="가격">14,990</td><td data-label="등락">+9.42%</td><td data-label="거래대금">1,666억</td></tr>
+      <tr><td data-label="순위">3</td><td data-label="종목"><span class="hd-note">코스피</span> <strong>NAVER</strong></td><td data-label="테마">SNS<br>모바일콘텐츠</td><td data-label="거래대금 순위">14위</td><td data-label="인기 순위">5위</td><td data-label="가격">179,300</td><td data-label="등락">+2.87%</td><td data-label="거래대금">1,485억</td></tr>
+      <tr><td data-label="순위">4</td><td data-label="종목"><span class="hd-note">코스피</span> <strong>LG이노텍</strong></td><td data-label="테마">카메라모듈/부품<br>스마트폰</td><td data-label="거래대금 순위">15위</td><td data-label="인기 순위">14위</td><td data-label="가격">363,000</td><td data-label="등락">-3.07%</td><td data-label="거래대금">1,457억</td></tr>
+      <tr><td data-label="순위">5</td><td data-label="종목"><span class="hd-note">코스닥</span> <strong>안랩</strong></td><td data-label="테마">클라우드 컴퓨팅<br>보안주</td><td data-label="거래대금 순위">18위</td><td data-label="인기 순위">17위</td><td data-label="가격">111,700</td><td data-label="등락">+20.5%</td><td data-label="거래대금">1,185억</td></tr>
+      <tr><td data-label="순위">6</td><td data-label="종목"><span class="hd-note">코스피</span> <strong>HD현대중공업</strong></td><td data-label="테마">LNG<br>밸류업</td><td data-label="거래대금 순위">19위</td><td data-label="인기 순위">15위</td><td data-label="가격">286,500</td><td data-label="등락">-1.72%</td><td data-label="거래대금">1,174억</td></tr>
     </tbody>
   </table>
-  <p class="hd-note">전 영업일 🌙 오버나잇 종목 중 09:15 가격 &gt; 시가 · 09:00~09:15 거래량 ≥ 20일 평균 20% · 당일 프로그램 순매수 &gt; 0 · 판매대기(호가 매도잔량 합) &gt; 구매대기(매수잔량 합) → 09:15 매수 → 당일 종가 매도 · 백테스트 안 함(일봉상 같은 신호의 다음 날 장중은 평균 −0.67%)</p>
-  <h3 style="margin:16px 0 8px;">⚡ 돌파임박 <span class="hd-note">(20261027 KRX 확정봉 · 08:30)</span></h3>
-  <table class="stock-table" style="font-size:0.88em;">
-    <thead><tr><th>순위</th><th>종목</th><th>테마</th><th>신호일 종가</th><th>장기선</th><th>장기선까지</th><th>거래량</th><th>수급 강도</th></tr></thead>
-    <tbody>
-      <tr><td colspan="8">없음</td></tr>
-    </tbody>
-  </table>
-  <p class="hd-note">종가가 장기선(max MA112·224) −10% 이내 아래 · 양봉·몸통 50%+ · MA20·MA60 위·MA20 상승 · 시총 1,000억+ · 외국인+기관 5일·당일 &gt; 0 · 수급 강도 순 · 매매 = 다음 날 시가 매수 → 3일 안 +5% 익절, 아니면 3일째 종가 · ⚠️ 백테스트 2,353건 +5% 도달 24%·평균 −0.05%(비용 뒤 −0.30%) = 우위 없음 · 표시 전용</p>
+  <p class="hd-note">평일 09:10 네이버 증권 거래대금 상위(코스피+코스닥 일반 주식, ETF·ETN 제외) 20위 안에서 인기 검색 순위가 거래대금 순위보다 높은 종목 · 거래대금 순 · 매매 = 3거래일 보유 단타 · ⚠️ 백테스트 없음(네이버 인기 순위 과거 이력 없음 — 매일 기록을 쌓아 성과 측정 예정) · 표시 전용</p>
 </section>
 </div><!-- /tab-danta -->
 
@@ -3318,7 +3300,6 @@ function switchTab(type) {
   var tabs = {
     swing: document.getElementById('tab-swing'),
     bowl3: document.getElementById('tab-bowl3'),
-    overnight: document.getElementById('tab-overnight'),
     danta: document.getElementById('tab-danta'),
     closed: document.getElementById('tab-closed'),
     summary: document.getElementById('tab-summary'),
@@ -3327,13 +3308,12 @@ function switchTab(type) {
   var btns = {
     swing: document.getElementById('btn-swing'),
     bowl3: document.getElementById('btn-bowl3'),
-    overnight: document.getElementById('btn-overnight'),
     danta: document.getElementById('btn-danta'),
     closed: document.getElementById('btn-closed'),
     summary: document.getElementById('btn-summary'),
     usa: document.getElementById('btn-usa')
   };
-  var activeClass = { usa: 'active-swing', swing: 'active-swing', bowl3: 'active-swing', overnight: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
+  var activeClass = { usa: 'active-swing', swing: 'active-swing', bowl3: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
 
   Object.keys(tabs).forEach(function(k) {
     if (k === type) {
