@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.25 · 2026-10-26</span></h1>
+  <h1>Claude Code 초급 체험 — 말로 시켜 데이터 가져오기 <span class="ver">v1.26 · 2026-10-29</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 체험 전에 하는 교육 편">교육 편</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -150,6 +150,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="sub"><a href="#s2">2. MCP 종류 보기 · 구글 커넥터 연결</a></li>
   <li class="sub"><a href="#s3">3. 내 구글 시트에 시트 만들고 데이터 넣기</a></li>
   <li class="sub"><a href="#chrome">선택. Claude in Chrome 으로 구글 API 연결</a></li>
+  <li class="sub"><a href="#playwright">선택. 안 될 때 — Playwright MCP 로 하기</a></li>
   <li class="ghead">③ API <small>4~5단계</small></li>
   <li><a href="#p3">PART 3 API — 키로 받아 오기</a></li>
   <li class="sub"><a href="#s4">4. 법령 API 키 신청 해 보기</a></li>
@@ -379,7 +380,62 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>보고에 <b>내 회사 메일이 두 번</b>(Drive, Gmail) 나온다. 나중에 연결만 다시 볼 때는 이 한 줄이면 됩니다.</p><div class="cmd"><code style="white-space:pre-wrap">.env의 GOOGLE_AUTH_DIR 인증으로 Drive와 Gmail에 연결된 계정 이메일을 각각 확인해줘.</code><button type="button">복사</button></div></div></div>
       <div class="box warn"><b>주의</b>인증 폴더의 파일(<code class="k">client_secret.json</code> · 토큰)은 <b>비밀번호와 같습니다</b>. 깃허브 · 공유 드라이브 · 메신저에 올리지 않습니다. 설정 화면을 캡처하지 않습니다 — 클라이언트 보안 비밀번호가 찍힙니다.</div>
-      <div class="box tip"><b>막히면</b>프로젝트 만들기 버튼이 없다 = 관리자가 프로젝트 생성을 막음 · 「2단계 인증 필요」 = 구글 계정 보안에서 2단계 인증 켜기 · 「관리자가 이 앱을 차단」 = 관리자에게 클라이언트 ID 를 주고 신뢰 앱 등록 요청 · <code class="k">org_internal</code> 오류 = 개인 gmail 로 로그인함, 회사 계정으로 다시 · API 를 켰다는데 「사용중지」 버튼이 없다 = 「안 켜진 API 다시 켜고 확인해줘」.</div>
+      <div class="box tip"><b>막히면</b>프로젝트 만들기 버튼이 없다 = 관리자가 프로젝트 생성을 막음 · 「2단계 인증 필요」 = 구글 계정 보안에서 2단계 인증 켜기 · 「관리자가 이 앱을 차단」 = 관리자에게 클라이언트 ID 를 주고 신뢰 앱 등록 요청 · <code class="k">org_internal</code> 오류 = 개인 gmail 로 로그인함, 회사 계정으로 다시 · API 를 켰다는데 「사용중지」 버튼이 없다 = 「안 켜진 API 다시 켜고 확인해줘」 · <b><code class="k">/chrome</code> 연결이 안 된다 · 확장이 다른 Claude 계정으로 잡힌다</b> = 아래 「Playwright MCP 로 하기」.</div>
+    </div>
+  </article>
+
+  <article class="step" id="playwright">
+    <header><span class="no">+</span><h3>선택 — Claude in Chrome 이 안 될 때: Playwright MCP 로 하기</h3></header>
+    <div class="body">
+      <p>Claude in Chrome 은 <b>크롬 확장에 로그인한 Claude 계정</b>과 <b>Claude Code 에 로그인한 계정</b>이 같아야 연결됩니다. 크롬에 다른 Claude 계정이 로그인돼 있으면 확장이 그 계정으로 자동으로 잡혀 연결이 안 됩니다. 이럴 때는 Microsoft 가 만든 <b>Playwright MCP</b> 로 같은 일을 합니다. 내 크롬이 아니라 <b>새 빈 크롬 창</b>을 따로 띄우기 때문에 계정이 섞이지 않습니다.</p>
+      <div class="tbl"><table>
+        <tr><th>비교</th><th>Claude in Chrome</th><th>Playwright MCP</th></tr>
+        <tr><td>만든 곳</td><td>Anthropic (크롬 확장)</td><td>Microsoft (MCP 서버 · 확장 없음)</td></tr>
+        <tr><td>움직이는 브라우저</td><td><b>내 크롬</b> — 로그인돼 있는 것 전부</td><td><b>새로 띄운 크롬</b> — 그 창에서 로그인한 것만</td></tr>
+        <tr><td>Claude 계정</td><td>확장 계정 = Claude Code 계정이어야 함</td><td>상관없음</td></tr>
+        <tr><td>로그인 유지</td><td>내 크롬 그대로</td><td>한 번 로그인하면 다음에도 남는다 (전용 프로필)</td></tr>
+        <tr><td>켜는 법</td><td>확장 설치 → 로그인 → <code class="k">/chrome</code></td><td>명령 한 줄 등록 → Claude Code 다시 시작</td></tr>
+      </table></div>
+      <div class="row"><b>준비</b><div><ul>
+        <li><b>Node.js</b> — 터미널에서 <code class="k">node -v</code> 가 버전 번호를 보여야 합니다. 안 되면 강사에게 말합니다.</li>
+        <li>크롬 브라우저 · 회사 계정 비밀번호와 2단계 인증 수단 · PC 에 Python (1단계).</li>
+      </ul></div></div>
+      <div class="row"><b>방법</b><div><ol>
+        <li><b>등록.</b> VS Code 터미널(Claude Code 밖)에 붙여넣습니다. 윈도우는 앞에 <code class="k">cmd /c</code> 가 있어야 실행됩니다.
+          <div class="cmd"><code>claude mcp add playwright -- cmd /c npx -y @playwright/mcp@latest</code><button type="button">복사</button></div></li>
+        <li><b>다시 시작.</b> Claude Code 를 껐다 켜고 <code class="k">/mcp</code> 를 입력해 <code class="k">playwright</code> 가 <b>connected</b> 인지 봅니다.</li>
+        <li><b>프롬프트 1 (Playwright 판).</b> <code class="k">&lt;회사 메일&gt;</code> · <code class="k">&lt;영문이름&gt;</code> 칸만 바꿔 붙여넣습니다. 새 크롬 창이 뜨면 <b>그 창에서 회사 계정으로 직접 로그인</b>합니다.
+          <div class="cmd"><code style="white-space:pre-wrap">Playwright MCP로 구글 API 연결용 GCP 설정을 진행해줘. Claude in Chrome은 쓰지 마. 끝나면 결과를 표로 보고해줘.
+
+[계정]
+- 내 회사 계정: &lt;회사 메일&gt;.
+- 먼저 Playwright 브라우저로 https://console.cloud.google.com 을 열어. 로그인 화면이 나오면 멈추고 나한테 그 창에서 로그인해 달라고 해. 비밀번호는 입력하지 마.
+- 작업 전에 오른쪽 위 계정이 &lt;회사 메일&gt;인지 확인해.
+
+[순서]
+1. 새 프로젝트: 이름 "&lt;영문이름&gt;-api", 조직·위치는 기본값(askwhy.co.kr). 만든 뒤 그 프로젝트로 전환해.
+   결제 계정 칸이 채워져 있어도 그대로 둠 (아래 API는 무료).
+2. API 사용 설정: Google Drive API, Gmail API, Google Sheets API, Google Docs API.
+   각 API 페이지에서 '사용'을 누르고, 'API 사용중지' 버튼이 보이는지로 하나씩 확인해. 안 켜졌으면 다시 눌러.
+3. Google 인증 플랫폼 → 시작하기
+   - 앱 이름 "&lt;영문이름&gt; local", 사용자 지원 이메일 = 내 회사 메일
+   - 대상 = 내부
+   - 연락처 이메일 = 내 회사 메일
+   - '사용자 데이터 정책 동의' 체크 직전에 멈추고 나한테 동의 여부를 물어봐. 동의하면 체크 → 계속 → 만들기.
+   - 로고는 올리지 마.
+   - 끝나면 '대상' 메뉴에서 사용자 유형이 '내부'인지 확인해.
+4. 클라이언트 → 클라이언트 만들기: 유형 '데스크톱 앱', 이름 local-python → 만들기
+   - 생성 팝업을 닫기 전에 'JSON 다운로드'부터 눌러. 팝업을 닫으면 다시 못 받아.
+   - 받은 client_secret_*.json 이 어디에 저장됐는지 확인하고, 내 다운로드 폴더에 없으면 다운로드 폴더로 복사해줘.
+
+[주의]
+- 클라이언트 ID·보안 비밀번호를 대화에 옮겨 적거나 스크린샷으로 저장하지 마.
+- 화면에 '2단계 인증 필요' 안내가 보이면 보고에 적어줘.
+- 끝나면 Playwright 브라우저를 닫아줘.</code><button type="button">복사</button></div></li>
+        <li><b>프롬프트 2 — 로컬 인증.</b> 위 Claude in Chrome 단계의 프롬프트 2 를 <b>그대로</b> 씁니다. 확인 한 줄도 같습니다.</li>
+      </ol></div></div>
+      <div class="box warn"><b>주의</b>Playwright 창에서 로그인한 회사 계정은 <b>이 PC 에 남습니다</b>(전용 프로필). 공용 PC 라면 끝난 뒤 그 창에서 구글 로그아웃합니다. 남기기 싫으면 등록 명령 끝에 <code class="k">--isolated</code> 를 붙입니다 — 창을 닫을 때마다 로그인이 지워집니다.</div>
+      <div class="box tip"><b>막히면</b><code class="k">/mcp</code> 에 <code class="k">failed</code> = <code class="k">node -v</code> 확인 · 사내망에서 npm 다운로드가 막힘(강사에게) · 「브라우저가 이미 사용 중」 = 전에 띄운 Playwright 크롬 창을 닫고 다시 · 개인 gmail 로 잡힘 = Playwright 창에서 로그아웃 → 회사 계정으로 다시.</div>
     </div>
   </article>
 </section>
@@ -658,6 +714,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.26</b></td><td>2026-10-29</td><td>
+      <ul><li><b>추가</b> Claude in Chrome 단계 아래 선택 단계 「Claude in Chrome 이 안 될 때: Playwright MCP 로 하기」 — 확장이 다른 Claude 계정으로 잡혀 연결이 안 될 때 Microsoft Playwright MCP(새 크롬 창 · 전용 프로필)로 같은 GCP 설정을 한다. 비교표 · 등록 한 줄 · 프롬프트 1 Playwright 판 · 프롬프트 2 는 그대로 · 주의 · 막히면. 진행 체크 단계 수는 그대로(9단계)</li></ul></td></tr>
     <tr><td><b>v1.25</b></td><td>2026-10-26</td><td>
       <ul><li><b>바뀜</b> 「법령 API 키 신청 해 보기」를 준비(PART 1)에서 API(PART 3) 맨 앞으로 옮겼다 — 단계 번호가 바뀜: 준비 1 · MCP 2~3 · API 4~5 (6단계부터 그대로). 진행 체크를 새로 시작합니다</li><li><b>바뀜</b> 시작 전 「오늘 배우는 세 가지」 표 = 영어 이름과 뜻 · 이런 것도 연결된다 (접힌 상자를 펼쳐 본문으로)</li></ul></td></tr>
     <tr><td><b>v1.24</b></td><td>2026-10-26</td><td>
