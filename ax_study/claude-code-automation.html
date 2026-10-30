@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claude Code Advance 교육 — 자동화</title>
+<title>Claude Code advance 1step — 자동화</title>
 <style>
 :root{--bg:#f7f6f3;--card:#fff;--ink:#1f1e1c;--sub:#5c5a55;--line:#e3e0d8;--accent:#c2562f;--accent-soft:#fbeee8;--ok:#2f7a4f;--ok-soft:#e8f4ec;--warn:#9a5b00;--warn-soft:#fff4df;--code:#23211f;--code-ink:#f3efe6}
 @media (prefers-color-scheme:dark){:root{--bg:#1b1a18;--card:#252422;--ink:#ecebe7;--sub:#aeaba4;--line:#3a3834;--accent:#e98a64;--accent-soft:#3a2a23;--ok:#7cc79a;--ok-soft:#23332a;--warn:#f0b35a;--warn-soft:#3a3021;--code:#11100f;--code-ink:#f3efe6}}
@@ -129,8 +129,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code Advance 교육 — 자동화 <span class="ver">v2.0 · 2026-10-29</span></h1>
-  <a class="rel-btn" href="claude-code-agent-team.html" title="교육 편 다음에 하는 체험 편">체험 편</a>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.1 · 2026-10-30</span></h1>
+  <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 19 단계</span></div>
@@ -183,10 +183,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h3>준비물</h3>
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
-    <tr><td><b>초급 과정 완료</b></td><td>워크스페이스(작업 폴더)에서 <code class="k">claude</code> 가 켜지고, Python 과 구글 커넥터가 있다.</td></tr>
+    <tr><td><b>basic 과정 완료</b></td><td>워크스페이스(작업 폴더)에서 <code class="k">claude</code> 가 켜지고, Python 과 구글 커넥터가 있다.</td></tr>
     <tr><td>Git for Windows</td><td>터미널에서 <code class="k">git --version</code> 이 번호를 보여야 합니다. 안 나오면 <a href="https://git-scm.com/download/win" target="_blank" rel="noopener">git-scm.com</a> 에서 설치(설치 화면은 전부 기본값) → VS Code 를 껐다 켭니다.</td></tr>
     <tr><td>GitHub 계정</td><td><b>회사 메일</b>로 미리 가입해 두면 좋습니다 (6단계 · 메일 인증이 늦게 오는 경우가 있습니다).</td></tr>
-    <tr><td>구글 클라우드 프로젝트</td><td>12단계 API 키를 만들 곳. 초급 체험 선택 단계에서 만든 프로젝트가 있으면 그대로 씁니다.</td></tr>
+    <tr><td>구글 클라우드 프로젝트</td><td>12단계 API 키를 만들 곳. basic 2step 선택 단계에서 만든 프로젝트가 있으면 그대로 씁니다.</td></tr>
     <tr><td>슬랙 교육용 워크스페이스</td><td>강사가 초대 메일을 보냅니다 (16단계).</td></tr>
   </table></div>
   <div class="box warn"><b>주의</b><b>GitHub 에는 코드 · 설정 파일만 올립니다.</b> 개인정보(학생 · 학부모 · 직원의 이름 · 연락처 · 학생코드 등)와 데이터 파일(CSV · 엑셀 · DB 추출 결과 · 수집 결과)은 <b>비공개 리포여도 올리지 않습니다.</b> 1단계에서 제외 목록을 만들고, 8단계 올리기 전에 목록을 한 번 더 봅니다.</div>
@@ -196,7 +196,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <summary><span class="gno">①</span> Git <small>1~5단계 · 35분</small></summary>
 <section class="part" id="p1">
   <h2><small>PART 1</small>시작 전</h2>
-  <p class="lead">초급에서는 <b>말로 시켜</b> 일을 했습니다. 오늘은 내 작업을 <b>기록 · 백업</b>하고, 같은 일을 <b>사람 없이</b> 돌리는 도구를 하나씩 손에 익힙니다.</p>
+  <p class="lead">basic에서는 <b>말로 시켜</b> 일을 했습니다. 오늘은 내 작업을 <b>기록 · 백업</b>하고, 같은 일을 <b>사람 없이</b> 돌리는 도구를 하나씩 손에 익힙니다.</p>
   <div class="tbl"><table>
     <tr><th>도구</th><th>한 줄 뜻</th><th>오늘</th></tr>
     <tr><td><b>Git</b></td><td>내 PC 안의 <b>저장 기록</b> — 언제 무엇을 고쳤는지 남기고 되돌린다</td><td>1~5단계</td></tr>
@@ -429,7 +429,7 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
 다 만들면 한 번 실행해서 조회수 상위 10개를 표로 보여 주고, yt_skills.py 만 「유튜브 검색 스크립트」 메시지로 커밋해 줘.</code><button type="button">복사</button></div></div></div>
       <div class="row"><b>확인</b><div><p>조회수 상위 10개 표가 나오고, <code class="k">data\유튜브_스킬.csv</code> · <code class="k">data\log.txt</code> 가 생겼다. <code class="k">git status</code> 에 <code class="k">data</code> 와 <code class="k">.env</code> 가 없다.</p></div></div>
       <div class="box tip"><b>표에서 고르는 법</b>조회수만 보지 말고 <b>올린 날 · 채널 · GitHub 링크</b>를 같이 봅니다. 링크가 있으면 10단계 기준으로 그 저장소를 다시 확인합니다. 광고 · 낚시 영상도 섞여 있습니다 — 고르는 것은 사람.</div>
-      <div class="box warn"><b>주의</b>무료 사용량은 하루 정해져 있습니다(검색 한 번이 크게 듭니다). 교육 중에는 몇 번 실행해도 충분하지만, 반복문으로 계속 검색하게 만들지 않습니다.</div>
+      <div class="box warn"><b>주의</b>무료 사용량은 하루 정해져 있습니다(검색 한 번이 크게 듭니다). 1step 중에는 몇 번 실행해도 충분하지만, 반복문으로 계속 검색하게 만들지 않습니다.</div>
     </div>
   </article>
 </section>
@@ -449,7 +449,7 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
         <li>윈도우 시작 → 「작업 스케줄러」 → <b>작업 스케줄러 라이브러리</b>에 <code class="k">AX_yt_daily</code> 가 있고 마지막 실행 결과가 <code class="k">(0x0)</code>.</li>
       </ol></div></div>
       <div class="box warn"><b>주의</b><code class="k">.bat</code> 파일에는 <b>한글을 쓰지 않습니다.</b> 윈도우 콘솔에서 글자가 깨져 명령이 엉뚱하게 실행됩니다. 한글이 필요한 일은 <code class="k">.py</code> 안에서 합니다.</div>
-      <div class="box tip"><b>실행할 때 검은 창이 잠깐 떴다 사라집니다</b>정상입니다. 창을 숨기는 방법은 체험 편에서 다룹니다.</div>
+      <div class="box tip"><b>실행할 때 검은 창이 잠깐 떴다 사라집니다</b>정상입니다. 창을 숨기는 방법은 2step에서 다룹니다.</div>
     </div>
   </article>
 
@@ -466,7 +466,7 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>두 설정이 켜짐(True)으로 나왔고, 마지막에 작업 목록에서 <code class="k">AX_yt_daily</code> 가 사라졌다.</p></div></div>
       <div class="box warn"><b>주의</b>작업 스케줄러는 <b>PC 가 켜져 있고 내 계정으로 로그인한 동안만</b> 돕니다. 꺼져 있던 날은 다음에 켤 때 한 번 돕니다(위 설정 덕분). PC 가 꺼져도 돌아야 하는 일은 19단계 클라우드 루틴입니다.</div>
-      <div class="box tip"><b>왜 지우나요</b>남겨 두면 매일 유튜브 사용량이 들고 슬랙에 메시지가 쌓입니다. 체험 편에서 AI 직원을 <b>새로</b> 등록합니다.</div>
+      <div class="box tip"><b>왜 지우나요</b>남겨 두면 매일 유튜브 사용량이 들고 슬랙에 메시지가 쌓입니다. 2step에서 AI 직원을 <b>새로</b> 등록합니다.</div>
     </div>
   </article>
 </section>
@@ -529,7 +529,7 @@ python yt_skills.py 를 한 번 실행하고, yt_skills.py 를 「슬랙 보고�
   <div class="tbl"><table>
     <tr><th>기술</th><th>설명</th></tr>
     <tr><td><b>클라우드 실행 환경</b></td><td>예약 시각이 되면 클라우드에 Claude Code 세션이 새로 열려 지시문을 실행합니다. 내 PC 는 필요 없습니다.</td></tr>
-    <tr><td><b>커넥터</b></td><td>claude.ai 에 연결해 둔 Google Drive(시트 포함) · Gmail · 캘린더 등을 그 세션이 씁니다. <b>내 Claude 계정에 연결된 것만</b> 됩니다(초급 체험에서 연결한 구글 커넥터).</td></tr>
+    <tr><td><b>커넥터</b></td><td>claude.ai 에 연결해 둔 Google Drive(시트 포함) · Gmail · 캘린더 등을 그 세션이 씁니다. <b>내 Claude 계정에 연결된 것만</b> 됩니다(basic 2step에서 연결한 구글 커넥터).</td></tr>
     <tr><td><b>GitHub 리포</b></td><td>루틴이 작업할 저장소를 고르라고 할 수 있습니다 — 8단계에서 만든 비공개 리포를 고릅니다.</td></tr>
     <tr><td><b>예약</b></td><td>매일 · 평일 · 매시처럼 반복할 시각을 정합니다.</td></tr>
   </table></div>
@@ -547,7 +547,7 @@ python yt_skills.py 를 한 번 실행하고, yt_skills.py 를 「슬랙 보고�
   <article class="step" id="s19" data-step="19">
     <header><span class="no">19</span><h3>PC 가 꺼져도 도는 일</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <div class="row"><b>방법</b><div><p><code class="k">&lt;시트 이름&gt;</code> · <code class="k">&lt;내 이름&gt;</code> 을 초급 체험에서 쓴 내 구글 시트로 바꿔 붙여넣습니다.</p>
+      <div class="row"><b>방법</b><div><p><code class="k">&lt;시트 이름&gt;</code> · <code class="k">&lt;내 이름&gt;</code> 을 basic 2step에서 쓴 내 구글 시트로 바꿔 붙여넣습니다.</p>
         <div class="cmd"><code style="white-space:pre-wrap">클라우드 루틴을 하나 만들어 줘.
 - 이름: 내 시트 요약
 - 일정: 평일 아침 9시(한국 시각). 루틴 시각은 UTC 라서 0시로 넣어 줘.
@@ -565,14 +565,14 @@ python yt_skills.py 를 한 번 실행하고, yt_skills.py 를 「슬랙 보고�
   <h2><small>정리</small>어디에 맡길까</h2>
   <div class="tbl"><table>
     <tr><th>이런 일이면</th><th>여기에 맡긴다</th><th>오늘</th></tr>
-    <tr><td>처음 하는 일 · 한 번 하는 일</td><td><b>Claude 에게 말로</b></td><td>초급</td></tr>
+    <tr><td>처음 하는 일 · 한 번 하는 일</td><td><b>Claude 에게 말로</b></td><td>basic</td></tr>
     <tr><td>매일 같은 일 — 웹 · API · 사내 DB · 내 PC 파일</td><td><b>스크립트 + 작업 스케줄러</b></td><td>13~15단계</td></tr>
     <tr><td>이미 구글 시트 · 드라이브에 있는 데이터를 PC 없이 집계 · 요약</td><td><b>클라우드 루틴</b></td><td>19단계</td></tr>
     <tr><td>끝났다 · 실패했다를 알려 받기</td><td><b>슬랙 웹훅</b></td><td>16~18단계</td></tr>
     <tr><td>고친 기록 · 되돌리기 · 백업</td><td><b>Git · GitHub</b> (코드만)</td><td>1~8단계</td></tr>
     <tr><td>남이 만든 스킬 · 에이전트 · 규칙 찾기</td><td><b>GitHub 검색 · 유튜브</b></td><td>9~13단계</td></tr>
   </table></div>
-  <div class="box tip"><b>체험 편에서는</b>초급에서 만든 리포트 담당 에이전트를 <b>혼자 출근하는 AI 직원</b>으로 만듭니다 — 오늘 배운 스케줄러로 출근하고, 슬랙으로 보고하고, Git 으로 근무일지를 남깁니다.</div>
+  <div class="box tip"><b>2step에서는</b>basic에서 만든 리포트 담당 에이전트를 <b>혼자 출근하는 AI 직원</b>으로 만듭니다 — 오늘 배운 스케줄러로 출근하고, 슬랙으로 보고하고, Git 으로 근무일지를 남깁니다.</div>
   <div class="box tip"><b>숙제</b>내 업무 하나를 골라 위 표의 어느 칸에 들어가는지 적어 옵니다. 칸이 애매하면 그 이유도 한 줄.</div>
 </section>
 </details>
@@ -611,6 +611,7 @@ python yt_skills.py 를 한 번 실행하고, yt_skills.py 를 「슬랙 보고�
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.1</b></td><td>2026-10-30</td><td>과정명을 영어 소문자, 단계명을 1step · 2step 으로 통일했습니다.</td></tr>
     <tr><td><b>v2.0</b></td><td>2026-10-29</td><td>
       <ul><li><b>바뀜</b> 전체 다시 짬 — PART 1~10 · 19단계. 진행 체크를 새로 시작합니다</li>
       <li><b>바뀜</b> Git 을 둘로 — 「내 워크스페이스를 Git 으로」(1단계) · 「내가 고른 연습 폴더에서 저장 · 되돌리기 · 브랜치」(2~5단계)</li>
@@ -621,7 +622,7 @@ python yt_skills.py 를 한 번 실행하고, yt_skills.py 를 「슬랙 보고�
       <li><b>추가</b> 클라우드 루틴에 들어가는 기술 · 제약 표</li>
       <li><b>빠짐</b> 교육청 공고 수집 단계 · 「마무리」 단계(판단표는 맨 끝 정리로)</li></ul></td></tr>
     <tr><td><b>v1.1</b></td><td>2026-10-29</td><td>
-      <ul><li><b>바뀜</b> Playwright MCP 단계를 뺐다 — 브라우저 조종은 초급 체험에서 다룬다 · 12단계 → 11단계</li></ul></td></tr>
+      <ul><li><b>바뀜</b> Playwright MCP 단계를 뺐다 — 브라우저 조종은 basic 2step에서 다룬다 · 12단계 → 11단계</li></ul></td></tr>
     <tr><td><b>v1.0</b></td><td>2026-10-29</td><td>
       <ul><li>첫 판. PART 1~9 · 12단계</li></ul></td></tr>
   </table></div>
