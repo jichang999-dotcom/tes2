@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Claude Code 첫 설정 가이드</title>
+<title>Claude Code starter 1step — 첫 설정</title>
 <style>
 :root{--bg:#f7f6f3;--card:#fff;--ink:#1f1e1c;--sub:#5c5a55;--line:#e3e0d8;--accent:#c2562f;--accent-soft:#fbeee8;--ok:#2f7a4f;--ok-soft:#e8f4ec;--warn:#9a5b00;--warn-soft:#fff4df;--code:#23211f;--code-ink:#f3efe6}
 @media (prefers-color-scheme:dark){:root{--bg:#1b1a18;--card:#252422;--ink:#ecebe7;--sub:#aeaba4;--line:#3a3834;--accent:#e98a64;--accent-soft:#3a2a23;--ok:#7cc79a;--ok-soft:#23332a;--warn:#f0b35a;--warn-soft:#3a3021;--code:#11100f;--code-ink:#f3efe6}}
@@ -94,7 +94,7 @@ th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-ali
 th{background:var(--accent-soft);white-space:nowrap}
 details.q{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;margin:8px 0}
 details.fix>summary{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
-details.fix>summary::after{content:"【펳치기 ▾】";margin-left:auto;font-size:12px;font-weight:400;color:var(--sub);white-space:nowrap}
+details.fix>summary::after{content:"【펼치기 ▾】";margin-left:auto;font-size:12px;font-weight:400;color:var(--sub);white-space:nowrap}
 details.fix[open]>summary::after{content:"【접기 ▴】"}
 details.fix[open]>summary{color:var(--accent)}
 .fold-close{display:block;margin:14px 0 2px auto;border:1px solid var(--line);background:var(--bg);color:var(--sub);border-radius:6px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer}
@@ -131,7 +131,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code 첫 설정 가이드 <span class="ver">v1.24 · 2026-10-29</span></h1>
+  <h1>Claude Code starter 1step — 첫 설정 <span class="ver">v1.25 · 2026-10-30</span></h1>
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
   <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 11 단계</span></div>
@@ -217,7 +217,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <li><b>설치파일.zip</b> 을 우클릭 → <b>[다운로드]</b> (약 255MB)</li>
           <li>「바이러스 검사를 할 수 없습니다」 창이 뜨면 <b>[무시하고 다운로드]</b> — 파일이 커서 드라이브가 검사를 건너뛴 것이다</li></ol></div></div>
       <div class="row"><b>확인</b><div><p>다운로드 폴더에 <code class="k">설치파일.zip</code> 이 있다.</p></div></div>
-      <div class="box tip"><b>미리 받아 두세요</b>여러 사람이 같은 와이파이에서 동시에 받으면 오래 걸린다. 교육 전에 받아 두면 당일엔 2단계부터 시작한다.</div>
+      <div class="box tip"><b>미리 받아 두세요</b>여러 사람이 같은 와이파이에서 동시에 받으면 오래 걸린다. 1step 전에 받아 두면 당일엔 2단계부터 시작한다.</div>
     </div>
   </article>
 
@@ -231,7 +231,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li>[사용자 계정 컨트롤] 창이 뜨면 <b>[예]</b></li></ol></div></div>
       <div class="row"><b>확인</b><div><p>두 설치 프로그램 모두 완료 화면이 뜬다. VS Code 를 열면 편집기 창이 나온다. <b>지금은 메뉴가 영어</b>다 — 다음 <b>3단계에서 한글팩</b>을 깔면 한국어로 바뀐다.</p></div></div>
       <div class="box warn"><b>주의</b>ZIP 안에서 바로 더블클릭하지 말고 <b>압축을 먼저 푼 뒤</b> 나온 폴더에서 실행한다.</div>
-      <div class="box tip"><b>Cursor 를 쓰고 싶다면</b><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> 에서 따로 받는다. 이 교육은 VS Code 와 차이가 없다.</div>
+      <div class="box tip"><b>Cursor 를 쓰고 싶다면</b><a href="https://cursor.com" target="_blank" rel="noopener">cursor.com</a> 에서 따로 받는다. 이 1step은 VS Code 와 차이가 없다.</div>
     </div>
   </article>
 
@@ -248,7 +248,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <details class="q"><summary>이 확장 프로그램 3개는 왜 설치하나요?</summary>
         <p>없어도 Claude Code 는 돌아간다. 다만 있으면 화면이 한국어가 되고, 만든 결과를 바로 눈으로 확인할 수 있고, 터미널을 안 거치고도 Claude 와 대화할 수 있다.</p>
         <div class="tbl"><table>
-          <tr><th>확장</th><th>하는 일</th><th>이 교육에서 쓰는 이유</th></tr>
+          <tr><th>확장</th><th>하는 일</th><th>이 1step에서 쓰는 이유</th></tr>
           <tr><td>Korean Language Pack<br><small>MS-CEINTL</small></td><td>VS Code 메뉴·설정 화면을 한국어로 바꾼다. (내가 쓴 코드나 파일 내용은 번역하지 않는다)</td><td>[File] &gt; [Open Folder] 를 [파일] &gt; [폴더 열기] 로 찾을 수 있다. <b>재시작해야 적용된다.</b></td></tr>
           <tr><td>Live Server<br><small>ritwickdey</small></td><td>내 폴더의 HTML 을 브라우저에서 띄워 주는 작은 테스트 서버. 파일을 저장하면 브라우저가 스스로 새로고침된다.</td><td>Claude 가 만든 화면을 바로 확인한다. HTML 파일 우클릭 &gt; [Open with Live Server], 또는 오른쪽 아래 [Go Live].</td></tr>
           <tr><td>Claude Code for VS Code<br><small>Anthropic</small></td><td>편집기 안에 Claude 대화창을 띄운다. 고칠 부분을 <b>수정 전/후 비교 화면</b>으로 보여 주고, 열어 둔 파일과 선택한 줄을 자동으로 넘겨준다.</td><td>터미널에 명령을 치지 않고도 쓸 수 있다. 계획(Plan) 을 먼저 보고 승인하는 것도 여기서 한다.</td></tr>
@@ -503,7 +503,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>구분</th><th>읽히는 시점</th><th>적용 범위</th><th>내용</th></tr>
     <tr><td>작업 폴더 CLAUDE.md<br><small>&lt;작업 폴더&gt;\.claude</small></td><td>Claude Code 를 켤 때마다 항상</td><td>그 작업 폴더(하위 폴더 포함)에서 실행할 때</td><td>폴더 구조, 프로젝트 목록 (답변 언어는 /config)</td></tr>
-    <tr><td>스킬 <small>(초급 과정에서 만든다)</small><br><small>&lt;작업 폴더&gt;\.claude\skills</small></td><td>필요할 때만 불려온다</td><td>그 작업 폴더(하위 폴더 포함)에서 실행할 때</td><td>특정 요청에만 필요한 절차</td></tr>
+    <tr><td>스킬 <small>(basic 과정에서 만든다)</small><br><small>&lt;작업 폴더&gt;\.claude\skills</small></td><td>필요할 때만 불려온다</td><td>그 작업 폴더(하위 폴더 포함)에서 실행할 때</td><td>특정 요청에만 필요한 절차</td></tr>
   </table></div>
 
 
@@ -579,7 +579,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h3 id="notify">작업이 끝나면 알림 받기 (훅)<span class="opt">선택</span></h3>
   <p>Claude Code 에 일을 시켜 두고 다른 창에서 일하면, 끝났는지 계속 들여다봐야 한다. <b>훅(hook)</b> 은 Claude Code 가 정해진 순간에 내 명령을 자동으로 실행하게 하는 설정이다. 여기서는 <b>답변이 끝났을 때</b>와 <b>권한 확인·입력이 필요할 때</b> 윈도우 알림과 소리가 나게 한다.</p>
   <div class="row"><b>방법</b><div><ol>
-    <li><a href="https://drive.google.com/drive/folders/192wXqwNxdIP44v7ZKGDK92KD148cDt3w?usp=sharing" target="_blank" rel="noopener">공유 폴더</a>의 Starter › 교육 › hooks 폴더에서 <code class="k">notify.ps1</code> 을 받는다. (다운로드 폴더에 저장된다)</li>
+    <li><a href="https://drive.google.com/drive/folders/192wXqwNxdIP44v7ZKGDK92KD148cDt3w?usp=sharing" target="_blank" rel="noopener">공유 폴더</a>의 starter › 1step › hooks 폴더에서 <code class="k">notify.ps1</code> 을 받는다. (다운로드 폴더에 저장된다)</li>
     <li>Claude Code 입력창에 아래 문장을 붙여넣고 <kbd>Enter</kbd>
       <div class="cmd"><code style="white-space:pre-wrap">다운로드 폴더에 있는 notify.ps1 을 내 사용자 폴더의 .claude\hooks 폴더로 옮겨줘(폴더가 없으면 만들어). 그리고 전역 설정 파일(내 사용자 폴더의 .claude\settings.json)에 훅 두 개를 추가해줘. Stop 훅은 powershell -NoProfile -ExecutionPolicy Bypass -File "옮긴 notify.ps1 경로" stop 을 실행하고, Notification 훅은 같은 명령에 stop 대신 notify 를 넣어 실행해. 기존 설정은 지우지 말고 합쳐줘.</code><button type="button">복사</button></div></li>
     <li>Claude Code 를 다시 실행한다. (<code class="k">/exit</code> → <code class="k">claude</code>)</li></ol></div></div>
@@ -605,11 +605,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <!-- ============ 7 ============ -->
 <section class="part" id="p7">
   <h2><small>PART 7</small>다음 단계</h2>
-  <p class="lead">이 가이드는 「혼자 쓸 수 있는 상태」까지다. 그다음은 세 단계로 나눠 배운다. 단계마다 <b>교육 편</b>(배우기)과 <b>체험 편</b>(직접 만들기)이 있다.</p>
+  <p class="lead">이 가이드는 「혼자 쓸 수 있는 상태」까지다. 그다음은 세 단계로 나눠 배운다. 단계마다 <b>1step</b>(배우기)과 <b>2step</b>(직접 만들기)이 있다.</p>
   <div class="tbl"><table>
     <tr><th>단계</th><th>주제</th><th>무엇이 달라지나</th></tr>
 
-    <tr><td rowspan="4"><b>초급</b><br><small>기준과 담당 · 수집과 공유</small><br><small><a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-skills-agents.html" target="_blank" rel="noopener">교육</a> · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-external-data.html" target="_blank" rel="noopener">체험</a></small></td>
+    <tr><td rowspan="4"><b>basic</b><br><small>기준과 담당 · 수집과 공유</small><br><small><a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-skills-agents.html" target="_blank" rel="noopener">1step</a> · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-external-data.html" target="_blank" rel="noopener">2step</a></small></td>
         <td>스킬<br><small>skills</small></td>
         <td>세는 법·기준 같은 업무 지식을 <b>한 묶음으로 만들어 Claude 에게 장착한다.</b> 매번 다시 설명하지 않는다.</td></tr>
     <tr><td>에이전트<br><small>담당 만들기</small></td>
@@ -619,7 +619,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>결과 페이지 배포</td>
         <td>모은 결과를 <b>링크 하나로 보여 준다.</b> (구글 웹앱 · Claude 아티팩트 · 사내 로컬 서버)</td></tr>
 
-    <tr><td rowspan="4"><b>중급</b><br><small>자동화 · 직원 만들기</small><br><small><a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-automation.html" target="_blank" rel="noopener">교육</a> · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-agent-team.html" target="_blank" rel="noopener">체험</a></small></td>
+    <tr><td rowspan="4"><b>advance</b><br><small>자동화 · 직원 만들기</small><br><small><a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-automation.html" target="_blank" rel="noopener">1step</a> · <a href="https://jichang999-dotcom.github.io/tes2/ax_study/claude-code-agent-team.html" target="_blank" rel="noopener">2step</a></small></td>
         <td>Git · GitHub</td>
         <td>잘못 고쳐도 <b>어제로 되돌릴 수 있고,</b> 설정과 결과가 안전하게 보관된다.</td></tr>
     <tr><td>예약 실행 · 알림<br><small>윈도우 스케줄러 · 클라우드 루틴 · 슬랙 웹훅</small></td>
@@ -629,7 +629,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>서브 에이전트 · 에이전트 팀</td>
         <td>혼자 하던 일을 <b>작성·검산 담당이 나눠 맡고,</b> 팀원끼리 서로 고쳐 보낸다.</td></tr>
 
-    <tr><td rowspan="3"><b>고급</b><br><small>규칙 · 규정 · 권한과 협업</small><br><small>(준비 중)</small></td>
+    <tr><td rowspan="3"><b>master</b><br><small>규칙 · 규정 · 권한과 협업</small><br><small>(준비 중)</small></td>
         <td>규칙 4단계<br><small>CLAUDE.md · 룰 · 훅 · 하네스</small></td>
         <td><b>지켜보지 않아도 Claude 가 규칙을 지키도록</b> 부탁에서 강제까지 단계별로 묶는다.</td></tr>
     <tr><td>권한 · 보안</td>
@@ -683,8 +683,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
+    <tr><td><b>v1.25</b></td><td>2026-10-30</td><td>과정명을 영어 소문자, 단계명을 1step · 2step 으로 통일했습니다.</td></tr>
     <tr><td><b>v1.24</b></td><td>2026-10-29</td><td>
-      <ul><li><b>바뀜</b> PART 7 「다음 단계」 표 — 중급 교육 「(준비 중)」 을 Advance 교육 가이드 링크로 바꿨다</li></ul></td></tr>
+      <ul><li><b>바뀜</b> PART 7 「다음 단계」 표 — advance 1step 「(준비 중)」 을 advance 1step 가이드 링크로 바꿨다</li></ul></td></tr>
     <tr><td><b>v1.23</b></td><td>2026-10-28</td><td>
       <ul><li><b>바뀜</b> 2단계 = 압축을 풀고 안의 VS Code · Node.js 설치 파일을 하나씩 실행(설치하기.bat 안내 삭제) · 3단계 확장 · 7단계 Claude Code 는 직접 설치</li>
       <li><b>삭제</b> 전역 규칙(사용자 폴더 CLAUDE.md) — CLAUDE_초기설정.txt 는 작업 폴더 규칙 하나만 만든다(30줄로 압축) · 11단계 확인은 「이 작업 폴더의 규칙을 요약해줘」로 바꿈</li></ul></td></tr>
@@ -696,12 +697,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <li><b>고침</b> CLAUDE_초기설정.txt 에 1단계 절차가 두 번 들어가고 작업 폴더 규칙 앞부분이 잘려 있던 것 정리</li></ul></td></tr>
     <tr><td><b>v1.20</b></td><td>2026-10-22</td><td>
       <ul>
-        <li><b>바뀜</b> PART 7 「다음 단계」 표의 <b>중급</b> 줄 — 과정 이름을 「자동화 · 직원 만들기」로, 「클라우드 루틴 · 비공개 발행」 줄을 「예약 실행 · 알림」(윈도우 스케줄러 · 클라우드 루틴 · 슬랙 웹훅)으로 바꿨다. AI 직원 줄의 기술 이름도 에이전트 · 허용 도구 · claude -p 로 맞췄다</li>
+        <li><b>바뀜</b> PART 7 「다음 단계」 표의 <b>advance</b> 줄 — 과정 이름을 「자동화 · 직원 만들기」로, 「클라우드 루틴 · 비공개 발행」 줄을 「예약 실행 · 알림」(윈도우 스케줄러 · 클라우드 루틴 · 슬랙 웹훅)으로 바꿨다. AI 직원 줄의 기술 이름도 에이전트 · 허용 도구 · claude -p 로 맞췄다</li>
       </ul></td></tr>
     <tr><td><b>v1.19</b></td><td>2026-10-16</td><td>
       <ul>
-        <li><b>바뀜</b> PART 7 「다음 단계」 표를 지금 과정 구성으로 다시 썼다. <b>초급</b> = 스킬 · 에이전트 · 외부 데이터 수집 · 결과 페이지 배포 / <b>중급</b> = Git · GitHub · 클라우드 루틴 · AI 직원 · 서브 에이전트와 팀 / <b>고급</b> = 규칙 4단계 · 권한과 보안 · 함께 쓰는 앱과 도구</li>
-        <li><b>추가</b> 이미 열린 과정(초급 교육 · 초급 체험 · 중급 체험)은 표에서 바로 가는 링크</li>
+        <li><b>바뀜</b> PART 7 「다음 단계」 표를 지금 과정 구성으로 다시 썼다. <b>basic</b> = 스킬 · 에이전트 · 외부 데이터 수집 · 결과 페이지 배포 / <b>advance</b> = Git · GitHub · 클라우드 루틴 · AI 직원 · 서브 에이전트와 팀 / <b>master</b> = 규칙 4단계 · 권한과 보안 · 함께 쓰는 앱과 도구</li>
+        <li><b>추가</b> 이미 열린 과정(basic 1step · basic 2step · advance 2step)은 표에서 바로 가는 링크</li>
         <li><b>그대로</b> 단계 번호 1~12 · PART 번호는 그대로다</li>
       </ul></td></tr>
     <tr><td><b>v1.18</b></td><td>2026-10-16</td><td>
@@ -711,7 +712,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       </ul></td></tr>
     <tr><td><b>v1.17</b></td><td>2026-09-22</td><td>
       <ul>
-        <li><b>바뀜</b> <b>1~5단계 순서가 바뀌었다.</b> 한글팩(확장 프로그램)을 <b>작업 폴더를 열기 전에</b> 깐다 — 09-21 교육에서 메뉴가 영어라 폴더 여는 자리에서 막혔기 때문이다. 새 순서는 <b>1. Node.js → 2. Cursor/VS Code 설치 → 3. 확장 프로그램(한글팩) → 4. 테마색(선택) → 5. 작업 폴더 만들고 열기</b></li>
+        <li><b>바뀜</b> <b>1~5단계 순서가 바뀌었다.</b> 한글팩(확장 프로그램)을 <b>작업 폴더를 열기 전에</b> 깐다 — 09-21 1step에서 메뉴가 영어라 폴더 여는 자리에서 막혔기 때문이다. 새 순서는 <b>1. Node.js → 2. Cursor/VS Code 설치 → 3. 확장 프로그램(한글팩) → 4. 테마색(선택) → 5. 작업 폴더 만들고 열기</b></li>
         <li><b>바뀜</b> 예전 <b>1단계 작업 폴더 만들기</b>와 <b>3단계의 폴더 열기</b>를 <b>5단계 하나로 합쳤다.</b> 폴더를 만들고 바로 여는 것이 한 번에 끝난다</li>
         <li><b>바뀜</b> 5단계 화면 안내가 <b>한국어 메뉴 기준</b>([파일] &gt; [폴더 열기])으로 바뀌었고 캡처도 한글 화면으로 교체했다. 영어로 보이면 한글팩이 적용되지 않은 것이다</li>
         <li><b>그대로</b> <b>6단계부터 12단계까지는 번호도 내용도 그대로다.</b> 전체 단계 수도 12단계 그대로라 예전에 받아 둔 링크(<code class="k">#s7</code> 등)도 그대로 열린다</li>
@@ -756,7 +757,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       </ul></td></tr>
     <tr><td><b>v1.10</b></td><td>2026-09-21</td><td>
       <ul>
-        <li><b>추가</b> 6단계 「한 번만 해 두기」 — 터미널이 <b>열 때마다 cmd 로 열릴 때</b> 기본 터미널을 <b>PowerShell 로 고정</b>하는 법 (<code class="k">Terminal: Select Default Profile</code>). 교육에서 두 번 나온 증상이다</li>
+        <li><b>추가</b> 6단계 「한 번만 해 두기」 — 터미널이 <b>열 때마다 cmd 로 열릴 때</b> 기본 터미널을 <b>PowerShell 로 고정</b>하는 법 (<code class="k">Terminal: Select Default Profile</code>). 1step에서 두 번 나온 증상이다</li>
         <li><b>추가</b> PART 6 — 같은 증상 행</li>
       </ul></td></tr>
     <tr><td><b>v1.9</b></td><td>2026-09-21</td><td>
@@ -795,13 +796,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       </ul></td></tr>
     <tr><td><b>v1.3</b></td><td>2026-09-16</td><td>
       <ul>
-        <li><b>추가</b> 3단계 — 「Cursor 와 VS Code 는 무엇이고, 뭘 골라야 하나요?」 (이 교육에서는 차이가 없다)</li>
+        <li><b>추가</b> 3단계 — 「Cursor 와 VS Code 는 무엇이고, 뭘 골라야 하나요?」 (이 1step에서는 차이가 없다)</li>
         <li><b>추가</b> 12단계 — 「이 두 질문은 왜 다르게 답하나요?」 와 <b>실제 답변 화면 2장</b></li>
         <li><b>추가</b> PART 4 맨 앞 — 「작업 폴더(워크스페이스)란」. 작업 폴더를 1개로 쓸 때와 여러 개로 쓸 때 규칙·스킬·메모리가 각각 어떻게 되는지</li>
         <li><b>추가</b> PART 4 — 「컨텍스트 원리」. 책상 비유, 무엇이 언제 책상에 올라가는지, 책상이 찰 때의 증상과 대처. CLAUDE.md 를 짧게 쓰는 이유가 여기서 나온다</li>
         <li><b>추가</b> PART 7 — 주제마다 「무엇이 달라지나」 한 문장</li>
         <li><b>바뀜</b> 10단계 주의 문구를 쉬운 말로 (규칙 파일 두 개 중 작업 폴더 쪽만 멈춘다)</li>
-        <li><b>바뀜</b> PART 7 「다음 단계」 단계 이름을 <b>초급·중급·고급</b> 으로. 초급은 스킬·싱글 에이전트·서브 에이전트</li>
+        <li><b>바뀜</b> PART 7 「다음 단계」 단계 이름을 <b>basic·advance·master</b> 으로. basic은 스킬·싱글 에이전트·서브 에이전트</li>
         <li><b>바뀜</b> 수정 내역을 본문에서 빼고 <b>맨 위 [Update Notes] 버튼</b>으로. 목차는 7개 항목으로</li>
         <li><b>삭제</b> PART 4 확인 퀴즈, PART 5 「업무가 늘어날 때 폴더 구조」 표 (PART 4 설명에 합침)</li>
       </ul></td></tr>
