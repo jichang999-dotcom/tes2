@@ -291,7 +291,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>방법</b><div><ol>
         <li><div class="cmd"><code style="white-space:pre-wrap">저장 · 되돌리기 · 브랜치를 연습할 폴더를 고르려고 해. 이 워크스페이스의 하위 폴더 목록을 파일 수와 함께 보여 주고, 연습하기 좋은 폴더(실제 데이터 · 중요한 결과물이 없는 곳)를 추천해 줘. 아무것도 바꾸지 마.</code><button type="button">복사</button></div></li>
         <li>하나를 고릅니다. 마땅한 곳이 없으면 탐색기에서 새 폴더(예: <code class="k">git_practice</code>)를 만들고 빈 텍스트 파일 <code class="k">메모.txt</code> 를 하나 넣습니다.</li>
-        <li>Claude Code 에서 <code class="k">exit</code> → VS Code 에서 <b>[파일] → [폴더 열기]</b> 로 <b>고른 폴더</b>를 열고 → <code class="k">claude</code>.</li>
+        <li>Claude Code 에서 <code class="k">exit</code> → VS Code 에서 <b>[파일] → [폴더 열기]</b> 로 <b>고른 폴더</b>를 열고 → <code class="k">claude</code>. <b>1단계에서 Git 을 새로 설치했다면</b> 그 전에 VS Code 창을 <b>모두 닫았다가</b> 다시 엽니다 — 그래야 새 터미널이 <code class="k">git</code> 을 찾습니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>VS Code 왼쪽 위 폴더 이름이 고른 폴더다. 3~5단계는 이 창에서 합니다.</p></div></div>
       <div class="box tip"><b>왜 그 폴더를 열고 켜나요</b>Claude 는 켠 폴더를 기준으로 일합니다. 연습 폴더에서 켜면 그 바깥 파일을 건드릴 일이 줄고, 10단계에서 받은 스킬도 이 폴더에서 바로 보입니다. Git 기록은 1단계 저장소에 그대로 쌓입니다.</div>
@@ -648,7 +648,7 @@ python gh_skills.py 를 한 번 실행하고, gh_skills.py 를 「슬랙 보고�
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v2.5</b></td><td>2026-11-01</td><td>
-      <ul><li><b>바뀜</b> 1단계 — Git 이 없으면 멈추지 않고 Claude 가 설치까지 한다(winget · 안 되면 설치 파일). 관리자 허락 창만 사람이 누른다 · 껐다 켜지 않고 전체 경로로 이어서 진행</li></ul></td></tr>
+      <ul><li><b>바뀜</b> 1단계 — Git 이 없으면 멈추지 않고 Claude 가 설치까지 한다(winget · 안 되면 설치 파일). 관리자 허락 창만 사람이 누른다 · 껐다 켜지 않고 전체 경로로 이어서 진행 · 2단계에서 폴더를 옮길 때 VS Code 를 모두 닫았다 다시 연다(새로 설치한 Git 을 찾도록)</li></ul></td></tr>
     <tr><td><b>v2.4</b></td><td>2026-10-30</td><td>
       <ul><li><b>바뀜</b> 9단계 — 내 업무 내용을 적으면 Claude 가 GitHub 에서 검색해 기준표로 비교하고 가장 맞는 것을 골라 준다 · 옛 「검색하기」 단계는 합침 · 18단계 → 17단계. 진행 체크를 새로 시작합니다</li>
       <li><b>바뀜</b> 11단계 스크립트 — 9단계 검색어로 매일 찾고, 결과 CSV 를 구글 드라이브의 내 작업 폴더 이름 폴더에 올린다</li>
