@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.14 · 2026-11-01</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.15 · 2026-11-01</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -431,7 +431,7 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
 5. 맨 끝에 쓴 검색어를 「검색어: …」 한 줄로 따로 적어 줘.</code><button type="button">복사</button></div></div></div>
       <div class="row"><b>확인</b><div><p>후보 비교표가 나오고, 받을 것 하나(저장소 주소 · 스킬 이름)와 「검색어:」 줄을 메모장에 적었다. Claude 의 추천과 달라도 됩니다 — 고르는 것은 사람.</p></div></div>
       <div class="box tip"><b>맞는 것이 없다고 나오면</b>업무를 더 넓게(예: 「매출 보고서」 → 「엑셀 요약」) 다시 적거나, 「검색어를 바꿔 한 번 더 찾아 줘」라고 합니다. 「검색어:」 줄은 11단계 스크립트가 매일 같은 검색을 하는 데 씁니다.</div>
-      <div class="box tip"><b>데이터 분석 업무라면 — 이런 것이 나옵니다</b>Anthropic 공식 저장소 <code class="k">anthropics/knowledge-work-plugins</code> 의 <code class="k">data/skills/analyze</code> (스킬 이름 <code class="k">analyze</code>). 별 3만 개 이상 · Apache-2.0 · 최근까지 업데이트 · <b>SKILL.md 한 파일 · 스크립트 없음</b>이라 10단계에서 바로 들어갑니다. 질문을 받으면 엑셀 · CSV 를 읽고 → 분석 → 행 수 · 빈칸 · 합계 검산 → 요약 순서로 답합니다. 같은 폴더의 <code class="k">explore-data</code>(처음 보는 파일 훑기)도 한 파일짜리입니다. (2026-11-01 기준)</div>
+      <div class="box tip"><b>데이터 분석 업무라면 — 이런 것이 나옵니다</b>위 예시 업무(센터별 매출 증감과 원인)로 실측하면 후보 5개 중 Anthropic 공식 저장소 <code class="k">anthropics/knowledge-work-plugins</code> 의 <code class="k">finance/skills/variance-analysis</code> (스킬 이름 <code class="k">variance-analysis</code>)가 추천됩니다. 별 3만 개 이상 · Apache-2.0 · <b>SKILL.md 한 파일 · 스크립트 없음</b>이라 10단계에서 바로 들어갑니다. 지난 기간 대비 증감을 <b>가격 · 수량 · 구성(믹스) 효과</b>로 나누고, 중요도 기준을 넘는 항목만 원인을 한 줄씩 씁니다. 같은 표에 나오는 <code class="k">monday-brief</code> 처럼 다른 스킬 · 커넥터를 이어 부르는 것은 혼자서는 동작하지 않으니 고르지 않습니다. (2026-11-01 기준)</div>
     </div>
   </article>
 
@@ -446,7 +446,7 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
 3. 무엇을 넣었는지, 어떻게 부르는지 한 줄로 알려 줘.</code><button type="button">복사</button></div></li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켜고 <code class="k">/skills</code>(에이전트면 「쓸 수 있는 에이전트 목록 보여 줘」)로 확인 → 한 번 불러 봅니다.</li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>목록에 받은 것이 보이고, 한 번 불러 결과가 나왔다. 예: <code class="k">analyze</code> 를 받았으면 <code class="k">/analyze &lt;내 데이터 폴더&gt; 의 매출 파일로 센터별 지난달 대비 증감 알려 줘</code>.</p></div></div>
+      <div class="row"><b>확인</b><div><p>목록에 받은 것이 보이고, 한 번 불러 결과가 나왔다. 예: <code class="k">variance-analysis</code> 를 받았으면 <code class="k">/variance-analysis &lt;내 데이터 폴더&gt; 의 매출 파일로 센터별 지난달 대비 증감과 원인 알려 줘</code>.</p></div></div>
       <div class="box tip"><b>「명령 실행이 있어 멈췄다」고 하면</b>1번 규칙이 제대로 동작한 것입니다. 그 스킬에 <code class="k">.py</code> 같은 스크립트가 딸려 있다는 뜻입니다. 9단계로 돌아가 「SKILL.md 한 파일이고 스크립트 없는 것으로 다시 골라 줘」라고 합니다. 스크립트까지 받고 싶으면 내용을 다 읽어 보고 강사와 같이 정합니다.</div>
       <div class="box tip"><b><code class="k">.claude</code> 에 넣을 때 허락 창이 한 번 더 뜹니다</b>Claude Code 가 설정 폴더는 따로 지키기 때문입니다. 넣을 파일 이름이 <code class="k">.claude/skills/&lt;이름&gt;/SKILL.md</code> 모양인지 보고 허용합니다.</div>
       <div class="box warn"><b>주의</b>받은 스킬은 워크스페이스 <code class="k">.claude</code> 에 들어가 워크스페이스 저장소에 기록됩니다. 넣은 뒤 바로 커밋해 두면, 며칠 써 보고 아니다 싶을 때 그 커밋을 되돌려(4단계) 깨끗이 뺄 수 있습니다.</div>
@@ -676,6 +676,7 @@ python gh_skills.py 를 한 번 실행하고, gh_skills.py 를 「슬랙 보고�
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.15</b></td><td>2026-11-01</td><td>9단계 데이터 분석 예시 상자 = 실측 후보 중 추천된 variance-analysis(anthropics/knowledge-work-plugins · finance) 로 교체(옛 analyze 는 실측 후보에 안 나옴) · 다른 스킬을 이어 부르는 것은 고르지 않음. 10단계 확인 예시 /variance-analysis.</td></tr>
     <tr><td><b>v2.14</b></td><td>2026-11-01</td><td>7단계 확인 — gh 를 새로 설치했으면 VS Code 를 모두 닫았다 다시 열기. 9단계 프롬프트 2번 — gh 를 못 찾으면 전체 경로. 실측에서 7단계 뒤 그대로 9단계를 하자 gh: command not found(Exit code 127)가 난 것.</td></tr>
     <tr><td><b>v2.13</b></td><td>2026-11-01</td><td>9단계 — 업무 예시를 데이터 분석으로 · 공식 저장소(org:anthropics) 먼저 검색 · 표에 파일 구성(SKILL.md 한 파일 / 스크립트) · 스크립트 없는 한 파일 스킬 우선 · 데이터 분석 예시 상자(anthropics/knowledge-work-plugins 의 analyze). 10단계 — 확인 예시 /analyze · 「명령 실행이 있어 멈췄다」 상자. 실측에서 스크립트(analyze.py) 딸린 스킬을 골라 10단계 1번 규칙에 멈췄던 것.</td></tr>
     <tr><td><b>v2.12</b></td><td>2026-11-01</td><td>7단계 끝(8단계 앞)에 「GitHub 메뉴 둘러보기」 — Dashboard 위쪽 ①~⑦ · 리포 탭 ①~⑨ 캡처와 번호 표.</td></tr>
