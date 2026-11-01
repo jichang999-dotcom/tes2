@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.21 · 2026-11-01</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.22 · 2026-11-01</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -548,7 +548,8 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
     <header><span class="no">15</span><h3>웹훅 만들기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
-        <li><code class="k">&lt;내 이름&gt;</code> · <code class="k">&lt;영문 이름&gt;</code>(영문 소문자 · 숫자 · - 만, 예: <code class="k">hong</code>) 두 곳을 바꿔 붙여넣습니다.
+        <li><code class="k">&lt;내 이름&gt;</code> · <code class="k">&lt;영문 이름&gt;</code> 두 곳을 바꿔 붙여넣습니다.
+          <div class="tbl"><table><tr><th>바꿀 칸</th><th>무엇을 넣나</th><th>슬랙 어디에 보이나</th><th>예</th></tr><tr><td><code class="k">&lt;내 이름&gt;</code></td><td>내 이름(한글 가능)</td><td><b>앱 이름</b> — api.slack.com/apps 목록 · 설치 허용 화면</td><td><code class="k">홍길동</code> → 「홍길동 알림」</td></tr><tr><td><code class="k">&lt;영문 이름&gt;</code></td><td>내 이름을 영문 소문자로(숫자 · - 가능, 띄어쓰기 · 한글 X)</td><td><b>보낸 사람 이름</b> — #알림 채널에 메시지가 올 때 이름 자리</td><td><code class="k">hong</code> → 「hong-alert」</td></tr></table></div><p class="foldhint">둘 다 내 앱을 알아보는 이름표일 뿐이라 14단계 워크스페이스 이름 · 채널 이름과 같지 않아도 됩니다. 앱이 어느 워크스페이스 · 채널로 가는지는 아래 2 · 3번에서 <b>고르는 것</b>으로 정해집니다. 바꿀 칸 말고 JSON 은 고치지 않습니다(JSON 안에는 설명을 적을 수 없습니다).</p>
           <div class="cmd"><code style="white-space:pre-wrap">슬랙 웹훅을 만들려고 해. 앱 설정(매니페스트)을 네가 만들어 주고, 나는 붙여넣기 · 허용만 할게.
 1. 아래 내용 그대로 slack_app.json 으로 저장해 줘(UTF-8). 권한은 웹훅(incoming-webhook) 하나만 있고, 그 밖의 권한 · 기능은 넣지 마.
 {
@@ -700,6 +701,7 @@ python gh_skills.py 를 한 번 실행하고, gh_skills.py 를 「슬랙 보고�
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.22</b></td><td>2026-11-01</td><td>15단계 프롬프트 위에 바꿀 칸 설명 표(&lt;내 이름&gt; = 앱 이름 · &lt;영문 이름&gt; = 보낸 사람 이름 · 넣는 값 · 보이는 곳 · 예) · 워크스페이스 · 채널 이름과 같지 않아도 된다는 한 줄.</td></tr>
     <tr><td><b>v2.21</b></td><td>2026-11-01</td><td>15단계 매니페스트에 features.bot_user.display_name(&lt;영문 이름&gt;-alert) · oauth_config.scopes.bot = incoming-webhook 추가 — 실측 PC 에서 이 모양으로 앱 생성 · 웹훅 · 알림 테스트까지 통과. 바꿀 칸 &lt;영문 이름&gt; 안내.</td></tr>
     <tr><td><b>v2.20</b></td><td>2026-11-01</td><td>15단계 프롬프트 1번 = 매니페스트 JSON 을 그대로 적음(display_information.name · settings.incoming_webhooks.incoming_webhooks_enabled: true) — 옛 문장은 Claude 마다 다른 모양이 나왔던 것.</td></tr>
     <tr><td><b>v2.19</b></td><td>2026-11-01</td><td>8단계 끝 「커밋 · push · 게시」 · 「새 프로젝트를 시작할 때」 두 상자를 접힌 카드로.</td></tr>
