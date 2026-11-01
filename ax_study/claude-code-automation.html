@@ -274,7 +274,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 7. 내가 다시 「좋아」라고 하면 「처음 저장」 메시지로 커밋해 줘. 이름 · 메일이 설정돼 있지 않으면 나에게 묻고 이 저장소에만(--local) 설정해 줘.</code><button type="button">복사</button></div></li>
         <li>후보 목록을 읽고, 빼야 할 폴더가 더 있으면 말로 더합니다 → 「좋아」.</li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p><code class="k">git log --oneline</code> 에 커밋 <b>1개</b>, <code class="k">git status</code> 에 데이터 · 개인정보 파일이 <b>없다</b>.</p></div></div>
+      <div class="row"><b>확인</b><div><p>터미널에서 <code class="k">git --version</code> 을 쳐서 번호가 나오는지 한 번 확인합니다. Git 을 방금 설치했다면 VS Code 창을 모두 닫았다가 다시 연 뒤에 칩니다.</p></div></div>
       <div class="box warn"><b>주의</b><b>한 번 기록된 파일은 나중에 제외 목록에 넣어도 기록에 남습니다.</b> 그래서 저장 전에 두 번(4 · 6번) 확인합니다. 의심되면 일단 제외 목록에 넣습니다 — 빼는 것은 언제든 됩니다.</div>
       <div class="box tip"><b>커밋 메시지 아래에 <code class="k">Co-Authored-By: Claude</code> 줄이 붙어 있으면</b>Claude 와 같이 만든 커밋이라는 표시입니다. 정상입니다.</div>
       <div class="box tip"><b>워크스페이스가 아주 크면</b>첫 저장이 오래 걸립니다. 큰 데이터 폴더를 제외 목록에 넣거나, 워크스페이스 안의 프로젝트 폴더 하나만 Git 으로 시작해도 됩니다.</div>
@@ -648,7 +648,7 @@ python gh_skills.py 를 한 번 실행하고, gh_skills.py 를 「슬랙 보고�
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v2.5</b></td><td>2026-11-01</td><td>
-      <ul><li><b>바뀜</b> 1단계 — Git 이 없으면 멈추지 않고 Claude 가 설치까지 한다(winget · 안 되면 설치 파일). 관리자 허락 창만 사람이 누른다 · 껐다 켜지 않고 전체 경로로 이어서 진행 · 2단계에서 폴더를 옮길 때 VS Code 를 모두 닫았다 다시 연다(새로 설치한 Git 을 찾도록)</li></ul></td></tr>
+      <ul><li><b>바뀜</b> 1단계 — Git 이 없으면 멈추지 않고 Claude 가 설치까지 한다(winget · 안 되면 설치 파일). 관리자 허락 창만 사람이 누른다 · 껐다 켜지 않고 전체 경로로 이어서 진행 · 2단계에서 폴더를 옮길 때 VS Code 를 모두 닫았다 다시 연다(새로 설치한 Git 을 찾도록) · 1단계 확인 = 터미널에서 git --version 번호 확인</li></ul></td></tr>
     <tr><td><b>v2.4</b></td><td>2026-10-30</td><td>
       <ul><li><b>바뀜</b> 9단계 — 내 업무 내용을 적으면 Claude 가 GitHub 에서 검색해 기준표로 비교하고 가장 맞는 것을 골라 준다 · 옛 「검색하기」 단계는 합침 · 18단계 → 17단계. 진행 체크를 새로 시작합니다</li>
       <li><b>바뀜</b> 11단계 스크립트 — 9단계 검색어로 매일 찾고, 결과 CSV 를 구글 드라이브의 내 작업 폴더 이름 폴더에 올린다</li>
