@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.19 · 2026-11-01</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.20 · 2026-11-01</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -550,9 +550,17 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
       <div class="row"><b>방법</b><div><ol>
         <li><code class="k">&lt;내 이름&gt;</code> 만 바꿔 붙여넣습니다.
           <div class="cmd"><code style="white-space:pre-wrap">슬랙 웹훅을 만들려고 해. 앱 설정(매니페스트)을 네가 만들어 주고, 나는 붙여넣기 · 허용만 할게.
-1. 아래 내용으로 슬랙 앱 매니페스트를 JSON 으로 만들어 slack_app.json 으로 저장해 줘.
-   - 앱 이름: &lt;내 이름&gt; 알림
-   - 권한: 웹훅(incoming-webhook) 하나만. 그 밖의 권한 · 기능은 넣지 마.
+1. 아래 내용 그대로 slack_app.json 으로 저장해 줘(UTF-8). 웹훅 켜기 하나만 있고, 그 밖의 권한 · 기능은 넣지 마.
+{
+  "display_information": {
+    "name": "&lt;내 이름&gt; 알림"
+  },
+  "settings": {
+    "incoming_webhooks": {
+      "incoming_webhooks_enabled": true
+    }
+  }
+}
 2. 그 내용을 클립보드에 복사해 줘(Set-Clipboard).
 3. .env 파일이 없으면 만들고 SLACK_WEBHOOK_URL= 한 줄을 넣어 줘(값은 비워 둬). 제외 목록(.gitignore)에 .env 가 있는지도 확인해.
 4. 내가 슬랙 화면에서 누를 순서를 짧게 알려 주고 멈춰. 웹훅 주소는 내가 .env 에 직접 붙여넣을 거니 대화창에 붙이라고 하지 마.</code><button type="button">복사</button></div></li>
@@ -680,6 +688,7 @@ python gh_skills.py 를 한 번 실행하고, gh_skills.py 를 「슬랙 보고�
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.20</b></td><td>2026-11-01</td><td>15단계 프롬프트 1번 = 매니페스트 JSON 을 그대로 적음(display_information.name · settings.incoming_webhooks.incoming_webhooks_enabled: true) — 옛 문장은 Claude 마다 다른 모양이 나왔던 것.</td></tr>
     <tr><td><b>v2.19</b></td><td>2026-11-01</td><td>8단계 끝 「커밋 · push · 게시」 · 「새 프로젝트를 시작할 때」 두 상자를 접힌 카드로.</td></tr>
     <tr><td><b>v2.18</b></td><td>2026-11-01</td><td>8단계 끝에 「새 프로젝트를 시작할 때 — GitHub 에 올리려면」 — 순서 표(Git 시작 · 커밋 · 비공개 리포 + 연결 · push) · 한 번에 시키는 프롬프트(파일 점검 · --private · origin 있으면 멈춤 · PRIVATE 확인) · 게시 Branch 누르지 않기. 1단계 「나중에 프로젝트 폴더를 새로 만들면」 팁에서 이 상자로 안내.</td></tr>
     <tr><td><b>v2.17</b></td><td>2026-11-01</td><td>8단계 끝(9단계 앞)에 「8단계 다음부터 — 커밋 · push · 게시」 상자 — 커밋 / push / 게시 Branch / 변경 내용 동기화 표 · 커밋만으로는 GitHub 에 안 올라감 · 웹에서 보는 곳(Code 탭 마지막 커밋 · N Commits · 바뀐 줄 · History).</td></tr>
