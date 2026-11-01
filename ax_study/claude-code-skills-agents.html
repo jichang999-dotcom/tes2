@@ -227,7 +227,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li>터미널에서 <code class="k">claude</code> 입력 → <kbd>Enter</kbd>. 폴더 신뢰를 물으면 <b>Yes</b>.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>왼쪽 탐색기에 <code class="k">직영_실습데이터.csv</code> 와 <code class="k">열사전.txt</code> 가 보이고, Claude Code 입력창이 떠 있다.</p></div></div>
-      <div class="box warn"><b>스킬 · 에이전트는 워크스페이스에 둡니다</b>스킬과 에이전트는 <code class="k">basic_data</code> 가 아니라 <b>워크스페이스 폴더</b>(예: <code class="k">claude_work\.claude</code>)에 만듭니다. <code class="k">basic_data</code> 는 그 안에 있어서, 여기서 켜도 위 폴더의 스킬 · 에이전트를 그대로 불러 씁니다. 워크스페이스 안의 다른 폴더에서도 똑같이 쓸 수 있습니다.</div>
+      <div class="box warn"><b>스킬 · 에이전트는 워크스페이스에 둡니다</b>스킬과 에이전트는 <code class="k">basic_data</code> 가 아니라 <b>워크스페이스 폴더</b>(<code class="k">basic_data</code> 바로 위 폴더 · 이름은 사람마다 다르다)의 <code class="k">.claude</code> 에 만듭니다. 그래서 카드에는 폴더 이름 대신 「basic_data 바로 위 폴더」라고 적습니다. <code class="k">basic_data</code> 는 그 안에 있어서, 여기서 켜도 위 폴더의 스킬 · 에이전트를 그대로 불러 씁니다. 워크스페이스 안의 다른 폴더에서도 똑같이 쓸 수 있습니다.</div>
       <div class="box tip"><b>열사전.txt 를 한 번 훑어보세요</b>오늘 쓰는 열(학생코드 · COLC · 요일 · 시작시간 · 학년 · 학급수강상태 · 프로그램명)의 뜻이 들어 있습니다. 회사 기준 세는 법 · 학년치환은 일부러 넣지 않았습니다 — 3단계 · 10단계에서 Claude 가 기준 없이 하는 모습을 보려고요. 기준은 4단계 · 11단계 카드에 있습니다.</div>
       <div class="box tip"><b>왜 새 폴더인가요</b>데이터와 리포트를 이 폴더에 모읍니다. 2step에서 이 폴더를 그대로 다시 엽니다.</div>
     </div>
@@ -276,9 +276,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 - description 에는 무엇을 하는지 + 언제 쓰는지 + 내가 실제로 할 말(「학생수 세 줘」「과목수 알려줘」「몇 명 다녀?」「직영 인원」)을 한국어로 넣는다
 - 본문에는 4단계에서 정한 기준 전부(제외 프로그램 9개 · 과목수의 수강/이수/반이동 조건과 요일 규칙 · 학생수 조건)와 「파일을 통째로 읽지 말고 Node 명령으로 센다(Python 은 쓰지 않는다)」를 넣는다</code><button type="button">복사</button></div>
         <p>파일을 만들어도 되는지 물으면 <b>Yes</b>.</p></div></div>
-      <div class="row"><b>확인</b><div><p>Claude 가 알려 준 경로가 <code class="k">claude_work\.claude\skills\jig-metrics\SKILL.md</code> 모양이다(<code class="k">basic_data</code> 가 들어 있으면 틀린 곳). 윈도우 탐색기로 그 폴더를 열어 파일을 볼 수 있다 — VS Code 왼쪽 탐색기는 <code class="k">basic_data</code> 만 보여 줘서 안 나옵니다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>Claude 가 알려 준 경로가 <code class="k">…\내 워크스페이스\.claude\skills\jig-metrics\SKILL.md</code> 모양이다(<code class="k">.claude</code> 바로 앞이 <code class="k">basic_data</code> 면 틀린 곳). 윈도우 탐색기로 그 폴더를 열어 파일을 볼 수 있다 — VS Code 왼쪽 탐색기는 <code class="k">basic_data</code> 만 보여 줘서 안 나옵니다.</p></div></div>
       <div class="box warn"><b>스킬 이름 규칙 (중요)</b>공식 문서 기준으로 스킬의 <code class="k">name</code> 은 <b>최대 64자</b>이고 <b>영문 소문자 · 숫자 · 하이픈(-)만</b> 쓸 수 있습니다. 한글 · 대문자 · 띄어쓰기 · 밑줄(_)은 안 됩니다. 예: <code class="k">jig-metrics</code> (O) · <code class="k">직영지표</code> · <code class="k">Jig_Metrics</code> (X). 폴더 이름도 <code class="k">name</code> 과 같게 둡니다.</div>
-      <div class="box warn"><b>5분 규칙</b>5분 안에 안 되면 받은 <code class="k">정답_jig-metrics</code> 폴더를 <code class="k">claude_work\.claude\skills\</code>(없으면 만든다) 안에 넣고 이름을 <code class="k">jig-metrics</code> 로 바꾼 뒤 <code class="k">exit</code> → <code class="k">claude</code>.</div>
+      <div class="box warn"><b>5분 규칙</b>5분 안에 안 되면 받은 <code class="k">정답_jig-metrics</code> 폴더를 워크스페이스의 <code class="k">.claude\skills\</code>(없으면 만든다) 안에 넣고 이름을 <code class="k">jig-metrics</code> 로 바꾼 뒤 <code class="k">exit</code> → <code class="k">claude</code>.</div>
     </div>
   </article>
 
@@ -286,13 +286,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <header><span class="no">6</span><h3>구조 확인하고 /이름 으로 불러 보기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
-        <li>윈도우 탐색기에서 <code class="k">claude_work\.claude</code> 를 열어 폴더 모양이 <code class="k">skills/jig-metrics/SKILL.md</code> 인지 봅니다. 파일 이름은 <b>대문자 <code class="k">SKILL.md</code></b> 여야 합니다.</li>
+        <li>윈도우 탐색기에서 워크스페이스의 <code class="k">.claude</code> 를 열어 폴더 모양이 <code class="k">skills/jig-metrics/SKILL.md</code> 인지 봅니다. 파일 이름은 <b>대문자 <code class="k">SKILL.md</code></b> 여야 합니다.</li>
         <li><code class="k">exit</code> 로 끄고 <code class="k">claude</code> 로 다시 켭니다. 켜 둔 창은 방금 만든 스킬을 아직 모르고, 다시 켜면 대화도 비워져 방금 알려 준 기준을 Claude 가 잊습니다.</li>
         <li>입력창에 <code class="k">/skills</code> → 목록에 <code class="k">jig-metrics</code> 가 있는지 봅니다. <kbd>Esc</kbd> 로 닫습니다.</li>
         <li><code class="k">/jig-metrics 202508 과목수와 학생수</code> → <kbd>Enter</kbd></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>기준을 다시 설명하지 않았는데도 <code class="k">정답표.txt</code> 의 202508 값이 나온다.</p></div></div>
-      <div class="box tip"><b>다시 켜도 목록에 없으면</b>1번 폴더 모양(<code class="k">claude_work\.claude\skills\jig-metrics\SKILL.md</code>)과, <code class="k">claude_work</code> 안의 폴더(<code class="k">basic_data</code>)에서 켰는지를 다시 봅니다.</div>
+      <div class="box tip"><b>다시 켜도 목록에 없으면</b>1번 폴더 모양(워크스페이스의 <code class="k">.claude\skills\jig-metrics\SKILL.md</code>)과, 워크스페이스 안의 <code class="k">basic_data</code> 에서 켰는지를 다시 봅니다.</div>
     </div>
   </article>
 
@@ -327,7 +327,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <ol>
           <li><b>안 불려온다</b> → <code class="k">jig-metrics 스킬은 언제 쓰는 거야?</code> 라고 물어봅니다. Claude 가 description 을 읽고 답합니다. 답이 흐릿하면 그 답을 보고 description 에 「언제」와 「할 말」을 더합니다.</li>
           <li><b>너무 자주 불려온다</b>(ⓒ 에서도 뜬다) → description 끝에 「이럴 땐 쓰지 않는다: 인원 · 과목 수를 세는 일이 아닐 때」 한 줄을 더합니다.</li>
-          <li><b>그래도 안 된다</b> → 폴더 모양 <code class="k">claude_work\.claude\skills\jig-metrics\SKILL.md</code> 를 다시 보고, <code class="k">exit</code> 후 다시 켭니다.</li>
+          <li><b>그래도 안 된다</b> → 워크스페이스의 폴더 모양 <code class="k">.claude\skills\jig-metrics\SKILL.md</code> 를 다시 보고, <code class="k">exit</code> 후 다시 켭니다.</li>
         </ol>
         <button type="button" class="fold-close">닫기</button>
       </details>
@@ -355,13 +355,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 - tools 는 Read, Glob, Grep, Write, Bash, PowerShell (읽기 · 파일 쓰기 · 실행). model 줄은 쓰지 않는다(메인과 같은 모델)
 - 본문 첫 줄: 너는 직영 학원 데이터 분석 · 리포트 전문가다. 직영 데이터를 회사 기준으로 정확히 세어 리포트를 만든다
 - 원본 CSV 는 고치지 않는다. 파일을 통째로 읽지 말고 Node 명령으로 센다(Python 은 쓰지 않는다). 리포트는 basic_data 안의 리포트 폴더에 저장한다</code><button type="button">복사</button></div></li>
-        <li>윈도우 탐색기에서 <code class="k">claude_work\.claude\agents\jig-report.md</code> 를 메모장으로 열어 맨 위 <code class="k">---</code> 사이(name · description · tools)와, 그 아래 첫 줄 「너는 … 전문가다」를 봅니다. 이 첫 줄이 에이전트의 역할입니다 — 공식 문서 예시도 「You are a code improvement specialist」처럼 전문가 역할로 시작합니다.</li>
+        <li>윈도우 탐색기에서 워크스페이스의 <code class="k">.claude\agents\jig-report.md</code> 를 메모장으로 열어 맨 위 <code class="k">---</code> 사이(name · description · tools)와, 그 아래 첫 줄 「너는 … 전문가다」를 봅니다. 이 첫 줄이 에이전트의 역할입니다 — 공식 문서 예시도 「You are a code improvement specialist」처럼 전문가 역할로 시작합니다.</li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켭니다. 켜 둔 창은 방금 생긴 파일을 아직 모릅니다.</li>
       </ol>
       <p>도구 줄이 에이전트가 할 수 있는 일을 정합니다. 리포트 파일을 쓰고(Write) 숫자를 명령으로 세야(Bash · PowerShell) 해서 <b>읽기 · 쓰기 · 실행</b>을 줍니다. 실행 도구를 <b>둘 다</b> 적는 이유: PC 에 Git Bash 가 없으면 Claude Code 의 실행 도구는 <b>PowerShell</b> 이고, 있으면 <b>Bash</b> 입니다. 하나만 적으면 다른 PC 에서 에이전트가 명령을 못 돌립니다.</p></div></div>
-      <div class="row"><b>확인</b><div><p><code class="k">claude_work\.claude\agents\jig-report.md</code> 가 있고, 다시 켠 뒤 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」라고 물으면 「이 프로젝트 전용」에 <code class="k">jig-report</code> 가 나온다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>워크스페이스의 <code class="k">.claude\agents\jig-report.md</code> 가 있고, 다시 켠 뒤 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」라고 물으면 「이 프로젝트 전용」에 <code class="k">jig-report</code> 가 나온다.</p></div></div>
       <div class="box tip"><b>/agents 마법사는요?</b>Claude Code 2.1.287 부터 <code class="k">/agents</code> 마법사가 없어졌습니다. 입력하면 「Claude 에게 만들어 달라고 하거나 파일을 직접 고치라」는 안내만 나옵니다. 그래서 말로 부탁해 만들고, 목록도 말로 물어봅니다. <code class="k">/list-agents</code> 는 이름이 비슷하지만 <b>지금 돌고 있는</b> 에이전트 · 다른 세션을 보는 명령이라 만든 에이전트가 나오지 않습니다. 받은 <code class="k">에이전트_틀.md</code> 는 빈칸을 직접 채우고 싶을 때 씁니다.</div>
-      <div class="box warn"><b>5분 규칙</b>5분 안에 안 되면 받은 <code class="k">정답_리포트담당.md</code> 를 <code class="k">claude_work\.claude\agents\</code> 폴더(없으면 만든다)에 넣고 이름을 <code class="k">jig-report.md</code> 로 바꾼 뒤, <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켭니다.</div>
+      <div class="box warn"><b>5분 규칙</b>5분 안에 안 되면 받은 <code class="k">정답_리포트담당.md</code> 를 워크스페이스의 <code class="k">.claude\agents\</code> 폴더(없으면 만든다)에 넣고 이름을 <code class="k">jig-report.md</code> 로 바꾼 뒤, <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켭니다.</div>
     </div>
   </article>
 
@@ -422,12 +422,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>지난 달 학년이 한 칸 밀려 있다</td><td>학년치환을 안 했다</td><td>11단계 판단 기준 1</td></tr>
     <tr><td>Claude 가 CSV 를 통째로 읽느라 오래 걸린다</td><td>「Node 명령으로 세라」가 빠졌다</td><td>문장에 「통째로 읽지 말고 Node 명령으로 세어」를 넣는다</td></tr>
     <tr><td>「python 을 찾을 수 없다」 · Microsoft Store 가 열린다</td><td>Claude 가 Python 으로 세려 했다 (Python 은 2step 10단계에서 깐다)</td><td>「Python 말고 Node 로 세어 줘」라고 다시 말한다</td></tr>
-    <tr><td><code class="k">/skills</code> 에 내 스킬이 없다</td><td>폴더 모양이 틀렸다 · 켜 둔 창이 아직 모른다</td><td><code class="k">claude_work\.claude\skills\&lt;이름&gt;\SKILL.md</code> 확인 → <code class="k">exit</code> 후 다시 켜기</td></tr>
+    <tr><td><code class="k">/skills</code> 에 내 스킬이 없다</td><td>폴더 모양이 틀렸다 · 켜 둔 창이 아직 모른다</td><td>워크스페이스의 <code class="k">.claude\skills\&lt;이름&gt;\SKILL.md</code> 확인 → <code class="k">exit</code> 후 다시 켜기</td></tr>
     <tr><td>스킬 파일은 있는데 인식이 안 된다</td><td>파일 이름이 <code class="k">skill.md</code> · <code class="k">Skill.md</code></td><td>대문자 <code class="k">SKILL.md</code> 로 바꾼다</td></tr>
     <tr><td>상관없는 말에도 스킬이 뜬다</td><td>description 이 너무 넓다</td><td>「이럴 땐 쓰지 않는다」 한 줄</td></tr>
-    <tr><td>스킬 · 에이전트가 <code class="k">basic_data\.claude</code> 에 생겼다</td><td>카드의 「워크스페이스 폴더」 줄이 빠졌다</td><td>「그 파일을 claude_work\.claude 의 같은 자리로 옮겨 줘」 → <code class="k">exit</code> → <code class="k">claude</code></td></tr>
+    <tr><td>스킬 · 에이전트가 <code class="k">basic_data\.claude</code> 에 생겼다</td><td>카드의 「워크스페이스 폴더」 줄이 빠졌다</td><td>「그 파일을 basic_data 바로 위 폴더의 .claude 같은 자리로 옮겨 줘」 → <code class="k">exit</code> → <code class="k">claude</code></td></tr>
     <tr><td>에이전트가 「실행 도구가 없어 셀 수 없다」고 돌아온다</td><td>에이전트 파일 <code class="k">tools</code> 줄에 이 PC 의 실행 도구가 없다(Git Bash 가 없는 PC 는 PowerShell)</td><td><code class="k">tools</code> 줄을 <code class="k">Read, Glob, Grep, Write, Bash, PowerShell</code> 로 → <code class="k">exit</code> → <code class="k">claude</code></td></tr>
-    <tr><td>에이전트 목록에 리포트 담당이 없다</td><td>파일이 <code class="k">claude_work\.claude\agents\</code> 에 없다 · 만든 뒤 다시 켜지 않았다</td><td>윈도우 탐색기에서 파일 확인 → <code class="k">exit</code> → <code class="k">claude</code> · 또는 정답 파일</td></tr>
+    <tr><td>에이전트 목록에 리포트 담당이 없다</td><td>파일이 워크스페이스의 <code class="k">.claude\agents\</code> 에 없다 · 만든 뒤 다시 켜지 않았다</td><td>윈도우 탐색기에서 파일 확인 → <code class="k">exit</code> → <code class="k">claude</code> · 또는 정답 파일</td></tr>
     <tr><td>에이전트 대신 내 창에서 직접 센다</td><td>이름을 대지 않았다</td><td>「직영 리포트 담당 에이전트에게 맡겨」를 문장에 넣는다</td></tr>
     <tr><td>리포트 파일이 안 생긴다</td><td>에이전트에 쓰기 · 실행 도구가 없다</td><td>9단계 도구 선택 다시 · 또는 정답 파일</td></tr>
     <tr><td>리포트가 덮어써졌다</td><td>판단 기준 2 가 없다</td><td>11단계. 덮어쓴 파일은 에이전트에게 다시 만들게 한다</td></tr>
@@ -445,8 +445,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <header><span class="no">13</span><h3>오늘 만든 것 정리하고 2step 준비</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>확인</b><div><ol>
-        <li><code class="k">claude_work\.claude\skills\jig-metrics\SKILL.md</code> — 세는 법 스킬</li>
-        <li><code class="k">claude_work\.claude\agents\</code> 의 직영 리포트 담당 — 에이전트</li>
+        <li>워크스페이스의 <code class="k">.claude\skills\jig-metrics\SKILL.md</code> — 세는 법 스킬</li>
+        <li>워크스페이스의 <code class="k">.claude\agents\</code> 의 직영 리포트 담당 — 에이전트</li>
         <li><code class="k">basic_data\리포트\</code> 의 <code class="k">리포트_v1.html</code> · <code class="k">리포트_v2.html</code></li>
       </ol><p>셋 다 있으면 통과. <b>지우지 말고</b> 2step으로 가져갑니다.</p></div></div>
     </div>
@@ -465,7 +465,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
     <tr><td><b>v1.10</b></td><td>2026-11-01</td><td>
-      <ul><li><b>바뀜</b> 스킬 · 에이전트 위치를 <code class="k">basic_data\.claude</code> → <b>워크스페이스 폴더</b> <code class="k">claude_work\.claude</code> 로 — 5 · 9단계 카드 · 확인 · 5분 규칙 · 막혔을 때 · 마무리. <code class="k">basic_data</code> 에서 켜도 위 폴더의 스킬 · 에이전트가 불려온다</li></ul></td></tr>
+      <ul><li><b>바뀜</b> 스킬 · 에이전트 위치를 <code class="k">basic_data\.claude</code> → <b>워크스페이스 폴더(basic_data 바로 위)</b>의 <code class="k">.claude</code> 로 — 폴더 이름은 사람마다 달라 카드 · 안내에 이름을 적지 않는다 · 5 · 9단계 카드 · 확인 · 5분 규칙 · 막혔을 때 · 마무리. <code class="k">basic_data</code> 에서 켜도 위 폴더의 스킬 · 에이전트가 불려온다</li></ul></td></tr>
     <tr><td><b>v1.9</b></td><td>2026-10-30</td><td>과정명을 영어 소문자, 단계명을 1step · 2step 으로 통일했습니다.</td></tr>
     <tr><td><b>v1.8</b></td><td>2026-10-28</td><td>
       <ul><li>첫 화면 소개 문단 · 「끝나면 이렇게 됩니다」 상자 삭제 · 1단계 「차이를 한 문장으로」 삭제(비교표는 PART 1 에 그대로) → 단계 1~13 으로 한 칸씩 당김 · 진행 체크 키 v5</li><li>폴더 만들기 단계: 파일 경로를 넣어 보내던 프롬프트 삭제(사람마다 경로가 달라 오류) → 탐색기에서 <code class="k">basic_data</code> 폴더를 만들고 두 파일을 직접 넣기</li></ul></td></tr>
