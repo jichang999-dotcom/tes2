@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.16 · 2026-11-01</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.17 · 2026-11-01</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -402,6 +402,7 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
       <div class="row"><b>확인</b><div><p>GitHub 리포 화면을 새로고침하면 코드 · 설정 파일만 보이고 데이터 · <code class="k">.env</code> 는 없다. 4번 결과에 <b>내 GitHub 아이디</b>가 나온다(비어 있거나 <code class="k">null</code> 이면 6단계 팁).</p></div></div>
       <div class="box tip"><b>7단계에서 gh 로 로그인했으면 묻지 않고 올라갑니다</b>그래도 브라우저 로그인 창이 뜨면 Git for Windows 의 로그인 도우미(Git Credential Manager)입니다. <b>Sign in with your browser</b> → 허용하면 다음부터는 묻지 않습니다.</div>
       <div class="box warn"><b>주의</b>이미 올라갔다면 리포에서 지우는 것으로 끝나지 않습니다 — 키는 <b>새로 발급</b>받고, 개인정보는 강사에게 바로 알립니다.</div>
+      <div class="box tip"><b>8단계 다음부터 — 커밋 · push · 게시</b><div class="tbl"><table><tr><th>말</th><th>하는 일</th><th>어떻게</th></tr><tr><td><b>커밋</b></td><td>바뀐 내용을 <b>내 PC 의 Git 기록</b>에 저장</td><td>Claude 에게 「&lt;파일&gt; 을 「&lt;메시지&gt;」로 커밋해 줘」</td></tr><tr><td><b>push</b></td><td>내 PC 에 쌓인 커밋을 <b>GitHub 리포로 올리기</b></td><td>Claude 에게 「push 해 줘」</td></tr><tr><td><b>게시 Branch</b></td><td>VS Code 「소스 제어」 버튼. 아직 GitHub 에 없는 브랜치를 <b>처음</b> 올릴 때 뜹니다</td><td>main 은 8단계에서 Claude 가 올려서 이제 안 뜹니다</td></tr><tr><td><b>변경 내용 동기화 ↑1</b></td><td>8단계 뒤 같은 자리에 뜨는 버튼. <b>↑ 숫자 = 아직 안 올린 커밋 수</b>, ↓ 숫자 = GitHub 에만 있는 커밋 수</td><td>누르면 올리기 · 받기를 함께 합니다. 「push 해 줘」와 결과가 같습니다</td></tr></table></div><b>커밋만 하면 GitHub 에는 안 올라갑니다.</b> 10 · 11 · 16단계에서 커밋한 뒤 GitHub 에도 남기고 싶으면 「push 해 줘」라고 합니다. 올리기 전에 데이터 · <code class="k">.env</code> 가 섞이지 않았는지는 8단계처럼 Claude 에게 먼저 확인시킵니다.<br><b>올라간 것은 웹에서 이렇게 봅니다</b> — github.com 첫 화면 왼쪽 <b>Top repositories</b> → 리포 → <b>Code</b> 탭. ① 파일 목록 위 줄 = <b>마지막 커밋 메시지 · 시간</b>(방금 push 한 커밋이 보이면 성공) · ② 그 줄 오른쪽 <b>시계 아이콘 「N Commits」</b> = 커밋 목록 · ③ 목록에서 커밋 하나를 누르면 <b>바뀐 줄</b>(초록 + 추가 · 빨강 − 삭제) · ④ 파일을 누르면 내용, 오른쪽 위 <b>History</b> = 그 파일의 커밋 기록.</div>
     </div>
   </article>
 </section>
@@ -675,6 +676,7 @@ python gh_skills.py 를 한 번 실행하고, gh_skills.py 를 「슬랙 보고�
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.17</b></td><td>2026-11-01</td><td>8단계 끝(9단계 앞)에 「8단계 다음부터 — 커밋 · push · 게시」 상자 — 커밋 / push / 게시 Branch / 변경 내용 동기화 표 · 커밋만으로는 GitHub 에 안 올라감 · 웹에서 보는 곳(Code 탭 마지막 커밋 · N Commits · 바뀐 줄 · History).</td></tr>
     <tr><td><b>v2.16</b></td><td>2026-11-01</td><td>9단계 프롬프트에서 검색 방법(옛 2번 · gh 검색 문법 · 공식 저장소 먼저 · gh 전체 경로)을 뺌 — 검색은 Claude 가 정함. 번호 4개로.</td></tr>
     <tr><td><b>v2.15</b></td><td>2026-11-01</td><td>9단계 데이터 분석 예시 상자 = 실측 후보 중 추천된 variance-analysis(anthropics/knowledge-work-plugins · finance) 로 교체(옛 analyze 는 실측 후보에 안 나옴) · 다른 스킬을 이어 부르는 것은 고르지 않음. 10단계 확인 예시 /variance-analysis.</td></tr>
     <tr><td><b>v2.14</b></td><td>2026-11-01</td><td>7단계 확인 — gh 를 새로 설치했으면 VS Code 를 모두 닫았다 다시 열기. 9단계 프롬프트 2번 — gh 를 못 찾으면 전체 경로. 실측에서 7단계 뒤 그대로 9단계를 하자 gh: command not found(Exit code 127)가 난 것.</td></tr>
