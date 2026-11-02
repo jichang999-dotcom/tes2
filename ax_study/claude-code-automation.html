@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.22 · 2026-11-01</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.23 · 2026-11-02</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -407,6 +407,23 @@ main 으로 돌아와서 그 파일에 그 줄이 없는 것을 보여 주고, g
 1. 그 저장소에서 올라갈 파일 목록(git ls-files)을 보여 줘. 데이터 · CSV · 엑셀 · .env, 사람 이름이나 연락처가 든 파일이 있으면 멈추고 알려 줘.
 2. 괜찮으면 gh repo create &lt;폴더 이름&gt; --private 로 리포를 만들고 origin 으로 연결해. 이미 origin 이 있으면 바꾸지 말고 멈춰서 주소를 보여 줘.
 3. main 만 git push -u origin main 하고, gh repo view --json name,visibility,url 로 PRIVATE 인지 보여 줘.</code><button type="button">복사</button></div>꼭 올려야 하는 것은 아닙니다 — 커밋만 해도 PC 에서 버전 기록 · 되돌리기는 됩니다. PC 가 고장 나도 남기고 싶거나 다른 PC 에서 쓰고 싶을 때 올립니다.</div></details>
+      <details class="q fix"><summary>작업 마무리를 스킬로 — 앞으로는 /wrap-up 한 줄로 끝내기</summary><div style="margin-top:8px">작업을 끝낼 때마다 「문서 업데이트 → 올라갈 파일 점검 → 커밋 → push」를 매번 길게 시키는 대신 <b>스킬 하나</b>로 묶어 둡니다. 문서 업데이트와 커밋은 서로를 대신하지 않습니다.<div class="tbl"><table><tr><th></th><th>문서 업데이트</th><th>커밋 · push</th></tr><tr><td>남는 것</td><td>CLAUDE.md 의 <b>현재 상태 설명</b> — 다음에 Claude 가 읽는 기억</td><td>그 순간 <b>모든 파일의 상태</b> — 돌아올 수 있는 세이브 포인트</td></tr><tr><td>되돌리기</td><td>안 됨(문서는 덮어써진다)</td><td>됨 — push 한 뒤에도 「그 커밋 revert 해 줘」(4단계)</td></tr></table></div><b>① 스킬 만들기.</b> 워크스페이스를 연 Claude Code 에 그대로 붙여넣습니다. 스킬 내용을 프롬프트에 그대로 적어 두었습니다 — 말로만 시키면 사람마다 다른 스킬이 생깁니다.<div class="cmd"><code style="white-space:pre-wrap">워크스페이스 폴더의 .claude/skills/wrap-up/SKILL.md 를 아래 내용 그대로 만들어 줘. 다른 파일은 건드리지 마. 만든 뒤 전체 경로를 알려 줘.
+
+---
+name: wrap-up
+description: 작업을 마무리할 때 문서 반영 → 올라갈 파일 점검 → 커밋 → push 를 한 번에 한다. 사용자가 /wrap-up 으로 부를 때만 쓴다.
+disable-model-invocation: true
+---
+
+# 작업 마무리
+
+오늘 고친 파일이 들어 있는 Git 저장소마다 아래 순서대로 한다.
+
+1. 문서 반영 — 이번 대화에서 바뀐 내용을 그 저장소의 CLAUDE.md 에 반영한다(README.md 가 있으면 그것도). 현재 상태와 규칙만 적고, 대화에 없는 내용은 지어내지 않는다.
+2. 점검 — git status 로 바뀐 파일을 표로 보여 준다. .env · data 폴더 · CSV · 엑셀 파일, 사람 이름이나 연락처가 든 파일이 있으면 커밋하지 말고 멈춰서 알려 준다. 그 파일 내용은 화면에 옮기지 않는다.
+3. 커밋 — 문제가 없으면 한 가지 일 단위로 커밋한다. 메시지는 무엇을 했는지 한국어 한 줄. 서로 다른 일이 섞였으면 나눠서 커밋한다.
+4. push — git remote -v 로 원격을 본다. 없으면 push 하지 않고 「GitHub 리포가 아직 없음」이라고 알린다. 있으면 git push 한다. 로그인 창이 뜨면 사람이 하게 두고 비밀번호 · 토큰을 묻지 않는다. 강제 push(--force)는 하지 않는다.
+5. 보고 — 반영한 문서 · 커밋 메시지 · push 결과를 표 하나로 보여 준다.</code><button type="button">복사</button></div><b>② 다시 켜기.</b> <code class="k">exit</code> → <code class="k">claude</code> 로 다시 켭니다. 새로 만든 스킬은 다시 켜야 보입니다.<br><b>③ 쓰기.</b> 작업을 끝낼 때 <code class="k">/wrap-up</code> 한 줄을 입력합니다. 점검에서 멈추면 표를 보고 「.env 는 제외 목록에 넣고 이어서 해 줘」처럼 답합니다.<div class="tbl"><table><tr><th>스킬 줄</th><th>왜 넣었나</th></tr><tr><td><code class="k">disable-model-invocation: true</code></td><td>커밋 · push 는 되돌리기 번거로운 일이라 <b>내가 /wrap-up 으로 부를 때만</b> 돈다. 대화 중에 Claude 가 알아서 부르지 않는다</td></tr><tr><td>대화에 없는 내용은 지어내지 않는다</td><td>문서에 하지 않은 일이 적히지 않게</td></tr><tr><td>점검에서 멈춘다</td><td>.env · 데이터는 한 번 올라가면 revert 해도 옛 커밋에 남는다 — 키는 새로 발급해야 한다</td></tr><tr><td>강제 push 금지</td><td>되돌리기는 기록을 지우지 않는 revert 로만</td></tr></table></div><b>확인</b> — <code class="k">/wrap-up</code> 뒤 보고 표에 커밋 메시지와 push 결과가 나오고, 「소스 제어」의 변경 사항이 비어 있다. 강사 PC 실측(2026-11-02): 코드만 바뀐 연습 저장소 = 커밋 · push 까지 · <code class="k">.env</code> 를 섞은 저장소 = 점검에서 멈추고 커밋 안 함.</div></details>
     </div>
   </article>
 </section>
@@ -701,6 +718,7 @@ python gh_skills.py 를 한 번 실행하고, gh_skills.py 를 「슬랙 보고�
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.23</b></td><td>2026-11-02</td><td>8단계 끝에 접힌 카드 「작업 마무리를 스킬로 — 앞으로는 /wrap-up 한 줄로 끝내기」 — 문서 업데이트 vs 커밋 · push 비교표 · 스킬 만들기 프롬프트(SKILL.md 내용 그대로 · 워크스페이스 .claude/skills/wrap-up · 내가 부를 때만) · 다시 켜기 · 쓰기 · 줄마다 이유 · 강사 PC 실측 2건 통과.</td></tr>
     <tr><td><b>v2.22</b></td><td>2026-11-01</td><td>15단계 프롬프트 위에 바꿀 칸 설명 표(&lt;내 이름&gt; = 앱 이름 · &lt;영문 이름&gt; = 보낸 사람 이름 · 넣는 값 · 보이는 곳 · 예) · 워크스페이스 · 채널 이름과 같지 않아도 된다는 한 줄.</td></tr>
     <tr><td><b>v2.21</b></td><td>2026-11-01</td><td>15단계 매니페스트에 features.bot_user.display_name(&lt;영문 이름&gt;-alert) · oauth_config.scopes.bot = incoming-webhook 추가 — 실측 PC 에서 이 모양으로 앱 생성 · 웹훅 · 알림 테스트까지 통과. 바꿀 칸 &lt;영문 이름&gt; 안내.</td></tr>
     <tr><td><b>v2.20</b></td><td>2026-11-01</td><td>15단계 프롬프트 1번 = 매니페스트 JSON 을 그대로 적음(display_information.name · settings.incoming_webhooks.incoming_webhooks_enabled: true) — 옛 문장은 Claude 마다 다른 모양이 나왔던 것.</td></tr>
