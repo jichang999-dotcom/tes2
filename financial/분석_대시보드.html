@@ -502,6 +502,7 @@
 <h2 style="display:inline-block;">종목 분석</h2>
 <div class="tab-group">
   <button class="tab-btn active-swing" onclick="switchTab('swing')" id="btn-swing">🎯 손익비</button>
+  <button class="tab-btn" onclick="switchTab('maeip')" id="btn-maeip">💼 매입</button>
   <button class="tab-btn" onclick="switchTab('bowl3')" id="btn-bowl3">🍚 밥그릇3</button>
   <button class="tab-btn" onclick="switchTab('danta')" id="btn-danta">⚡ 단타인기</button>
   <button class="tab-btn" onclick="switchTab('closed')" id="btn-closed">🏁 종료</button>
@@ -530,7 +531,7 @@
 
 <!-- ===== 스윙 탭 ===== -->
 <div class="tab-content active" id="tab-swing">
-<section id="rr-swing-summary">
+<section id="rr-swing-summary" data-auto="013580,016740">
   <style>#card-013580-active,#card-016740-active,#stock-filter-panel{display:none!important}</style>
   <h3 style="margin:8px 0;">🎯 손익비 돌파 <span class="hd-note">(최대 5종 · 08:30 KRX 확정봉 · 손절 = 돌파선 −1% 종가 · 손절 폭 2~5% · 매 회차 종가 &lt; 손절이면 삭제)</span></h3>
   <table class="stock-table" style="font-size:0.88em;">
@@ -776,6 +777,14 @@
 </div><!-- /tab-swing -->
 
 
+
+<!-- ===== 💼 매입 탭 (2026-11-03) — 체결 보유 카드는 손익비 탭에 그대로 두고 페이지 로드 때 이리 옮긴다(reorder_active_cards.js 슬롯 보존) · 대상 = #rr-swing-summary data-auto 에 없는 활성 카드 ===== -->
+<div class="tab-content" id="tab-maeip">
+<section id="maeip-tab">
+  <h3 style="margin:8px 0;">💼 매입 <span class="hd-note">(체결 보유 종목 · §6 라벨이 체결로 바뀐 카드)</span></h3>
+  <p class="hd-note" id="maeip-empty">보유 종목 없음</p>
+</section>
+</div><!-- /tab-maeip -->
 
 <!-- ===== 🍚 밥그릇3 탭 (2026-10-19 · build_bowl3_tab.js 가 08:30 마다 표 교체) ===== -->
 <div class="tab-content" id="tab-bowl3">
@@ -3502,9 +3511,24 @@ function initializeStockFilters() {
   applyStockFilters();
 }
 
+// 💼 매입 탭: 자동 관리(data-auto)에 없는 활성 카드 = 체결 보유 → 매입 탭으로 이동 (2026-11-03)
+document.addEventListener('DOMContentLoaded', function() {
+  var sec = document.getElementById('rr-swing-summary'), dest = document.getElementById('maeip-tab');
+  if (!sec || !dest) return;
+  var auto = (sec.getAttribute('data-auto') || '').split(',').filter(Boolean);
+  var n = 0;
+  document.querySelectorAll('#tab-swing .card[id$="-active"]').forEach(function(c) {
+    var code = c.id.replace('card-', '').replace('-active', '');
+    if (auto.indexOf(code) < 0) { dest.appendChild(c); n++; }
+  });
+  var e = document.getElementById('maeip-empty'); if (e && n) e.style.display = 'none';
+  var b = document.getElementById('btn-maeip'); if (b && n) b.textContent = '💼 매입 (' + n + ')';
+});
+
 function switchTab(type) {
   var tabs = {
     swing: document.getElementById('tab-swing'),
+    maeip: document.getElementById('tab-maeip'),
     bowl3: document.getElementById('tab-bowl3'),
     danta: document.getElementById('tab-danta'),
     closed: document.getElementById('tab-closed'),
@@ -3513,13 +3537,14 @@ function switchTab(type) {
   };
   var btns = {
     swing: document.getElementById('btn-swing'),
+    maeip: document.getElementById('btn-maeip'),
     bowl3: document.getElementById('btn-bowl3'),
     danta: document.getElementById('btn-danta'),
     closed: document.getElementById('btn-closed'),
     summary: document.getElementById('btn-summary'),
     usa: document.getElementById('btn-usa')
   };
-  var activeClass = { usa: 'active-swing', swing: 'active-swing', bowl3: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
+  var activeClass = { maeip: 'active-swing', usa: 'active-swing', swing: 'active-swing', bowl3: 'active-swing', danta: 'active-swing', long: 'active-long', recommend: 'active-recommend', breakout: 'active-breakout', theme: 'active-theme', closed: 'active-closed', summary: 'active-summary' };
 
   Object.keys(tabs).forEach(function(k) {
     if (k === type) {
