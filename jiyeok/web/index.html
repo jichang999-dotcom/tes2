@@ -42,6 +42,21 @@ header .sub{font-size:12px; opacity:.8}
   border-radius:999px; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.3);
 }
 .badge-src.mock{background:var(--warn); color:#2a2000; border-color:transparent}
+button.badge-src{color:#fff; font-family:inherit; cursor:pointer}
+button.badge-src:hover{background:rgba(255,255,255,.28)}
+button.badge-src.mock{color:#2a2000}
+/* 「데이터 갱신 주기」 팝업 (2026-11-03) */
+.update-panel{position:fixed; top:58px; right:16px; z-index:9000; width:min(560px, calc(100vw - 32px));
+  max-height:calc(100vh - 80px); overflow:auto; background:#fff; color:var(--ink); border:1px solid var(--line);
+  border-radius:10px; box-shadow:0 8px 28px rgba(0,0,0,.22); padding:14px 16px 12px; font-size:12px}
+.update-panel h2{font-size:14px; margin:0 0 8px; color:var(--brand)}
+.update-panel h3{font-size:12px; margin:12px 0 6px; color:var(--ink-2)}
+.update-panel table{border-collapse:collapse; width:100%}
+.update-panel th,.update-panel td{border:1px solid var(--grid); padding:6px 8px; text-align:left; vertical-align:top}
+.update-panel th{background:var(--plane); font-weight:700; text-align:center}
+.update-panel td.c{text-align:center; white-space:nowrap}
+.update-panel .last{margin-top:10px; font-weight:700}
+.update-panel .x{position:absolute; top:8px; right:10px; border:0; background:none; font-size:18px; cursor:pointer; color:var(--muted)}
 .filterbar{
   position:relative;z-index:600;min-height:42px;padding:5px 16px;
   display:flex;align-items:center;gap:12px;background:#fff;border-bottom:1px solid var(--grid)
@@ -415,8 +430,24 @@ footer{display:none}
     <h1>지역분석 대시보드</h1>
     <div class="sub">학원 프랜차이즈 가맹 상담용 · 시도 → 시군구 → 행정동 상권 진단</div>
   </div>
-  <div class="badge-src" id="srcBadge">데이터 확인 중…</div>
+  <button type="button" class="badge-src" id="srcBadge" aria-haspopup="dialog" aria-expanded="false" aria-controls="updatePanel">데이터 확인 중…</button>
 </header>
+<div class="update-panel hidden" id="updatePanel" role="dialog" aria-label="데이터 갱신 주기">
+  <button type="button" class="x" id="updatePanelClose" aria-label="닫기">×</button>
+  <h2>데이터 갱신 주기</h2>
+  <table>
+    <thead><tr><th>항목</th><th>주기</th><th>시점</th></tr></thead>
+    <tbody>
+      <tr><td>월간점검 (감시만)</td><td class="c">월 1회 자동</td><td>매월 첫 평일 10:00</td></tr>
+      <tr><td><b>자사·경쟁사·시너지세권</b></td><td class="c"><b>월 1회</b></td><td>월간점검 직후</td></tr>
+      <tr><td><b>인구·실거래·세대수·어린이집·학원 + 경계</b></td><td class="c"><b>분기 1회</b></td><td>1·4·7·10월. 경계 새 버전이 나온 뒤</td></tr>
+      <tr><td>학교</td><td class="c">연 1회</td><td>신학년도 공시가 나온 뒤 (5~6월)</td></tr>
+    </tbody>
+  </table>
+  <h3>데이터별 현재 기준</h3>
+  <table><thead><tr><th>데이터</th><th>기준</th><th>수정일</th></tr></thead><tbody id="updateItems"><tr><td colspan="3">불러오는 중…</td></tr></tbody></table>
+  <div class="last">최종 수정일: <span id="updateLast">-</span></div>
+</div>
 
 <section class="filterbar" id="filterbar">
   <div class="age-filter" id="ageFilter" aria-label="학령인구 연령 필터">
@@ -893,9 +924,35 @@ function updateBadge(){
     b.textContent = "⚠ 샘플(mock) 데이터 — 실데이터 아님";
   }else{
     b.className = "badge-src";
-    b.textContent = "실데이터";
+    b.textContent = "데이터 갱신 주기";
   }
 }
+/* 「데이터 갱신 주기」 팝업 — 기준·최종 수정일은 build_web_payload.py 가 만드는 web_update_info.json */
+async function openUpdatePanel(){
+  const panel=document.getElementById("updatePanel");
+  panel.classList.remove("hidden");
+  document.getElementById("srcBadge").setAttribute("aria-expanded","true");
+  const info=await loadOptional("proc","web_update_info.json");
+  const esc=t=>String(t??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  document.getElementById("updateItems").innerHTML = info && info.items
+    ? info.items.map(i=>`<tr><td>${esc(i.name)}</td><td class="c">${esc(i.basis)}</td><td class="c">${esc(i.updated)}</td></tr>`).join("")
+    : `<tr><td colspan="3">정보 없음</td></tr>`;
+  document.getElementById("updateLast").textContent = (info && info.updated) || "-";
+}
+function closeUpdatePanel(){
+  document.getElementById("updatePanel").classList.add("hidden");
+  document.getElementById("srcBadge").setAttribute("aria-expanded","false");
+}
+document.getElementById("srcBadge").addEventListener("click",e=>{
+  e.stopPropagation();
+  document.getElementById("updatePanel").classList.contains("hidden") ? openUpdatePanel() : closeUpdatePanel();
+});
+document.getElementById("updatePanelClose").addEventListener("click",closeUpdatePanel);
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeUpdatePanel(); });
+document.addEventListener("click",e=>{
+  const panel=document.getElementById("updatePanel");
+  if(!panel.classList.contains("hidden") && !panel.contains(e.target)) closeUpdatePanel();
+});
 function showNotice(title, html){
   const n = document.getElementById("notice");
   n.innerHTML = `<div class="big">${title}</div><div>${html}</div>`;
