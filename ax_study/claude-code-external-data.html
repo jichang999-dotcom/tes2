@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code basic 2step — 말로 시켜 데이터 가져오기 <span class="ver">v1.30 · 2026-11-02</span></h1>
+  <h1>Claude Code basic 2step — 말로 시켜 데이터 가져오기 <span class="ver">v1.31 · 2026-11-04</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 2step 전에 하는 1step">1step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -172,6 +172,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </nav>
 
 <main>
+<div class="box tip"><b>먼저 보기</b> API 와 MCP 가 무엇인지 쉽게 설명한 영상입니다 — <a href="https://www.youtube.com/watch?v=eT31Ow_ROYk&amp;t=93s" target="_blank" rel="noopener">MCP vs API 뭐가 다른데? (소소한 AI 입문노트 · 1:33 부터)</a></div>
 <section class="part" id="p0">
   <h2><small>시작 전</small>오늘 배울 것 — 흩어진 데이터를 말로 모아 공유하기</h2>
   <p class="lead">1step에서는 강사가 준 <b>CSV 파일 하나</b>로 일했습니다. 하지만 실제 업무 데이터는 한 파일에 모여 있지 않습니다 — 팀이 쓰는 <b>구글 시트</b>에, 정부 · 공공기관의 <b>데이터 서비스</b>에, 누구나 보는 <b>웹페이지</b>에 흩어져 있습니다. 오늘은 이 세 곳에서 데이터를 가져와 <b>내 구글 시트 한 곳에 모으고</b>, 마지막에 <b>결과 페이지 한 장으로 공유</b>합니다. 코드는 직접 짜지 않습니다 — 카드 문장을 붙여넣어 <b>Claude 에게 말로 시키기만</b> 합니다.</p>
@@ -684,6 +685,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.31</b></td><td>2026-11-04</td><td>
+      <ul><li><b>추가</b> 페이지 맨 위 「먼저 보기」 — API · MCP 설명 영상 링크(1:33 부터 재생)</li></ul></td></tr>
     <tr><td><b>v1.30</b></td><td>2026-11-02</td><td>
       <ul><li><b>삭제</b> 「Playwright MCP 설치」 단계의 주의 상자(로그인이 PC 에 남음 · --isolated)와 막히면 상자</li><li><b>추가</b> 같은 단계 끝 접힌 카드 「더 하기 — 매일 반복할 일이면: Playwright 스크립트 설치」 — MCP 와 스크립트 비교표 · 설치 프롬프트(pip install playwright → playwright install chromium) · 확인</li></ul></td></tr>
     <tr><td><b>v1.29</b></td><td>2026-11-02</td><td>
