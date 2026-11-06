@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code master 2step — 팀에 퍼뜨리기 <span class="ver">v2.0 · 2026-11-06</span></h1>
+  <h1>Claude Code master 2step — 팀에 퍼뜨리기 <span class="ver">v2.1 · 2026-11-06</span></h1>
   <a class="rel-btn" href="claude-code-self-guard.html" title="cs_practice 를 만든 master 1step">master 1step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -165,6 +165,18 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <li>DM 한 통으로 문의 15건 답변을 시키면 봇이 <b>5줄 보고</b>(✅ / 🔴)로 답한다.</li>
     </ul>
   </div>
+
+  <h3>헤르메스가 뭔가요</h3>
+  <p><b>헤르메스(Hermes Agent)</b>는 Nous Research 가 만든 <b>AI 비서 프로그램</b>입니다. 내 PC 에 설치해 두면 <b>메신저(슬랙 · 텔레그램)로 들어온 말을 받아서</b>, 연결해 둔 AI 모델(오늘은 내 Claude 계정)로 생각하고, 내 PC 의 파일을 읽고 쓰며 일한 뒤 같은 메신저로 답합니다. 대화를 기억해서 같은 DM 에서는 짧게 이어 시킬 수 있습니다.</p>
+  <div class="tbl"><table>
+    <tr><th></th><th>Claude Code</th><th>헤르메스</th></tr>
+    <tr><td>어디서 말을 거나</td><td>PC 앞에 앉아 <b>터미널</b>에서</td><td><b>슬랙 · 텔레그램</b> — 휴대폰에서도</td></tr>
+    <tr><td>비유</td><td>옆자리에 앉혀 두고 같이 일하는 동료</td><td>사무실에 남아 메신저로 지시를 받는 비서</td></tr>
+    <tr><td>두뇌</td><td>Claude (요금제 한도 안)</td><td>내가 고른 모델 — 오늘은 내 Claude 계정 (extra usage)</td></tr>
+    <tr><td>잘하는 일</td><td>코드 · 파일을 고치며 길게 만드는 일</td><td>밖에서 시키고 결과를 받는 일 · 정해진 보고</td></tr>
+    <tr><td>언제 동작하나</td><td>내가 켰을 때</td><td>PC 가 켜져 있고 헤르메스가 열려 있는 동안</td></tr>
+  </table></div>
+  <p class="foldhint">유삐가 바로 강사 PC 의 헤르메스입니다. 헤르메스는 슬랙과 AI 모델 사이를 잇는 <b>다리</b>라서, 슬랙 봇(입과 귀)과 Claude(머리)를 따로 연결해 줘야 동작합니다 — 그것이 1 · 2단계입니다.</p>
 
   <h3>오늘 만드는 봇</h3>
   <div class="tbl"><table>
@@ -299,6 +311,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.1</b></td><td>2026-11-06</td><td>
+      <ul><li><b>시작 전</b>에 「헤르메스가 뭔가요」 설명 · Claude Code 와 비교 표 추가</li></ul></td></tr>
     <tr><td><b>v2.0</b></td><td>2026-11-06</td><td>
       <ul><li><b>개편</b> 교육생 실습 = <b>슬랙 봇 + 헤르메스</b> 3단계(헤르메스 설치 · 내 Claude 연결 · 내 슬랙 봇 연결 · 휴대폰에서 일 시키기) — 휴대폰으로 시키면 PC 가 일하고 답하는 양방향 봇</li>
       <li><b>플러그인 · 모드</b> 는 강사 시연으로 바꿈 (교육생 단계 · 체크 없음)</li>
