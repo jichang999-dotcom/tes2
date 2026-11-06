@@ -266,12 +266,13 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>방법</b><div><ol>
         <li><b>에이전트 팀 기능 켜기</b> — 붙여넣은 뒤 <code class="k">exit</code> → <code class="k">claude</code>. (손으로 하려면 받은 <code class="k">팀켜기.txt</code>)
           <div class="cmd"><code>이 프로젝트의 .claude/settings.local.json 의 env 에 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 를 "1" 로 넣어 줘. 파일이 없으면 만들고, 다른 설정은 건드리지 마. 전역 설정 파일은 고치지 마.</code><button type="button">복사</button></div></li>
-        \1에이전트 팀을 만들어 줘. 팀원 3명을 이름을 붙여(replier · policy · parent) 동시에 띄우고, 팀원끼리는 SendMessage 로 직접 말하게 해.
+        <li><b>팀 회의</b>
+          <div class="cmd"><code>에이전트 팀을 만들어 줘. 팀원 3명을 이름을 붙여(replier · policy · parent) 동시에 띄우고, 팀원끼리는 SendMessage 로 직접 말하게 해.
 - replier 응대 담당 (cs-reply 타입): 처음에는 응대규정_옛판.md 를 보고 문의.txt 15건 답변을 써서 답변/팀.md 로 저장한다. 다 쓰면 policy 와 parent 에게 알린다. 고치라는 말을 받으면 그대로 고쳐 다시 알린다
 - policy 규정 담당: 답변/팀.md 를 응대규정.md(현행)와 문의마다 대조하고, 다르면 replier 에게 직접 SendMessage 로 문의 번호와 이유를 보낸다. 말투는 보지 않는다. 모두 맞으면 나에게 최종 결과를 준다
 - parent 학부모 관점 담당: 학부모가 읽는다고 생각하고 답변이 알아듣기 쉬운지 · 차갑지 않은지 본다. 고칠 문장을 replier 에게 직접 제안한다. 규정 내용은 바꾸라고 하지 않는다
 - 팀원끼리 메시지를 보낼 때마다 나에게도 「[참관] 보낸 이름 → 받는 이름 : 한 줄 요약」 사본을 보낸다. 나는 받은 줄을 그대로 보여 주기만 하고 옮기지 않는다
-팀원들은 이 대화를 모르니, 각자에게 이 폴더 위치 · 파일 위치 · 할 일 · 다른 두 팀원의 이름과 할 일을 분명히 알려 줘. 나는 중간에 전달하지 않는다.\2<button type="button">복사</button></div>
+팀원들은 이 대화를 모르니, 각자에게 이 폴더 위치 · 파일 위치 · 할 일 · 다른 두 팀원의 이름과 할 일을 분명히 알려 줘. 나는 중간에 전달하지 않는다.</code><button type="button">복사</button></div>
           <p>팀원이 뜨면 <code class="k">[참관]</code> 줄이 차례로 찍힙니다. 더 보려면 <kbd>↑</kbd> <kbd>↓</kbd> 로 팀원을 고르고 <kbd>Enter</kbd>, 나올 땐 <kbd>Esc</kbd>.</p></li>
         <li><b>에이전트 팀 기능 끄기</b> — 붙여넣은 뒤 <code class="k">exit</code> → <code class="k">claude</code>.
           <div class="cmd"><code>.claude/settings.local.json 에서 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 줄을 지워 줘. 다른 설정은 건드리지 마.</code><button type="button">복사</button></div></li>
@@ -319,7 +320,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 
 <details class="grp" id="g9">
 <summary><span class="gno">!</span> 막혔을 때 <small>언제든</small></summary>
-\1
+<section class="part" id="p9">
+  <h2><small>PART 4</small>막혔을 때</h2>
   <div class="box warn"><b>먼저</b>5분 넘게 막히면 받은 정답 파일을 씁니다. <code class="k">정답_응대담당.md</code> 를 워크스페이스의 <code class="k">.claude\agents\cs-reply.md</code> 로 넣고 <code class="k">exit</code> → <code class="k">claude</code> 하면 2단계까지 끝난 상태가 됩니다.</div>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
@@ -332,7 +334,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>팀을 만들어 달랬는데 서브로 처리했다 · <code class="k">[참관]</code> 줄이 안 나온다</td><td>에이전트 팀 기능을 켠 뒤 다시 켜지 않았다</td><td>4단계 켜기 확인 → <code class="k">exit</code> → <code class="k">claude</code> → 카드 그대로</td></tr>
     <tr><td>사용량 한도에 걸렸다</td><td>검산 · 팀이 많이 쓴다</td><td>강사 화면으로 보고 5단계로 넘어간다</td></tr>
   </table></div>
-\2
+</section>
 </details>
 </main>
 </div>
