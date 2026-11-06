@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code master 2step — 팀에 퍼뜨리기</title>
+<style>
+:root{--bg:#f7f6f3;--card:#fff;--ink:#1f1e1c;--sub:#5c5a55;--line:#e3e0d8;--accent:#c2562f;--accent-soft:#fbeee8;--ok:#2f7a4f;--ok-soft:#e8f4ec;--warn:#9a5b00;--warn-soft:#fff4df;--code:#23211f;--code-ink:#f3efe6}
+@media (prefers-color-scheme:dark){:root{--bg:#1b1a18;--card:#252422;--ink:#ecebe7;--sub:#aeaba4;--line:#3a3834;--accent:#e98a64;--accent-soft:#3a2a23;--ok:#7cc79a;--ok-soft:#23332a;--warn:#f0b35a;--warn-soft:#3a3021;--code:#11100f;--code-ink:#f3efe6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;word-break:keep-all}
+a{color:var(--accent)}
+header.top{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+header.top h1{font-size:17px;margin:0;flex:1 1 auto}
+.ver{font-size:12px;font-weight:400;color:var(--sub);white-space:nowrap}
+.rel-btn{border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:6px;padding:4px 10px;font:inherit;font-size:13px;cursor:pointer}
+.rel-btn:hover{color:var(--ink);border-color:var(--accent)}
+dialog.relnote{max-width:900px;width:92vw;max-height:86vh;overflow:auto;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:24px 28px}
+dialog.relnote::backdrop{background:rgba(0,0,0,.6)}
+dialog.relnote h2{margin-top:0}
+dialog.relnote .close{position:sticky;top:0;float:right;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit;cursor:pointer}
+figure.fake .chat b{display:block;margin-bottom:6px}
+figure.fake .chat p{margin:4px 0}
+.progress{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub)}
+.bar{width:160px;height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit}
+.wrap{display:grid;grid-template-columns:220px minmax(0,1fr);max-width:1600px;margin:0 auto;padding:0 20px;gap:28px}
+nav.toc{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:20px 0;font-size:14px}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li a{display:block;padding:5px 10px;border-left:3px solid transparent;color:var(--sub);text-decoration:none}
+nav.toc li a.on{border-color:var(--accent);color:var(--ink);font-weight:600;background:var(--accent-soft)}
+nav.toc li.sub a{padding-left:24px;font-size:13px}
+main{padding:24px 0 80px;min-width:0}
+details.grp{margin:0 0 44px}
+details.grp>summary{list-style:none;cursor:pointer;padding:12px 14px;margin-bottom:4px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:19px;font-weight:700}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary::after{content:"펼치기 ▾";margin-left:auto;font-size:13px;font-weight:400;color:var(--sub)}
+details.grp[open]>summary::after{content:"접기 ▴"}
+details.grp[open]>summary{border-color:var(--accent);background:var(--accent-soft)}
+details.grp>summary .gno{color:var(--accent)}
+details.grp>summary small{font-size:13px;font-weight:400;color:var(--sub)}
+details.grp>section.part{margin-top:24px}
+nav.toc li.ghead{padding:14px 10px 2px;font-size:13px;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:6px}
+nav.toc li.ghead:first-child{border-top:0;margin-top:0}
+nav.toc li.ghead small{font-weight:400;color:var(--sub)}
+.expand-btn{margin:14px 10px;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:6px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer}
+.expand-btn:hover{color:var(--ink);border-color:var(--accent)}
+section.part{margin-bottom:56px;scroll-margin-top:70px}
+h2{font-size:24px;margin:0 0 6px;padding-top:8px}
+h2 small{display:block;font-size:13px;color:var(--accent);font-weight:600;letter-spacing:.05em}
+.lead{color:var(--sub);margin:0 0 20px}
+h3{font-size:18px;margin:28px 0 10px;scroll-margin-top:70px}
+h4{font-size:15px;margin:18px 0 6px;color:var(--sub)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:14px 0;padding:0;scroll-margin-top:70px}
+.step>header{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.step>header .no{flex:none;width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center}
+.step>header h3{margin:0;font-size:17px;flex:1}
+.step>header label{font-size:13px;color:var(--sub);display:flex;gap:6px;align-items:center;cursor:pointer;white-space:nowrap}
+.step>header input{width:18px;height:18px;accent-color:var(--ok)}
+.step.done>header .no{background:var(--ok-soft);color:var(--ok)}
+.step .body{padding:6px 16px 14px}
+.row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row>b{font-size:13px;color:var(--sub);padding-top:2px}
+.row p,.row ul,.row ol{margin:0 0 4px}
+.row ul,.row ol{padding-left:20px}
+.opt{font-size:12px;border:1px solid var(--line);border-radius:10px;padding:0 8px;color:var(--sub);margin-left:6px;font-weight:400}
+.cmd{display:flex;align-items:stretch;margin:6px 0;border-radius:6px;overflow:hidden;background:var(--code);max-width:100%}
+.cmd code{flex:1;min-width:0;color:var(--code-ink);padding:8px 12px;font:14px/1.5 Consolas,"D2Coding",monospace;overflow-x:auto;white-space:pre}
+.cmd button{border:0;background:#3a3733;color:#f3efe6;padding:0 12px;font:13px inherit;cursor:pointer;flex:none}
+.cmd button:hover{background:var(--accent)}
+code.k{font:13px Consolas,monospace;background:var(--accent-soft);padding:1px 5px;border-radius:4px}
+kbd{font:12px Consolas,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--card)}
+.box{border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.box.warn{background:var(--warn-soft);border-left:4px solid var(--warn)}
+.box.tip{background:var(--ok-soft);border-left:4px solid var(--ok)}
+.box b:first-child{margin-right:4px}
+figure{margin:10px 0;max-width:100%}
+figure img{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:6px;cursor:zoom-in}
+figcaption{font-size:13px;color:var(--sub);margin-top:4px}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.shots.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.flow{counter-reset:f;list-style:none;padding:0;margin:10px 0}
+.flow li{counter-increment:f;position:relative;padding:0 0 18px 44px}
+.flow li:before{content:counter(f);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center}
+.flow li:after{content:"";position:absolute;left:14px;top:32px;bottom:2px;border-left:2px solid var(--line)}
+.flow li:last-child:after{display:none}
+.tbl{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);white-space:nowrap}
+details.q{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;margin:8px 0}
+details.fix>summary{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+details.fix>summary::after{content:"【펼치기 ▾】";margin-left:auto;font-size:12px;font-weight:400;color:var(--sub);white-space:nowrap}
+details.fix[open]>summary::after{content:"【접기 ▴】"}
+details.fix[open]>summary{color:var(--accent)}
+.fold-close{display:block;margin:14px 0 2px auto;border:1px solid var(--line);background:var(--bg);color:var(--sub);border-radius:6px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer}
+.fold-close:hover{color:var(--ink);border-color:var(--accent)}
+.foldhint{font-size:13px;color:var(--sub);margin:2px 0 8px}
+details.q summary{cursor:pointer;font-weight:600}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+dialog img{max-width:96vw;max-height:92vh;display:block}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.hero ul{margin:6px 0 0;padding-left:20px}
+@media (max-width:860px){
+ .wrap{grid-template-columns:minmax(0,1fr);padding:0 16px}
+ nav.toc{position:fixed;top:52px;left:0;right:0;max-height:70vh;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px;z-index:4;display:none}
+ nav.toc.open{display:block}
+ .menu-btn{display:inline-block}
+ .bar{width:90px}
+ .row{grid-template-columns:minmax(0,1fr);gap:2px}
+ .shots,.shots.two{grid-template-columns:minmax(0,1fr)}
+ section.part,.step,h3{scroll-margin-top:110px}
+ .step .body{padding:6px 12px 12px}
+}
+@media print{
+ header.top,nav.toc,.cmd button,.step label,.menu-btn,.expand-btn,.fold-close{display:none!important}
+ details.grp>summary{display:none}
+ .wrap{display:block;max-width:none}
+ body{background:#fff;color:#000;font-size:12px}
+ .step,figure,table,.box{break-inside:avoid}
+ section.part{break-before:page}
+ section.part:first-of-type{break-before:auto}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
+  <h1>Claude Code master 2step — 팀에 퍼뜨리기 <span class="ver">v1.0 · 2026-11-06</span></h1>
+  <a class="rel-btn" href="claude-code-self-guard.html" title="훅 · 하네스를 만든 master 1step">master 1step</a>
+  <a class="rel-btn" href="#p9">막혔을 때</a>
+  <button class="rel-btn" id="relBtn">Update Notes</button>
+  <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 7 단계</span></div>
+</header>
+
+<div class="wrap">
+<nav class="toc" id="toc" aria-label="목차">
+<ol>
+  <li><a href="#p0">시작 전 · 퍼뜨리는 세 갈래 · 준비물</a></li>
+  <li class="ghead">① 슬랙 봇 <small>1~2단계</small></li>
+  <li><a href="#p1">PART 1 슬랙 봇</a></li>
+  <li class="sub"><a href="#s1">1. 내 봇 만들기</a></li>
+  <li class="sub"><a href="#s2">2. 유삐처럼 보고</a></li>
+  <li class="ghead">② 플러그인 <small>3~5단계</small></li>
+  <li><a href="#p2">PART 2 플러그인</a></li>
+  <li class="sub"><a href="#s3">3. 내 하네스를 플러그인으로</a></li>
+  <li class="sub"><a href="#s4">4. 짝에게 설치</a></li>
+  <li class="sub"><a href="#s5">5. 고치고 다시 배포</a></li>
+  <li class="ghead">③ 모드 <small>6~7단계</small></li>
+  <li><a href="#p3">PART 3 모드</a></li>
+  <li class="sub"><a href="#s6">6. 상태줄</a></li>
+  <li class="sub"><a href="#s7">7. 팀용 슬래시 커맨드</a></li>
+  <li class="ghead">막혔을 때 <small>언제든</small></li>
+  <li><a href="#p9">PART 4 막혔을 때</a></li>
+</ol>
+<button type="button" class="expand-btn" id="expandBtn">모두 펼치기</button>
+</nav>
+
+<main>
+<section class="part" id="p0">
+  <h2><small>시작 전</small>내가 만든 AI 를 팀이 같이 쓰게 합니다</h2>
+  <p class="lead">master 1step 에서 만든 하네스(cs-reply · 원본 보호 훅 · 비밀정보 검사 훅)는 아직 <b>내 PC 에만</b> 있습니다. 오늘은 먼저 일이 끝나면 <b>슬랙 봇이 내 DM 으로 보고</b>하게 만들고, 하네스와 봇을 <b>플러그인</b>으로 묶어 짝에게 설치시키고, 마지막으로 Claude Code 의 <b>화면과 동작</b>(상태줄 · 팀용 커맨드)을 팀 방식에 맞게 바꿔 플러그인에 실어 보냅니다.</p>
+  <div class="hero">
+    <b>끝나면 이렇게 됩니다</b>
+    <ul>
+      <li>내 슬랙 워크스페이스에 <b>내 봇</b>이 있고, 답변 작업이 끝나면 봇이 <b>5줄 보고</b>(✅ / 🔴)를 내 DM 으로 보낸다.</li>
+      <li>하네스와 봇 보고 스크립트를 <b>내 플러그인</b>으로 묶어 GitHub 비공개 리포에 올렸고, <b>짝이 설치</b>해 같은 답이 나왔다. 한 줄 고쳐 버전을 올리면 짝에게도 바뀐다.</li>
+      <li>아래 <b>상태줄</b>에 폴더 · 모델 · 사용량이 늘 보이고, <b>/cs-report</b> 한 번이면 답변 → 검산 → 고침 → 봇 보고가 돈다. 짝도 같은 커맨드를 쓴다.</li>
+    </ul>
+  </div>
+
+  <h3>퍼뜨리는 세 갈래</h3>
+  <div class="tbl"><table>
+    <tr><th>갈래</th><th>누가 쓰나</th><th>무엇이 전해지나</th><th>단계</th></tr>
+    <tr><td><b>슬랙 봇</b></td><td>슬랙만 보는 사람 (나 · 팀장)</td><td>일이 끝나면 봇이 DM 으로 정해진 형식의 보고</td><td>1~2</td></tr>
+    <tr><td><b>플러그인</b></td><td>Claude Code 를 쓰는 팀원</td><td>내 에이전트 · 훅 · 봇 보고 스크립트 묶음을 그대로 설치</td><td>3~5</td></tr>
+    <tr><td><b>모드</b></td><td>나와 팀원 (플러그인에 실어 보냄)</td><td>Claude Code 화면과 동작: 상태줄 · 팀용 슬래시 커맨드</td><td>6~7</td></tr>
+  </table></div>
+
+  <h3>준비물</h3>
+  <div class="tbl"><table>
+    <tr><th>준비물</th><th>설명</th></tr>
+    <tr><td><b>master 1step 결과</b></td><td><code class="k">cs_practice</code> 폴더(훅 두 개 · <code class="k">하네스.md</code> · <code class="k">CLAUDE.md</code> · Git 저장소)와 워크스페이스의 <code class="k">.claude\agents\cs-reply.md</code>. 정답표 <code class="k">정답표_문의답변.txt</code> 는 cs_practice 밖에</td></tr>
+    <tr><td><b>슬랙 내 워크스페이스</b></td><td>advance 1step 에서 회사 메일로 만든 <code class="k">&lt;내 이름&gt;-ax</code>. 내가 관리자라 앱을 바로 설치할 수 있습니다. 회사 워크스페이스에는 설치하지 않습니다</td></tr>
+    <tr><td><b>GitHub · gh</b></td><td>advance 1step 의 GitHub 계정과 gh 로그인</td></tr>
+    <tr><td><b>짝 한 명</b></td><td>옆 사람과 서로의 GitHub 아이디를 알려 줍니다. 혼자 온 사람은 강사 계정이 짝입니다</td></tr>
+    <tr><td><b>받을 파일</b></td><td><code class="k">정답_봇\slack_report.js</code> · <code class="k">정답_플러그인\cs-harness-market</code> 폴더 · <code class="k">정답_커맨드\cs-report.md</code>. 막혔을 때만 씁니다. 진행자가 공유 드라이브로 줍니다</td></tr>
+  </table></div>
+  <div class="box warn"><b>주의</b>GitHub 에는 <b>코드 · 설정 파일만</b> 올립니다. 문의 · 답변 같은 데이터와 <code class="k">.env</code>(봇 토큰)는 비공개 리포여도 올리지 않습니다. 봇 토큰은 웹훅 주소보다 할 수 있는 일이 많습니다.</div>
+</section>
+
+<details class="grp" id="g1">
+<summary><span class="gno">①</span> 슬랙 봇 <small>1~2단계 · 35분</small></summary>
+<section class="part" id="p1">
+  <h2><small>PART 1</small>슬랙 봇 (1~2단계)</h2>
+  <article class="step" id="s1" data-step="1">
+    <header><span class="no">1</span><h3>내 봇 만들기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>강사가 실제로 쓰는 <b>유삐 봇</b>의 DM 을 먼저 봅니다. 자동 작업이 끝나면 유삐가 짧은 보고를 보냅니다. 오늘은 같은 구조의 <b>내 봇</b>을 내 워크스페이스에 만들어 <b>나에게</b> DM 을 보냅니다(유삐 DM 은 강사와 유삐 사이라 교육생 봇은 보낼 수 없습니다).</p>
+      <div class="tbl"><table>
+        <tr><th></th><th>advance 1step 웹훅</th><th>오늘의 봇 (유삐 방식)</th></tr>
+        <tr><td>보내는 이름</td><td>채널에 붙은 앱 하나</td><td>봇 이름이 있는 「사람 같은」 발신자</td></tr>
+        <tr><td>보내는 곳</td><td>만들 때 고른 채널 하나로 고정</td><td>DM · 여러 채널 중 골라서 (<code class="k">chat.postMessage</code>)</td></tr>
+        <tr><td>열쇠</td><td>웹훅 주소</td><td>봇 토큰 <code class="k">SLACK_BOT_TOKEN</code>(xoxb-…) · <code class="k">.env</code> 에만</td></tr>
+        <tr><td>성공 확인</td><td>HTTP 200</td><td><b>200 이어도 실패일 수 있다</b> → 응답의 <code class="k">ok</code> 를 본다</td></tr>
+      </table></div>
+      <div class="row"><b>방법</b><div><ol>
+        <li>cs_practice 에서 <code class="k">claude</code> 를 켜고 붙여넣습니다.
+          <div class="cmd"><code>슬랙 봇 준비를 해 줘.
+1. cs_practice/bot/manifest.json 에 아래 JSON 을 그대로 저장한다. 「영문이름」 두 곳은 내 영문 이름으로 바꾼다 (이름을 모르면 물어본다)
+{"display_information":{"name":"영문이름-bot"},"features":{"bot_user":{"display_name":"영문이름-bot","always_online":true}},"oauth_config":{"scopes":{"bot":["chat:write","im:write"]}},"settings":{"org_deploy_enabled":false,"socket_mode_enabled":false,"token_rotation_enabled":false}}
+2. cs_practice/.env 에 빈 칸 두 줄을 만든다: SLACK_BOT_TOKEN= 과 SLACK_USER_ID= (파일이 있으면 그 두 줄만 더한다). .gitignore 에 .env 가 있는지 확인한다
+3. 값은 내가 직접 붙여넣는다. 토큰을 대화에 보여 달라고 하지 않는다
+4. manifest.json 내용을 보여 주고, 아래 사람이 할 일을 번호로 정리해 줘</code><button type="button">복사</button></div></li>
+        <li><b>사람이 할 일</b> — 브라우저에서 <code class="k">api.slack.com/apps</code> → <b>Create New App</b> → <b>From a manifest</b> → 워크스페이스 <code class="k">&lt;내 이름&gt;-ax</code> → JSON 칸에 manifest.json 내용을 붙여넣기 → <b>Create</b> → <b>Install to Workspace</b> → <b>허용</b>.</li>
+        <li><b>OAuth &amp; Permissions</b> 의 <b>Bot User OAuth Token</b>(xoxb- 로 시작)을 복사해 <code class="k">.env</code> 의 <code class="k">SLACK_BOT_TOKEN=</code> 뒤에 붙여넣습니다. 슬랙 앱에서 내 프로필 → <b>⋮</b> → <b>멤버 ID 복사</b>(U 로 시작) → <code class="k">SLACK_USER_ID=</code> 뒤에. 저장.</li>
+        <li>시험 DM 을 보냅니다.
+          <div class="cmd"><code>cs_practice/bot/slack_report.js 를 Node 로 만들어 줘.
+- .env 의 SLACK_BOT_TOKEN · SLACK_USER_ID 를 읽는다 (토큰은 화면에 찍지 않는다)
+- conversations.open 으로 나와의 DM 을 열고 chat.postMessage 로 보낸다
+- 응답마다 HTTP 상태가 아니라 ok 값을 확인하고, ok 가 false 면 error 값을 보여 주고 실패로 끝난다
+- 보낼 글자의 &amp; &lt; &gt; 는 &amp;amp; &amp;lt; &amp;gt; 로 바꾼다 (슬랙이 특수문자로 읽는다)
+- 인자: --title --status ok|fail --check --error --action --elapsed → 5줄 「*제목* ✅(또는 🔴) / 검증: / 오류: / 처리: / 소요:」
+다 만들면 --title "시험" --check "봇 연결" 로 한 번 보내고 ok 값을 보여 줘.</code><button type="button">복사</button></div></li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>슬랙 내 DM 에 <b>봇 이름</b>으로 「시험 ✅」 5줄이 왔다. 터미널에 <code class="k">ok:true</code>. <code class="k">.env</code> 는 <code class="k">git status</code> 에 안 보인다.</p></div></div>
+      <div class="box warn"><b>없으면</b>받은 <code class="k">정답_봇\slack_report.js</code> 를 <code class="k">cs_practice\bot\</code> 에 넣고, 터미널에서 <code class="k">node bot/slack_report.js --title 시험</code>. <code class="k">invalid_auth</code> 는 토큰 오타, <code class="k">missing_scope</code> 는 매니페스트 권한 빠짐, <code class="k">user_not_found</code> 는 멤버 ID 오타입니다.</div>
+    </div>
+  </article>
+  <article class="step" id="s2" data-step="2">
+    <header><span class="no">2</span><h3>유삐처럼 보고</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>유삐 보고는 늘 같은 틀입니다 — <b>제목 ✅/🔴 · 검증 · 오류 · 처리 · 소요</b> 5줄. 보는 사람은 첫 줄 표시만 보고 열어 볼지 정합니다. 하네스 작업 끝에 이 보고를 붙이고, 일부러 실패시켜 🔴 도 봅니다.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li>성공 보고.
+          <div class="cmd"><code>하네스.md 의 실행 순서대로 문의 답변을 쓰고, 끝나면 bot/slack_report.js 로 보고해 줘.
+- 제목: &lt;내 이름&gt; 문의 답변 (꺾쇠까지 그대로)
+- 다 맞으면 --status ok · 검증: 「15건 중 15건 규정 일치」 · 오류: 없음
+- 처리: 저장한 답변 파일 이름 · 소요: 시작부터 걸린 시간
+- 학생 · 학부모 정보는 보고에 넣지 않는다</code><button type="button">복사</button></div></li>
+        <li><code class="k">/clear</code> 후 실패 보고.
+          <div class="cmd"><code>이번엔 시험이야. cs-reply 에게 응대규정_옛판.md 를 보고 답변을 쓰게 한 뒤, 검산 담당이 응대규정.md 와 대조만 하고 고치지는 마. 그 결과를 bot/slack_report.js 로 --status fail 로 보고해. 검증: 「15건 중 N건 규정 일치」 · 오류: 다른 문의 번호와 이유.</code><button type="button">복사</button></div></li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>✅ 보고의 검증이 「15건 중 15건」이고 제목에 <code class="k">&lt;내 이름&gt;</code> 꺾쇠가 보인다. 🔴 보고의 오류에 <b>문의 4 · 9 · 13</b> 이 있다(정답표 [3]).</p></div></div>
+      <div class="box tip"><b>꺾쇠가 사라졌다면</b>슬랙은 <code class="k">&lt;…&gt;</code> 를 링크 · 멘션 표시로 읽어 글자를 지웁니다. 스크립트가 <code class="k">&amp;lt; &amp;gt;</code> 로 바꾸지 않은 것입니다 — 유삐 운영에서 실제로 겪은 일입니다.</div>
+    </div>
+  </article>
+</section>
+</details>
+
+<details class="grp" id="g2">
+<summary><span class="gno">②</span> 플러그인 <small>3~5단계 · 35분</small></summary>
+<section class="part" id="p2">
+  <h2><small>PART 2</small>플러그인 (3~5단계)</h2>
+  <article class="step" id="s3" data-step="3">
+    <header><span class="no">3</span><h3>내 하네스를 플러그인으로</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p><b>플러그인</b>은 에이전트 · 훅 · 커맨드 · 스크립트를 한 묶음으로 설치시키는 꾸러미입니다. 꾸러미 목록을 담은 리포를 <b>마켓플레이스</b>라 부릅니다. 내 GitHub 비공개 리포 하나를 내 팀 마켓플레이스로 씁니다.</p>
+      <div class="tbl"><table>
+        <tr><th>폴더 · 파일</th><th>무엇</th></tr>
+        <tr><td><code class="k">.claude-plugin\marketplace.json</code></td><td>마켓플레이스 이름 · 들어 있는 플러그인 목록</td></tr>
+        <tr><td><code class="k">plugins\cs-harness\.claude-plugin\plugin.json</code></td><td>플러그인 이름 · <b>버전</b> · 설명</td></tr>
+        <tr><td><code class="k">plugins\cs-harness\agents\</code></td><td><code class="k">cs-reply.md</code></td></tr>
+        <tr><td><code class="k">plugins\cs-harness\hooks\</code></td><td><code class="k">hooks.json</code> + 훅 스크립트 두 개</td></tr>
+        <tr><td><code class="k">plugins\cs-harness\scripts\</code></td><td><code class="k">slack_report.js</code> (봇 보고)</td></tr>
+      </table></div>
+      <div class="row"><b>방법</b><div><ol>
+        <li>워크스페이스 폴더(cs_practice 바로 위)를 VS Code 로 열고 <code class="k">claude</code>.
+          <div class="cmd"><code>워크스페이스 바로 아래에 cs-harness-market 폴더를 만들고 플러그인 마켓플레이스로 묶어 줘.
+- .claude-plugin/marketplace.json: name cs-harness-market · owner 는 내 GitHub 아이디(gh 로 직접 조회) · description · plugins 에 cs-harness 하나(source ./plugins/cs-harness)
+- plugins/cs-harness/.claude-plugin/plugin.json: name cs-harness · version 1.0.0 · description · author
+- agents/cs-reply.md = 워크스페이스 .claude/agents/cs-reply.md 복사
+- hooks/ = cs_practice/.claude/hooks 의 protect.js · secret_check.js 복사 + hooks.json (settings.json 의 hooks 칸과 같게, 명령의 경로만 node "${CLAUDE_PLUGIN_ROOT}/hooks/파일이름" 으로)
+- scripts/slack_report.js = cs_practice/bot/slack_report.js 복사
+- .gitignore 에 .env · 답변/ · *.csv. 문의.txt · 응대규정 · 답변 · .env 는 넣지 않는다
+- claude plugin validate . 로 검사하고 결과를 보여 줘
+- 통과하면 git init · 커밋 → gh repo create cs-harness-market --private --source . --push
+마지막에 리포 주소와 올라간 파일 목록을 보여 줘.</code><button type="button">복사</button></div></li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p><code class="k">Validation passed</code>. GitHub 리포에 자물쇠(Private)가 있고, 파일 목록에 <code class="k">문의.txt</code> · <code class="k">답변</code> · <code class="k">.env</code> 가 없다.</p></div></div>
+      <div class="box tip"><b>규칙 · 기억은 안 들어갑니다</b>플러그인에 실리는 것은 에이전트 · 훅 · 커맨드 · 스크립트입니다. cs_practice 의 <code class="k">CLAUDE.md</code> · 기억은 내 폴더에만 있습니다. 짝에게도 꼭 가야 하는 규칙은 5단계처럼 <b>에이전트 파일 안에</b> 적습니다.</div>
+      <div class="box warn"><b>없으면</b>받은 <code class="k">정답_플러그인\cs-harness-market</code> 폴더를 워크스페이스에 복사하고, <code class="k">marketplace.json</code> 의 <code class="k">&lt;내 GitHub 아이디&gt;</code> · <code class="k">plugin.json</code> 의 <code class="k">&lt;내 이름&gt;</code> 을 바꾼 뒤 위 카드의 마지막 두 줄(검사 · 올리기)만 시킵니다.</div>
+    </div>
+  </article>
+  <article class="step" id="s4" data-step="4">
+    <header><span class="no">4</span><h3>짝에게 설치</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>비공개 리포라 짝을 <b>협업자</b>로 초대해야 짝이 받을 수 있습니다. 서로 반대로 한 번씩 합니다(나 → 짝, 짝 → 나).</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li><b>내가</b> — 짝 초대.
+          <div class="cmd"><code>gh 로 내 cs-harness-market 리포에 짝 GitHub 아이디 「짝아이디」 를 읽기 권한(pull) 협업자로 초대해 줘. 초대 링크를 보여 줘.</code><button type="button">복사</button></div></li>
+        <li><b>짝이</b> — 메일이나 <code class="k">github.com/notifications</code> 에서 초대를 수락합니다.</li>
+        <li><b>짝이</b> — claude 를 <code class="k">exit</code> 한 터미널에서 한 줄씩. 첫 줄은 git 이 gh 로그인을 쓰게 하는 설정입니다.
+          <div class="cmd"><code>gh auth setup-git
+claude plugin marketplace add 내아이디/cs-harness-market
+claude plugin install cs-harness@cs-harness-market</code><button type="button">복사</button></div></li>
+        <li><b>짝이</b> — 짝의 cs_practice 에서 <code class="k">claude</code> 를 켜고 시험합니다.
+          <div class="cmd"><code>cs-harness 플러그인의 cs-reply 에이전트로 문의 답변을 써 줘. 그다음 문의.txt 첫 줄을 지워 줘.</code><button type="button">복사</button></div></li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>짝 화면에서 문의 4 · 9 · 13 이 정답표 [1] 과 같다. 「문의.txt 첫 줄 지우기」가 <b>플러그인 훅으로</b> 막혔다. <code class="k">/plugin</code> 의 설치 목록에 cs-harness 가 있다.</p></div></div>
+      <div class="box tip"><b>에이전트가 두 개로 보이면</b>짝도 advance 2step 에서 만든 자기 cs-reply 가 있어서입니다. 플러그인 것은 <code class="k">cs-harness:cs-reply</code> 처럼 앞에 플러그인 이름이 붙습니다. 그래서 카드에 「cs-harness 플러그인의」를 붙였습니다.</div>
+    </div>
+  </article>
+  <article class="step" id="s5" data-step="5">
+    <header><span class="no">5</span><h3>고치고 다시 배포</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>플러그인은 <b>버전</b>으로 바뀐 것을 알립니다. master 1step 에서 내 폴더 CLAUDE.md 에만 있던 <b>서명 규칙</b>을 에이전트에 넣어 짝에게도 보냅니다.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li><b>내가</b> — 워크스페이스에서 켠 claude 에.
+          <div class="cmd"><code>cs-harness-market 의 plugins/cs-harness/agents/cs-reply.md 판단 기준 맨 아래에 「답변마다 맨 끝에 「— 가상 수학교실 상담실 드림」 한 줄을 붙인다」를 더하고, plugin.json 의 version 을 1.1.0 으로 올려 줘. claude plugin validate . 통과 후 커밋하고 push 해 줘.</code><button type="button">복사</button></div></li>
+        <li><b>짝이</b> — claude 를 <code class="k">exit</code> 한 터미널에서 받은 뒤 다시 켭니다.
+          <div class="cmd"><code>claude plugin marketplace update cs-harness-market
+claude plugin update cs-harness@cs-harness-market</code><button type="button">복사</button></div></li>
+        <li><b>짝이</b> — <code class="k">claude</code> 를 켜고 4단계 카드의 첫 문장만 다시 시킵니다.</li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>짝의 새 답변 끝에 「— 가상 수학교실 상담실 드림」이 붙었다. <code class="k">claude plugin list</code> 에 1.1.0 이 보인다.</p></div></div>
+      <div class="box warn"><b>버전을 안 올리면</b>내용을 고쳐 push 해도 짝 쪽은 「이미 최신」으로 보고 받지 않을 수 있습니다. 고칠 때마다 <code class="k">version</code> 을 올립니다.</div>
+    </div>
+  </article>
+</section>
+</details>
+
+<details class="grp" id="g3">
+<summary><span class="gno">③</span> 모드 <small>6~7단계 · 25분</small></summary>
+<section class="part" id="p3">
+  <h2><small>PART 3</small>모드 (6~7단계)</h2>
+  <article class="step" id="s6" data-step="6">
+    <header><span class="no">6</span><h3>상태줄</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p><b>상태줄</b>은 입력창 아래 한 줄입니다. 무엇을 띄울지 내가 정합니다 — 지금 어느 폴더에서 어떤 모델로 얼마나 썼는지가 늘 보이면, 팀 플러그인을 돌릴 때 엉뚱한 폴더 · 과한 사용량을 바로 알아챕니다.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li>cs_practice 에서 켠 claude 에.
+          <div class="cmd"><code>/statusline 지금 폴더 이름 · 모델 이름 · 이번 세션 사용량(비용 추정치)과 컨텍스트 사용 % 를 한 줄로 보여 줘. 스크립트는 Node 로 cs_practice/.claude/statusline.js 에 두고, 설정은 cs_practice/.claude/settings.json 의 statusLine 에 넣어. hooks 칸은 그대로 둬.</code><button type="button">복사</button></div></li>
+        <li><code class="k">exit</code> → <code class="k">claude</code>. 질문을 하나 해 보고 아래 줄의 숫자가 바뀌는지 봅니다.</li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>입력창 아래에 <code class="k">cs_practice · 모델 이름 · 사용량 · 컨텍스트 %</code> 한 줄이 보인다. <code class="k">/hooks</code> 에 훅 두 개가 그대로 있다.</p></div></div>
+      <div class="box tip"><b>상태줄은 내 화면 설정</b>상태줄은 각자의 설정 파일에 들어갑니다. 짝도 원하면 같은 카드를 자기 폴더에서 붙여넣습니다. 팀 모두에게 같은 <b>동작</b>을 보내는 것은 다음 단계의 커맨드입니다.</div>
+    </div>
+  </article>
+  <article class="step" id="s7" data-step="7">
+    <header><span class="no">7</span><h3>팀용 슬래시 커맨드 — /cs-report</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>지금까지는 긴 카드를 붙여넣었습니다. <b>슬래시 커맨드</b>로 만들면 <code class="k">/cs-report</code> 한 번에 하네스 순서(답변 → 검산 → 고침)와 봇 보고가 돌고, 플러그인에 실으면 짝도 같은 커맨드를 씁니다.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li><b>내가</b> — 워크스페이스에서 켠 claude 에.
+          <div class="cmd"><code>cs-harness-market 의 plugins/cs-harness/commands/cs-report.md 에 팀용 커맨드를 만들어 줘.
+- 첫머리 description: 문의 답변 → 검산 → 고침 → 슬랙 보고를 한 번에
+- 본문 순서: ① 시작 시각 기록 ② cs-reply 로 문의.txt 답변(응대규정.md) ③ 에이전트를 하나 더 검산 담당으로 따로 불러 응대규정.md 와 대조 ④ 다르면 cs-reply 가 고치고 한 번 더 대조, 두 번째도 다르면 그대로 보고 ⑤ 이 플러그인의 scripts/slack_report.js 를 지금 폴더에서 node 로 실행해 보고(맞으면 ok · 「15건 중 15건 규정 일치」, 남으면 fail · 문의 번호와 이유) ⑥ 마지막 답은 3줄
+- 학생 · 학부모 정보는 보고에 넣지 않는다
+그리고 plugin.json version 을 1.2.0 으로 올리고, claude plugin validate . 통과 후 커밋 · push 해 줘.</code><button type="button">복사</button></div></li>
+        <li><b>나와 짝 모두</b> — <code class="k">exit</code> 한 터미널에서 5단계 2번의 두 줄로 업데이트(내 PC 에도 설치되어 있지 않으면 4단계 3번의 두 · 세 번째 줄로 설치).</li>
+        <li><b>나와 짝 모두</b> — 각자의 cs_practice 에서 <code class="k">claude</code> 를 켜고 <code class="k">/cs-report</code> 를 입력합니다. 짝은 1단계를 해 둔 자기 봇 · 자기 <code class="k">.env</code> 로 자기 DM 을 받습니다.</li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>나와 짝 둘 다 자기 DM 에 「문의 답변 ✅ · 검증: 15건 중 15건 규정 일치」가 왔다. 짝은 내 토큰 없이 자기 토큰으로 보냈다.</p></div></div>
+      <div class="box tip"><b>커맨드 이름이 다르게 보이면</b>플러그인 커맨드는 <code class="k">/cs-harness:cs-report</code> 처럼 플러그인 이름이 붙어 보일 수 있습니다. <code class="k">/cs</code> 까지 치면 목록에 뜹니다.</div>
+      <div class="box warn"><b>없으면</b>받은 <code class="k">정답_커맨드\cs-report.md</code> 를 <code class="k">cs-harness-market\plugins\cs-harness\commands\</code> 에 넣고(폴더가 없으면 만든다) 카드의 마지막 문장(버전 · 검사 · push)만 시킵니다.</div>
+    </div>
+  </article>
+  <h3>정리 — 무엇으로 퍼뜨릴까</h3>
+  <div class="tbl"><table>
+    <tr><th>퍼뜨릴 것</th><th>도구</th><th>오늘 본 것</th></tr>
+    <tr><td>결과를 사람에게 알리기</td><td>슬랙 봇 (5줄 보고)</td><td>1 · 2단계</td></tr>
+    <tr><td>에이전트 · 훅 · 스크립트를 팀원 PC 에</td><td>플러그인 (비공개 리포 마켓플레이스)</td><td>3 · 4단계</td></tr>
+    <tr><td>고친 것을 팀원에게 다시</td><td>버전 올리기 → 업데이트</td><td>5단계</td></tr>
+    <tr><td>내 화면에 늘 보이게</td><td>상태줄</td><td>6단계</td></tr>
+    <tr><td>팀이 같은 순서로 일하게</td><td>슬래시 커맨드 (플러그인에 실어)</td><td>7단계</td></tr>
+  </table></div>
+  <div class="box tip"><b>수업 끝 — 전체 과정 마지막</b>짝의 협업자 초대는 그대로 두어도 됩니다(읽기 권한). 짝 PC 에서 플러그인을 지우려면 <code class="k">claude plugin uninstall cs-harness@cs-harness-market</code>. 봇 토큰이 든 <code class="k">.env</code> 는 GitHub 에 없는지 한 번 더 보고 마칩니다. 수고하셨습니다.</div>
+</section>
+</details>
+
+<details class="grp" id="g9">
+<summary><span class="gno">!</span> 막혔을 때 <small>언제든</small></summary>
+<section class="part" id="p9">
+  <h2><small>PART 4</small>막혔을 때</h2>
+  <div class="box warn"><b>먼저</b>5분 넘게 막히면 받은 정답 파일을 씁니다 — 봇은 <code class="k">정답_봇</code>, 플러그인은 <code class="k">정답_플러그인</code>, 커맨드는 <code class="k">정답_커맨드</code>. 각 단계 「없으면」 상자대로 넣습니다.</div>
+  <div class="tbl"><table>
+    <tr><th>증상</th><th>원인</th><th>해결</th></tr>
+    <tr><td>앱 만들기에서 워크스페이스가 안 보인다</td><td>브라우저가 다른 슬랙 계정으로 로그인됐다</td><td><code class="k">&lt;내 이름&gt;-ax</code> 에 로그인한 계정으로 다시</td></tr>
+    <tr><td><code class="k">ok:false</code> · <code class="k">invalid_auth</code></td><td>토큰 오타 · 앞뒤 공백 · 따옴표</td><td><code class="k">.env</code> 의 값을 다시 붙여넣기 (xoxb- 로 시작)</td></tr>
+    <tr><td><code class="k">ok:false</code> · <code class="k">missing_scope</code></td><td>매니페스트에 <code class="k">chat:write</code> · <code class="k">im:write</code> 가 빠졌다</td><td>앱 설정의 권한 추가 → <b>Reinstall</b> → 새 토큰으로 바꾸기</td></tr>
+    <tr><td>DM 이 안 오고 오류도 없다</td><td>멤버 ID 가 아니라 이름을 넣었다</td><td>프로필 → ⋮ → 멤버 ID 복사(U 로 시작)</td></tr>
+    <tr><td>제목의 <code class="k">&lt;내 이름&gt;</code> 이 사라졌다</td><td>꺾쇠를 바꾸지 않았다</td><td>2단계 상자 → 정답 <code class="k">slack_report.js</code></td></tr>
+    <tr><td>커밋이 「비밀정보 검사」로 막혔다</td><td><code class="k">.env</code> 나 토큰이 든 파일이 같이 올라가려 했다 — 훅이 제대로 일한 것</td><td><code class="k">.gitignore</code> 에 넣고 다시 커밋</td></tr>
+    <tr><td><code class="k">claude plugin validate</code> 오류</td><td>JSON 쉼표 · 따옴표 · 폴더 위치</td><td>오류 줄을 Claude 에게 보여 주고 고치게 하기 · 안 되면 정답 폴더</td></tr>
+    <tr><td>짝이 marketplace add 에서 권한 · 404 오류</td><td>초대를 아직 수락하지 않았다 · <code class="k">gh auth setup-git</code> 을 안 했다</td><td>초대 수락 → <code class="k">gh auth setup-git</code> → 다시</td></tr>
+    <tr><td>짝 PC 에서 훅이 안 막는다</td><td>설치 뒤 다시 켜지 않았다 · Node 가 없다</td><td><code class="k">exit</code> → <code class="k">claude</code> → <code class="k">/hooks</code> 확인 · <code class="k">node -v</code></td></tr>
+    <tr><td>짝이 업데이트해도 그대로다</td><td>버전을 안 올렸다 · 업데이트 뒤 다시 안 켰다</td><td>5단계 상자 → 버전 올려 push → 짝은 두 줄 업데이트 후 다시 켜기</td></tr>
+    <tr><td><code class="k">/cs-report</code> 가 목록에 없다</td><td>업데이트 뒤 다시 안 켰다 · 이름 앞에 플러그인 이름이 붙었다</td><td>다시 켜고 <code class="k">/cs</code> 까지 쳐서 목록 보기</td></tr>
+    <tr><td>사용량 한도에 걸렸다</td><td>커맨드 한 번에 답변 · 검산이 같이 돈다</td><td>강사 화면으로 보고 다음 단계로</td></tr>
+  </table></div>
+  <button type="button" class="fold-close">닫기</button>
+</section>
+</details>
+</main>
+</div>
+
+<dialog id="zoom"><img alt=""></dialog>
+<dialog id="rel" class="relnote" aria-label="수정 내역">
+  <button class="close" type="button" autofocus>닫기</button>
+  <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
+  <div class="tbl"><table>
+    <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.0</b></td><td>2026-11-06</td><td>
+      <ul><li><b>첫 판</b> 컨셉 「팀에 퍼뜨리기」 — 3 PART · 7단계, 순서 = <b>슬랙 봇 → 플러그인 → 모드</b>(내 봇 만들기 · 유삐처럼 보고 · 내 하네스를 플러그인으로 · 짝에게 설치 · 고치고 다시 배포 · 상태줄 · 팀용 슬래시 커맨드)</li>
+      <li><b>소재</b> master 1step 의 cs_practice 하네스(cs-reply · 훅 두 개)를 그대로 씀</li>
+      <li><b>받을 파일</b> <code class="k">정답_봇</code> · <code class="k">정답_플러그인</code> · <code class="k">정답_커맨드</code></li></ul></td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--sub)">기준 버전: Claude Code 2.1.318</p>
+</dialog>
+
+
+<script>
+(function(){
+  var KEY='cc-master-2step-steps-v1';
+  var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function update(){
+    var n=0;
+    steps.forEach(function(s){var c=s.querySelector('input[type=checkbox]');s.classList.toggle('done',c.checked);if(c.checked)n++});
+    document.getElementById('barFill').style.width=(n/steps.length*100)+'%';
+    document.getElementById('barText').textContent=n+' / '+steps.length+' 단계';
+  }
+  steps.forEach(function(s){
+    var c=s.querySelector('input[type=checkbox]');
+    c.checked=!!saved[s.dataset.step];
+    c.addEventListener('change',function(){
+      saved[s.dataset.step]=c.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+      update();
+    });
+  });
+  update();
+
+  document.querySelectorAll('.cmd button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.previousElementSibling.textContent;
+      function done(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사'},1500)}
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,fallback)}else{fallback()}
+      function fallback(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}
+    });
+  });
+
+  var dlg=document.getElementById('zoom');
+  document.querySelectorAll('figure img').forEach(function(img){
+    img.addEventListener('click',function(){dlg.querySelector('img').src=img.src;dlg.showModal()});
+  });
+  dlg.addEventListener('click',function(){dlg.close()});
+
+  var rel=document.getElementById('rel');
+  document.getElementById('relBtn').addEventListener('click',function(){rel.showModal()});
+  rel.querySelector('.close').addEventListener('click',function(){rel.close()});
+
+  // 4묶음 접기/펼치기 (단계 번호·앵커는 그대로라 옛 링크도 산다)
+  var grps=[].slice.call(document.querySelectorAll('details.grp'));
+  function openFor(t){var d=t&&t.closest?t.closest('details.grp'):null;if(d)d.open=true;return d}
+  function openByHash(){
+    if(!location.hash)return false;
+    var t=null;try{t=document.querySelector(location.hash)}catch(e){}
+    if(!t)return false;
+    if(openFor(t))setTimeout(function(){t.scrollIntoView()},0);
+    return true;
+  }
+  // 첫 화면은 무조건 전부 접힌다 (해시가 있어도, 새로고침이어도)
+  // 브라우저는 새로고침·뒤로가기 때 details 의 펼침 상태를 되살린다. 그것까지 지운다.
+  function collapseAll(){[].slice.call(document.querySelectorAll('details')).forEach(function(d){d.open=false})}
+  var touched=false;   // 사람이 한 번 누른 뒤에는 늦게 오는 load 가 그것을 닫아 버리면 안 된다
+  document.addEventListener('click',function(){touched=true},true);
+  function collapseIfUntouched(){if(!touched)collapseAll()}
+  collapseAll();
+  window.addEventListener('DOMContentLoaded',collapseIfUntouched);
+  window.addEventListener('load',collapseIfUntouched);
+  window.addEventListener('pageshow',function(e){if(e.persisted){touched=false;collapseAll()}});
+  // 펼치는 것은 페이지 안에서 링크를 눌렀을 때만이다 (목차 · 표의 (7단계) · 맨 위 [막혔을 때])
+  window.addEventListener('hashchange',openByHash);
+  // 맨 위 [막혔을 때] 처럼 이미 같은 해시에 있을 때는 hashchange 가 안 뜬다
+  [].slice.call(document.querySelectorAll('header.top a[href^="#"]')).forEach(function(a){
+    a.addEventListener('click',function(){
+      var t=null;try{t=document.querySelector(a.getAttribute('href'))}catch(e){}
+      if(t)openFor(t);
+    });
+  });
+  var expandBtn=document.getElementById('expandBtn');
+  expandBtn.addEventListener('click',function(){
+    var toOpen=grps.some(function(d){return !d.open});
+    grps.forEach(function(d){d.open=toOpen});
+    expandBtn.textContent=toOpen?'모두 접기':'모두 펼치기';
+  });
+  // 막히면 블록의 [닫기] (첫 화면에서는 전부 접힌 상태로 시작한다 = details 에 open 을 달지 않는다)
+  document.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('.fold-close'):null;if(!b)return;
+    var d=b.closest('details');if(!d)return;
+    d.open=false;var sm=d.querySelector('summary');if(sm)sm.scrollIntoView({block:'center'});
+  });
+  // 인쇄할 때는 접힌 것까지 전부 펼친다 (묶음 4개 + 막히면 + Q&A)
+  window.addEventListener('beforeprint',function(){[].slice.call(document.querySelectorAll('details')).forEach(function(d){d.open=true})});
+
+  var toc=document.getElementById('toc'),btn=document.getElementById('menuBtn');
+  toc.addEventListener('click',function(e){
+    var a=e.target.closest('a');if(!a)return;
+    var t=null;try{t=document.querySelector(a.getAttribute('href'))}catch(err){}
+    if(t)openFor(t);
+  });
+  btn.addEventListener('click',function(){var o=toc.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  var links=[].slice.call(toc.querySelectorAll('a'));
+  links.forEach(function(a){a.addEventListener('click',function(){toc.classList.remove('open');btn.setAttribute('aria-expanded',false)})});
+  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function sync(){
+    var y=window.pageYOffset,hit=links[0];
+    targets.forEach(function(t,i){if(t&&t.offsetParent!==null&&t.getBoundingClientRect().top+y<=y+90)hit=links[i]});
+    // 맨 아래에서는 마지막 항목(더 스크롤할 수 없어 기준선에 못 닿는다)
+    if(y+window.innerHeight>=document.documentElement.scrollHeight-2)hit=links[links.length-1];
+    links.forEach(function(a){a.classList.remove('on')});hit.classList.add('on');
+  }
+  window.addEventListener('scroll',sync,{passive:true});
+  window.addEventListener('resize',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
