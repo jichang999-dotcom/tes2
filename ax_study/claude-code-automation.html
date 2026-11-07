@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.28 · 2026-11-07</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.29 · 2026-11-07</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -484,14 +484,12 @@ disable-model-invocation: true
         <div class="cmd"><code style="white-space:pre-wrap">GitHub 에서 내 업무에 맞는 Claude 스킬을 찾아 엑셀로 정리하는 스크립트를 만들어 줘.
 1. 폴더명: [입력 — 영어 · 워크스페이스 바로 아래 · 예: skill_finder]
 2. 업무명: [입력 — 예: 센터별 매출 증감 분석]
+결과 엑셀은 실행할 때마다 파일 이름에 날짜를 붙여 날짜별 새 파일로 저장해 줘(예: skills_20261107.xlsx).
 만들기 전에 무엇을 만들지 먼저 보여 줘. 다 만들면 한 번 실행해서 결과를 표로 보여 주고, 스크립트만 커밋해 줘.</code><button type="button">복사</button></div></div></div>
       <div class="row"><b>확인</b><div><ol>
-        <li>워크스페이스에 <b>내가 정한 영어 폴더</b>가 생겼고, 그 안에 스크립트와 결과 엑셀이 있다.</li>
+        <li>워크스페이스에 <b>내가 정한 영어 폴더</b>가 생겼고, 그 안에 스크립트와 <b>오늘 날짜가 붙은</b> 결과 엑셀이 있다.</li>
         <li>엑셀을 열면 내 업무에 맞는 스킬 저장소 목록이 보인다. <code class="k">git status</code> 에 엑셀이 없다(1단계 제외 목록).</li>
       </ol></div></div>
-      <div class="box tip"><b>폴더 이름은 왜 영어로</b>12단계의 <code class="k">.bat</code> 과 작업 스케줄러는 한글 경로에서 글자가 깨져 엉뚱하게 실행됩니다. 폴더 · 파일 이름은 처음부터 영어로 짓습니다.</div>
-      <div class="box tip"><b>엑셀 도구 설치를 물으면</b>엑셀 파일을 쓰려고 <code class="k">openpyxl</code> 설치를 물을 수 있습니다. 창에 적힌 명령이 그 설치면 허용합니다.</div>
-      <div class="box warn"><b>주의</b>키 없는 GitHub 검색은 <b>1분에 10번</b>까지입니다. 반복문으로 계속 검색하게 만들지 않습니다.</div>
     </div>
   </article>
 </section>
@@ -504,16 +502,12 @@ disable-model-invocation: true
       <div class="row"><b>방법</b><div><p><code class="k">[입력]</code> 칸을 내 것으로 채워 붙여넣습니다. 채운 프롬프트는 메모장에 남겨 두면 다음 단계에서도 폴더명을 그대로 씁니다.</p>
         <div class="cmd"><code style="white-space:pre-wrap">11단계 스크립트를 윈도우 작업 스케줄러로 매일 저절로 돌게 해 줘.
 1. 폴더명: [입력 — 11단계 폴더명]
-2. 작업 이름: [입력 — 영어 · 예: AX_skill_daily]
-3. 실행 시각: [입력 — 예: 매일 09:00]
+2. 실행 시각: [입력 — 예: 매일 09:00]
 등록한 뒤 지금 한 번 실행해서, 결과 엑셀이 새로 저장됐는지와 작업의 마지막 실행 결과를 보여 줘.</code><button type="button">복사</button></div></div></div>
       <div class="row"><b>확인</b><div><ol>
-        <li>결과 엑셀의 수정 시각이 방금으로 바뀌었다.</li>
-        <li>윈도우 시작 → 「작업 스케줄러」 → <b>작업 스케줄러 라이브러리</b>에 내 작업 이름이 있고 마지막 실행 결과가 <code class="k">(0x0)</code>.</li>
+        <li>폴더에 오늘 날짜 엑셀이 새로 저장됐다.</li>
+        <li>윈도우 시작 → 「작업 스케줄러」 → <b>작업 스케줄러 라이브러리</b>에 Claude 가 알려 준 작업 이름이 있고 마지막 실행 결과가 <code class="k">(0x0)</code>.</li>
       </ol></div></div>
-      <div class="box warn"><b>주의</b><code class="k">.bat</code> 파일에는 <b>한글을 쓰지 않습니다.</b> 윈도우 콘솔에서 글자가 깨져 명령이 엉뚱하게 실행됩니다. 한글이 필요한 일은 <code class="k">.py</code> 안에서 합니다.</div>
-      <div class="box warn"><b>주의</b>실행 시각에 결과 엑셀을 <b>열어 두면</b> 저장이 실패합니다. 확인한 뒤에는 닫아 둡니다.</div>
-      <div class="box tip"><b>실행할 때 검은 창이 잠깐 떴다 사라집니다</b>정상입니다. 창을 숨기는 방법은 2step에서 다룹니다.</div>
       <div class="box tip"><b>PC 가 꺼져 있으면 돌지 않습니다</b>작업 스케줄러는 <b>PC 가 켜져 있고 내 계정으로 로그인한 동안만</b> 돕니다. PC 가 꺼져도 돌아야 하는 일은 바로 아래 「PC 가 꺼져 있을 때는?」 표를 봅니다.</div>
     </div>
   </article>
@@ -643,6 +637,7 @@ disable-model-invocation: true
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.29</b></td><td>2026-11-07</td><td><ul><li><b>추가</b> 11단계 프롬프트 = 결과 엑셀을 날짜별 새 파일로</li><li><b>삭제</b> 11단계 확인 아래 상자 3개 · 12단계 작업 이름 칸 · 12단계 상자 3개(.bat 한글 · 엑셀 열어 두기 · 검은 창)</li></ul></td></tr>
     <tr><td><b>v2.28</b></td><td>2026-11-07</td><td><b>삭제</b> 11단계 틀의 검색어 · 결과 엑셀 이름 · 엑셀 열 칸 — 폴더명 · 업무명 두 칸만</td></tr>
     <tr><td><b>v2.27</b></td><td>2026-11-07</td><td><ul><li><b>바뀜</b> 11단계 = 업무 스킬 찾기 — 영어 폴더 하나 · 결과는 엑셀</li><li><b>바뀜</b> 11 · 12 · 15단계 프롬프트 = 교육생이 채우는 틀(폴더명 · 업무명 · 검색어 … [입력])</li><li><b>삭제</b> 옛 13단계 놓친 실행 · 절전 · 지우기 → 14 · 15 · 16단계가 13 · 14 · 15단계로 (진행 체크는 새로 시작 · 15단계)</li><li><b>바뀜</b> 준비물 「교육 자료」 = 드라이브 1step 폴더의 프롬프트 틀 txt · 11단계 정답 상자 삭제</li></ul></td></tr>
     <tr><td><b>v2.26</b></td><td>2026-11-07</td><td><ul><li><b>바뀜</b> PART 6 제목 · 도입 「내 업무 스킬 매일 찾기」 — 왜 매일 찾는지 · PART 7 · 8 의 재료임을 밝힘</li><li><b>바뀜</b> 11단계 스크립트 = 스킬만 검색(「검색어 claude skill」)</li><li><b>삭제</b> 11단계 구글 드라이브 복사 · 준비물 드라이브 앱 · 막혔을 때 드라이브 줄 (읽던 클라우드 루틴이 v2.24 에서 빠짐)</li><li><b>바뀜</b> 16단계 슬랙 = 새 스킬 건수 + 상위 3개 이름 · 별 · 주소, 0건이면 「오늘 새 스킬 없음」</li><li><b>추가</b> 준비물 「교육 자료」 = 드라이브 advance › 1step 폴더(가이드 · 정답 gh_skills.py · run.bat) · 11단계 「막혔으면 정답과 비교」 상자</li></ul></td></tr>
