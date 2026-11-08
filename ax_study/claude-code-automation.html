@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.33 · 2026-11-08</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.34 · 2026-11-08</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -453,7 +453,7 @@ disable-model-invocation: true
         <div class="cmd"><code style="white-space:pre-wrap">내 업무에 가장 맞는 Claude Code 스킬 · 에이전트를 GitHub 에서 찾아 줘. 아무것도 내려받지 마.
 1. 내 업무: [입력 — 예: 매주 센터별 매출 엑셀 · CSV 를 분석해 지난주 대비 증감과 원인을 요약한다]
 내 업무에서 영어 검색어 2~3개를 뽑아 보여 주고, 후보마다 별 · 포크 · 마지막 업데이트 날짜 · 열린 이슈 수 · 라이선스 · 파일 구성(그 스킬 폴더에 SKILL.md 한 파일뿐인지, .py · .sh 같은 스크립트가 딸렸는지) · 내 업무와 맞는 점을 표로 정리해 줘.
-가장 적합한 것 하나를 이유와 함께 골라 줘. 10단계에서 그 파일만 받아 바로 쓸 수 있게 SKILL.md 한 파일이고 스크립트를 실행하지 않는 것을 우선해. 저장소 주소 · 스킬 폴더 경로 · 스킬 이름을 알려 줘.
+별이 10개 미만이거나 라이선스가 없는 저장소는 표에 남기되 고르지 마. 가장 적합한 것 하나를 이유와 함께 골라 줘. 10단계에서 그 파일만 받아 바로 쓸 수 있게 SKILL.md 한 파일이고 스크립트를 실행하지 않는 것을 우선해. 저장소 주소 · 스킬 폴더 경로 · 스킬 이름을 알려 줘.
 맨 끝에 쓴 검색어를 「검색어: …」 한 줄로 따로 적어 줘.</code><button type="button">복사</button></div></div></div>
       <div class="row"><b>확인</b><div><p>후보 비교표가 나오고, 받을 것 하나(저장소 주소 · 스킬 이름)와 「검색어:」 줄을 메모장에 적었다. Claude 의 추천과 달라도 됩니다 — 고르는 것은 사람.</p></div></div>
       <details class="q fix"><summary>주의사항 (2)</summary><div style="margin-top:8px">
@@ -659,6 +659,7 @@ disable-model-invocation: true
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.34</b></td><td>2026-11-08</td><td><b>바뀜</b> 9단계 프롬프트 — 「별이 10개 미만이거나 라이선스가 없는 저장소는 표에 남기되 고르지 마」 (v2.31 카드 실측: 별 0~1 · 라이선스 없는 저장소가 추천됨 · 검색 범위는 그대로 GitHub 전체)</td></tr>
     <tr><td><b>v2.33</b></td><td>2026-11-08</td><td><b>바뀜</b> 1단계 — 칸을 비울 땐 <code class="k">[입력 — …]</code> 글자까지 지운다는 안내 · 프롬프트에 「이미 있는 저장소(.git)는 지우거나 새로 만들자고 하지 마」 (v2.31 카드 실측: 양식을 남기면 멈춰 다시 묻고, 이미 저장소인 곳에서 「.git 지우고 새로」를 제안함)</td></tr>
     <tr><td><b>v2.32</b></td><td>2026-11-08</td><td><b>바뀜</b> 단계마다 확인 아래 주의 · 팁 상자를 「주의사항 (개수)」 접힌 카드 하나로 묶음 — 누르면 펼쳐짐 (1~10 · 12~15단계)</td></tr>
     <tr><td><b>v2.31</b></td><td>2026-11-08</td><td><ul><li><b>바뀜</b> 1 · 7 · 8 · 9 · 10단계 프롬프트 = 11단계처럼 교육생이 채우는 틀([입력] 칸) — 1단계 프로젝트 폴더 · 더 뺄 것 · Git 이름 · 메일 / 7 · 8단계 리포 이름 / 9단계 내 업무 / 10단계 저장소 주소 · 스킬 이름</li><li><b>삭제</b> 1단계 후보 고르기 · 「좋아」 확인 대기 · 7단계 리포 이름 제안 대기 (안전장치 = 이미 저장소면 멈춤 · 데이터 · 개인정보면 멈춤 · 로그인은 사람은 그대로)</li></ul></td></tr>
