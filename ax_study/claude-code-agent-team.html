@@ -184,7 +184,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
     <tr><td><b>워크스페이스 폴더</b></td><td>basic 1step 에서 쓴 워크스페이스 폴더(<code class="k">basic_data</code> 가 들어 있는 곳). 오늘 만드는 에이전트 파일은 이 폴더의 <code class="k">.claude\agents</code> 에 둡니다</td></tr>
-    <tr><td><b>받을 파일</b></td><td><code class="k">cs_practice</code> 폴더(<code class="k">문의.txt</code> · <code class="k">응대규정.md</code> · <code class="k">응대규정_옛판.md</code> + 하위 폴더 <code class="k">담당별</code> = <code class="k">문의_A.txt</code> · <code class="k">문의_B.txt</code> · <code class="k">문의_C.txt</code> · <code class="k">응대규정.md</code> · <code class="k">결론낱말.txt</code>) · <code class="k">정답_응대담당.md</code> · <code class="k">정답표_문의답변.txt</code> · <code class="k">정답표_담당별문의.txt</code> · <code class="k">팀켜기.txt</code>. 진행자가 공유 드라이브로 줍니다. 정답표는 <code class="k">cs_practice</code> <b>밖</b>에 둡니다(에이전트가 읽으면 시험이 안 됩니다)</td></tr>
+    <tr><td><b>받을 파일</b></td><td><code class="k">cs_practice</code> 폴더(<code class="k">문의.txt</code> · <code class="k">응대규정.md</code> · <code class="k">응대규정_옛판.md</code> + 하위 폴더 <code class="k">담당별</code> = <code class="k">문의_A.txt</code> · <code class="k">문의_B.txt</code> · <code class="k">문의_C.txt</code> · <code class="k">응대규정.md</code> · <code class="k">결론낱말.txt</code>) · <code class="k">정답_응대담당.md</code>(2단계에서 막혔을 때 쓰는 완성본) · <code class="k">팀켜기.txt</code>. 진행자가 공유 드라이브로 줍니다. <code class="k">정답_응대담당.md</code> 는 <code class="k">cs_practice</code> <b>밖</b>에 둡니다</td></tr>
     <tr><td>Claude Code</td><td>터미널 하나에서 <code class="k">claude</code> 를 켭니다. 슬랙 · 작업 스케줄러 · Git 은 오늘 쓰지 않습니다</td></tr>
   </table></div>
   <div class="box tip"><b>모두 지어낸 자료입니다</b>문의 15건과 응대 규정은 교육용 가상 자료입니다. 실제 회사 규정이 아니고, 실제 학부모 · 학생 정보는 들어 있지 않습니다.</div>
@@ -225,7 +225,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켠 뒤(새 에이전트 파일은 다시 켜야 읽힌다) 일을 시킵니다.
           <div class="cmd"><code>cs-reply 에이전트를 불러서 업무 지시서대로 문의 답변을 쓰게 해 줘.</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>에이전트 파일에 업무 지시서 네 줄이 있다. 답이 결론 3줄 + 파일 이름뿐이고, 답변 파일의 문의 4 · 9 · 13 이 <code class="k">정답표_문의답변.txt</code> [1] 과 같다(보강 된다 · 교재비 돌려받는다 · 다음 달 1일부터 반 변경).</p></div></div>
+      <div class="row"><b>확인</b><div><p>에이전트 파일에 업무 지시서 네 줄이 있다. 답이 결론 3줄 + 파일 이름뿐이고, <code class="k">cs_practice\답변\</code> 에 답변 파일이 생겼다. 문의마다 「근거: 규정 N번」 줄이 있다. 답변 내용은 사람마다 달라도 괜찮습니다.</p></div></div>
       <div class="box warn"><b>없으면</b>받은 <code class="k">정답_응대담당.md</code> 를 워크스페이스의 <code class="k">.claude\agents\cs-reply.md</code> 로(폴더가 없으면 만든다) 넣은 뒤 <code class="k">exit</code> → <code class="k">claude</code>. 정답 파일에는 업무 지시서 칸이 이미 들어 있어 3번은 건너뜁니다.</div>
     </div>
   </article>
@@ -254,7 +254,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 - 결과는 담당별/답변/서브2_A.md · 서브2_B.md · 서브2_C.md 로 저장하고, 너는 이어 붙여 담당별/답변/서브2.md 로 저장만 한다 (내용은 고치지 않는다)
 - 마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론을 서브 · 서브2 두 줄 표로 보여 줘</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>패널에 서브가 셋 떴다가 끝났다. <code class="k">담당별\답변\</code> 에 <code class="k">서브.md</code> · <code class="k">서브2.md</code> 가 있다. 표에서 문의 5 같은 얽힌 문의의 결론이 ① 과 ② 사이에 바뀌었다(맞는 답은 <code class="k">정답표_담당별문의.txt</code> [1]). 워크스페이스의 <code class="k">.claude\agents\</code> 의 파일은 여전히 1개다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>패널에 서브가 셋 떴다가 끝났다. <code class="k">담당별\답변\</code> 에 <code class="k">서브.md</code> · <code class="k">서브2.md</code> 가 있다. 표에서 ① 과 ② 의 결론을 나란히 봤다 — 문의 5 처럼 다른 담당의 사정이 얽힌 문의는 ② 에서 결론이 바뀌기 쉽습니다(같아도 괜찮습니다). 워크스페이스의 <code class="k">.claude\agents\</code> 의 파일은 여전히 1개다.</p></div></div>
       <div class="box tip"><b>서브에게 맡기는 요령</b>서브는 <b>맡길 때 받은 것만</b> 압니다. 내 대화도, 다른 서브가 본 것도 모릅니다. 그래서 ① 에서는 「형이 휴원 중」이라는 사정을 알 길이 없었고, ② 처럼 <b>필요한 정보는 맡기는 쪽이 챙겨 넘겨야</b> 합니다. 미리 챙길 수 없을 때 서로 직접 묻게 하는 방법이 4단계 에이전트 팀입니다.</div>
       <div class="box warn"><b>결과는 매번 같지 않습니다</b>① 에서 서브가 몇 건을 우연히 맞힐 수도 있습니다. 그래도 「서로 모르는 채로 나눴다」는 구조는 같습니다.</div>
     </div>
@@ -353,7 +353,6 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
     <tr><td>cs-reply 를 부르라는데 「그런 에이전트가 없다」고 한다</td><td>에이전트 파일을 만든 뒤 다시 켜지 않았다 · 파일이 <code class="k">cs_practice\.claude</code> 에 있다</td><td><code class="k">exit</code> → <code class="k">claude</code>. 파일은 워크스페이스(<code class="k">cs_practice</code> 바로 위)의 <code class="k">.claude\agents\</code> 에 둔다</td></tr>
     <tr><td>에이전트 파일 수정이 거절됐다</td><td>허락 창에서 거절했다</td><td>카드를 다시 붙여넣고 허락 창에서 허용</td></tr>
-    <tr><td>2단계 답변의 문의 4 · 9 · 13 이 정답표 [1] 과 다르다</td><td>응대 담당이 옛 판 규정을 읽었다</td><td>「응대규정.md 만 보고 다시 써」라고 한 줄 붙여 다시</td></tr>
     <tr><td>3단계 ① 서브가 다른 담당 파일까지 읽었다</td><td>「자기 담당 파일 하나만」을 놓쳤다</td><td>대화에서 서브가 읽은 파일을 확인하고 「다른 담당 파일은 읽지 않는다」를 다시 강조해 한 번 더. 몇 건 우연히 맞힌 것은 그대로 둔다</td></tr>
     <tr><td>3단계 패널에 서브가 안 뜨고 메인이 혼자 했다</td><td>메인이 직접 하는 편이 빠르다고 판단했다</td><td>카드 맨 앞에 「반드시 서브 에이전트 3개를 띄워서」를 붙여 다시</td></tr>
     <tr><td>표가 안 나온다 · 파일이 <code class="k">cs_practice\답변</code> 에 생겼다</td><td>Claude 를 <code class="k">cs_practice</code> 가 아닌 곳에서 켰다</td><td><code class="k">cs_practice</code> 폴더를 연 VS Code 에서 다시 켜고 카드 그대로</td></tr>
@@ -376,7 +375,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <ul><li><b>바뀜</b> 1~4단계를 <b>사용법 체험</b>으로 — 3단계 = 서브 띄우기 · 챙겨서 넘기기(싱글 비교 카드 뺌) · 4단계 = 켜기 · 지켜보기 · <b>팀원에게 직접 말 걸기</b>(추가) · 끄기. 확인은 정답 채점 대신 조작 확인</li>
       <li><b>다시 씀</b> 5단계 「어떤 업무에 써 볼까 — 기본은 싱글」: 근거(공식 문서 · Anthropic) · 판단 순서 3단 · 업무 추천 표(싱글 / 서브 맥락 보호 · 넓게 훑기 · 검산 / 팀) · 내 업무 하나 정하기 카드 · 사용량 줄이는 법</li>
       <li><b>고침</b> 실측 표의 팀 행에 측정 조건 표기(자동 실행에서는 팀원이 뜨지 않아 이름 붙인 서브끼리 쪽지) · 4단계에 「팀은 대화형에서만」 경고</li>
-      <li><b>뺌</b> 「서브 vs 팀 기준」 8줄 표(판단 순서 3단으로 대신)</li></ul></td></tr>
+      <li><b>뺌</b> 「서브 vs 팀 기준」 8줄 표(판단 순서 3단으로 대신)</li>
+      <li><b>뺌</b> 정답 대조 — 2 · 3단계 확인은 「이렇게 한다」는 과정만 본다(답은 사람마다 달라도 됨) · 받을 파일에서 <code class="k">정답표_문의답변.txt</code> · <code class="k">정답표_담당별문의.txt</code> 를 뺌</li></ul></td></tr>
     <tr><td><b>v4.0</b></td><td>2026-11-07</td><td>
       <ul><li><b>바뀜</b> 3 · 4단계 소재를 <b>담당별로 나뉜 문의</b>(<code class="k">cs_practice\담당별</code> · 얽힌 문의 다섯 건)로 바꿈 — 3단계 = ① 싱글 ② 서브 셋에게 그대로 나누기 ③ 메인이 「같은 학부모 목록」을 넘겨 나누기 · 4단계 = 팀원 A · B · C 가 서로 직접 묻기</li>
       <li><b>바뀜</b> 시작 전 비유를 상담실(문의함 나누기)로 · 강사 실측 상자 · 5단계 판단표 · 실측 표 · 맡길 업무 표를 실측에 맞춤 — 「나눈다고 더 똑똑해지지 않는다 · 차이는 사용량 · 시간 · 정보가 나뉜 일」</li>
