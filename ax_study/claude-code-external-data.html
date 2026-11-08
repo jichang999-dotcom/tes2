@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code basic 2step — 말로 시켜 데이터 가져오기 <span class="ver">v1.31 · 2026-11-04</span></h1>
+  <h1>Claude Code basic 2step — 말로 시켜 데이터 가져오기 <span class="ver">v1.32 · 2026-11-08</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="이 2step 전에 하는 1step">1step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -281,7 +281,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <tr><td>로컬 MCP</td><td>내 PC 에 설치하고 <code class="k">claude mcp add</code> 로 등록한다</td><td>DB 조회 · 크롬 조종</td><td>이름만</td></tr>
       </table></div>
       <div class="row"><b>방법</b><div><ol>
-        <li>브라우저에서 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> 에 로그인 → 왼쪽 아래 내 이름 → <b>설정</b> → <b>커넥터</b>.</li>
+        <li>브라우저에서 <a href="https://claude.ai" target="_blank" rel="noopener">claude.ai</a> 에 로그인 → 왼쪽 아래 내 이름 → <b>설정</b> → <b>커넥터</b>. (바로 가기: <a href="https://claude.ai/customize/connectors" target="_blank" rel="noopener">claude.ai/customize/connectors</a>)</li>
         <li><b>Google Drive</b> 와 <b>Google Sheets</b> 를 각각 <b>연결</b>하고, <b>회사 구글 계정</b>으로 로그인해 권한을 <b>허용</b>합니다. 시트 안의 칸을 쓰고 지우는 것은 Google Sheets 연결이 합니다.</li>
         <li>VS Code 터미널에서 Claude Code 를 다시 켭니다(<code class="k">exit</code> → <code class="k">claude</code>). 그다음 <code class="k">/mcp</code> 를 입력합니다.</li>
       </ol></div></div>
@@ -308,7 +308,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <p>보내는 모양 예시:<br><code class="k">https://docs.google.com/spreadsheets/d/…(공용 시트 또는 새로 만든 시트 링크)</code><br><code class="k">1. 홍길동이라는 시트를 만들어줘</code><br><code class="k">2. 그 시트에 우리 팀 이번 주 일정을 5줄 넣어줘. 같은 내용을 이 폴더에 시트.csv 로도 저장해 줘</code></p>
       <p>데이터는 <b>내가 내용을 주거나 지어내도 되는 것</b>으로 합니다 — 날씨처럼 바깥에서 가져와야 하는 데이터는 출처가 없어 값을 지어낼 수 있고, 그건 5단계(API)의 몫입니다.</p></div></div>
       <div class="row"><b>확인</b><div><p>브라우저의 그 파일 아래쪽에 <b>내 이름 탭</b>이 생겼고, 그 안에 시킨 데이터가 들어 있다. 이 폴더에 <code class="k">시트.csv</code> 가 생겼다.</p></div></div>
-      <div class="box warn"><b>「Read outside the working directories」 창이 뜨면</b>Claude 가 구글 시트 사용법 안내서(스킬)를 읽으러 작업 폴더 밖으로 나가서 묻는 창입니다. <b>1번(Yes, and keep allowing)</b>을 고릅니다. 읽기만 허용되고, 다음부터는 묻지 않습니다.</div>
+      <div class="box warn"><b>「Read outside the working directories」 창이 뜨면</b>Claude 가 구글 시트 사용법 안내서(스킬)를 읽으러 작업 폴더 밖으로 나가서 묻는 창입니다. <b>「다음부터 묻지 않음」 쪽 선택지</b>(<code class="k">Yes, and don’t ask again</code> · 버전에 따라 <code class="k">Yes, and keep allowing</code>)를 고릅니다. 읽기만 허용되고, 다음부터는 묻지 않습니다.</div>
       <div class="box tip"><b>링크와 내 이름으로 콕 집어 말하는 이유</b>강사 계정은 여러 사람이 같은 연결 · 같은 파일로 실습합니다. 파일은 <b>링크</b>로, 시트는 <b>내 이름</b>으로 집어 말해야 다른 사람 시트를 건드리지 않습니다. 다른 사람 이름 탭은 열어 보기만 합니다.</div>
     </div>
   </article>
@@ -322,7 +322,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <tr><td>만든 곳</td><td>Anthropic · 서비스 회사</td><td>Anthropic (크롬 확장 프로그램 「Claude」)</td></tr>
         <tr><td>붙는 곳</td><td><b>Claude 계정</b> — 같은 계정이면 다른 PC 에도 따라온다</td><td><b>이 PC 의 크롬</b> — PC 마다 확장을 깔고 로그인해야 한다</td></tr>
         <tr><td>움직이는 것</td><td>연결할 때 로그인한 그 서비스 계정</td><td><b>내 크롬에 로그인돼 있는 것 전부</b> (내 이름으로 클릭 · 입력)</td></tr>
-        <tr><td>켜는 법</td><td>claude.ai 설정 → 커넥터</td><td>확장 설치 → 로그인 → Claude Code 에서 <code class="k">/chrome</code></td></tr>
+        <tr><td>켜는 법</td><td>claude.ai 설정 → 커넥터</td><td>확장 설치 → 로그인 → <code class="k">claude --chrome</code> 으로 켜기 (<code class="k">/chrome</code> = 상태 확인 · 다시 연결 · 기본으로 켜기)</td></tr>
       </table></div>
       <div class="row"><b>준비</b><div><ul>
         <li>크롬 브라우저 · <b>Claude Code 에 로그인한 것과 같은 Claude 계정</b>. 확장은 미리 없어도 됩니다 — 프롬프트가 설치 · 연결을 안내합니다.</li>
@@ -333,21 +333,21 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <div class="cmd"><code style="white-space:pre-wrap">Claude in Chrome 설치와 연결을 도와줘. 설치·연결만 하고 다른 작업은 하지 마. 끝나면 결과를 표로 보고해줘.
 
 1. 먼저 Claude in Chrome 이 이미 연결돼 있는지 확인해. 연결돼 있으면 5번으로 가.
-2. 안 돼 있으면 Chrome 웹 스토어에서 Claude 확장 설치 → Claude Code 와 같은 claude.ai 계정으로 로그인 → Claude Code 에서 /chrome 으로 연결하는 방법을 단계별로 알려줘.
+2. 안 돼 있으면 Chrome 웹 스토어에서 Claude 확장 설치 → Claude Code 와 같은 claude.ai 계정 · 같은 조직으로 로그인 → claude --chrome 으로 다시 켜서 연결하는 방법을 단계별로 알려줘. 연결 상태는 /chrome 으로 확인해.
 3. 설치·로그인은 내가 직접 할게. 내가 "연결했어"라고 하면 다시 확인해.
-4. 그래도 안 되면 이유(확장 미설치 / 다른 Claude 계정으로 로그인 / 크롬 꺼짐 등)를 짐작해서 알려줘.
+4. 그래도 안 되면 이유(확장 미설치 / 다른 Claude 계정이나 다른 조직으로 로그인 / 크롬 꺼짐 / API 키로 로그인 등)를 짐작해서 알려줘.
 5. 확인은 새 탭 하나를 열어 https://example.com 제목만 읽고 그 탭을 닫는 것까지만 해. 내가 연 탭은 건드리지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>보고에 <b>연결됨</b>과 시험 탭 제목(<code class="k">Example Domain</code>)이 나온다.</p></div></div>
       <div class="box warn"><b>주의</b>Claude in Chrome 은 <b>내 크롬에 로그인돼 있는 것 전부</b>를 내 이름으로 움직입니다. 쓰지 않을 때는 확장을 꺼 두고, 비밀번호 · 결제 화면은 Claude 에게 맡기지 않습니다.</div>
-      <div class="box tip"><b>막히면</b><code class="k">/chrome</code> 연결이 안 된다 = 크롬이 켜져 있는지 · 확장에 로그인했는지 · <b>확장이 다른 Claude 계정으로 잡힌다</b> = 아래 「Playwright MCP 설치」.</div>
+      <div class="box tip"><b>막히면</b><code class="k">/chrome</code> 연결이 안 된다 = 크롬이 켜져 있는지 · 확장에 로그인했는지 · <code class="k">/chrome</code> 에서 「Reconnect extension」 · <b>확장이 다른 Claude 계정 · 조직으로 잡힌다</b>(조직은 <code class="k">/status</code> 의 Organization 줄과 비교) = 아래 「Playwright MCP 설치」.</div>
     </div>
   </article>
 
   <article class="step" id="playwright">
     <header><span class="no">+</span><h3>선택 — Claude in Chrome 이 안 될 때: Playwright MCP 설치</h3></header>
     <div class="body">
-      <p>Claude in Chrome 은 <b>크롬 확장에 로그인한 Claude 계정</b>과 <b>Claude Code 에 로그인한 계정</b>이 같아야 연결됩니다. 크롬에 다른 Claude 계정이 로그인돼 있으면 확장이 그 계정으로 자동으로 잡혀 연결이 안 됩니다. 이럴 때는 Microsoft 가 만든 <b>Playwright MCP</b> 를 설치합니다. 내 크롬이 아니라 <b>새 빈 크롬 창</b>을 따로 띄우기 때문에 계정이 섞이지 않습니다. 여기서도 <b>설치까지만</b> 합니다.</p>
+      <p>Claude in Chrome 은 <b>크롬 확장에 로그인한 Claude 계정</b>과 <b>Claude Code 에 로그인한 계정</b>이 같아야 연결됩니다. 회사 계정처럼 조직이 여럿이면 <b>조직까지 같아야</b> 합니다. (Claude Code 를 API 키로 로그인했으면 이 기능은 아예 꺼집니다) 크롬에 다른 Claude 계정이 로그인돼 있으면 확장이 그 계정으로 자동으로 잡혀 연결이 안 됩니다. 이럴 때는 Microsoft 가 만든 <b>Playwright MCP</b> 를 설치합니다. 내 크롬이 아니라 <b>새 빈 크롬 창</b>을 따로 띄우기 때문에 계정이 섞이지 않습니다. 여기서도 <b>설치까지만</b> 합니다.</p>
       <div class="tbl"><table>
         <tr><th>비교</th><th>Claude in Chrome</th><th>Playwright MCP</th></tr>
         <tr><td>만든 곳</td><td>Anthropic (크롬 확장)</td><td>Microsoft (MCP 서버 · 확장 없음)</td></tr>
@@ -370,7 +370,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 3. 아래 명령으로 등록해줘. 윈도우는 cmd /c 가 있어야 실행돼.
    claude mcp add -s user playwright -- cmd /c npx -y @playwright/mcp@latest
    설치가 실패하면 오류 문구를 그대로 보여주고 멈춰.
-4. claude mcp list 에서 playwright 가 Connected 인지 확인해줘. Failed 면 한 번만 다시 확인해 (첫 다운로드가 느릴 수 있음).
+4. claude mcp list 에서 playwright 가 Connected 인지 확인해줘. Failed 면 /mcp reconnect all 로 다시 연결한 뒤 한 번만 다시 확인해 (첫 다운로드가 느릴 수 있음).
 5. 새 도구는 Claude Code 를 다시 켜야 보인다고 알려줘. 다시 켠 뒤 /mcp 에서 playwright 를 확인하라고도 알려줘.</code><button type="button">복사</button></div>
           <div class="tbl"><table>
             <tr><th>프롬프트 줄</th><th>왜 넣었나</th></tr>
@@ -685,6 +685,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.32</b></td><td>2026-11-08</td><td>
+      <ul><li><b>고침</b> Claude in Chrome — 연결 조건에 「같은 조직」 · API 키 로그인 시 꺼짐 추가, 처음 연결은 <code class="k">claude --chrome</code> · <code class="k">/chrome</code> 은 상태 확인 · 다시 연결 (Claude Code 공식 문서 기준)</li><li><b>고침</b> 커넥터 바로 가기 주소 · 권한 창 선택지 문구 · Playwright 실패 시 <code class="k">/mcp reconnect all</code></li></ul></td></tr>
     <tr><td><b>v1.31</b></td><td>2026-11-04</td><td>
       <ul><li><b>추가</b> 페이지 맨 위 「먼저 보기」 — API · MCP 설명 영상 링크(1:33 부터 재생)</li></ul></td></tr>
     <tr><td><b>v1.30</b></td><td>2026-11-02</td><td>
