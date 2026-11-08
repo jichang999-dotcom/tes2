@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code starter 2step — 사내 앱을 말로 만든다 <span class="ver">v1.15 · 2026-10-30</span></h1>
+  <h1>Claude Code starter 2step — 사내 앱을 말로 만든다 <span class="ver">v1.16 · 2026-11-08</span></h1>
   
   <a class="rel-btn" href="#p6">막혔을 때</a>
   <a class="rel-btn" href="https://docs.google.com/document/d/16VqrcWI4fmoNcRZdRaxqP6b2aoniH_0oJREXNFhU3g0/edit" target="_blank" rel="noopener" title="진행자 계정으로 로그인해야 열립니다">진행자용</a>
@@ -264,7 +264,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 끝나면 파일을 여는 방법을 한 줄로 알려 줘.</code><button type="button">복사</button></div>
         <p>파일을 만들어도 되는지 물으면 <b>Yes</b> 를 고릅니다.</p></div></div>
       <div class="row"><b>확인</b><div><p>마지막에 <b>「여는 방법: … 더블클릭 …」</b> 같은 한 줄이 나오고, 왼쪽 탐색기에 <code class="k">app_trial</code> 폴더와 그 안의 <code class="k">출퇴근.html</code> · <code class="k">CLAUDE.md</code> 가 생긴다.</p></div></div>
-      <div class="box tip"><b>CLAUDE.md 는 왜 만드나요?</b>이 앱의 설명서입니다. 앱이 무엇인지, 지금 설정(반경 · 기준 시각)이 무엇인지 적혀 있어서, 다음에 Claude Code 가 이 폴더를 고칠 때 먼저 읽고 시작합니다. 미션으로 반경을 바꾸면 설명서의 반경도 같이 바뀝니다. starter에서 만든 작업 폴더의 CLAUDE.md 는 그대로 둡니다.</div>
+      <div class="box tip"><b>CLAUDE.md 는 왜 만드나요?</b>이 앱의 설명서입니다. 앱이 무엇인지, 지금 설정(반경 · 기준 시각)이 무엇인지 적혀 있어서, 다음에 Claude Code 가 이 폴더의 파일을 열면 이 설명서도 함께 읽습니다. (작업 폴더에서 켜면 시작할 때가 아니라 이 폴더 파일을 처음 열 때 읽으므로, 켜자마자 <code class="k">/context</code> 목록에 없어도 정상입니다) 미션으로 반경을 바꾸면 설명서의 반경도 같이 바뀝니다. starter에서 만든 작업 폴더의 CLAUDE.md 는 그대로 둡니다.</div>
       <div class="box warn"><b>5분 규칙</b>5분이 지나도 파일이 안 생기면 고치려 하지 말고 <b>정답 파일로 갈아탑니다</b> — 작업 폴더 안에 <code class="k">app_trial</code> 폴더를 만들고(없으면), 받은 <code class="k">정답_출퇴근.html</code> 을 넣어 이름을 <code class="k">출퇴근.html</code> 로 바꾼 뒤 6단계로. 고치기 2step은 정답 파일로도 똑같이 됩니다.</div>
       <details class="q"><summary>정답 파일로 갈아탔다면 — 설명서 카드</summary><p>정답 파일에는 앱 설명서(CLAUDE.md)가 없습니다. 이 카드를 붙여넣으면 만들어 줍니다. 없어도 미션은 됩니다.</p><div class="cmd"><code>app_trial 의 출퇴근.html 을 읽고 같은 폴더에 CLAUDE.md 를 만들어 줘: 이 앱이 무엇인지, 지금 설정(회사 좌표 · 반경 · 기준 시각), 기록이 어디에 저장되는지를 짧게 적고, 출퇴근.html 을 고치면 CLAUDE.md 의 설정도 같이 고치라고 적어 줘. 출퇴근.html 은 고치지 않는다. 작업 폴더에 원래 있던 CLAUDE.md 는 건드리지 않는다</code><button type="button">복사</button></div></details>
     </div>
@@ -433,6 +433,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.16</b></td><td>2026-11-08</td><td>
+      <ul><li><b>고침</b> 5단계 「CLAUDE.md 는 왜 만드나요?」 — 하위 폴더 CLAUDE.md 는 그 폴더 파일을 열 때 읽힌다는 공식 문서 동작에 맞춤</li></ul></td></tr>
     <tr><td><b>v1.15</b></td><td>2026-10-30</td><td>과정명을 영어 소문자, 단계명을 1step · 2step 으로 통일했습니다.</td></tr>
     <tr><td><b>v1.14</b></td><td>2026-09-28</td><td>
       <ul><li><b>바뀜</b> 완성본 09:35 지각 메일 알림 중지 → 비교표 「알림」 칸 · PART 1 소개 문구 수정</li></ul></td></tr>
