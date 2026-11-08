@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 2step — 팀 꾸리기 <span class="ver">v4.0 · 2026-11-07</span></h1>
+  <h1>Claude Code advance 2step — 팀 꾸리기 <span class="ver">v4.1 · 2026-11-08</span></h1>
   <a class="rel-btn" href="claude-code-skills-agents.html" title="리포트 담당 에이전트를 만든 basic 1step">basic 1step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -146,11 +146,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="sub"><a href="#s2">2. 응대 담당을 정식 에이전트로</a></li>
   <li class="ghead">② 나누기 <small>3단계</small></li>
   <li><a href="#p2">PART 2 나누기</a></li>
-  <li class="sub"><a href="#s3">3. 서브 에이전트 — 나눠 맡기면 생기는 일</a></li>
+  <li class="sub"><a href="#s3">3. 서브 에이전트 — 띄우기 · 맡기는 법</a></li>
   <li class="ghead">③ 팀과 판단 <small>4~5단계</small></li>
   <li><a href="#p3">PART 3 팀과 판단</a></li>
-  <li class="sub"><a href="#s4">4. 에이전트 팀 — 기능 켜기 · 회의 · 끄기</a></li>
-  <li class="sub"><a href="#s5">5. 판단표 네 칸 + 팀 비용</a></li>
+  <li class="sub"><a href="#s4">4. 에이전트 팀 — 켜기 · 지켜보기 · 끄기</a></li>
+  <li class="sub"><a href="#s5">5. 어떤 업무에 써 볼까 — 기본은 싱글</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
   <li><a href="#p9">PART 4 막혔을 때</a></li>
 </ol>
@@ -160,14 +160,14 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <main>
 <section class="part" id="p0">
   <h2><small>시작 전</small>혼자 하던 일을 여러 AI 에게 나눠 봅니다</h2>
-  <p class="lead">여러 AI 에게 나눠 맡긴다고 결과가 더 똑똑해지지는 않습니다. 달라지는 것은 <b>사용량 · 시간 · 누가 무엇을 아느냐</b>입니다. 오늘은 가상 학원의 <b>학부모 문의 15건</b>을 ① 혼자(싱글) ② 서브 에이전트 셋에게 나눠 ③ 에이전트 팀 셋이 서로 물어 가며 답해 보고, <b>언제 나누고 언제 혼자 둘지</b> 고르는 법을 익힙니다.</p>
+  <p class="lead">일을 여러 AI 에게 나눠 맡기는 방법은 두 가지입니다 — <b>서브 에이전트</b>와 <b>에이전트 팀</b>. 오늘은 가상 학원의 <b>학부모 문의 15건</b>으로 두 방법을 <b>직접 띄우고 다뤄 보고</b>, 마지막 5단계에서 <b>내 업무에는 무엇을 쓸지</b> 고릅니다. 먼저 알아 둘 것 하나: 나눠 맡긴다고 결과가 더 똑똑해지지는 않습니다. 대부분의 일은 <b>혼자(싱글)</b>가 가장 싸고 빠릅니다.</p>
   <div class="hero">
     <b>끝나면 이렇게 됩니다</b>
     <ul>
       <li>응대 담당 에이전트를 만들고 <b>업무 지시서</b>(무엇을 · 어디에 저장 · 무엇을 보고 · 막히면)를 넣어 정식 담당으로 만들었다.</li>
-      <li>담당별로 나뉜 문의를 <b>서브 에이전트</b>에게 나눠 맡겼더니 서로 얽힌 문의가 틀리는 것을 봤고, 메인이 「같은 학부모 목록」을 넘겨 바로잡았다.</li>
-      <li><b>에이전트 팀</b>에서 담당끼리 <b>직접</b> 쪽지로 물어 얽힌 문의를 스스로 바로잡는 장면을 봤다. 끝나고 기능을 껐다.</li>
-      <li>내 업무 하나를 <b>판단표 네 칸</b>(스킬 / 에이전트 / 서브 / 팀) 중 어디에 둘지 이유와 함께 말할 수 있다.</li>
+      <li><b>서브 에이전트</b> 셋을 띄워 일을 나눠 맡겼고, 맡길 때 <b>필요한 정보는 맡기는 쪽이 챙겨 넘겨야</b> 한다는 것을 직접 봤다.</li>
+      <li><b>에이전트 팀</b>을 켜서 팀원끼리 주고받는 쪽지를 보고, 팀원에게 직접 말을 걸어 보고, 끝나고 기능을 껐다.</li>
+      <li>내 업무 하나를 <b>싱글 / 서브 / 팀</b> 중 어디에 맡길지 판단 순서 3단으로 이유와 함께 말할 수 있다.</li>
     </ul>
   </div>
 
@@ -178,7 +178,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td><b>서브 에이전트</b></td><td>문의함을 상담원 셋에게 하나씩 나눠 준다. 동시에 하니 빠르지만, <b>상담원끼리는 말할 수 없다.</b> 실장(메인)이 모아서 정리한다.</td></tr>
     <tr><td><b>에이전트 팀</b></td><td>상담원 셋이 나눠 맡되, 「이 학부모 그쪽에도 물어봤어요?」 하고 <b>서로 직접 묻는다.</b> 그만큼 말이 많아져 사용량이 가장 많다.</td></tr>
   </table></div>
-  <div class="box tip"><b>강사 실측에서 본 것</b>답이 하나로 정해진 일(규정 대조 · 오류 찾기 · 안내문 · 포스터)은 아홉 가지 소재 중 여덟 가지에서 셋의 결과물이 같았습니다. 차이는 <b>사용량</b>(팀이 싱글의 약 5배) · <b>시간</b>(오래 걸리는 일을 나누면 약 2배 빠름) · <b>정보가 나뉜 일</b>(서브만 틀림)에서 났습니다. 오늘은 그 마지막 경우를 직접 겪어 봅니다.</div>
+  <div class="box tip"><b>오늘의 순서</b>1 · 2단계에서 보고 준비하고, 3단계에서 <b>서브</b>, 4단계에서 <b>팀</b>을 직접 써 봅니다. 3 · 4단계는 결과물의 좋고 나쁨이 아니라 <b>어떻게 띄우고 · 무엇을 넘기고 · 어떻게 지켜보고 끄는지</b>를 익히는 시간입니다. 어떤 업무에 쓰면 좋은지는 5단계에서 근거와 함께 정리합니다.</div>
 
   <h3>준비물</h3>
   <div class="tbl"><table>
@@ -199,7 +199,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <div class="body">
       <div class="row"><b>방법</b><div><p>강사가 완성된 <b>서브 에이전트</b>와 <b>에이전트 팀</b>을 차례로 돌립니다. 두 가지만 봅니다.</p>
         <ul><li><b>누가 누구에게 말하나</b> — 서브는 검산 결과를 <b>메인 Claude</b> 가 받아 옮깁니다. 팀은 <code class="k">[참관] policy → replier</code> 처럼 <b>팀원끼리 직접</b> 말합니다.</li>
-            <li><b>말이 어떤 길로 오가나</b> — 서브는 <code class="k">[전달]</code> 줄마다 메인을 거치고, 팀은 메인을 거치지 않습니다. 결과물보다 <b>오가는 길</b>을 봅니다(결과물의 질은 3 · 4단계에서 직접 비교합니다).</li></ul></div></div>
+            <li><b>말이 어떤 길로 오가나</b> — 서브는 <code class="k">[전달]</code> 줄마다 메인을 거치고, 팀은 메인을 거치지 않습니다. 결과물보다 <b>오가는 길</b>을 봅니다(3 · 4단계에서 같은 길을 직접 만들어 봅니다).</li></ul></div></div>
       <div class="row"><b>확인</b><div><p><code class="k">[참관]</code> 줄이 무엇인지(팀원끼리 주고받은 메시지의 사본) 말할 수 있다.</p></div></div>
     </div>
   </article>
@@ -233,49 +233,44 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g2">
-<summary><span class="gno">②</span> 나누기 <small>3단계 · 25분</small></summary>
+<summary><span class="gno">②</span> 나누기 <small>3단계 · 20분</small></summary>
 <section class="part" id="p2">
   <h2><small>PART 2</small>나누기 (3단계)</h2>
   <article class="step" id="s3" data-step="3">
-    <header><span class="no">3</span><h3>서브 에이전트 — 나눠 맡기면 생기는 일</h3><label><input type="checkbox">완료</label></header>
+    <header><span class="no">3</span><h3>서브 에이전트 — 띄우기 · 맡기는 법</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>이번 문의 15건은 담당 A(수강료 · 휴원 · 형제 할인) · B(보강 · 반 변경) · C(교재 · 차량) 세 파일에 나뉘어 들어왔습니다. 그중 다섯 건(문의 5 · 7 · 8 · 12 · 13)은 <b>다른 담당 파일에 적힌 사정</b>(예: 형이 12월에 휴원한다)을 알아야 맞게 답할 수 있습니다. 같은 일을 ① 혼자 ② 서브 셋에게 나눠 ③ 메인이 준비해서 나눠 — 세 번 시키고 다섯 건의 답을 비교합니다. 새 에이전트 파일은 만들지 않습니다.</p>
+      <p>이번 문의 15건은 담당 A(수강료 · 휴원 · 형제 할인) · B(보강 · 반 변경) · C(교재 · 차량) 세 파일에 나뉘어 들어왔습니다. 서브 에이전트 셋을 띄워 담당을 하나씩 맡기는 법을 익힙니다. 그중 다섯 건(문의 5 · 7 · 8 · 12 · 13)은 <b>다른 담당 파일에 적힌 사정</b>(예: 형이 12월에 휴원한다)을 알아야 맞게 답할 수 있어서, <b>맡길 때 무엇을 같이 넘기느냐</b>에 따라 답이 달라지는 것도 봅니다. 새 에이전트 파일은 만들지 않습니다.</p>
       <div class="row"><b>방법</b><div><ol>
-        <li><b>① 싱글로 먼저</b> — 기준이 되는 답을 만듭니다.
-          <div class="cmd"><code>담당별 폴더의 학부모 문의에 답해 줘. 이번에는 다른 에이전트를 부르지 말고 너 혼자 한다.
-- 문의_A.txt · 문의_B.txt · 문의_C.txt 세 파일을 모두 읽고, 담당별 폴더의 응대규정.md 대로 15건 모두 답한다
-- 같은 학부모가 여러 담당에게 따로 문의했을 수 있다
-- 결론낱말.txt 형식대로 담당별/답변/싱글.md 에 문의 1~15 순서로 저장한다
-- 마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론만 한 줄씩 보여 줘</code><button type="button">복사</button></div></li>
-        <li><b>② 서브 셋에게 그대로 나누기</b> — 상담원 셋에게 문의함을 하나씩 나눠 준 것과 같습니다. 서브끼리는 말할 수 없고, 메인은 붙이기만 합니다.
-          <div class="cmd"><code>같은 일을 이번에는 서브 에이전트 3개에게 나눠 맡겨 줘.
+        <li><b>① 서브 셋 띄우기 — 그대로 나누기</b> — 상담원 셋에게 문의함을 하나씩 나눠 준 것과 같습니다. 서브끼리는 말할 수 없고, 메인은 붙이기만 합니다.
+          <div class="cmd"><code>담당별 폴더의 학부모 문의를 서브 에이전트 3개에게 나눠 맡겨 줘.
 - 서브 3개를 동시에 띄워 담당 A · B · C 를 하나씩 맡긴다. 각 서브는 담당별 폴더의 응대규정.md · 결론낱말.txt 와 자기 담당 파일 하나만 읽고(다른 담당 파일은 읽지 않는다) 담당별/답변/서브_A.md · 서브_B.md · 서브_C.md 로 저장한다
 - 너(메인)는 문의 파일을 읽지 않는다. 세 파일을 문의 순서대로 이어 붙여 담당별/답변/서브.md 로 저장만 한다 (내용은 고치지 않는다)
-- 마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론을 싱글.md 와 나란히 표로 보여 줘</code><button type="button">복사</button></div></li>
-        <li><b>③ 메인이 준비해서 나누기</b> — 나누는 쪽(메인)이 얽힌 사정을 먼저 정리해 같이 넘겨 줍니다.
+- 마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론만 한 줄씩 보여 줘</code><button type="button">복사</button></div>
+          <p>도는 동안 입력창 아래 패널에 서브가 셋 뜹니다. 메인에게 돌아오는 것은 서브가 쓴 <b>마지막 요약</b>뿐입니다.</p></li>
+        <li><b>② 챙겨서 넘기기</b> — 나누는 쪽(메인)이 얽힌 사정을 먼저 정리해 같이 넘겨 줍니다.
           <div class="cmd"><code>이번에는 나누기 전에 메인이 준비를 해 줘.
 - 너(메인)가 먼저 문의_A · B · C 를 훑어 「같은 학부모 목록」(학부모 이름 → 문의 번호 · 내용 한 줄)을 만든다
 - 서브 3개를 동시에 띄워 담당 A · B · C 를 나눠 주면서 이 목록을 같이 넘긴다. 각 서브는 자기 담당 파일 · 이 목록 · 응대규정.md · 결론낱말.txt 만 본다
 - 결과는 담당별/답변/서브2_A.md · 서브2_B.md · 서브2_C.md 로 저장하고, 너는 이어 붙여 담당별/답변/서브2.md 로 저장만 한다 (내용은 고치지 않는다)
-- 마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론을 싱글 · 서브 · 서브2 세 줄 표로 보여 줘</code><button type="button">복사</button></div></li>
+- 마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론을 서브 · 서브2 두 줄 표로 보여 줘</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>받은 <code class="k">정답표_담당별문의.txt</code> [1] 과 비교합니다. ① 싱글은 다섯 건이 대부분 맞고, ② 서브는 대부분 [2] 처럼 틀리고(예: 문의 5 「형제 할인 된다」), ③ 서브2 는 다시 맞습니다. 워크스페이스의 <code class="k">.claude\agents\</code> 의 파일은 여전히 1개다.</p></div></div>
-      <div class="box tip"><b>왜 ② 만 틀렸나</b>서브는 자기 문의함만 봤고, 서브끼리는 말할 수 없었고, 메인은 붙이기만 했습니다. 혼자서는 「형이 휴원 중」이라는 사정을 알 길이 없습니다. 나눠 맡길 때는 <b>나누는 쪽이 얽힌 정보를 같이 넘겨야</b> 합니다(③). 서로 직접 물어보게 하는 방법이 4단계 에이전트 팀입니다.</div>
-      <div class="box warn"><b>결과는 매번 같지 않습니다</b>② 에서 서브가 몇 건을 우연히 맞힐 수도 있습니다. 그래도 「서로 모르는 채로 나눴다」는 구조는 같습니다. 정답표 [3] 의 강사 실측 숫자와 같이 봅니다.</div>
+      <div class="row"><b>확인</b><div><p>패널에 서브가 셋 떴다가 끝났다. <code class="k">담당별\답변\</code> 에 <code class="k">서브.md</code> · <code class="k">서브2.md</code> 가 있다. 표에서 문의 5 같은 얽힌 문의의 결론이 ① 과 ② 사이에 바뀌었다(맞는 답은 <code class="k">정답표_담당별문의.txt</code> [1]). 워크스페이스의 <code class="k">.claude\agents\</code> 의 파일은 여전히 1개다.</p></div></div>
+      <div class="box tip"><b>서브에게 맡기는 요령</b>서브는 <b>맡길 때 받은 것만</b> 압니다. 내 대화도, 다른 서브가 본 것도 모릅니다. 그래서 ① 에서는 「형이 휴원 중」이라는 사정을 알 길이 없었고, ② 처럼 <b>필요한 정보는 맡기는 쪽이 챙겨 넘겨야</b> 합니다. 미리 챙길 수 없을 때 서로 직접 묻게 하는 방법이 4단계 에이전트 팀입니다.</div>
+      <div class="box warn"><b>결과는 매번 같지 않습니다</b>① 에서 서브가 몇 건을 우연히 맞힐 수도 있습니다. 그래도 「서로 모르는 채로 나눴다」는 구조는 같습니다.</div>
     </div>
   </article>
 </section>
 </details>
 
 <details class="grp" id="g3">
-<summary><span class="gno">③</span> 팀과 판단 <small>4~5단계 · 35분</small></summary>
+<summary><span class="gno">③</span> 팀과 판단 <small>4~5단계 · 40분</small></summary>
 <section class="part" id="p3">
   <h2><small>PART 3</small>팀과 판단 (4~5단계)</h2>
   <article class="step" id="s4" data-step="4">
-    <header><span class="no">4</span><h3>에이전트 팀 — 기능 켜기 · 회의 · 끄기</h3><label><input type="checkbox">완료</label></header>
+    <header><span class="no">4</span><h3>에이전트 팀 — 켜기 · 지켜보기 · 끄기</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p><b>에이전트 팀</b>은 담당끼리 쪽지를 주고받습니다. 3단계 ② 와 똑같이 담당마다 자기 문의함만 보게 하고 메인은 붙이기만 하되, 이번에는 <b>얽힐 것 같으면 그 담당에게 직접 묻게</b> 합니다. 메인이 준비하지 않아도 팀원끼리 사정을 알아내는지 봅니다.</p>
-      <div class="box warn"><b>실험 기능</b>에이전트 팀 기능은 기본으로 꺼져 있고 버전에 따라 화면이 바뀔 수 있습니다. <b>이 폴더에서만</b> 켜고, 이 단계 끝에서 끕니다.</div>
+      <p><b>에이전트 팀</b>은 팀원끼리 쪽지를 주고받습니다. 3단계 ① 과 똑같이 담당마다 자기 문의함만 보게 하고 메인은 붙이기만 하되, 이번에는 <b>얽힐 것 같으면 그 담당에게 직접 묻게</b> 합니다. 팀을 켜고 · 띄우고 · 쪽지를 지켜보고 · 팀원에게 직접 말을 걸고 · 끄는 순서를 익힙니다.</p>
+      <div class="box warn"><b>실험 기능</b>에이전트 팀 기능은 기본으로 꺼져 있고(공식 문서 기준 실험 단계) 버전에 따라 화면이 바뀔 수 있습니다. <b>이 폴더에서만</b> 켜고, 이 단계 끝에서 끕니다. 팀은 <b>지금처럼 대화하며 쓰는 Claude 에서만</b> 뜹니다 — 자동 실행(<code class="k">claude -p</code>)에서는 이름을 붙여도 서브로 돕니다.</div>
       <div class="row"><b>방법</b><div><ol>
         <li><b>에이전트 팀 기능 켜기</b> — 붙여넣은 뒤 <code class="k">exit</code> → <code class="k">claude</code>. (손으로 하려면 받은 <code class="k">팀켜기.txt</code>)
           <div class="cmd"><code>이 프로젝트의 .claude/settings.local.json 의 env 에 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 를 "1" 로 넣어 줘. 파일이 없으면 만들고, 다른 설정은 건드리지 마. 전역 설정 파일은 고치지 마.</code><button type="button">복사</button></div></li>
@@ -286,56 +281,63 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 - 팀원끼리 메시지를 보낼 때마다 나에게도 「[참관] 보낸 이름 → 받는 이름 : 한 줄 요약」 사본을 보낸다. 나는 받은 줄을 그대로 보여 주기만 하고 옮기지 않는다
 - 세 명이 끝나면 너는 세 파일을 문의 순서대로 이어 붙여 담당별/답변/팀.md 로 저장만 한다 (내용은 고치지 않는다)
 팀원들은 이 대화를 모르니 각자에게 폴더 위치 · 할 일 · 다른 두 팀원의 이름과 담당을 분명히 알려 줘.
-마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론을 싱글 · 서브 · 팀 세 줄 표로 보여 줘(답변 폴더에 있는 파일만).</code><button type="button">복사</button></div>
-          <p>팀원이 뜨면 <code class="k">[참관]</code> 줄이 차례로 찍힙니다. 더 보려면 <kbd>↑</kbd> <kbd>↓</kbd> 로 팀원을 고르고 <kbd>Enter</kbd>, 나올 땐 <kbd>Esc</kbd>.</p></li>
+마지막에 문의 5 · 7 · 8 · 12 · 13 의 결론을 서브 · 서브2 · 팀 세 줄 표로 보여 줘(답변 폴더에 있는 파일만).</code><button type="button">복사</button></div>
+          <p>팀원이 뜨면 <code class="k">[참관]</code> 줄이 차례로 찍힙니다.</p></li>
+        <li><b>팀원에게 직접 말 걸기</b> — 입력창 아래 패널에서 <kbd>↑</kbd> <kbd>↓</kbd> 로 팀원 하나를 고르고 <kbd>Enter</kbd>. 그 팀원의 대화가 열리면 아래를 입력합니다. 나올 땐 <kbd>Esc</kbd>.
+          <div class="cmd"><code>지금 누구에게 무엇을 물어봤고 어떤 답을 받았는지 두 줄로 알려 줘.</code><button type="button">복사</button></div>
+          <p>메인을 거치지 않고 팀원 하나와 직접 이야기하는 것이 서브와 다른 점입니다.</p></li>
         <li><b>에이전트 팀 기능 끄기</b> — 붙여넣은 뒤 <code class="k">exit</code> → <code class="k">claude</code>.
           <div class="cmd"><code>.claude/settings.local.json 에서 CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS 줄을 지워 줘. 다른 설정은 건드리지 마.</code><button type="button">복사</button></div></li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p><code class="k">[참관] B → A</code> 처럼 팀원끼리 묻고 답한 줄이 보였다(에이전트가 여럿 떴다는 것만으로는 팀인지 서브인지 모릅니다). <code class="k">담당별\답변\팀.md</code> 의 문의 5 · 7 · 8 · 12 · 13 이 대부분 <code class="k">정답표_담당별문의.txt</code> [1] 과 같다. <code class="k">settings.local.json</code> 에 그 줄이 없다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>패널에 A · B · C 이름이 떴다. <code class="k">[참관] B → A</code> 처럼 팀원끼리 묻고 답한 줄이 보였다(에이전트가 여럿 떴다는 것만으로는 팀인지 서브인지 모릅니다). 팀원 하나와 직접 이야기해 봤다. <code class="k">담당별\답변\팀.md</code> 가 있다. 끈 뒤 <code class="k">settings.local.json</code> 에 그 줄이 없다.</p></div></div>
       <div class="box tip"><b>팀 대신 서브가 떴다면</b>패널에 A · B · C 이름 없이 에이전트만 뜨고 <code class="k">[참관]</code> 줄이 안 나오면 서브입니다. 에이전트 팀 기능을 켠 뒤 <code class="k">exit</code> → <code class="k">claude</code> 를 안 했을 때 그렇습니다.</div>
       <div class="box warn"><b>꼭 끕니다</b>켜 둔 채로 두면 평소에 부탁한 일도 팀원으로 나뉘어 돌 수 있고 사용량이 빨리 닳습니다.</div>
     </div>
   </article>
   <article class="step" id="s5" data-step="5">
-    <header><span class="no">5</span><h3>판단표 네 칸 + 팀 비용</h3><label><input type="checkbox">완료</label></header>
+    <header><span class="no">5</span><h3>어떤 업무에 써 볼까 — 기본은 싱글</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <h4>무엇에게 맡길까</h4>
-      <div class="tbl"><table>
-        <tr><th>칸</th><th>이럴 때 고른다</th><th>오늘 본 것</th><th>사용량</th></tr>
-        <tr><td><b>스킬</b></td><td>세는 법 · 기준처럼 지금 대화에 <b>매뉴얼만 얹으면</b> 되는 일</td><td>basic 1step 의 <code class="k">jig-metrics</code></td><td>가장 적다</td></tr>
-        <tr><td><b>에이전트</b></td><td>한 담당에게 <b>통째로 맡기고 결론만</b> 받는 일</td><td>2단계 응대 담당</td><td>적다</td></tr>
-        <tr><td><b>서브 에이전트</b></td><td>서로 상관없는 일을 <b>나눠 동시에</b> 하는 일. 얽힌 정보가 있으면 나누는 쪽이 같이 넘긴다</td><td>3단계 ② 틀림 → ③ 목록을 넘겨 맞음</td><td>중간</td></tr>
-        <tr><td><b>에이전트 팀</b></td><td>담당끼리 <b>서로 물어봐야</b> 풀리는 일. 사람이 지켜볼 수 있을 때만</td><td>4단계 팀원끼리 쪽지</td><td>가장 많다</td></tr>
-      </table></div>
-      <h4>강사 실측 — 같은 일, 세 방식 (3 · 4단계와 같은 소재)</h4>
-      <div class="tbl"><table>
-        <tr><th>방식</th><th>얽힌 문의 5건</th><th>걸린 시간</th><th>사용량 (API 요금 기준)</th></tr>
-        <tr><td><b>싱글</b> (혼자 다 읽음)</td><td>대부분 맞음</td><td>약 50초</td><td>약 0.3~0.5 USD</td></tr>
-        <tr><td><b>서브</b> (자기 문의함만 · 메인은 붙이기만)</td><td><b>대부분 틀림</b></td><td>약 85초</td><td>약 1.3~1.6 USD</td></tr>
-        <tr><td><b>팀</b> (자기 문의함만 · 팀원끼리 쪽지)</td><td>대부분 맞음</td><td>약 95초</td><td>약 1.8~2.0 USD</td></tr>
-      </table></div>
-      <p>여기서 볼 것은 두 가지입니다. ① 이 정도 크기의 일은 <b>싱글이 가장 싸고 빠르면서 맞다</b>. ② 나눠야 할 만큼 큰 일이라면, <b>서브는 나누는 쪽이 얽힌 정보를 넘겨야 하고, 팀은 서로 묻는 대신 사용량이 가장 많다</b>.</p>
-      <details class="q"><summary>서브 vs 팀 — 고르는 기준 여섯 가지</summary>
+      <p>3 · 4단계에서 서브와 팀을 <b>쓰는 법</b>을 익혔습니다. 이제 <b>언제 쓸지</b>를 정합니다. 결론부터: <b>대부분의 일은 싱글이 가장 싸고 빠르고, 결과도 같거나 낫습니다.</b> 서브와 팀은 이유가 있을 때만 꺼냅니다.</p>
+      <div class="box tip"><b>근거</b>① 공식 문서 — 팀을 꾸리기 전에 더 가벼운 방법(서브 · 혼자)으로 되는지 먼저 보라. 팀은 일반 세션보다 약 7배 토큰을 쓴다(팀원이 계획 모드일 때). ② Anthropic — 단일 에이전트로 시작하라. 여러 에이전트는 같은 일에 3~10배 토큰을 쓰고, 넘길 때마다 정보가 흐려진다. ③ 강사 실측 — 답이 정해진 일 아홉 가지 중 여덟 가지에서 싱글 · 서브 · 팀의 결과물이 같았다.<br>
+        <a href="https://code.claude.com/docs/en/agent-teams" target="_blank" rel="noopener">공식 문서: 에이전트 팀</a> · <a href="https://code.claude.com/docs/en/costs" target="_blank" rel="noopener">공식 문서: 비용</a> · <a href="https://claude.com/blog/building-multi-agent-systems-when-and-how-to-use-them" target="_blank" rel="noopener">Anthropic: 멀티 에이전트 언제 쓰나</a></div>
+      <details class="q"><summary>강사 실측 — 오늘 소재(얽힌 문의 5건)를 네 방식으로</summary>
         <div class="tbl"><table>
-          <tr><th>물어볼 것</th><th>그렇다면</th></tr>
-          <tr><td>혼자 다 읽어도 되는 양인가?</td><td>싱글 (나누지 않는다)</td></tr>
-          <tr><td>나눈 일끼리 서로의 정보가 필요한가?</td><td>나누는 쪽이 미리 정리해 넘길 수 있으면 서브, 하다가 물어봐야 알면 팀</td></tr>
-          <tr><td>담당끼리 여러 번 주고받아야 하나?</td><td>팀 (한 번 넘기고 끝이면 서브)</td></tr>
-          <tr><td>중간 결과를 내가 보고 판단해야 하나?</td><td>서브 (메인이 모아서 보여 준다)</td></tr>
-          <tr><td>사용량을 아껴야 하나?</td><td>서브</td></tr>
-          <tr><td>실험 기능이라 바뀌어도 괜찮나?</td><td>괜찮으면 팀, 매번 같아야 하면 서브</td></tr>
-          <tr><td>일이 크고 갈래가 여럿인가?</td><td>팀</td></tr>
-          <tr><td>내가 끝까지 지켜볼 수 있나?</td><td>못 보면 서브</td></tr>
+          <tr><th>방식</th><th>얽힌 문의 5건</th><th>걸린 시간</th><th>사용량 (API 요금 기준)</th></tr>
+          <tr><td><b>싱글</b> (혼자 다 읽음)</td><td>대부분 맞음</td><td>약 50초</td><td>약 0.3~0.5 USD</td></tr>
+          <tr><td><b>서브</b> (그대로 나눔)</td><td><b>대부분 틀림</b></td><td>약 85초</td><td>약 1.3~1.6 USD</td></tr>
+          <tr><td><b>서브2</b> (챙겨서 넘김)</td><td>맞음</td><td>약 80~95초</td><td>따로 재지 않음</td></tr>
+          <tr><td><b>팀 방식</b> (자기 문의함만 · 서로 쪽지)</td><td>대부분 맞음</td><td>약 95~170초</td><td>약 1.8~2.0 USD</td></tr>
         </table></div>
+        <p style="font-size:13px;color:var(--sub)">2026-11-07 · 자동 실행(<code class="k">claude -p</code>)으로 방식마다 2회. 자동 실행에서는 팀원이 뜨지 않아 「팀 방식」 행은 <b>이름 붙인 서브끼리 쪽지를 주고받은</b> 결과입니다. 결과는 매번 조금씩 다릅니다.</p>
       </details>
-      <div class="box tip"><b>팀이 사용량을 많이 쓰는 이유 · 줄이는 법</b>팀원마다 따로 Claude 가 하나씩 떠서 파일을 각자 읽고, 메시지를 주고받을 때마다 또 읽습니다. 줄이려면 ① 팀원은 꼭 필요한 수만 ② 팀원에게 필요한 파일 · 할 일만 알려 주기 ③ 끝나면 에이전트 팀 기능 끄기 ④ 서브로 되는 일은 서브로.</div>
-      <h4>어떤 업무를 맡기면 좋을까</h4>
+      <h4>판단 순서 3단 — 위에서부터 묻고, 맞으면 멈춘다</h4>
       <div class="tbl"><table>
-        <tr><th>구분</th><th>가장 잘 맞는 업무</th><th>업무 예시</th><th>맞지 않는 업무</th></tr>
-        <tr><td><b>싱글 에이전트</b></td><td>혼자 다 읽을 수 있는 양의 일. <b>대부분의 일은 여기서 시작한다</b></td><td>월별 집계 리포트 · 회의록 요약 · 문의 답변 · 안내문 · 오류 찾기</td><td>한 번에 다 읽기엔 자료가 너무 많아 오래 걸리는 일</td></tr>
-        <tr><td><b>서브 에이전트</b></td><td>서로 상관없는 일을 <b>나눠 동시에</b> 해서 시간을 줄이는 일</td><td>센터별 · 기사별 자료를 나눠 조사해 한데 모으기 · 오래 걸리는 작업 여러 개를 동시에</td><td>나눈 일끼리 서로의 정보가 필요한데 미리 정리해 넘길 수 없는 일</td></tr>
-        <tr><td><b>에이전트 팀</b></td><td>나눠 맡되 담당끼리 <b>서로 물어봐야</b> 풀리는 크고 얽힌 일</td><td>담당 부서가 나뉜 민원 처리 · 화면 · 계산 · 데이터를 나눠 만들며 서로 맞추기 · 원인을 가설끼리 반박해 좁히기</td><td>혼자 해도 되는 일 · 사람이 지켜볼 수 없는 일 · 사용량을 아껴야 하는 일</td></tr>
+        <tr><th>순서</th><th>물어볼 것</th><th>그렇다면</th></tr>
+        <tr><td><b>1</b></td><td>혼자 한 번에 다 읽을 수 있는 양인가?</td><td><b>싱글로 끝.</b> 대부분 여기서 끝납니다</td></tr>
+        <tr><td><b>2</b></td><td>아래 셋 중 하나인가?<br>・중간 자료가 너무 커서 메인을 흐린다<br>・서로 상관없는 갈래를 넓게 훑어야 한다<br>・만든 것을 따로 검산해야 한다</td><td><b>서브.</b> 필요한 정보는 맡기는 쪽이 챙겨 넘긴다(3단계 ②)</td></tr>
+        <tr><td><b>3</b></td><td>세 가지가 <b>모두</b> 맞나?<br>・너무 커서 혼자 다 못 읽는다<br>・무엇이 얽히는지 미리 알 수 없다(하다 보면 드러남)<br>・담당끼리 <b>여러 번</b> 주고받거나 서로 반박해야 한다<br>+ 내가 끝까지 지켜볼 수 있고, 7배 비용을 쓸 만한 일이다</td><td><b>팀.</b> 하나라도 빠지면 서브나 싱글이 낫습니다</td></tr>
       </table></div>
+      <h4>어떤 업무에 써 볼까</h4>
+      <div class="tbl"><table>
+        <tr><th>방식</th><th>언제</th><th>업무 예시</th><th>쓰지 말 것</th></tr>
+        <tr><td><b>싱글</b></td><td>자료가 한 번에 읽히는 일. <b>대부분</b></td><td>월별 집계 리포트 · 회의록 요약 · 문의 답변 · 안내문 · 쿼리 한 개 작성 · 오류 찾기</td><td>—</td></tr>
+        <tr><td><b>서브 · 맥락 보호</b></td><td>중간 자료가 커서 메인의 판단을 흐릴 때</td><td>긴 로그 · 대량 조회 결과를 서브가 읽고 요약만 돌려준다</td><td>결과가 짧은 일</td></tr>
+        <tr><td><b>서브 · 넓게 훑기</b></td><td>서로 상관없는 갈래가 많을 때 (목적은 속도보다 <b>꼼꼼함</b>)</td><td>센터별 · 지역별 자료를 나눠 조사해 한데 모으기 · 경쟁사 여러 곳 조사</td><td>갈래끼리 정보가 필요한데 미리 챙겨 넘길 수 없는 일</td></tr>
+        <tr><td><b>서브 · 검산</b></td><td>만든 것을 따로 확인할 때</td><td>결과물과 기준만 넘겨 숫자 검산 · 규정 위반 찾기</td><td>만든 과정까지 알아야 하는 확인</td></tr>
+        <tr><td><b>에이전트 팀</b></td><td>판단 순서 3번이 모두 맞을 때. <b>드묾</b> · 지켜볼 수 있을 때만</td><td>여러 부서 자료가 얽힌 대형 원인 분석(가설끼리 반박) · 화면 · 계산 · 데이터를 동시에 만들며 서로 맞추는 대시보드 개발</td><td>혼자 되는 일 · 자동 실행 · 사용량을 아껴야 하는 일</td></tr>
+      </table></div>
+      <div class="row"><b>방법</b><div><ol>
+        <li><b>내 업무 하나 정하기</b> — 아래 카드의 「업무:」 뒤에 내 업무를 한두 줄로 적어 붙여넣습니다.
+          <div class="cmd"><code>내 업무 하나를 싱글 · 서브 · 팀 중 어디에 맡길지 같이 정해 줘. 업무:
+- 아래 판단 순서 3단을 위에서부터 차례로 따져 보고, 어느 단에서 멈췄는지와 이유를 한 줄씩 쓴다
+  1) 혼자 한 번에 다 읽을 수 있는 양인가 → 싱글
+  2) 중간 자료가 너무 큰가 · 서로 상관없는 갈래를 넓게 훑어야 하나 · 만든 것을 따로 검산해야 하나 → 서브
+  3) 너무 커서 혼자 못 읽고 · 무엇이 얽히는지 미리 모르고 · 담당끼리 여러 번 주고받아야 하나(셋 다) → 팀
+- 업무 내용이 부족해 판단이 안 되면 추측하지 말고 나에게 한 가지씩 물어본다
+- 마지막 답은 세 줄: 방식 · 이유(몇 번에서 멈췄나) · 첫 지시 한 줄</code><button type="button">복사</button></div></li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>내 업무 하나에 대해 「방식 · 이유 · 첫 지시 한 줄」 세 줄이 나왔다. 이유가 판단 순서 몇 번인지 말할 수 있다.</p></div></div>
+      <div class="box tip"><b>서브 · 팀을 쓸 때 사용량 줄이는 법 (공식 권장)</b>① 팀원 · 서브는 Sonnet 으로 ② 수는 꼭 필요한 만큼만 ③ 맡길 때 지시는 필요한 파일 · 할 일만 짧게 ④ 끝나면 팀원을 끝내고 에이전트 팀 기능을 끈다.</div>
     </div>
   </article>
   <div class="box tip"><b>수업 끝</b><code class="k">cs_practice</code> 폴더는 지우지 않고 둡니다. 4단계에서 <b>에이전트 팀 기능을 껐는지</b> 한 번 더 확인하고 마칩니다. 수고하셨습니다.</div>
@@ -352,11 +354,12 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>cs-reply 를 부르라는데 「그런 에이전트가 없다」고 한다</td><td>에이전트 파일을 만든 뒤 다시 켜지 않았다 · 파일이 <code class="k">cs_practice\.claude</code> 에 있다</td><td><code class="k">exit</code> → <code class="k">claude</code>. 파일은 워크스페이스(<code class="k">cs_practice</code> 바로 위)의 <code class="k">.claude\agents\</code> 에 둔다</td></tr>
     <tr><td>에이전트 파일 수정이 거절됐다</td><td>허락 창에서 거절했다</td><td>카드를 다시 붙여넣고 허락 창에서 허용</td></tr>
     <tr><td>2단계 답변의 문의 4 · 9 · 13 이 정답표 [1] 과 다르다</td><td>응대 담당이 옛 판 규정을 읽었다</td><td>「응대규정.md 만 보고 다시 써」라고 한 줄 붙여 다시</td></tr>
-    <tr><td>3단계 ② 서브가 얽힌 문의를 맞혔다</td><td>서브가 다른 담당 파일을 읽었거나, 우연히 맞혔다</td><td>답변 파일 맨 위나 대화에서 서브가 읽은 파일을 확인. 다른 담당 파일을 읽었으면 「자기 담당 파일 하나만」을 다시 강조해 한 번 더. 우연이면 그대로 두고 정답표 [3] 실측 숫자로 비교</td></tr>
-    <tr><td>3단계 ① 싱글이 얽힌 문의를 틀렸다</td><td>세 파일을 다 읽지 않았거나 「같은 학부모」를 이어 보지 않았다</td><td>「문의마다 다른 두 파일에 같은 학부모 · 같은 아이가 있는지 먼저 찾아」라고 한 줄 붙여 다시</td></tr>
+    <tr><td>3단계 ① 서브가 다른 담당 파일까지 읽었다</td><td>「자기 담당 파일 하나만」을 놓쳤다</td><td>대화에서 서브가 읽은 파일을 확인하고 「다른 담당 파일은 읽지 않는다」를 다시 강조해 한 번 더. 몇 건 우연히 맞힌 것은 그대로 둔다</td></tr>
+    <tr><td>3단계 패널에 서브가 안 뜨고 메인이 혼자 했다</td><td>메인이 직접 하는 편이 빠르다고 판단했다</td><td>카드 맨 앞에 「반드시 서브 에이전트 3개를 띄워서」를 붙여 다시</td></tr>
     <tr><td>표가 안 나온다 · 파일이 <code class="k">cs_practice\답변</code> 에 생겼다</td><td>Claude 를 <code class="k">cs_practice</code> 가 아닌 곳에서 켰다</td><td><code class="k">cs_practice</code> 폴더를 연 VS Code 에서 다시 켜고 카드 그대로</td></tr>
-    <tr><td>팀을 만들어 달랬는데 서브로 처리했다 · <code class="k">[참관]</code> 줄이 안 나온다</td><td>에이전트 팀 기능을 켠 뒤 다시 켜지 않았다</td><td>4단계 켜기 확인 → <code class="k">exit</code> → <code class="k">claude</code> → 카드 그대로</td></tr>
-    <tr><td>사용량 한도에 걸렸다</td><td>서브 · 팀이 많이 쓴다(팀은 싱글의 약 5배)</td><td>강사 화면으로 보고 5단계로 넘어간다</td></tr>
+    <tr><td>팀을 만들어 달랬는데 서브로 처리했다 · <code class="k">[참관]</code> 줄이 안 나온다</td><td>에이전트 팀 기능을 켠 뒤 다시 켜지 않았다 · 자동 실행(<code class="k">claude -p</code>)으로 돌렸다</td><td>4단계 켜기 확인 → <code class="k">exit</code> → <code class="k">claude</code>(대화형) → 카드 그대로</td></tr>
+    <tr><td>팀원 이름이 패널에서 사라졌다</td><td>모두 쉬고 있으면 30초 뒤 줄이 숨는다(꺼진 것은 아님)</td><td>메인에게 「A 에게 ○○ 물어봐」라고 하면 다시 나타난다</td></tr>
+    <tr><td>사용량 한도에 걸렸다</td><td>서브 · 팀이 많이 쓴다(공식 문서 기준 팀은 약 7배)</td><td>강사 화면으로 보고 5단계로 넘어간다</td></tr>
   </table></div>
 </section>
 </details>
@@ -369,6 +372,11 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v4.1</b></td><td>2026-11-08</td><td>
+      <ul><li><b>바뀜</b> 1~4단계를 <b>사용법 체험</b>으로 — 3단계 = 서브 띄우기 · 챙겨서 넘기기(싱글 비교 카드 뺌) · 4단계 = 켜기 · 지켜보기 · <b>팀원에게 직접 말 걸기</b>(추가) · 끄기. 확인은 정답 채점 대신 조작 확인</li>
+      <li><b>다시 씀</b> 5단계 「어떤 업무에 써 볼까 — 기본은 싱글」: 근거(공식 문서 · Anthropic) · 판단 순서 3단 · 업무 추천 표(싱글 / 서브 맥락 보호 · 넓게 훑기 · 검산 / 팀) · 내 업무 하나 정하기 카드 · 사용량 줄이는 법</li>
+      <li><b>고침</b> 실측 표의 팀 행에 측정 조건 표기(자동 실행에서는 팀원이 뜨지 않아 이름 붙인 서브끼리 쪽지) · 4단계에 「팀은 대화형에서만」 경고</li>
+      <li><b>뺌</b> 「서브 vs 팀 기준」 8줄 표(판단 순서 3단으로 대신)</li></ul></td></tr>
     <tr><td><b>v4.0</b></td><td>2026-11-07</td><td>
       <ul><li><b>바뀜</b> 3 · 4단계 소재를 <b>담당별로 나뉜 문의</b>(<code class="k">cs_practice\담당별</code> · 얽힌 문의 다섯 건)로 바꿈 — 3단계 = ① 싱글 ② 서브 셋에게 그대로 나누기 ③ 메인이 「같은 학부모 목록」을 넘겨 나누기 · 4단계 = 팀원 A · B · C 가 서로 직접 묻기</li>
       <li><b>바뀜</b> 시작 전 비유를 상담실(문의함 나누기)로 · 강사 실측 상자 · 5단계 판단표 · 실측 표 · 맡길 업무 표를 실측에 맞춤 — 「나눈다고 더 똑똑해지지 않는다 · 차이는 사용량 · 시간 · 정보가 나뉜 일」</li>
