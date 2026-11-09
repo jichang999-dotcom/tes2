@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.43 · 2026-11-08</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.44 · 2026-11-09</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -634,8 +634,7 @@ disable-model-invocation: true
     <tr><td>고친 기록 · 되돌리기 · 백업</td><td><b>Git · GitHub</b> (코드만)</td><td>1~8단계</td></tr>
     <tr><td>남이 만든 스킬 · 에이전트 · 규칙 찾기</td><td><b>내 업무로 GitHub 검색 · 검색 스크립트</b></td><td>9~11단계</td></tr>
   </table></div>
-  <div class="box tip"><b>2step에서는</b>basic에서 만든 리포트 담당 에이전트를 <b>혼자 출근하는 AI 직원</b>으로 만듭니다 — 오늘 배운 스케줄러로 출근하고, 슬랙으로 보고하고, Git 으로 근무일지를 남깁니다.</div>
-  <div class="box tip"><b>숙제</b>내 업무 하나를 골라 위 표의 어느 칸에 들어가는지 적어 옵니다. 칸이 애매하면 그 이유도 한 줄.</div>
+  <div class="box tip"><b>2step에서는</b>혼자 하던 일을 <b>여러 AI 에게 나눠</b> 봅니다 — 일을 맡을 담당(에이전트)을 정하고, 서브 에이전트와 에이전트 팀을 직접 써 본 뒤, 어떤 업무에 무엇을 쓸지 정합니다.</div>
 </section>
 </details>
 
@@ -677,6 +676,7 @@ disable-model-invocation: true
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.44</b></td><td>2026-11-09</td><td><b>바뀜</b> 정리 「2step에서는」 상자 = 현행 2step(여러 AI 에게 일 나누기)</td></tr>
     <tr><td><b>v2.43</b></td><td>2026-11-08</td><td><b>바뀜</b> 9단계 비교표 열 고정 — 저장소 (스킬) · 별 · 포크 · 마지막 업데이트 · 열린 이슈 · 라이선스 · <b>어떤 스킬인지</b>(파일 구성 열 대신) · 업무와 맞는 점 · <b>기존 스킬 충돌</b>(선택 열 대신). 추천 하나는 표 아래 따로 · SKILL.md 한 파일 우선 규칙은 그대로</td></tr>
     <tr><td><b>v2.42</b></td><td>2026-11-08</td><td><b>바뀜</b> 9단계 — 먼저 워크스페이스 .claude/skills · 전역 ~/.claude/skills 의 기존 스킬 이름 · description 목록 · 비교표에 「기존 스킬과 겹침」 칸(충돌 = 이름 같음 / 비슷 = 하는 일 · 부르는 말 겹침 / 없음) · 충돌 후보는 고르지 않음 · 비슷한 스킬이 있으면 고른 이유에 차이</td></tr>
     <tr><td><b>v2.41</b></td><td>2026-11-08</td><td><b>바뀜</b> 8단계 = 채울 칸 없음(리포 이름 · 아이디 대조 · remote add 줄 삭제 · 파일 점검 · push · 커밋 ↔ 계정 연결 확인만) / 7-② = 리포를 만들면서 이 폴더에 연결(<code class="k">gh repo create … --source . --remote origin</code> · 이미 origin 이 있으면 멈춤)</td></tr>
