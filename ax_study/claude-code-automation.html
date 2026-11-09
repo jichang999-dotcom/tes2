@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.44 · 2026-11-09</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.45 · 2026-11-09</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -565,16 +565,18 @@ disable-model-invocation: true
     <header><span class="no">13</span><h3>슬랙 가입 · 내 워크스페이스</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
       <div class="row"><b>방법</b><div><ol>
-        <li><a href="https://slack.com/get-started#/createnew" target="_blank" rel="noopener">slack.com/get-started</a> → <b>회사 메일</b>을 넣고 <b>계속</b> → 메일로 온 6자리 코드를 넣습니다.</li>
-        <li>「이미 있는 워크스페이스에 참여」 안내가 보여도 <b>새 워크스페이스 만들기</b>를 고릅니다.</li>
-        <li>워크스페이스 이름 = <code class="k">&lt;내 이름&gt;-ax</code> · 내 이름 입력 · 팀원 초대는 <b>건너뛰기</b>.</li>
-        <li>「팀이 무슨 일을 하나요」처럼 첫 채널 이름을 물으면 <code class="k">알림</code>. 유료 체험을 권하면 <b>무료</b>로 시작합니다.</li>
-        <li>데스크톱 앱이 없으면 브라우저로 써도 됩니다.</li>
+        <li><a href="https://slack.com/get-started#/createnew" target="_blank" rel="noopener">slack.com/get-started</a> 에서 <b>회사 메일</b>로 가입합니다.</li>
+        <li><b>새 워크스페이스</b>를 만듭니다. 이름은 <code class="k">&lt;내 이름&gt;-ax</code>, 첫 채널 이름은 <code class="k">알림</code> 으로 합니다.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>왼쪽 위에 내 워크스페이스 이름, 채널 목록에 <code class="k">#알림</code> 이 보이고 메시지를 쓸 수 있다.</p></div></div>
-      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
-        <div class="box warn"><b>주의</b>회사가 이미 쓰는 슬랙 워크스페이스에 만들지 않습니다. 실습 메시지가 동료에게 갑니다.</div>
-      </div></details>
+      <details class="q fix"><summary>PC 앱 · 휴대폰에서 쓰려면</summary><div style="margin-top:8px"><ul>
+        <li>가입은 다시 하지 않습니다. Slack 앱을 받아 <b>같은 회사 메일로 로그인</b>하고 <code class="k">&lt;내 이름&gt;-ax</code> 를 고릅니다.</li>
+        <li>PC 는 앱 없이 브라우저로 써도 됩니다.</li>
+      </ul></div></details>
+      <details class="q fix"><summary>가입 화면에서 헷갈리면</summary><div style="margin-top:8px"><ul>
+        <li>메일로 온 6자리 코드를 넣습니다.</li>
+        <li>팀원 초대는 <b>건너뛰기</b>, 유료 체험을 권하면 <b>무료로 시작</b>합니다.</li>
+      </ul></div></details>
     </div>
   </article>
 
@@ -660,7 +662,6 @@ disable-model-invocation: true
     <tr><td>GitHub 검색이 403 · rate limit</td><td>키 없는 검색은 1분에 10번까지</td><td>1분 기다렸다 다시 · 반복 실행을 줄인다</td></tr>
     <tr><td>9단계 후보가 0개 · 엉뚱하다</td><td>업무 설명이 너무 좁다 · 검색어가 한글이다</td><td>업무를 넓게 다시 적는다 · 「영어 검색어로 바꿔 다시 찾아 줘」</td></tr>
     <tr><td>작업 결과가 <code class="k">(0x1)</code> · 로그가 안 는다</td><td>.bat 에 한글 · 경로 따옴표 · python 경로</td><td><code class="k">run.bat</code> 을 더블클릭해 오류를 본다 · 「run.bat 을 고쳐 줘」</td></tr>
-    <tr><td>슬랙 앱을 못 만든다 · 관리자 승인이 필요하다</td><td>회사 워크스페이스를 골랐다</td><td>13단계에서 만든 <b>내 워크스페이스</b>를 고른다</td></tr>
     <tr><td>앱 이름에서 오류가 난다</td><td>한글 · 특수문자를 넣었다</td><td>영문 · 숫자 · - 만 (예 <code class="k">hong-alert</code>)</td></tr>
     <tr><td>Incoming Webhooks 목록이 비어 있다</td><td>설치 때 채널을 고르지 않았다</td><td>그 화면 아래 <b>Add New Webhook</b> → <code class="k">#알림</code> → 허용</td></tr>
     <tr><td>슬랙에 안 온다</td><td>주소 오타 · <code class="k">.env</code> 저장 안 함</td><td>「웹훅으로 test 한 줄만 보내 봐」</td></tr>
@@ -676,6 +677,7 @@ disable-model-invocation: true
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.45</b></td><td>2026-11-09</td><td><b>바뀜</b> 13단계 = 가입 · 새 워크스페이스 두 줄 · 다른 기기는 같은 메일로 로그인(접힌 카드) · 가입 화면 안내도 접힌 카드로</td></tr>
     <tr><td><b>v2.44</b></td><td>2026-11-09</td><td><b>바뀜</b> 정리 「2step에서는」 상자 = 현행 2step(여러 AI 에게 일 나누기)</td></tr>
     <tr><td><b>v2.43</b></td><td>2026-11-08</td><td><b>바뀜</b> 9단계 비교표 열 고정 — 저장소 (스킬) · 별 · 포크 · 마지막 업데이트 · 열린 이슈 · 라이선스 · <b>어떤 스킬인지</b>(파일 구성 열 대신) · 업무와 맞는 점 · <b>기존 스킬 충돌</b>(선택 열 대신). 추천 하나는 표 아래 따로 · SKILL.md 한 파일 우선 규칙은 그대로</td></tr>
     <tr><td><b>v2.42</b></td><td>2026-11-08</td><td><b>바뀜</b> 9단계 — 먼저 워크스페이스 .claude/skills · 전역 ~/.claude/skills 의 기존 스킬 이름 · description 목록 · 비교표에 「기존 스킬과 겹침」 칸(충돌 = 이름 같음 / 비슷 = 하는 일 · 부르는 말 겹침 / 없음) · 충돌 후보는 고르지 않음 · 비슷한 스킬이 있으면 고른 이유에 차이</td></tr>
