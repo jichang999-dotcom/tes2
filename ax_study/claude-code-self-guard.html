@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code master 1step — 스스로 지키기 <span class="ver">v1.0 · 2026-11-06</span></h1>
+  <h1>Claude Code master 1step — 스스로 지키기 <span class="ver">v1.2 · 2026-11-10</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="cs-reply 를 만든 advance 2step">advance 2step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -207,7 +207,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <p><b>Auto Memory</b> 는 Claude 가 대화 중에 알게 된 사실을 메모리 폴더(<code class="k">MEMORY.md</code> 목차 + 파일 여러 개)에 <b>스스로</b> 적고, 다음에 켤 때 읽는 기능입니다. 폴더마다 따로 쌓입니다.</p>
       <div class="row"><b>방법</b><div><ol>
         <li>cs_practice 에서 켠 claude 에 붙여넣습니다.
-          <div class="cmd"><code>앞으로 이 폴더에서 문의 답변을 쓸 때는 답변마다 맨 끝에 「— 가상 수학교실 상담실 드림」 한 줄을 붙여 줘. 이건 다음에 켤 때도 기억해 둬.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>앞으로 이 폴더에서 문의 답변을 쓸 때는 답변마다 맨 끝에 「— 가상 수학교실 상담실 드림」 한 줄을 붙여 줘. 파일은 고치지 말고, 다음에 켤 때도 기억해 둬.</code><button type="button">복사</button></div></li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 새로 켠 뒤 물어봅니다.
           <div class="cmd"><code>답변 끝에 붙이기로 한 한 줄이 뭐였지? 그걸 어느 파일에 기억해 뒀는지 전체 경로도 알려 줘. 파일은 고치지 마.</code><button type="button">복사</button></div></li>
         <li><code class="k">/memory</code> 를 입력해 메모리 화면을 봅니다. Auto Memory 가 켜져 있는지, 메모리 폴더 열기가 있는지 확인하고 <kbd>Esc</kbd>.</li>
@@ -222,7 +222,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <p>기억은 Claude 가 쓰기 때문에 <b>틀린 것도 쌓입니다.</b> 일부러 틀린 사실(옛 판 규정)을 하나 기억시키고, 찾아서 지웁니다.</p>
       <div class="row"><b>방법</b><div><ol>
         <li>틀린 기억 넣기 (현행 규정은 한 달 2회입니다).
-          <div class="cmd"><code>참고로 결석 보강은 한 달에 1번까지야. 이것도 기억해 둬.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>참고로 결석 보강은 한 달에 1번까지야. 파일은 고치지 말고 이것도 기억해 둬.</code><button type="button">복사</button></div></li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 새로 켜고 점검합니다.
           <div class="cmd"><code>이 폴더에 대해 기억하고 있는 것을 전부 보여 줘. 그중 응대규정.md 와 다른 기억이 있으면 어느 줄이 규정 몇 번과 다른지 알려 줘. 아직 고치지 마.</code><button type="button">복사</button></div></li>
         <li>틀린 기억은 지우고, 꼭 지킬 것은 규칙으로 옮깁니다.
@@ -277,7 +277,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 만든 뒤 가짜 입력으로 「막힘 1번 · 통과 1번」을 직접 시험해서 결과를 보여 줘.</code><button type="button">복사</button></div>
           <p>파일 수정 허락 창이 뜨면 허용합니다.</p></li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켜고(설정은 켤 때 읽힌다) <code class="k">/hooks</code> 로 훅이 보이는지 봅니다.</li>
-        <li>일부러 고쳐 보라고 시킵니다. 두 줄을 하나씩.
+        <li>일부러 고쳐 보라고 시킵니다. 두 줄을 하나씩 — <b>사이에 <code class="k">/clear</code></b>. 같은 대화로 이어 시키면 Claude 가 훅을 미리 알고 아예 시도하지 않아, 훅이 막는 것을 볼 수 없습니다.
           <div class="cmd"><code>문의.txt 첫 줄을 지워 줘.</code><button type="button">복사</button></div>
           <div class="cmd"><code>PowerShell 명령으로 응대규정.md 내용을 비워 줘.</code><button type="button">복사</button></div></li>
       </ol></div></div>
@@ -292,7 +292,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <div class="row"><b>방법</b><div><ol>
         <li>훅 더하기.
           <div class="cmd"><code>cs_practice 에 비밀정보 검사 훅을 더해 줘.
-- cs_practice 가 Git 저장소가 아니면 git init 하고, .gitignore 에 .env 와 답변/ 을 넣는다
+- cs_practice 안에서 새로 git init 하지 않는다. 워크스페이스가 Git 저장소면(advance 1step) 그대로 쓰고, 아니면 워크스페이스에서 git init 한다. 워크스페이스 .gitignore 에 .env 와 cs_practice/답변/ 을 넣는다
 - 파일: cs_practice/.claude/hooks/secret_check.js · 같은 settings.json 의 PreToolUse 에 matcher Bash|PowerShell 로 추가한다 (원본 보호 훅은 그대로 둔다)
 - git commit 명령일 때만 검사한다: 올라갈 파일(스테이징된 파일 + 같은 명령의 git add 로 들어갈 파일)에 .env 파일 · 슬랙 웹훅 주소(hooks.slack.com) · xoxb- 같은 토큰 · sk- 같은 키 모양이 있으면 exit 2 로 막고, 파일 이름과 이유를 한국어로 돌려준다
 - Node 로 쓴다. 설정의 명령은 node .claude/hooks/secret_check.js
@@ -438,6 +438,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.2</b></td><td>2026-11-10</td><td><ul><li><b>바뀜</b> 1 · 2단계 프롬프트에 「파일은 고치지 말고」 — 실측에서 Claude 가 응대규정.md 를 직접 고쳐(보강 2회 → 1회) 2단계 틀린 기억을 못 찾음</li><li><b>바뀜</b> 4단계 3번 = 두 줄 사이에 /clear (이어 시키면 훅을 거치지 않고 거절)</li><li><b>바뀜</b> 5단계 = cs_practice 안에서 git init 하지 않고 워크스페이스 저장소를 씀 — cs_practice 가 따로 저장소가 되면 워크스페이스의 cs-reply 에이전트가 안 보임(실측)</li></ul></td></tr>
     <tr><td><b>v1.1</b></td><td>2026-11-07</td><td>
       <ul><li><b>번외 · 칸 화면 훅</b> PART 2 끝에 번호 없는 단계 — 서브 · 팀원을 부를 때(PreToolUse · Agent) 터미널 창을 새로 열고 담당마다 칸을 더해 실시간으로 보여 준다(tmux 분할 화면을 Windows Terminal 로)</li>
       <li><b>받을 파일</b> <code class="k">정답_훅</code> 에 agent_panes.js · pane.js · 칸화면_설정.json 추가</li>
