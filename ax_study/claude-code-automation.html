@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.45 · 2026-11-09</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.46 · 2026-11-10</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -487,8 +487,7 @@ disable-model-invocation: true
       <div class="row"><b>방법</b><div><ol>
         <li><code class="k">[입력]</code> 칸을 9단계 결과로 채워 붙여넣습니다. 처음엔 폴더 안에 <code class="k">SKILL.md</code> 한 파일만 있는 것이 좋습니다 — 하위 폴더가 딸린 스킬은 그 파일만 받으면 일부만 동작합니다.
           <div class="cmd"><code style="white-space:pre-wrap">아래 스킬(또는 에이전트)을 이 폴더의 .claude 에 넣으려고 해. 저장소 전체를 내려받지 말고 그 파일만 받아.
-1. 저장소 주소: [입력 — 9단계 결과 · 예: https://github.com/anthropics/knowledge-work-plugins]
-2. 스킬 이름: [입력 — 9단계 결과 · 예: variance-analysis]
+1. 적용 저장소/스킬:
 먼저 그 파일 내용을 읽고, 명령 실행 · 바깥 주소로 보내기 · 키나 비밀번호 요구 · 파일 지우기 같은 위험한 줄이 있는지 찾아서 보여 줘. 있으면 넣지 말고 멈춰.
 괜찮으면 스킬은 .claude/skills/&lt;이름&gt;/SKILL.md, 에이전트는 .claude/agents/&lt;이름&gt;.md 모양으로 넣고, 무엇을 넣었는지 · 어떻게 부르는지 한 줄로 알려 줘.</code><button type="button">복사</button></div></li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 다시 켜고 <code class="k">/skills</code>(에이전트면 「쓸 수 있는 에이전트 목록 보여 줘」)로 확인 → 한 번 불러 봅니다.</li>
@@ -677,6 +676,7 @@ disable-model-invocation: true
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.46</b></td><td>2026-11-10</td><td><b>바뀜</b> 10단계 프롬프트 = 「저장소 주소」 · 「스킬 이름」 두 칸을 「1. 적용 저장소/스킬:」 한 줄로</td></tr>
     <tr><td><b>v2.45</b></td><td>2026-11-09</td><td><b>바뀜</b> 13단계 = 가입 · 새 워크스페이스 두 줄 · 다른 기기는 같은 메일로 로그인(접힌 카드) · 가입 화면 안내도 접힌 카드로</td></tr>
     <tr><td><b>v2.44</b></td><td>2026-11-09</td><td><b>바뀜</b> 정리 「2step에서는」 상자 = 현행 2step(여러 AI 에게 일 나누기)</td></tr>
     <tr><td><b>v2.43</b></td><td>2026-11-08</td><td><b>바뀜</b> 9단계 비교표 열 고정 — 저장소 (스킬) · 별 · 포크 · 마지막 업데이트 · 열린 이슈 · 라이선스 · <b>어떤 스킬인지</b>(파일 구성 열 대신) · 업무와 맞는 점 · <b>기존 스킬 충돌</b>(선택 열 대신). 추천 하나는 표 아래 따로 · SKILL.md 한 파일 우선 규칙은 그대로</td></tr>
