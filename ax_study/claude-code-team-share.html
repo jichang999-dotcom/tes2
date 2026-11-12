@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code master 2step — 팀에 퍼뜨리기 <span class="ver">v2.1 · 2026-11-06</span></h1>
+  <h1>Claude Code master 2step — 팀에 퍼뜨리기 <span class="ver">v2.2 · 2026-11-12</span></h1>
   <a class="rel-btn" href="claude-code-self-guard.html" title="cs_practice 를 만든 master 1step">master 1step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -215,8 +215,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <div class="cmd"><code>안녕. 너는 지금 어떤 모델로 답하고 있어? 한 줄로.</code><button type="button">복사</button></div></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>헤르메스 창에 <b>Claude 모델 이름</b>이 든 답이 왔다. 오류 문구가 없다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (2)</summary><div style="margin-top:8px">
       <div class="box tip"><b>PowerShell 한 줄 설치는 쓰지 않습니다</b>헤르메스 사이트의 PowerShell 설치(<code class="k">iex(irm …)</code>)는 회사 PC 보안 프로그램(안랩 Safe Transaction)이 막습니다. 설치 파일(exe)이 정답입니다. 메뉴 이름은 헤르메스 버전마다 조금 다를 수 있습니다.</div>
       <div class="box warn"><b>「Third-party apps now draw from your extra usage」 가 뜨면</b>extra usage 가 꺼져 있거나 잔액이 0 입니다. <code class="k">claude.ai › 설정 › 사용량</code> 에서 켜고 충전한 뒤 다시 말을 겁니다. Max · Pro 요금제에 여유가 있어도 이 지갑은 따로입니다.</div>
+      </div></details>
     </div>
   </article>
   <article class="step" id="s2" data-step="2">
@@ -232,7 +234,9 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <li><b>휴대폰</b> 슬랙 → <b>앱</b>(또는 검색)에서 <code class="k">영문이름-hermes</code> → 메시지 탭에 <code class="k">안녕, 들리면 한 줄로 답해 줘</code>.</li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>휴대폰 슬랙에 <b>내 봇 이름</b>으로 답이 왔다. PC 헤르메스 창에도 같은 대화가 보인다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
       <div class="box tip"><b>「연결 안 됨」 표시가 늦게 바뀔 때</b>헤르메스 화면의 연결 표시는 늦게 바뀝니다. 휴대폰으로 한 번 말을 걸어 답이 오는지가 진짜 확인입니다.</div>
+      </div></details>
     </div>
   </article>
   <article class="step" id="s3" data-step="3">
@@ -252,8 +256,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
           <div class="cmd"><code>이번엔 시험이야. 응대규정_옛판.md 대로 답변을 써서 답변_옛판.txt 로 저장하고, 응대규정.md 와 대조만 해. 고치지 말고 같은 5줄로 보고해.</code><button type="button">복사</button></div></li>
       </ol></div></div>
       <div class="row"><b>확인</b><div><p>✅ 보고의 검증이 「15건 중 15건」이다. 🔴 보고의 오류에 <b>문의 4 · 9 · 13</b> 이 있다(정답표 [3]). <code class="k">cs_practice</code> 에 답변 파일 두 개가 새로 생겼고 <code class="k">문의.txt</code> · 규정 파일은 그대로다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (2)</summary><div style="margin-top:8px">
       <div class="box tip"><b>답이 오래 걸리면</b>15건을 쓰고 대조하느라 몇 분 걸립니다. 휴대폰을 내려놓아도 PC 가 일합니다. 그동안 헤르메스 창을 닫거나 PC 를 재우지 않습니다.</div>
       <div class="box tip"><b>강사의 유삐는 무엇이 더 있나</b>강사 PC 는 헤르메스를 창 없이 늘 켜 두고(작업 스케줄러), 꺼지면 다시 살리는 장치(워치독)를 붙였습니다. 오늘은 수업 동안만 켜 둡니다.</div>
+      </div></details>
     </div>
   </article>
 </section>
@@ -311,6 +317,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.2</b></td><td>2026-11-12</td><td><b>바뀜</b> 단계 안의 주의 · 팁 상자를 「주의사항」 접힌 칸으로 묶었다 — 눌러서 펼칩니다</td></tr>
     <tr><td><b>v2.1</b></td><td>2026-11-06</td><td>
       <ul><li><b>시작 전</b>에 「헤르메스가 뭔가요」 설명 · Claude Code 와 비교 표 추가</li></ul></td></tr>
     <tr><td><b>v2.0</b></td><td>2026-11-06</td><td>
