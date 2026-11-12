@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code master 1step — 스스로 지키기 <span class="ver">v1.4 · 2026-11-12</span></h1>
+  <h1>Claude Code master 1step — 스스로 지키기 <span class="ver">v1.5 · 2026-11-12</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="cs-reply 를 만든 advance 2step">advance 2step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -166,7 +166,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <main>
 <section class="part" id="p0">
   <h2><small>시작 전</small>사람이 매번 확인하지 않아도 지켜지게 만듭니다</h2>
-  <p class="lead">지금까지는 사람이 매번 지시하고 결과를 확인했습니다. 오늘은 advance 2step 의 <b>학부모 문의 답변</b>을 그대로 쓰면서, Claude 가 <b>기억하고</b>(Auto Memory), 정해진 순간에 <b>기계가 막고</b>(훅), 이것들을 <b>한 설계로 묶고</b>(하네스), 끝 조건을 줘서 <b>끝날 때까지 스스로 반복</b>(루프)하게 만듭니다.</p>
+  <p class="lead">지금까지는 사람이 매번 지시하고 결과를 확인했습니다. 오늘은 가상 학원의 <b>학부모 문의 답변</b>(이번 차시 드라이브에서 받는 실습 자료)을 쓰면서, Claude 가 <b>기억하고</b>(Auto Memory), 정해진 순간에 <b>기계가 막고</b>(훅), 이것들을 <b>한 설계로 묶고</b>(하네스), 끝 조건을 줘서 <b>끝날 때까지 스스로 반복</b>(루프)하게 만듭니다.</p>
   <div class="hero">
     <b>끝나면 이렇게 됩니다</b>
     <ul>
@@ -190,11 +190,10 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h3>준비물</h3>
   <div class="tbl"><table>
     <tr><th>준비물</th><th>설명</th></tr>
-    <tr><td><b>advance 2step 결과</b></td><td>워크스페이스 안의 <code class="k">cs_practice</code> 폴더(<code class="k">문의.txt</code> · <code class="k">응대규정.md</code> · <code class="k">응대규정_옛판.md</code>)와 워크스페이스의 <code class="k">.claude\agents\cs-reply.md</code>. 없으면 advance 2step 의 받을 파일을 다시 받습니다</td></tr>
-    <tr><td><b>정답표</b></td><td>advance 2step 에서 받은 <code class="k">정답표_문의답변.txt</code>. <b>cs_practice 밖</b>에 둡니다(Claude 가 보고 베끼지 않게)</td></tr>
-    <tr><td><b>받을 파일</b></td><td><code class="k">정답_훅</code> 폴더(<code class="k">protect.js</code> · <code class="k">secret_check.js</code> · <code class="k">settings.json</code>). 4 · 5단계에서 막혔을 때만 씁니다. 진행자가 공유 드라이브로 줍니다</td></tr>
+    <tr><td><b>받을 파일</b></td><td><a href="https://drive.google.com/drive/folders/1KA6_U2BJor2_gp2GYeJz6YIvLL6lKozn" target="_blank" rel="noopener">드라이브 AI-AX-Study › master › 1step</a> (회사 계정으로 열립니다). <b>이번 차시 자료만</b> 씁니다 — 지난 과정(advance 2step)에서 받은 파일은 쓰지 않습니다.<ul><li><code class="k">cs_practice</code> 폴더 — <code class="k">문의.txt</code> · <code class="k">응대규정.md</code> · <code class="k">응대규정_옛판.md</code> · <code class="k">.claude\agents\cs-reply.md</code>(응대 담당 에이전트). <b>폴더째</b> 워크스페이스 안에 넣습니다</li><li><code class="k">정답_문의답변.txt</code> — 정답표. <b>cs_practice 밖</b>(워크스페이스)에 둡니다 (Claude 가 보고 베끼지 않게)</li><li><code class="k">정답_훅</code> 폴더 — 4 · 5단계에서 막혔을 때만 씁니다</li></ul></td></tr>
     <tr><td>Git · Node</td><td>advance 1step 에서 설치한 Git, starter 에서 설치한 Node. 훅은 Node 로 씁니다(<code class="k">.bat</code> 은 한글이 깨져 쓰지 않습니다)</td></tr>
   </table></div>
+  <div class="box warn"><b>워크스페이스에 cs_practice 가 이미 있으면</b>advance 2step 에서 쓰던 폴더입니다. 기억 · 답변 파일이 남아 있어 결과가 달라질 수 있으니, 이름을 <code class="k">cs_practice_adv</code> 로 바꿔 두고 새로 받은 폴더를 넣습니다.</div>
   <div class="box tip"><b>오늘은 cs_practice 에서 켭니다</b>VS Code(또는 Cursor)에서 <b>[파일] → [폴더 열기]</b> → <code class="k">cs_practice</code>, 터미널에서 <code class="k">claude</code>. 7단계의 「전」 실험만 다른 폴더에서 켭니다.</div>
 </section>
 
@@ -492,7 +491,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <summary><span class="gno">!</span> 막혔을 때 <small>언제든</small></summary>
 <section class="part" id="p9">
   <h2><small>PART 5</small>막혔을 때</h2>
-  <div class="box warn"><b>먼저</b>5분 넘게 막히면 정답 파일을 씁니다. 훅은 받은 <code class="k">정답_훅</code> 의 세 파일을 4단계 「없으면」대로 넣고 <code class="k">exit</code> → <code class="k">claude</code>. cs-reply 가 없으면 advance 2step 의 <code class="k">정답_응대담당.md</code> 를 워크스페이스의 <code class="k">.claude\agents\cs-reply.md</code> 로 넣습니다.</div>
+  <div class="box warn"><b>먼저</b>5분 넘게 막히면 정답 파일을 씁니다. 훅은 받은 <code class="k">정답_훅</code> 의 세 파일을 4단계 「없으면」대로 넣고 <code class="k">exit</code> → <code class="k">claude</code>. cs-reply 가 없으면 드라이브에서 <code class="k">cs_practice</code> 폴더를 다시 받아 <code class="k">.claude\agents\cs-reply.md</code> 가 들어 있는지 봅니다.</div>
   <div class="tbl"><table>
     <tr><th>증상</th><th>원인</th><th>해결</th></tr>
     <tr><td>새로 켜면 서명 한 줄을 모른다</td><td>Auto Memory 가 꺼져 있다 · 다른 폴더에서 켰다</td><td><code class="k">/memory</code> 에서 켜기 · cs_practice 에서 켰는지 확인 → 1단계 다시</td></tr>
@@ -518,6 +517,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.5</b></td><td>2026-11-12</td><td><ul><li><b>바뀜</b> 실습 자료를 이번 차시 드라이브(master › 1step)에서 받는다 — <code>cs_practice</code> 폴더(문의 · 규정 · 옛 판 · <code>.claude\agents\cs-reply.md</code>) · <code>정답_문의답변.txt</code> · <code>정답_훅</code>. advance 2step 자료는 쓰지 않는다</li><li><b>바뀜</b> cs-reply 에이전트 위치 = 워크스페이스가 아니라 <code>cs_practice\.claude\agents</code> (폴더 하나만 넣으면 된다)</li></ul></td></tr>
     <tr><td><b>v1.4</b></td><td>2026-11-12</td><td><ul><li><b>바뀜</b> PART 1 기억 — Auto Memory 설명 그림 추가 · 1단계 = 확정 안 된 보강 기준(월 1회)을 지나가듯 말하면 기억에 저절로 쌓이는 것 보기 · 2단계 = 그 기억 때문에 문의 4 가 틀리게 답해지는 것 → 원인 찾기 → 기억 지우고 CLAUDE.md 에 규칙 두 줄 → 다시 답하면 맞음</li><li><b>추가</b> 2단계 뒤 정리 「Auto Memory 의 문제점과 CLAUDE.md 를 고쳐야 하는 이유」 · PART 2 훅으로 넘어가는 한 줄</li></ul></td></tr>
     <tr><td><b>v1.3</b></td><td>2026-11-12</td><td><b>바뀜</b> 단계 안의 주의 · 팁 상자를 「주의사항」 접힌 칸으로 묶었다 — 눌러서 펼칩니다</td></tr>
     <tr><td><b>v1.2</b></td><td>2026-11-10</td><td><ul><li><b>바뀜</b> 1 · 2단계 프롬프트에 「파일은 고치지 말고」 — 실측에서 Claude 가 응대규정.md 를 직접 고쳐(보강 2회 → 1회) 2단계 틀린 기억을 못 찾음</li><li><b>바뀜</b> 4단계 3번 = 두 줄 사이에 /clear (이어 시키면 훅을 거치지 않고 거절)</li><li><b>바뀜</b> 5단계 = cs_practice 안에서 git init 하지 않고 워크스페이스 저장소를 씀 — cs_practice 가 따로 저장소가 되면 워크스페이스의 cs-reply 에이전트가 안 보임(실측)</li></ul></td></tr>
