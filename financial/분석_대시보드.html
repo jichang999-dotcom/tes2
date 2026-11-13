@@ -786,8 +786,17 @@
 <!-- ===== 💼 매입 탭 (2026-11-03) — 체결 보유 카드는 손익비 탭에 그대로 두고 페이지 로드 때 이리 옮긴다(reorder_active_cards.js 슬롯 보존) · 대상 = #rr-swing-summary data-auto 에 없는 활성 카드 ===== -->
 <div class="tab-content" id="tab-maeip">
 <section id="maeip-tab">
-  <h3 style="margin:8px 0;">💼 매입 <span class="hd-note">(체결 보유 종목 · §6 라벨이 체결로 바뀐 카드)</span></h3>
-  <p class="hd-note" id="maeip-empty">보유 종목 없음</p>
+  <h3 style="margin:8px 0;">💼 매입 <span class="hd-note">(체결 보유 1종 · 가격 기준 KRX 11-12 종가 · 갱신 2026-11-13 10:16)</span></h3>
+  <div class="card" style="border-left:4px solid #d29922;padding:12px 14px;margin:10px 0;">
+    <h4 style="margin:0 0 8px;">하이록코리아 <span class="hd-note">(013030) · 🍚 밥그릇3 · 체결 11-05 3주</span></h4>
+    <table class="stock-table" style="font-size:0.95em;"><thead><tr><th>현재가</th><th>평균가</th><th>손절가</th><th>목표가</th></tr></thead>
+      <tbody><tr><td data-label="현재가"><strong>30,600</strong> <span class="hd-note">평균 대비 -0.8%</span></td><td data-label="평균가"><strong>30,850</strong></td><td data-label="손절가"><strong>29,550</strong> <span class="hd-note">-3.4%</span></td><td data-label="목표가"><strong>33,000</strong> <span class="hd-note">+7.8%</span></td></tr></tbody></table>
+    <p style="margin:10px 0 4px;font-size:1.05em;"><strong>🟡 손절 경계 — 종가가 29,550 아래면 손절 · 그 전까지 목표 33,000 매도 대기 · 추가매수는 계획 차수만(2차 30,650 · 3차 30,200)</strong></p>
+    <p style="margin:2px 0;">📍 현재 진행: C 체결 뒤 손절 경로에 가장 가까움 (현재가 30,600 · A 경로 31,939 · C 경로 29,509)</p>
+    <p style="margin:2px 0;"><a href="https://drive.google.com/file/d/1icJYUdgayc1vCMfh6G03ffWls4qVatEG/view" target="_blank" rel="noopener">🧭 예상 시나리오 🖼️</a>: A 체결→목표 33,000 (진행 중) · C 체결 뒤 손절 29,550 (진행 중) · B 미체결 상승 (소멸 — 체결됨) <span class="hd-note">(11-02 종가 31,500 기준 고정)</span></p>
+  </div>
+  <p class="hd-note">16:30·19:00 갱신 · 평균가·손절·목표·남은 차수 = §6 라인업 · 시나리오 A/B/C = 손익비·밥그릇3 편입 때 고정한 예시 경로(확률 아님) · 현재 진행 = 지금 가격에 가장 가까운 살아 있는 경로 · 손절은 종가 기준 · 목표는 고가 도달 기준</p>
+  <details id="maeip-cards"><summary class="hd-note">상세 카드 (§6 원본)</summary></details>
 </section>
 </div><!-- /tab-maeip -->
 
@@ -3568,7 +3577,7 @@ function initializeStockFilters() {
 
 // 💼 매입 탭: 자동 관리(data-auto)에 없는 활성 카드 = 체결 보유 → 매입 탭으로 이동 (2026-11-03)
 document.addEventListener('DOMContentLoaded', function() {
-  var sec = document.getElementById('rr-swing-summary'), dest = document.getElementById('maeip-tab');
+  var sec = document.getElementById('rr-swing-summary'), dest = document.getElementById('maeip-cards') || document.getElementById('maeip-tab');
   if (!sec || !dest) return;
   var auto = (sec.getAttribute('data-auto') || '').split(',').filter(Boolean);
   var n = 0;
