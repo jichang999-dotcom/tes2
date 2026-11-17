@@ -130,7 +130,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code master 1step — 스스로 지키기 <span class="ver">v1.5 · 2026-11-12</span></h1>
+  <h1>Claude Code master 1step — 스스로 지키기 <span class="ver">v1.7 · 2026-11-17</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="cs-reply 를 만든 advance 2step">advance 2step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -201,7 +201,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <summary><span class="gno">①</span> 기억 <small>1~2단계 · 30분</small></summary>
 <section class="part" id="p1">
   <h2><small>PART 1</small>기억 (1~2단계)</h2>
-  <p class="lead"><b>Auto Memory</b> 는 Claude 가 대화 중에 알게 된 것을 <b>스스로 골라 파일에 적어 두고</b>, 다음에 켤 때 <b>자동으로 읽는</b> 기능입니다. 사람이 「기억해 둬」라고 하지 않아도 적습니다. 폴더마다 따로 쌓이고, 내 PC 의 파일이라 열어 볼 수 있습니다.</p>
+  <p class="lead"><b>Auto Memory</b> 는 Claude 가 대화 중에 알게 된 것을 <b>스스로 골라 파일에 적어 두고</b>, 다음에 켤 때 <b>자동으로 읽는</b> 기능입니다. 「기억해 둬」라고 하지 않아도 스스로 적을 때가 있습니다. 폴더마다 따로 쌓이고, 내 PC 의 파일이라 열어 볼 수 있습니다.</p>
   <figure class="memfig">
     <div class="memfig-scroll">
     <svg viewBox="0 0 960 330" role="img" aria-label="Auto Memory 흐름: 오늘 대화에서 Claude 가 골라 메모리 폴더에 적고, 다음 대화를 켤 때 자동으로 읽어 답변에 반영한다. CLAUDE.md 는 사람이 적는 규칙으로 함께 읽힌다.">
@@ -210,7 +210,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
         <text x="134" y="74" class="m-t">오늘 대화</text>
         <text x="134" y="106" class="m-s">「보강은 일단 1번으로</text>
         <text x="134" y="130" class="m-s">안내해 줘. 아직 확정은 아냐」</text>
-        <text x="134" y="156" class="m-q">기억해 달라고 하지 않음</text></g>
+        <text x="134" y="156" class="m-q">확정 안 된 것도 저장</text></g>
       <g class="m-line"><path d="M252,105 H352" marker-end="url(#memArr)"/></g>
       <text x="302" y="90" class="m-q">Claude 가</text>
       <text x="302" y="128" class="m-q">골라 적음</text>
@@ -237,23 +237,31 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
       <text x="134" y="290" class="m-s">기억 = Claude 가 쓰는 메모</text>
     </svg>
     </div>
-    <figcaption>Auto Memory — 사람이 시키지 않아도 Claude 가 골라 적고, 다음 대화에서 자동으로 읽습니다</figcaption>
+    <figcaption>Auto Memory — Claude 가 골라 적고, 다음 대화에서 자동으로 읽습니다 — 시키지 않아도 적을 때가 있습니다</figcaption>
   </figure>
   <p>오늘은 이 기능 때문에 <b>틀린 답이 나가는 장면</b>을 직접 만듭니다. 1단계에서 확정 안 된 기준을 지나가듯 말하고, 2단계에서 그 기준 때문에 틀린 답이 나오는 것을 보고 원인을 찾아 고칩니다.</p>
 
   <article class="step" id="s1" data-step="1">
     <header><span class="no">1</span><h3>Auto Memory — 임시 기준이 쌓인다</h3><label><input type="checkbox">완료</label></header>
     <div class="body">
-      <p>회의에서 나온 <b>확정 안 된 이야기</b>를 Claude 에게 지나가듯 말합니다. 「기억해 둬」라고 하지 않습니다. 실제 규정(<code class="k">응대규정.md</code> 2항)은 <b>한 달 2회</b>입니다.</p>
+      <p>회의에서 나온 <b>확정 안 된 이야기</b>를 Claude 에게 말하고 기억해 두라고 합니다. 「아직 확정 아님」이라는 말도 같이 합니다. 실제 규정(<code class="k">응대규정.md</code> 2항)은 <b>한 달 2회</b>입니다.</p>
       <div class="row"><b>방법</b><div><ol>
         <li>cs_practice 에서 켠 claude 에 붙여넣습니다.
-          <div class="cmd"><code>참고로 오늘 회의에서 결석 보강을 한 달에 1번으로 줄이자는 얘기가 나왔어. 아직 확정은 아닌데 일단 학부모한테는 1번까지라고 안내해 줘. 파일은 고치지 마. 알겠으면 짧게 대답만 해.</code><button type="button">복사</button></div></li>
+          <div class="cmd"><code>참고로 오늘 회의에서 결석 보강을 한 달에 1번으로 줄이자는 얘기가 나왔어. 아직 확정은 아닌데 일단 학부모한테는 1번까지라고 안내해 줘. 파일은 고치지 말고, 다음에 켤 때도 기억해 둬.</code><button type="button">복사</button></div></li>
         <li><code class="k">exit</code> → <code class="k">claude</code> 로 새로 켠 뒤 물어봅니다.
           <div class="cmd"><code>이 폴더에 대해 기억하고 있는 것을 전부 보여 줘. 기억 파일의 전체 경로도 알려 줘. 파일은 고치지 마.</code><button type="button">복사</button></div></li>
-        <li><code class="k">/memory</code> 를 입력해 메모리 화면을 봅니다. Auto Memory 가 켜져 있는지, 메모리 폴더 열기가 있는지 확인하고 <kbd>Esc</kbd>.</li>
+        <li><code class="k">/memory</code> 를 입력해 메모리 화면을 봅니다. 확인할 것은 두 줄입니다.
+          <div class="tbl"><table>
+            <tr><th>화면 줄</th><th>뜻</th><th>할 일</th></tr>
+            <tr><td><b>① Auto-memory</b></td><td>Auto Memory 가 켜져 있는지 (<code class="k">true</code> = 켜짐)</td><td><code class="k">true</code> 인지 본다. <code class="k">false</code> 면 Enter 로 켜고 1번부터 다시</td></tr>
+            <tr><td><b>② Open auto-memory folder</b></td><td>Claude 가 적어 둔 기억 파일 폴더 열기</td><td>골라서 Enter → 탐색기에서 <code class="k">MEMORY.md</code>(목차)와 보강 기억 파일을 열어, 1번에서 한 말이 적혀 있는지 본다</td></tr>
+            <tr><td>CLAUDE.md 줄들</td><td>사람이 쓰는 규칙 파일 위치 — User instructions = 전역, Project instructions = 이 폴더 (2단계에서 생김)</td><td>보기만</td></tr>
+          </table></div>
+          다 봤으면 <kbd>Esc</kbd>.</li>
       </ol></div></div>
-      <div class="row"><b>확인</b><div><p>「기억해 둬」라고 하지 않았는데 <b>「보강 월 1회 · 미확정」 기억 파일</b>이 생겼다. 파일 위치(<code class="k">C:\Users\&lt;내 이름&gt;\.claude\projects\&lt;폴더 경로&gt;\memory\</code>)를 안다. <code class="k">응대규정.md</code> 는 그대로 2회다.</p></div></div>
-      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
+      <div class="row"><b>확인</b><div><p>「아직 확정 아님」이라고 했는데도 <b>「보강 월 1회」가 안내 기준으로</b> 기억 파일에 저장됐다. 파일 위치(<code class="k">C:\Users\&lt;내 이름&gt;\.claude\projects\&lt;폴더 경로&gt;\memory\</code>)를 안다. <code class="k">응대규정.md</code> 는 그대로 2회다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (2)</summary><div style="margin-top:8px">
+      <div class="box tip"><b>시키지 않아도 쌓일 때가 있습니다</b>실습에서는 확실히 보려고 「기억해 둬」라고 합니다. 실제로는 그 말이 없어도 Claude 가 스스로 적어 둘 때가 있습니다 — 강사 PC 에서 「기억해 둬」 없이 같은 말을 했을 때 13번 중 6번 저장됐습니다. 그래서 내가 기억시킨 적 없는 기준이 결과에 섞일 수 있습니다.</div>
       <div class="box warn"><b>기억이 안 생기면</b><code class="k">/memory</code> 에서 Auto Memory 가 꺼져 있으면 켜고 1번부터 다시 합니다. 회사 계정 설정으로 꺼져 있으면 강사 화면으로 보고 2단계로 넘어갑니다.</div>
       </div></details>
     </div>
@@ -288,7 +296,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h3 id="memwhy">정리 — Auto Memory 의 문제점과 CLAUDE.md 를 고쳐야 하는 이유</h3>
   <div class="tbl"><table>
     <tr><th>Auto Memory 의 문제점</th><th>오늘 본 장면</th></tr>
-    <tr><td><b>묻지 않고 쌓인다</b></td><td>「기억해 둬」라고 하지 않았는데 기억 파일이 생겼다 (1단계)</td></tr>
+    <tr><td><b>시키지 않아도 쌓일 때가 있다</b></td><td>「기억해 둬」 없이 말해도 13번 중 6번 저장됐다 (1단계 주의사항 · 강사 PC 실측)</td></tr>
     <tr><td><b>확정 안 된 것도 쌓인다</b></td><td>「아직 확정 아님」이라고 했는데도 안내 기준으로 저장됐다 (1단계)</td></tr>
     <tr><td><b>규정 파일보다 앞선다</b></td><td>응대규정.md 는 2회인데 답변은 1회로 나갔다 (2단계 1번)</td></tr>
     <tr><td><b>상황이 바뀌어도 그대로 남는다</b></td><td>2회 유지로 확정돼도 기억은 저절로 지워지지 않는다 (2단계)</td></tr>
@@ -297,7 +305,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p>그래서 <b>꼭 지켜야 하는 것은 기억에 맡기지 않고 CLAUDE.md 에 규칙으로 적습니다.</b> CLAUDE.md 는 사람이 적고 사람이 고칠 때까지 그대로라, 「무엇이 기준인가」가 흔들리지 않습니다. 규정이 바뀌면 기억이 아니라 <b>규정 파일과 CLAUDE.md 를 고칩니다.</b></p>
   <div class="tbl"><table>
     <tr><th></th><th>기억 (Auto Memory)</th><th>규칙 (CLAUDE.md)</th></tr>
-    <tr><td>누가 쓰나</td><td>Claude — 묻지 않고</td><td>사람</td></tr>
+    <tr><td>누가 쓰나</td><td>Claude — 시키지 않아도 적을 때가 있다</td><td>사람</td></tr>
     <tr><td>틀릴 수 있나</td><td>그렇다 — 가끔 <code class="k">/memory</code> 로 열어 정리한다</td><td>사람이 고칠 때까지 그대로</td></tr>
     <tr><td>무엇을 두나</td><td>참고하면 좋은 것 (자주 쓰는 경로 · 지난 작업 상태)</td><td><b>꼭 지켜야 하는 것</b> (규정의 기준 · 답변 형식)</td></tr>
   </table></div>
@@ -483,7 +491,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
     <tr><td>결과가 맞는지</td><td>검산 (하네스)</td><td>7단계 검산 담당</td></tr>
     <tr><td>맞을 때까지 반복</td><td>루프 (끝 조건 · 최대 횟수)</td><td>8단계</td></tr>
   </table></div>
-  <div class="box tip"><b>수업 끝</b><code class="k">cs_practice</code> 는 지우지 않고 둡니다 — 훅 · 하네스를 master 2step 에서 플러그인으로 묶어 짝에게 보냅니다. <code class="k">cs_off</code> 는 지워도 됩니다. 루프가 멈췄는지 한 번 더 확인하고 마칩니다. 수고하셨습니다.</div>
+  <div class="box tip"><b>수업 끝</b><code class="k">cs_practice</code> 는 지우지 않고 둡니다 — master 2step 에서 강사가 이 훅 · 하네스를 플러그인으로 묶어 다른 계정에 배포하는 것을 봅니다. <code class="k">cs_off</code> 는 지워도 됩니다. 루프가 멈췄는지 한 번 더 확인하고 마칩니다. 수고하셨습니다.</div>
 </section>
 </details>
 
@@ -517,6 +525,8 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.7</b></td><td>2026-11-17</td><td><b>고침</b> 수업 끝 안내 — master 2step 플러그인은 강사 시연(짝에게 보내기 실습 없음)</td></tr>
+    <tr><td><b>v1.6</b></td><td>2026-11-12</td><td><ul><li><b>고침</b> 1단계 1번 카드에 「다음에 켤 때도 기억해 둬」 — 이 말 없이는 PC · 폴더에 따라 기억이 안 생겼다(강사 PC 13번 중 6번만 저장 · 넣으면 6/6)</li><li><b>추가</b> 1단계 3번 <code>/memory</code> 화면에서 볼 두 줄(Auto-memory · Open auto-memory folder) 설명 표</li></ul></td></tr>
     <tr><td><b>v1.5</b></td><td>2026-11-12</td><td><ul><li><b>바뀜</b> 실습 자료를 이번 차시 드라이브(master › 1step)에서 받는다 — <code>cs_practice</code> 폴더(문의 · 규정 · 옛 판 · <code>.claude\agents\cs-reply.md</code>) · <code>정답_문의답변.txt</code> · <code>정답_훅</code>. advance 2step 자료는 쓰지 않는다</li><li><b>바뀜</b> cs-reply 에이전트 위치 = 워크스페이스가 아니라 <code>cs_practice\.claude\agents</code> (폴더 하나만 넣으면 된다)</li></ul></td></tr>
     <tr><td><b>v1.4</b></td><td>2026-11-12</td><td><ul><li><b>바뀜</b> PART 1 기억 — Auto Memory 설명 그림 추가 · 1단계 = 확정 안 된 보강 기준(월 1회)을 지나가듯 말하면 기억에 저절로 쌓이는 것 보기 · 2단계 = 그 기억 때문에 문의 4 가 틀리게 답해지는 것 → 원인 찾기 → 기억 지우고 CLAUDE.md 에 규칙 두 줄 → 다시 답하면 맞음</li><li><b>추가</b> 2단계 뒤 정리 「Auto Memory 의 문제점과 CLAUDE.md 를 고쳐야 하는 이유」 · PART 2 훅으로 넘어가는 한 줄</li></ul></td></tr>
     <tr><td><b>v1.3</b></td><td>2026-11-12</td><td><b>바뀜</b> 단계 안의 주의 · 팁 상자를 「주의사항」 접힌 칸으로 묶었다 — 눌러서 펼칩니다</td></tr>
