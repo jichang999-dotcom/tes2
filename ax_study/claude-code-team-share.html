@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code master 2step — 팀에 퍼뜨리기 <span class="ver">v2.2 · 2026-11-12</span></h1>
+  <h1>Claude Code master 2step — 팀에 퍼뜨리기 <span class="ver">v2.3 · 2026-11-17</span></h1>
   <a class="rel-btn" href="claude-code-self-guard.html" title="cs_practice 를 만든 master 1step">master 1step</a>
   <a class="rel-btn" href="#p9">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -146,7 +146,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="sub"><a href="#s2">2. 내 슬랙 봇 연결</a></li>
   <li class="sub"><a href="#s3">3. 휴대폰에서 일 시키기</a></li>
   <li class="ghead">② 강사 시연 <small>보기만</small></li>
-  <li><a href="#p2">PART 2 플러그인 · 모드</a></li>
+  <li><a href="#p2">PART 2 플러그인 (유저 배포) · 상태줄</a></li>
   <li class="ghead">막혔을 때 <small>언제든</small></li>
   <li><a href="#p9">PART 3 막혔을 때</a></li>
 </ol>
@@ -156,7 +156,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <main>
 <section class="part" id="p0">
   <h2><small>시작 전</small>휴대폰으로 시키면 내 PC 가 일하고 답합니다</h2>
-  <p class="lead">강사가 쓰는 <b>유삐 봇</b>은 강사 PC 에서 도는 <b>헤르메스</b>(Hermes Agent)와 슬랙 봇을 이은 것입니다. 휴대폰 슬랙으로 말을 걸면 PC 의 헤르메스가 받아서 파일을 읽고 일한 뒤 답합니다. 오늘은 같은 구조의 <b>내 봇</b>을 만들어, master 1step 의 <code class="k">cs_practice</code> 문의 답변을 <b>휴대폰에서 시키고 5줄 보고</b>를 받습니다. 플러그인 · 모드는 강사가 보여 줍니다.</p>
+  <p class="lead">강사가 쓰는 <b>유삐 봇</b>은 강사 PC 에서 도는 <b>헤르메스</b>(Hermes Agent)와 슬랙 봇을 이은 것입니다. 휴대폰 슬랙으로 말을 걸면 PC 의 헤르메스가 받아서 파일을 읽고 일한 뒤 답합니다. 오늘은 같은 구조의 <b>내 봇</b>을 만들어, master 1step 의 <code class="k">cs_practice</code> 문의 답변을 <b>휴대폰에서 시키고 5줄 보고</b>를 받습니다. 플러그인 · 상태줄은 강사가 보여 줍니다.</p>
   <div class="hero">
     <b>끝나면 이렇게 됩니다</b>
     <ul>
@@ -266,22 +266,34 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 </details>
 
 <details class="grp" id="g2">
-<summary><span class="gno">②</span> 강사 시연 — 플러그인 · 모드 <small>보기만 · 20분</small></summary>
+<summary><span class="gno">②</span> 강사 시연 — 플러그인 · 상태줄 <small>보기만 · 20분</small></summary>
 <section class="part" id="p2">
-  <h2><small>PART 2</small>강사 시연 — 플러그인 · 모드</h2>
-  <p>슬랙 봇은 <b>슬랙만 보는 사람</b>에게 일을 퍼뜨립니다. Claude Code 를 쓰는 팀원에게는 아래 두 가지로 퍼뜨립니다. 강사 화면으로 보기만 합니다.</p>
+  <h2><small>PART 2</small>강사 시연 — 플러그인 (유저 배포) · 상태줄</h2>
+  <p>슬랙 봇은 <b>슬랙만 보는 사람</b>에게 일을 퍼뜨립니다. Claude 를 쓰는 팀원에게는 <b>플러그인</b>으로 퍼뜨립니다 — 내 하네스를 <b>상자 하나</b>로 묶어 <b>팀원 계정</b>에 배포하면, 그 계정의 claude.ai · Cowork · Claude Code 에 함께 따라갑니다. 강사 화면으로 보기만 합니다.</p>
+  <h3>플러그인 — 유저 배포</h3>
   <div class="tbl"><table>
-    <tr><th>무엇</th><th>강사가 보여 주는 것</th><th>언제 쓰나</th></tr>
-    <tr><td><b>플러그인</b></td><td>master 1step 하네스(cs-reply · 원본 보호 훅 · 비밀정보 검사 훅)를 <code class="k">cs-harness-market</code>(GitHub 비공개 리포 = 마켓플레이스)으로 묶기 → 다른 계정 창에서 <code class="k">claude plugin marketplace add</code> · <code class="k">install</code> → 서명 규칙 한 줄을 넣어 버전 1.1.0 → <code class="k">update</code> 로 바뀐 것이 전해짐</td><td>내 에이전트 · 훅을 팀원 PC 에 <b>그대로 설치</b>시키고, 고친 것을 버전으로 다시 보낼 때</td></tr>
-    <tr><td><b>모드 — 상태줄</b></td><td><code class="k">/statusline</code> 로 입력창 아래에 폴더 · 모델 · 사용량 · 컨텍스트 % 를 늘 보이게</td><td>엉뚱한 폴더 · 과한 사용량을 바로 알아채고 싶을 때</td></tr>
-    <tr><td><b>모드 — 팀용 커맨드</b></td><td><code class="k">/cs-report</code> 한 번에 답변 → 검산 → 고침 → 보고. 플러그인에 실어 팀원도 같은 커맨드를 씀</td><td>팀이 <b>같은 순서로</b> 일하게 하고 싶을 때</td></tr>
+    <tr><th>장면</th><th>강사가 보여 주는 것</th></tr>
+    <tr><td><b>1. 묶기</b></td><td>상자 <code class="k">cs-harness</code> = master 1step 하네스(<code class="k">cs-reply</code> 에이전트 · 원본 보호 훅 · 비밀정보 검사 훅) + 슬랙 보고 스크립트 + <b><code class="k">/cs-report</code> 버튼</b>(답변 → 검산 → 고침 → 보고를 한 번에). GitHub 비공개 리포 <code class="k">cs-harness-market</code> 가 마켓플레이스입니다</td></tr>
+    <tr><td><b>2. 배포</b></td><td>팀원(두 번째 개인 계정)의 claude.ai → 왼쪽 <b>Plugins</b> → <b>Add marketplace</b> → 리포 주소. 비공개 리포라 Claude GitHub App 접근을 허용한 뒤 <code class="k">cs-harness</code> 를 <b>Add</b></td></tr>
+    <tr><td><b>3. 받는 쪽</b></td><td>같은 계정으로 Claude Code 를 다시 켜면 <code class="k">cs-harness@synced</code> 로 따라옵니다(켜져 있으면 <code class="k">/reload-plugins</code>). <code class="k">cs_practice</code> 에서 <code class="k">/cs-harness:cs-report</code> 한 번으로 답변 → 검산 → 보고 · 원본을 고치게 시키면 훅이 막습니다</td></tr>
+    <tr><td><b>4. 업데이트</b></td><td>서명 규칙 한 줄을 넣고 버전 1.1.0 으로 push → 팀원 Plugins 에서 <b>Check for updates</b> → 바뀐 답변. 팀원이 따로 설치할 것은 없습니다</td></tr>
   </table></div>
+  <h3>받는 앱마다 되는 것</h3>
+  <div class="tbl"><table>
+    <tr><th>상자 안</th><th>claude.ai 채팅</th><th>Cowork</th><th>Claude Code</th></tr>
+    <tr><td><code class="k">/cs-report</code> 버튼</td><td>보이지만 끝까지 못 돎 (에이전트 · 스크립트 없음)</td><td>○</td><td>○</td></tr>
+    <tr><td><code class="k">cs-reply</code> 에이전트</td><td>×</td><td>○</td><td>○</td></tr>
+    <tr><td>훅 두 개</td><td>×</td><td>○</td><td>○</td></tr>
+  </table></div>
+  <div class="box tip"><b>알아 둘 것</b>훅 · 보고 스크립트는 받는 PC 에서 <code class="k">node</code> 로 돕니다 — 팀원 PC 에 Node.js 가 있어야 합니다. 리포에는 코드 · 설정만 올리고 문의 · 규정 같은 데이터는 올리지 않습니다. Claude Code 에서 <code class="k">claude plugin marketplace add</code> · <code class="k">install</code> 로 설치해도 되지만, 그건 <b>그 PC 에만</b> 남고 계정을 따라가지 않습니다.</div>
+  <h3>상태줄 — 내 화면만 바꾸기</h3>
+  <p><code class="k">/statusline</code> 으로 입력창 아래에 폴더 · 모델 · 사용량 · 컨텍스트 % 를 늘 보이게 합니다. 엉뚱한 폴더 · 과한 사용량을 바로 알아챕니다. 남에게 나눠 주는 것이 아니라 <b>내 화면 설정</b>입니다.</p>
   <h3>정리 — 무엇으로 퍼뜨릴까</h3>
   <div class="tbl"><table>
     <tr><th>퍼뜨릴 대상</th><th>도구</th><th>오늘</th></tr>
     <tr><td>슬랙만 보는 사람 (나 · 팀장) · 밖에서 휴대폰으로</td><td>슬랙 봇 + 헤르메스</td><td>1~3단계 (실습)</td></tr>
-    <tr><td>Claude Code 를 쓰는 팀원 PC 에 에이전트 · 훅</td><td>플러그인</td><td>시연</td></tr>
-    <tr><td>내 화면 · 팀의 일 순서</td><td>상태줄 · 슬래시 커맨드</td><td>시연</td></tr>
+    <tr><td>Claude 를 쓰는 팀원 (채팅 · Cowork · Code) — 에이전트 · 훅 · 팀의 일 순서</td><td>플러그인 (유저 배포)</td><td>시연</td></tr>
+    <tr><td>내 화면</td><td>상태줄</td><td>시연</td></tr>
   </table></div>
   <div class="box tip"><b>수업 끝 — 전체 과정 마지막</b>봇을 더 쓰지 않으려면 헤르메스의 Messaging › Slack 연결을 끄고, extra usage 자동 충전을 꺼 둡니다. 계속 쓰려면 PC 를 켜 두는 동안만 답한다는 것만 기억합니다. 수고하셨습니다.</div>
 </section>
@@ -317,6 +329,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.3</b></td><td>2026-11-17</td><td><ul><li><b>바뀜</b> PART 2 플러그인 = <b>유저 배포</b> — 팀원 계정의 claude.ai Plugins → Add marketplace 로 배포 → 같은 계정 Claude Code 에 <code class="k">@synced</code> 로 따라옴 · 업데이트는 Check for updates</li><li><b>추가</b> 받는 앱마다 되는 것 표 (채팅 · Cowork · Claude Code)</li><li><b>바뀜</b> <code class="k">/cs-report</code> 를 플러그인 안 버튼(스킬)으로 옮김 → <code class="k">/cs-harness:cs-report</code> · 「모드」 칸은 상태줄만</li></ul></td></tr>
     <tr><td><b>v2.2</b></td><td>2026-11-12</td><td><b>바뀜</b> 단계 안의 주의 · 팁 상자를 「주의사항」 접힌 칸으로 묶었다 — 눌러서 펼칩니다</td></tr>
     <tr><td><b>v2.1</b></td><td>2026-11-06</td><td>
       <ul><li><b>시작 전</b>에 「헤르메스가 뭔가요」 설명 · Claude Code 와 비교 표 추가</li></ul></td></tr>
