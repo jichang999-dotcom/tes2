@@ -1,6 +1,6 @@
 # ax_sales
 
-투자사가 3사업부 매출 대시보드에 처음 접속할 때 보는 안내 페이지.
+[매출 대시보드] 투자사 첫 접속 안내 페이지
 
-- 페이지: `dashboard-access-guide.html`
-- 원본: `AX_sales_status/out/외부열람안내/guide_pub.html`
+- 원본: AX_sales_status/out/외부열람안내/guide_pub.html
+- 폴더 목록 가운데 칸 = 마지막 커밋 메시지. 발행 스크립트가 `[매출 대시보드]` 머리말을 붙인다.
