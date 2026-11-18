@@ -129,7 +129,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
 <body>
 <header class="top">
   <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
-  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.47 · 2026-11-10</span></h1>
+  <h1>Claude Code advance 1step — 자동화 <span class="ver">v2.48 · 2026-11-18</span></h1>
   <a class="rel-btn" href="claude-code-agent-team.html" title="1step 다음에 하는 2step">2step</a>
   <a class="rel-btn" href="#p10">막혔을 때</a>
   <button class="rel-btn" id="relBtn">Update Notes</button>
@@ -158,6 +158,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <li class="ghead">③ 자동화 <small>10~14단계</small></li>
   <li><a href="#p6">PART 6 업무 스킬 찾기</a></li>
   <li class="sub"><a href="#s10">10. 업무 스킬 찾기 폴더 · 엑셀 결과</a></li>
+  <li class="sub"><a href="#s10-1">10-1. 팀 공용 스킬 플러그인 설치 — git-save</a></li>
   <li><a href="#p7">PART 7 작업 스케줄러</a></li>
   <li class="sub"><a href="#s11">11. 정해진 시각에 저절로</a></li>
   <li class="sub"><a href="#offpc">PC 가 꺼져 있을 때는? (소개)</a></li>
@@ -508,6 +509,28 @@ disable-model-invocation: true
       </ol></div></div>
     </div>
   </article>
+  <article class="step" id="s10-1" data-step="10-1">
+    <header><span class="no">10-1</span><h3>팀 공용 스킬을 플러그인으로 설치 — git-save</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><p>9단계는 남의 스킬 <b>파일 하나</b>를 받아 넣었습니다. 이번엔 강사가 만든 스킬을 <b>플러그인</b>으로 설치합니다. 플러그인은 한 번 설치하면 <b>모든 폴더</b>에서 쓰이고, 강사가 고치면 <b>업데이트 명령 한 줄</b>로 새 판을 받습니다. <b>git-save</b> = 바뀐 파일을 비밀값 · 개인정보 검사 → 커밋 → push 까지 한 번에(7 · 8단계를 한 마디로). 아래를 그대로 붙여넣습니다(채울 칸 없음).</p>
+        <div class="cmd"><code style="white-space:pre-wrap">팀 공용 스킬 git-save 를 플러그인으로 설치해 줘.
+1. 마켓플레이스: jichang999-dotcom/claude-skills
+2. 플러그인: git-save@claude-skills
+설치 전에 GitHub 에서 그 저장소의 plugins/git-save/skills/git-save/SKILL.md 를 읽고, 명령 실행 · 바깥으로 보내기 · 키 요구 · 파일 지우기 줄을 표로 보여 줘. 이 스킬은 git push 가 목적이라 push 줄은 정상이야 — 그 밖의 위험한 줄이 있으면 설치하지 말고 멈춰.
+괜찮으면 claude plugin marketplace add 와 claude plugin install 명령으로만 설치하고, 다른 것은 받지 마. 끝나면 claude plugin list 결과를 보여 줘.</code><button type="button">복사</button></div>
+        <p><b>exit</b> → <b>claude</b> 로 다시 켭니다. 플러그인은 다시 켜야 읽힙니다.</p></div></div>
+      <div class="row"><b>확인</b><div><ol>
+        <li>목록에 <code class="k">git-save@claude-skills</code> · <b>enabled</b> 가 보인다.</li>
+        <li>다시 켠 뒤 입력창에 <code class="k">/git-save</code> 까지 치면 <code class="k">/git-save:git-save</code> 가 뜬다.</li>
+        <li>워크스페이스에서 <code class="k">save 해줘</code> → 검사 결과와 <b>폴더 · 커밋 · push · 비고</b> 표가 나오고, GitHub 리포(8단계)에 새 커밋이 보인다. 바뀐 것이 없으면 「커밋할 변경 없음」.</li>
+      </ol></div></div>
+      <details class="q fix"><summary>주의사항 (3)</summary><div>
+        <p><b>새 판 받기 · 지우기</b> — <code class="k">claude plugin marketplace update claude-skills</code> 후 <code class="k">claude plugin update git-save@claude-skills</code>. 지우기는 <code class="k">claude plugin uninstall git-save@claude-skills</code>. 직접 칠 땐 입력창에 <code class="k">/plugin</code> 으로 같은 일을 합니다.</p>
+        <p><b>「검사에 걸려 멈췄다」고 하면</b> — 키 · 토큰 · 전화번호 같은 줄이 들어간 파일을 커밋에서 뺀 것입니다. 표에 나온 파일을 보고 <b>이번만 뺄지 · .gitignore 에 넣을지</b> 답합니다. 값은 앞 4자만 보여 줍니다.</p>
+        <p><b>리포가 없는 폴더에서 부르면</b> — 저장소 이름을 묻고 <b>비공개</b>로 만듭니다(공개는 내가 말할 때만). 처음 push 때 GitHub 로그인 창이 한 번 뜹니다.</p>
+      </div></details>
+    </div>
+  </article>
 </section>
 
 <section class="part" id="p7">
@@ -660,6 +683,7 @@ disable-model-invocation: true
   <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v2.48</b></td><td>2026-11-18</td><td><b>추가</b> 10-1단계 팀 공용 스킬을 플러그인으로 설치 — git-save(마켓 <code class="k">jichang999-dotcom/claude-skills</code> · 설치 전 SKILL.md 위험 줄 확인 · 다시 켠 뒤 <code class="k">save 해줘</code>). 진행 체크는 그대로(10-1 칸만 새로)</td></tr>
     <tr><td><b>v2.47</b></td><td>2026-11-10</td><td><ul><li><b>삭제</b> 5단계 브랜치 — 브랜치는 가르치지 않는다 · PART 3 용어 표 · 막힘 표 「브랜치를 못 바꾼다」 줄도 뺌</li><li><b>바뀜</b> 6~15단계 → 5~14단계 (진행 체크는 새로 시작)</li></ul></td></tr>
     <tr><td><b>v2.46</b></td><td>2026-11-10</td><td><b>바뀜</b> 10단계 프롬프트 = 「저장소 주소」 · 「스킬 이름」 두 칸을 「1. 적용 저장소/스킬:」 한 줄로</td></tr>
     <tr><td><b>v2.45</b></td><td>2026-11-09</td><td><b>바뀜</b> 13단계 = 가입 · 새 워크스페이스 두 줄 · 다른 기기는 같은 메일로 로그인(접힌 카드) · 가입 화면 안내도 접힌 카드로</td></tr>
