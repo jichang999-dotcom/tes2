@@ -1,6 +1,6 @@
 # commute
 
-출퇴근 앱 화면. 구글 로그인 후 사무실 반경 100m 안인지 판정해 시트에 기록한다(AX 2step 교육 사례).
+[LAB] 출퇴근 앱 화면 (구글 로그인 + 사무실 100m 판정)
 
-- 페이지: `index.html`
-- 원본: `AX_study/starter/2step/commute_app/` (`upload.js` 로 발행)
+- 발행: AX_study/starter/2step/commute_app/upload.js
+- 폴더 목록 가운데 칸 = 마지막 커밋 메시지. 발행 스크립트가 `[LAB]` 머리말을 붙인다.
