@@ -618,7 +618,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <h3>프로젝트 만들 때마다</h3>
   <div class="tbl"><table>
     <tr><th>순서</th><th>할 일</th><th>방법</th><th>주의</th></tr>
-    <tr><td>1</td><td>프로젝트 폴더 만들기</td><td>작업폴더\프로젝트명\ (영어 이름)</td><td>.claude 폴더 안에 만들지 않는다.</td></tr>
+    <tr><td>1</td><td>프로젝트 폴더 만들기</td><td>작업폴더\프로젝트명\ (영어 이름). 「테스트 폴더 만들어 줘」라고 하면 영어(<code class="k">test</code>)로 만든다. 한글 이름을 원하면 「버스라는 한글 폴더로 만들어 줘」처럼 직접 요청한다</td><td>.claude 폴더 안에 만들지 않는다. 한글 폴더는 스케줄러 · 명령에서 글자가 깨질 수 있어 Claude 가 한 번 알려 준다.</td></tr>
     <tr><td>2</td><td>그 폴더에서 Claude Code 실행</td><td>Cursor/VS Code 로 프로젝트 폴더를 열고 터미널에서 claude 실행</td><td>작업 폴더 최상위에서 실행하면 프로젝트 구분이 흐려진다.</td></tr>
     <tr><td>3</td><td>작업</td><td>원하는 것을 한국어로 요청한다. 설계가 필요하면 플랜 모드 (Shift + Tab 으로 "plan mode on" 표시될 때까지, 또는 /plan)</td><td>-</td></tr>
     <tr><td>4</td><td>프로젝트 설명서 만들기</td><td>어느 정도 만들어지면 그 폴더에서 /init 실행 → 권한 요청 창에서 허용</td><td>작업 폴더 최상위나 .claude 폴더에서 /init 하지 않는다.</td></tr>
@@ -673,7 +673,7 @@ dialog img{max-width:96vw;max-height:92vh;display:block}
   <p class="lead">이 가이드가 바뀐 내용입니다. 예전에 받아 둔 파일이 있다면 버전을 비교해 보세요. (맨 위 제목 옆에 현재 버전이 있습니다)</p>
   <div class="tbl"><table>
     <tr><th>버전</th><th>날짜</th><th>바뀐 내용</th></tr>
-    <tr><td><b>v1.29</b></td><td>2026-11-19</td><td><b>추가</b> 10단계 CLAUDE_초기설정.txt 가 스킬 2개(save · progress-report)도 만든다 — <code class="k">save</code> = 바뀐 파일을 <code class="k">_backup</code> 에 복사 + <code class="k">docs\CHANGELOG.md</code> 기록(Git 없이) · <code class="k">진행사항 보고</code> = 단계별 상태 + 마지막 수정 내역. save 는 프로젝트 폴더에 CLAUDE.md 가 없으면 만든다. CLAUDE.md 에 응답 규칙(토큰 절약) 추가 · 「프로젝트 개요」 목록은 뺌 · CHANGELOG 형식과 「끝난 일」 기준 · 프로젝트 CLAUDE.md 「지금 상태」 갱신은 save 스킬 안에 둔다(CLAUDE.md 에는 「끝난 일 기록은 save 가 한다」 한 줄). <b>고침</b> 5단계 닫는 태그 순서 — 6단계부터 본문이 레이아웃 밖으로 빠져 왼쪽 목차가 안 보이던 것. 단계 번호는 그대로</td></tr>
+    <tr><td><b>v1.29</b></td><td>2026-11-19</td><td><b>추가</b> 10단계 CLAUDE_초기설정.txt 가 스킬 2개(save · progress-report)도 만든다 — <code class="k">save</code> = 바뀐 파일을 <code class="k">_backup</code> 에 복사 + <code class="k">docs\CHANGELOG.md</code> 기록(Git 없이) · <code class="k">진행사항 보고</code> = 단계별 상태 + 마지막 수정 내역. save 는 프로젝트 폴더에 CLAUDE.md 가 없으면 만든다. CLAUDE.md 에 응답 규칙(토큰 절약) 추가 · 「프로젝트 개요」 목록은 뺌 · CHANGELOG 형식과 「끝난 일」 기준 · 프로젝트 CLAUDE.md 「지금 상태」 갱신은 save 스킬 안에 둔다(CLAUDE.md 에는 「끝난 일 기록은 save 가 한다」 한 줄). 프로젝트 폴더 이름 = 영어 기본 · 한글은 직접 요청하면 따르고 한 번 알려 준다(CLAUDE.md 규칙 · PART 4 순서 표). <b>고침</b> 5단계 닫는 태그 순서 — 6단계부터 본문이 레이아웃 밖으로 빠져 왼쪽 목차가 안 보이던 것. 단계 번호는 그대로</td></tr>
     <tr><td><b>v1.28</b></td><td>2026-11-12</td><td><b>바뀜</b> 단계 안의 주의 · 팁 상자를 「주의사항」 접힌 칸으로 묶었다 — 눌러서 펼칩니다</td></tr>
     <tr><td><b>v1.27</b></td><td>2026-11-08</td><td>
       <ul><li><b>고침</b> 7단계 「막히면」 A — SSL/TLS 오류 해결을 Claude Code 공식 문서 순서로 바꿈: TLS 1.2 켜고 다시 설치 → winget → npm(공식 명령 <code class="k">npm config set allow-scripts</code> + <code class="k">npm install -g</code>) → IT 담당자. PART 6 표도 맞춤</li><li><b>고침</b> 요금제 목록에 Ultra 추가 · 기본 모델 예시 Opus 5 → Opus 5.5 · auto 기본 모드 설명(2.1.283 부터 모든 요금제)</li><li><b>고침</b> 메모리 — git 저장소면 하위 폴더도 메모리를 같이 쓴다는 예외 · 저장 폴더 이름 규칙(예 <code class="k">C--Users-…-claude-work</code>)</li><li><b>고침</b> 화면 캡처 붙여넣기에 <kbd>Alt</kbd> + <kbd>V</kbd> 병기 · VS Code 비교 화면은 manual 모드일 때 · --dangerously-skip-permissions 설명</li></ul></td></tr>
