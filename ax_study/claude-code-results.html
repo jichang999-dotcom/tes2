@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Claude Code 3 결과물 — 구글 시트 · 대시보드 · 리포트</title>
+<style>
+:root{--bg:#f7f6f3;--card:#fff;--ink:#1f1e1c;--sub:#5c5a55;--line:#e3e0d8;--accent:#c2562f;--accent-soft:#fbeee8;--ok:#2f7a4f;--ok-soft:#e8f4ec;--warn:#9a5b00;--warn-soft:#fff4df;--code:#23211f;--code-ink:#f3efe6}
+@media (prefers-color-scheme:dark){:root{--bg:#1b1a18;--card:#252422;--ink:#ecebe7;--sub:#aeaba4;--line:#3a3834;--accent:#e98a64;--accent-soft:#3a2a23;--ok:#7cc79a;--ok-soft:#23332a;--warn:#f0b35a;--warn-soft:#3a3021;--code:#11100f;--code-ink:#f3efe6}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.7 "Malgun Gothic","Apple SD Gothic Neo",system-ui,sans-serif;word-break:keep-all}
+a{color:var(--accent)}
+header.top{position:sticky;top:0;z-index:5;background:var(--card);border-bottom:1px solid var(--line);padding:10px 20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+header.top h1{font-size:17px;margin:0;flex:1 1 auto}
+.ver{font-size:12px;font-weight:400;color:var(--sub);white-space:nowrap}
+.rel-btn{border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:6px;padding:4px 10px;font:inherit;font-size:13px;cursor:pointer}
+.rel-btn:hover{color:var(--ink);border-color:var(--accent)}
+dialog.relnote{max-width:900px;width:92vw;max-height:86vh;overflow:auto;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:24px 28px}
+dialog.relnote::backdrop{background:rgba(0,0,0,.6)}
+dialog.relnote h2{margin-top:0}
+dialog.relnote .close{position:sticky;top:0;float:right;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit;cursor:pointer}
+figure.fake .chat b{display:block;margin-bottom:6px}
+figure.fake .chat p{margin:4px 0}
+.progress{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--sub)}
+.bar{width:160px;height:8px;background:var(--line);border-radius:4px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.menu-btn{display:none;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:6px;padding:4px 10px;font:inherit}
+.wrap{display:grid;grid-template-columns:220px minmax(0,1fr);max-width:1600px;margin:0 auto;padding:0 20px;gap:28px}
+nav.toc{position:sticky;top:64px;align-self:start;max-height:calc(100vh - 80px);overflow:auto;padding:20px 0;font-size:14px}
+nav.toc ol{list-style:none;margin:0;padding:0}
+nav.toc li a{display:block;padding:5px 10px;border-left:3px solid transparent;color:var(--sub);text-decoration:none}
+nav.toc li a.on{border-color:var(--accent);color:var(--ink);font-weight:600;background:var(--accent-soft)}
+nav.toc li.sub a{padding-left:24px;font-size:13px}
+main{padding:24px 0 80px;min-width:0}
+details.grp{margin:0 0 44px}
+details.grp>summary{list-style:none;cursor:pointer;padding:12px 14px;margin-bottom:4px;display:flex;gap:10px;align-items:baseline;flex-wrap:wrap;background:var(--card);border:1px solid var(--line);border-radius:10px;font-size:19px;font-weight:700}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary::after{content:"펼치기 ▾";margin-left:auto;font-size:13px;font-weight:400;color:var(--sub)}
+details.grp[open]>summary::after{content:"접기 ▴"}
+details.grp[open]>summary{border-color:var(--accent);background:var(--accent-soft)}
+details.grp>summary .gno{color:var(--accent)}
+details.grp>summary small{font-size:13px;font-weight:400;color:var(--sub)}
+details.grp>section.part{margin-top:24px}
+nav.toc li.ghead{padding:14px 10px 2px;font-size:13px;font-weight:700;color:var(--ink);border-top:1px solid var(--line);margin-top:6px}
+nav.toc li.ghead:first-child{border-top:0;margin-top:0}
+nav.toc li.ghead small{font-weight:400;color:var(--sub)}
+.expand-btn{margin:14px 10px;border:1px solid var(--line);background:var(--card);color:var(--sub);border-radius:6px;padding:5px 10px;font:inherit;font-size:13px;cursor:pointer}
+.expand-btn:hover{color:var(--ink);border-color:var(--accent)}
+section.part{margin-bottom:56px;scroll-margin-top:70px}
+h2{font-size:24px;margin:0 0 6px;padding-top:8px}
+h2 small{display:block;font-size:13px;color:var(--accent);font-weight:600;letter-spacing:.05em}
+.lead{color:var(--sub);margin:0 0 20px}
+h3{font-size:18px;margin:28px 0 10px;scroll-margin-top:70px}
+h4{font-size:15px;margin:18px 0 6px;color:var(--sub)}
+.step{background:var(--card);border:1px solid var(--line);border-radius:10px;margin:14px 0;padding:0;scroll-margin-top:70px}
+.step>header{display:flex;gap:12px;align-items:center;padding:12px 16px;border-bottom:1px solid var(--line)}
+.step>header .no{flex:none;width:32px;height:32px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center}
+.step>header h3{margin:0;font-size:17px;flex:1}
+.step>header label{font-size:13px;color:var(--sub);display:flex;gap:6px;align-items:center;cursor:pointer;white-space:nowrap}
+.step>header input{width:18px;height:18px;accent-color:var(--ok)}
+.step.done>header .no{background:var(--ok-soft);color:var(--ok)}
+.step .body{padding:6px 16px 14px}
+.row{display:grid;grid-template-columns:64px minmax(0,1fr);gap:10px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.row:last-child{border-bottom:0}
+.row>b{font-size:13px;color:var(--sub);padding-top:2px}
+.row p,.row ul,.row ol{margin:0 0 4px}
+.row ul,.row ol{padding-left:20px}
+.opt{font-size:12px;border:1px solid var(--line);border-radius:10px;padding:0 8px;color:var(--sub);margin-left:6px;font-weight:400}
+.cmd{display:flex;align-items:stretch;margin:6px 0;border-radius:6px;overflow:hidden;background:var(--code);max-width:100%}
+.cmd code{flex:1;min-width:0;color:var(--code-ink);padding:8px 12px;font:14px/1.5 Consolas,"D2Coding",monospace;overflow-x:auto;white-space:pre}
+.cmd button{border:0;background:#3a3733;color:#f3efe6;padding:0 12px;font:13px inherit;cursor:pointer;flex:none}
+.cmd button:hover{background:var(--accent)}
+code.k{font:13px Consolas,monospace;background:var(--accent-soft);padding:1px 5px;border-radius:4px}
+kbd{font:12px Consolas,monospace;border:1px solid var(--line);border-bottom-width:2px;border-radius:4px;padding:0 5px;background:var(--card)}
+.box{border-radius:8px;padding:10px 14px;margin:10px 0;font-size:14px}
+.box.warn{background:var(--warn-soft);border-left:4px solid var(--warn)}
+.box.tip{background:var(--ok-soft);border-left:4px solid var(--ok)}
+.box b:first-child{margin-right:4px}
+figure{margin:10px 0;max-width:100%}
+figure img{display:block;max-width:100%;height:auto;border:1px solid var(--line);border-radius:6px;cursor:zoom-in}
+figcaption{font-size:13px;color:var(--sub);margin-top:4px}
+.shots{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.shots.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+.flow{counter-reset:f;list-style:none;padding:0;margin:10px 0}
+.flow li{counter-increment:f;position:relative;padding:0 0 18px 44px}
+.flow li:before{content:counter(f);position:absolute;left:0;top:0;width:30px;height:30px;border-radius:50%;background:var(--accent-soft);color:var(--accent);font-weight:700;display:grid;place-items:center}
+.flow li:after{content:"";position:absolute;left:14px;top:32px;bottom:2px;border-left:2px solid var(--line)}
+.flow li:last-child:after{display:none}
+.tbl{overflow-x:auto;margin:10px 0}
+table{border-collapse:collapse;width:100%;background:var(--card);font-size:14px}
+th,td{border:1px solid var(--line);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);white-space:nowrap}
+details.q{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:8px 14px;margin:8px 0}
+details.fix>summary{display:flex;gap:8px;align-items:baseline;flex-wrap:wrap}
+details.fix>summary::after{content:"【펼치기 ▾】";margin-left:auto;font-size:12px;font-weight:400;color:var(--sub);white-space:nowrap}
+details.fix[open]>summary::after{content:"【접기 ▴】"}
+details.fix[open]>summary{color:var(--accent)}
+.fold-close{display:block;margin:14px 0 2px auto;border:1px solid var(--line);background:var(--bg);color:var(--sub);border-radius:6px;padding:6px 14px;font:inherit;font-size:13px;cursor:pointer}
+.fold-close:hover{color:var(--ink);border-color:var(--accent)}
+.foldhint{font-size:13px;color:var(--sub);margin:2px 0 8px}
+details.q summary{cursor:pointer;font-weight:600}
+dialog{border:0;padding:0;background:transparent;max-width:96vw;max-height:96vh}
+dialog::backdrop{background:rgba(0,0,0,.75)}
+dialog img{max-width:96vw;max-height:92vh;display:block}
+.hero{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 20px}
+.hero ul{margin:6px 0 0;padding-left:20px}
+@media (max-width:860px){
+ .wrap{grid-template-columns:minmax(0,1fr);padding:0 16px}
+ nav.toc{position:fixed;top:52px;left:0;right:0;max-height:70vh;background:var(--card);border-bottom:1px solid var(--line);padding:10px 16px;z-index:4;display:none}
+ nav.toc.open{display:block}
+ .menu-btn{display:inline-block}
+ .bar{width:90px}
+ .row{grid-template-columns:minmax(0,1fr);gap:2px}
+ .shots,.shots.two{grid-template-columns:minmax(0,1fr)}
+ section.part,.step,h3{scroll-margin-top:110px}
+ .step .body{padding:6px 12px 12px}
+}
+@media print{
+ header.top,nav.toc,.cmd button,.step label,.menu-btn,.expand-btn,.fold-close{display:none!important}
+ details.grp>summary{display:none}
+ .wrap{display:block;max-width:none}
+ body{background:#fff;color:#000;font-size:12px}
+ .step,figure,table,.box{break-inside:avoid}
+ section.part{break-before:page}
+ section.part:first-of-type{break-before:auto}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <button class="menu-btn" id="menuBtn" aria-controls="toc" aria-expanded="false">목차</button>
+  <h1>Claude Code 3 결과물 — 구글 시트 · 대시보드 · 리포트 <span class="ver">v1.0 · 2026-11-24</span></h1>
+  <a class="rel-btn" href="claude-code-skills-agents.html" title="앞 가이드">← 2 전처리</a>
+  <a class="rel-btn" href="claude-code-build-app.html" title="다음 가이드">4 발행 · 공유 →</a>
+  <a class="rel-btn" href="#p6">막혔을 때</a>
+  <button class="rel-btn" id="relBtn">Update Notes</button>
+  <div class="progress" aria-live="polite"><span class="bar"><i id="barFill"></i></span><span id="barText">0 / 10 단계</span></div>
+</header>
+
+<div class="wrap">
+<nav class="toc" id="toc" aria-label="목차">
+<ol>
+  <li class="ghead">시작 전</li>
+  <li><a href="#p0">세 가지 모양 · 준비물</a></li>
+  <li class="ghead">① 준비 <small>1단계</small></li>
+  <li class="sub"><a href="#s1">1. 정리된 CSV 확인하기</a></li>
+  <li class="ghead">② 구글 시트 <small>2~3단계</small></li>
+  <li class="sub"><a href="#s2">2. CSV 를 시트로 올리고 수식 · 필터</a></li>
+  <li class="sub"><a href="#s3">3. 시트에서 직접 거르고 고쳐 보기</a></li>
+  <li class="ghead">③ 대시보드 <small>4~5단계</small></li>
+  <li class="sub"><a href="#s4">4. 한 파일 대시보드 만들기</a></li>
+  <li class="sub"><a href="#s5">5. 대시보드 숫자를 CSV 와 맞춰 보기</a></li>
+  <li class="ghead">④ 리포트 = 에이전트 <small>6~9단계</small></li>
+  <li class="sub"><a href="#s6">6. 말로 부탁해서 에이전트 만들기</a></li>
+  <li class="sub"><a href="#s7">7. 일 맡기고 결론만 받기</a></li>
+  <li class="sub"><a href="#s8">8. 판단 기준과 출력 형식 넣기</a></li>
+  <li class="sub"><a href="#s9">9. v2 만들어 v1 과 나란히 보기</a></li>
+  <li class="ghead">⑤ 마무리 <small>10단계</small></li>
+  <li class="sub"><a href="#s10">10. 세 결과물 나란히 보고 고르기</a></li>
+  <li class="ghead">막혔을 때 <small>언제든</small></li>
+  <li><a href="#p6">PART 6 막혔을 때</a></li>
+</ol>
+<button type="button" class="expand-btn" id="expandBtn">모두 펼치기</button>
+</nav>
+
+<main>
+<section class="part" id="p0">
+  <h2><small>시작 전</small>같은 숫자, 세 가지 모양</h2>
+  <p class="lead">리뷰 그림의 <b>3 결과물</b> — 「어떤 형태로 보여 줄지 고른다」 단계입니다. 2 전처리에서 만든 <b>정리된 CSV 두 개</b>(월별 지표 · 월별 학년별 학생수)를 그대로 써서, 같은 숫자를 <b>구글 시트 · 대시보드 · 리포트</b> 세 가지로 만들어 봅니다. 숫자는 새로 세지 않습니다 — 모양만 바꿉니다.</p>
+  <div class="tbl"><table>
+    <tr><th>결과물</th><th>한 줄 쓰임</th><th>이럴 때 고른다</th><th>누가 만드나</th><th>오늘</th></tr>
+    <tr><td><b>구글 시트</b></td><td>표로 쌓고 <b>직접 거른다</b></td><td>받는 사람이 숫자를 고치거나 거르고 더 붙여 쓸 때</td><td>Claude 가 API 로 넣고, 나는 필터 · 수식으로 다룬다</td><td>2 · 3단계</td></tr>
+    <tr><td><b>대시보드</b></td><td>한 화면에 <b>한눈에</b> 본다</td><td>매달 같은 숫자를 같은 자리에서 확인할 때 (회의 · 공유 화면)</td><td>Claude 가 한 파일 HTML 로</td><td>4 · 5단계</td></tr>
+    <tr><td><b>리포트</b></td><td>숫자를 <b>글로 풀어</b> 준다</td><td>「그래서 무슨 일이 있었나」를 읽는 사람에게 설명해야 할 때</td><td><b>에이전트</b>(리포트 담당)에게 맡긴다</td><td>6~9단계</td></tr>
+  </table></div>
+
+  <h3>준비물</h3>
+  <div class="tbl"><table>
+    <tr><th>준비물</th><th>설명</th></tr>
+    <tr><td><b>2 전처리 완료</b></td><td><code class="k">basic_data\정리\</code> 의 <code class="k">월별_지표.csv</code> · <code class="k">월별_학년별_학생수.csv</code>, 워크스페이스의 <code class="k">jig-metrics</code> 스킬. 아직이면 받은 <code class="k">정답_정리</code> 폴더를 <code class="k">basic_data\정리</code> 로 넣고 시작합니다</td></tr>
+    <tr><td><b>구글 API 연결</b> (시트용)</td><td>1 수집 2 · 3단계에서 만든 <code class="k">.env</code> 의 <code class="k">GOOGLE_AUTH_DIR</code>. 없으면 2단계를 손으로(드라이브에 CSV 올리기) 합니다</td></tr>
+    <tr><td>받을 파일</td><td><code class="k">정답_정리</code>(CSV 두 개) · <code class="k">에이전트_틀.md</code> · <code class="k">정답_리포트담당.md</code> · <code class="k">관찰표.txt</code>(선택)</td></tr>
+  </table></div>
+  <div class="box warn"><b>주의</b>CSV · 시트 · 대시보드 · 리포트 모두 <b>회사 실적</b>입니다. 시트는 회사 계정 안에서만 공유하고, 대시보드 · 리포트 HTML 은 내 PC 에 둡니다. 링크로 팀에 내보내는 일은 다음 가이드 <b>4 발행 · 공유</b>에서 합니다.</div>
+</section>
+
+<details class="grp" id="g1">
+<summary><span class="gno">①</span> 준비 <small>1단계 · 5분</small></summary>
+<section class="part" id="p1">
+  <h2><small>PART 1</small>준비</h2>
+  <article class="step" id="s1" data-step="1">
+    <header><span class="no">1</span><h3>정리된 CSV 확인하기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><p>데스크톱 앱 Code 탭에서 <code class="k">basic_data</code> 폴더를 열고(2 전처리와 같은 폴더) 붙여넣습니다.</p>
+        <div class="cmd"><code style="white-space:pre-wrap">basic_data\정리 폴더의 월별_지표.csv 와 월별_학년별_학생수.csv 를 확인해 줘. 파일은 고치지 마.
+1. 두 파일의 열 이름과 행 수
+2. 월별_지표의 달 목록과, 달마다 학년별 학생수를 더한 값이 월별_지표의 학생수와 같은지
+3. .env 에 GOOGLE_AUTH_DIR 줄이 있는지 (값은 보여 주지 마)</code><button type="button">복사</button></div></div></div>
+      <div class="row"><b>확인</b><div><p>달 6개(202507~202509 · 202607~202609), 달마다 「같음」, <code class="k">GOOGLE_AUTH_DIR</code> 있음/없음이 나온다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
+      <div class="box tip"><b>CSV 가 없으면</b>받은 <code class="k">정답_정리</code> 폴더를 <code class="k">basic_data</code> 안에 넣고 이름을 <code class="k">정리</code> 로 바꿉니다. 정답표 숫자로 만든 같은 파일입니다.</div>
+      </div></details>
+    </div>
+  </article>
+</section>
+</details>
+
+<details class="grp" id="g2">
+<summary><span class="gno">②</span> 구글 시트 <small>2~3단계 · 20분</small></summary>
+<section class="part" id="p2">
+  <h2><small>PART 2</small>구글 시트 — 표로 쌓고 직접 거른다</h2>
+  <p class="lead">시트의 힘은 <b>받는 사람이 직접 만질 수 있다</b>는 것입니다. 그래서 숫자를 값으로 박아 넣기보다, 계산은 <b>수식</b>으로 남겨 사람이 고치고 거를 수 있게 만듭니다.</p>
+
+  <article class="step" id="s2" data-step="2">
+    <header><span class="no">2</span><h3>CSV 를 시트로 올리고 수식 · 필터 넣기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><p>붙여넣습니다. <code class="k">이름:</code> 줄만 바꿉니다.</p>
+        <div class="cmd"><code style="white-space:pre-wrap">.env 의 GOOGLE_AUTH_DIR 인증(구글 API)으로 아래를 해줘. claude.ai 커넥터는 쓰지 마. 끝나면 결과를 표로 보고해줘.
+
+이름: (내 이름)
+
+1. 내 드라이브에 새 스프레드시트 「3결과물_이름」 을 만들어.
+2. 「월별」 탭에 basic_data\정리\월별_지표.csv 를, 「학년별」 탭에 월별_학년별_학생수.csv 를 A1 부터 그대로 넣어.
+3. 「월별」 탭 D1 에 「학생수 전년비」 를 쓰고, 2026년 달 줄에만 작년 같은 달 학생수 대비 증감률을 값이 아니라 수식으로 넣어 (예: =C5/C2-1). 퍼센트 형식으로.
+4. 두 탭 모두 첫 행을 고정하고 필터를 켜.
+5. 다시 읽어서 탭별 행 수가 CSV 와 같은지, D열 수식 결과가 CSV 로 직접 계산한 값과 같은지 확인해.
+6. 보고 표: 시트 링크 · 탭별 행 수 비교 · 전년비 3개 값 · 쓴 계정 이메일.</code><button type="button">복사</button></div></div></div>
+      <div class="row"><b>확인</b><div><p>링크를 열면 「월별」 · 「학년별」 탭이 있고, D열 셀을 누르면 위 수식 칸에 <b>숫자가 아니라 수식</b>이 보인다. 보고의 비교가 모두 같다.</p></div></div>
+      <details class="q fix"><summary>API 연결이 없을 때 (손으로 하기)</summary>
+        <ol><li>구글 드라이브 → 새로 만들기 → Google 스프레드시트 → 파일 → 가져오기 → 업로드 → <code class="k">월별_지표.csv</code> → 「새 시트 삽입」.</li>
+          <li>같은 방법으로 <code class="k">월별_학년별_학생수.csv</code> 도 넣는다.</li>
+          <li>D열 수식은 Claude 에게 「월별 탭 2026년 줄의 전년비 수식을 알려 줘」라고 물어 직접 넣는다.</li></ol>
+        <button type="button" class="fold-close">닫기 ▴</button></details>
+    </div>
+  </article>
+
+  <article class="step" id="s3" data-step="3">
+    <header><span class="no">3</span><h3>시트에서 직접 거르고 고쳐 보기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>이번 단계는 Claude 없이 <b>내 손으로</b> 합니다. 받는 사람이 할 일을 미리 해 보는 것입니다.</p>
+      <div class="row"><b>방법</b><div><ol>
+        <li>「학년별」 탭 → 「편성년월」 머리 칸의 필터 단추 → <b>202609 만</b> 고른다 → 학년별 학생수가 한 달치만 보인다.</li>
+        <li>「학생수」 머리 칸 필터 → <b>내림차순 정렬</b> → 가장 많은 학년이 위로 온다.</li>
+        <li>「월별」 탭 C2(202507 학생수)를 아무 숫자로 바꿔 본다 → D5 전년비가 <b>저절로 바뀐다</b> → <kbd>Ctrl</kbd>+<kbd>Z</kbd> 로 되돌린다.</li>
+      </ol></div></div>
+      <div class="row"><b>확인</b><div><p>202609 에서 가장 많은 학년이 <b>초등3</b>(542명)이다. C2 를 바꾸면 D5 가 따라 바뀌었다가 되돌아온다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
+      <div class="box tip"><b>그래서 시트는</b>「숫자를 받아서 내 식으로 다시 보고 싶은 사람」에게 줍니다. 대신 누구나 고칠 수 있어 숫자가 바뀌기 쉽습니다 — 공유할 때 「보기 전용」으로 줄지 정합니다(4 발행 · 공유).</div>
+      </div></details>
+    </div>
+  </article>
+</section>
+</details>
+
+<details class="grp" id="g3">
+<summary><span class="gno">③</span> 대시보드 <small>4~5단계 · 20분</small></summary>
+<section class="part" id="p3">
+  <h2><small>PART 3</small>대시보드 — 한 화면에 한눈에</h2>
+  <p class="lead">대시보드는 <b>매번 같은 자리에 같은 숫자</b>가 보이는 화면입니다. 오늘은 인터넷 없이 열리는 <b>HTML 파일 한 장</b>으로 만듭니다. 대시보드에서 가장 중요한 것은 예쁜 모양이 아니라 <b>CSV 와 숫자가 똑같은 것</b>입니다.</p>
+
+  <article class="step" id="s4" data-step="4">
+    <header><span class="no">4</span><h3>한 파일 대시보드 만들기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><div class="cmd"><code style="white-space:pre-wrap">basic_data\정리 의 CSV 두 개로 직영 대시보드를 basic_data\대시보드\직영_대시보드.html 한 파일로 만들어 줘.
+- 외부 파일 · 인터넷 라이브러리 없이 한 파일 안에 다 넣는다 (그래프는 SVG 나 CSS 로)
+- 맨 위 숫자 카드 3개: 가장 최근 달 학생수 · 과목수 · 학생수 전년 같은 달 대비 증감(%)
+- 가운데: 월별 학생수 막대 — 올해 달과 작년 같은 달을 나란히
+- 아래: 학년별 학생수 표 — 가장 최근 달과 작년 같은 달, 증감
+- 맨 아래 작은 글씨: 데이터 출처(파일 이름)와 기준(jig-metrics 기준 · 학년 정리 후)
+- 숫자는 CSV 값을 그대로 쓰고 새로 세지 마. 원본 CSV 는 고치지 마
+다 만들면 파일 경로만 알려 줘.</code><button type="button">복사</button></div>
+        <p>탐색기에서 <code class="k">대시보드\직영_대시보드.html</code> 을 더블클릭해 브라우저로 엽니다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>숫자 카드 · 막대 · 표가 한 화면에 보이고, 맨 위 학생수 카드가 <b>3,115</b>(202609)다.</p></div></div>
+    </div>
+  </article>
+
+  <article class="step" id="s5" data-step="5">
+    <header><span class="no">5</span><h3>대시보드 숫자를 CSV 와 맞춰 보기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <p>화면이 그럴듯해도 숫자 하나가 틀리면 대시보드 전체를 못 믿게 됩니다. 만든 Claude 가 아니라 <b>새 대화</b>에서, HTML 을 <b>읽어서</b> CSV 와 따로 대조시킵니다.</p>
+      <div class="row"><b>방법</b><div><p><code class="k">/clear</code> 후 붙여넣습니다.</p>
+        <div class="cmd"><code style="white-space:pre-wrap">basic_data\대시보드\직영_대시보드.html 에 보이는 숫자를 모두 뽑아서, basic_data\정리 의 CSV 로 네가 직접 다시 계산한 값과 대조해 줘. 파일은 고치지 마.
+- 대조 표: 화면 위치 · 화면 숫자 · CSV 로 계산한 숫자 · 같음/다름
+- 증감(%)은 소수 첫째 자리까지 같으면 같음
+- 다른 곳이 있으면 왜 다른지 짐작해서 알려 줘</code><button type="button">복사</button></div></div></div>
+      <div class="row"><b>확인</b><div><p>대조 표가 모두 「같음」이다. 「다름」이 있으면 「다른 곳만 고쳐 줘」로 고친 뒤 이 카드를 한 번 더 돌린다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
+      <div class="box warn"><b>왜 새 대화에서 하나요</b>만든 대화는 「내가 맞게 만들었다」고 믿는 쪽으로 답하기 쉽습니다. 계산한 것과 검사하는 것을 <b>떼어 놓아야</b> 틀린 곳이 보입니다. 회사 대시보드도 같은 규칙으로 검산합니다.</div>
+      </div></details>
+    </div>
+  </article>
+</section>
+</details>
+
+<details class="grp" id="g4">
+<summary><span class="gno">④</span> 리포트 = 에이전트 <small>6~9단계 · 30분</small></summary>
+<section class="part" id="p4">
+  <h2><small>PART 4</small>리포트 — 숫자를 글로 풀어 주는 담당자(에이전트)</h2>
+  <p class="lead">리포트는 「무슨 일이 있었나」를 글로 씁니다. 매달 같은 리포트를 쓰는 일은 <b>담당자 한 명</b>에게 맡기는 것이 맞습니다 — 그 담당자가 <b>에이전트</b>입니다. 2 전처리에서 만든 <b>스킬</b>(일하는 기준)과 무엇이 다른지부터 봅니다.</p>
+
+  <h3>스킬과 에이전트는 무엇이 다른가</h3>
+  <div class="tbl"><table>
+    <tr><th>구분</th><th>스킬</th><th>에이전트</th></tr>
+    <tr><td>마케팅팀 비유</td><td>팀 공용 <b>캠페인 운영 매뉴얼</b> (성과 지표 계산 기준 · 브랜드 톤)</td><td>대행사 담당자 <b>한 명에게 맡긴 성과 리포트</b></td></tr>
+    <tr><td>마케팅팀 예시</td><td><code class="k">ad-metrics</code> — CTR · CPA · ROAS 를 <b>팀 기준대로 계산하는 법</b> (테스트 캠페인 제외 · 전환은 신청 완료만)</td><td>캠페인 리포트 담당 — 채널별 성과를 <b>대신 정리해 리포트 HTML</b> + 예산 조정 제안 1줄</td></tr>
+    <tr><td>파일</td><td><code class="k">.claude/skills/&lt;이름&gt;/SKILL.md</code></td><td><code class="k">.claude/agents/&lt;이름&gt;.md</code></td></tr>
+    <tr><td>언제 불려오나</td><td>description 에 맞는 상황이 되면 자동 · <code class="k">/이름</code></td><td>자동 또는 이름을 대고 부름</td></tr>
+    <tr><td>써야 할 때</td><td>「CPA 는 이렇게 계산해, 테스트 캠페인은 빼」를 매번 다시 쓰고 있을 때</td><td>채널 여러 개 성과 파일을 열어 정리하는 일을 내 대화창 밖으로 보내고 싶을 때</td></tr>
+    <tr><td>주의사항</td><td>내 대화창에서 같이 일하므로 과정이 다 보이는 대신 <b>대화창이 길어진다</b> · 내 대화 내용도 함께 읽으니 앞에서 한 말과 섞일 수 있다</td><td>따로 일하고 <b>결론만</b> 돌려주므로 <b>중간에 끼어들 수 없다</b> · 내 대화 내용을 모르니 기준 · 파일 이름 · 저장 위치를 <b>부를 때 다 적어 준다</b></td></tr>
+  </table></div>
+  <div class="box warn"><b>중요</b>이 리포트 담당은 <b>6 팀 꾸리기</b>에서 여럿이 나눠 일할 때도 그대로 씁니다. 막히면 5분 규칙대로 정답 파일로 갈아타고 넘어갑니다.</div>
+
+  <article class="step" id="s6" data-step="6">
+    <header><span class="no">6</span><h3>말로 부탁해서 에이전트 만들기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><ol>
+        <li>아래를 복사해 붙여넣습니다. 파일을 만들어도 되느냐고 물으면 <b>Yes</b>.
+          <div class="cmd"><code>워크스페이스 폴더(basic_data 바로 위 폴더)의 .claude/agents/jig-report.md 로 에이전트를 만들어 줘. basic_data 안에는 만들지 않는다. 만든 뒤 전체 경로를 알려 줘.
+- 이름: jig-report (직영 리포트 담당)
+- description: basic_data\정리 의 월별 CSV(월별_지표 · 월별_학년별_학생수)를 읽어 월별 과목수 · 학생수 · 학년별 리포트를 HTML 파일로 만들고, 나에게는 결론 3줄만 보고한다. 「리포트 만들어 줘」「직영 리포트」라고 할 때 쓴다
+- tools 는 Read, Glob, Grep, Write, Bash, PowerShell (읽기 · 파일 쓰기 · 실행). model 줄은 쓰지 않는다(따로 정하지 않으면 메인과 같은 모델)
+- 본문 첫 줄: 너는 직영 학원 데이터 분석 · 리포트 전문가다. 직영 데이터를 회사 기준으로 정확히 세어 리포트를 만든다
+- 숫자는 정리 CSV 값을 그대로 쓰고 새로 세지 않는다. CSV 는 고치지 않는다. 리포트는 basic_data 안의 리포트 폴더에 저장한다</code><button type="button">복사</button></div></li>
+        <li>윈도우 탐색기에서 워크스페이스의 <code class="k">.claude\agents\jig-report.md</code> 를 메모장으로 열어 맨 위 <code class="k">---</code> 사이(name · description · tools)와, 그 아래 첫 줄 「너는 … 전문가다」를 봅니다. 이 첫 줄이 에이전트의 역할입니다 — 공식 문서 예시도 「You are a code improvement specialist」처럼 전문가 역할로 시작합니다.</li>
+        <li><b>새 세션</b>을 엽니다(CLI 는 <code class="k">exit</code> → <code class="k">claude</code>). <code class="k">.claude\agents</code> 폴더가 이번에 처음 생겼으면 켜 둔 창은 아직 모릅니다(이미 있던 agents 폴더에 넣은 파일은 몇 초 안에 반영됩니다).</li>
+      </ol>
+      <p>도구 줄이 에이전트가 할 수 있는 일을 정합니다. 리포트 파일을 쓰고(Write) 숫자를 명령으로 세야(Bash · PowerShell) 해서 <b>읽기 · 쓰기 · 실행</b>을 줍니다. 실행 도구를 <b>둘 다</b> 적는 이유: PC 에 Git Bash 가 없으면 Claude Code 의 실행 도구는 <b>PowerShell</b> 이고, 있으면 <b>Bash</b> 입니다. 하나만 적으면 다른 PC 에서 에이전트가 명령을 못 돌립니다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>워크스페이스의 <code class="k">.claude\agents\jig-report.md</code> 가 있고, 다시 켠 뒤 「이 프로젝트에서 쓸 수 있는 에이전트 목록 보여 줘」라고 물으면 「이 프로젝트 전용」에 <code class="k">jig-report</code> 가 나온다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (2)</summary><div style="margin-top:8px">
+      <div class="box tip"><b>/agents 마법사는요?</b>Claude Code 2.1.287 부터 <code class="k">/agents</code> 마법사가 없어졌습니다. 입력하면 「Claude 에게 만들어 달라고 하거나 파일을 직접 고치라」는 안내만 나옵니다. 그래서 말로 부탁해 만들고, 목록도 말로 물어봅니다. <code class="k">/list-agents</code> 는 이름이 비슷하지만 <b>지금 돌고 있는</b> 에이전트 · 다른 세션을 보는 명령이라 만든 에이전트가 나오지 않습니다. 받은 <code class="k">에이전트_틀.md</code> 는 빈칸을 직접 채우고 싶을 때 씁니다.</div>
+      <div class="box warn"><b>5분 규칙</b>5분 안에 안 되면 받은 <code class="k">정답_리포트담당.md</code> 를 워크스페이스의 <code class="k">.claude\agents\</code> 폴더(없으면 만든다)에 넣고 이름을 <code class="k">jig-report.md</code> 로 바꾼 뒤 새 세션을 엽니다.</div>
+      </div></details>
+    </div>
+  </article>
+
+  <article class="step" id="s7" data-step="7">
+    <header><span class="no">7</span><h3>일 맡기고 결론만 받기 · 관찰표 첫 칸</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><div class="cmd"><code>basic_data\정리 의 CSV 로 월별 과목수 · 학생수 리포트를 만들어 줘. 직영 리포트 담당 에이전트에게 맡기고, 리포트/리포트_v1.html 로 저장해.</code><button type="button">복사</button></div>
+        <p>끝나면 탐색기에서 <code class="k">리포트\리포트_v1.html</code> 을 더블클릭해 브라우저로 엽니다.</p></div></div>
+      <div class="row"><b>확인</b><div><p>화면에 에이전트가 일한다는 표시가 잠깐 뜨고, <b>파일을 읽고 쓰는 과정은 내 창에 안 나오고</b> 결론 3줄만 돌아온다. 리포트의 숫자가 정답표와 같다.</p></div></div>
+      <div class="row"><b>관찰표</b><div><p>(선택) 받은 <code class="k">관찰표.txt</code> 의 <b>「싱글」 칸</b>에 에이전트가 끝날 때 뜨는 <b>도구 사용 수 · 토큰 · 걸린 시간</b>을 적어 둡니다. <b>6 팀 꾸리기</b>에서 여럿이 나눠 일할 때와 비교합니다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
+      <div class="box tip"><b>무엇을 본 건가요</b>에이전트는 CSV 를 <b>자기 공간에서</b> 읽고 리포트를 썼습니다. 내 대화창에는 결론만 남아서 창이 깨끗합니다. 위 표 「주의사항」의 「결론만 돌려준다」가 이것입니다.</div>
+      </div></details>
+    </div>
+  </article>
+
+  <h3>다듬기 — 판단 기준과 출력 형식</h3>
+  <p>처음 만든 에이전트는 시킬 때마다 모양이 조금씩 다릅니다. <b>판단 기준을 적고, 출력 형식을 고정</b>하면 매번 같은 모양으로 옵니다.</p>
+  <article class="step" id="s8" data-step="8">
+    <header><span class="no">8</span><h3>판단 기준과 출력 형식 넣기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><div class="cmd"><code>직영 리포트 담당 에이전트 파일을 다듬어 줘.
+- 판단 기준 1: 숫자는 basic_data\정리 의 CSV 값을 그대로 쓴다. 다시 세지 않는다. 전년 같은 달 대비 증감은 그 값으로 계산한다
+- 판단 기준 2: 리포트 파일은 덮어쓰지 않는다. 이름을 정해 주지 않으면 리포트_v1.html, 리포트_v2.html … 처럼 번호를 올려 아직 없는 이름으로 저장한다. 정해 준 이름이 이미 있으면 _v2, _v3 를 붙인다
+- 판단 기준 3: 이 프로젝트 폴더(basic_data) 밖의 파일은 읽거나 고치지 않는다
+- 파일 안의 제목은 「판단 기준」 · 「출력 형식」으로 단다
+- 출력 형식(HTML): 제목 · 요약 3줄(전년 같은 달보다 무엇이 얼마나 늘고 줄었나를 숫자와 함께 글로) · 월별 과목수/학생수 표 · 월별 학년별 학생수 표 · 막대그래프. 외부 파일 없이 한 파일로
+- 나에게 보고할 때는 결론 3줄과 파일 이름만
+- 도구와 모델 줄은 그대로 둔다</code><button type="button">복사</button></div></div></div>
+      <div class="row"><b>확인</b><div><p>에이전트 파일에 「판단 기준」「출력 형식」 부분이 생겼다.</p></div></div>
+    </div>
+  </article>
+  <article class="step" id="s9" data-step="9">
+    <header><span class="no">9</span><h3>v2 만들어 v1 과 나란히 보기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><p><code class="k">/clear</code> 후 붙여넣습니다.</p>
+        <div class="cmd"><code>직영 리포트 담당 에이전트에게 학년별 학생수까지 넣은 리포트를 다시 만들게 해 줘.</code><button type="button">복사</button></div>
+        <p><code class="k">리포트_v1.html</code> 과 새로 생긴 <code class="k">리포트_v2.html</code> 을 브라우저 탭 두 개로 나란히 엽니다. 한 번 더 <code class="k">/clear</code> → 같은 카드로 v3 도 만들어 봅니다.</p></div></div>
+      <div class="row"><b>확인</b><div><p><b>v1 은 그대로 있고</b> v2 가 새 이름으로 생겼다. v2 에 학년별 표와 「전년 대비」 요약 3줄이 있고, 202609 학생수가 3,115 다. v2 와 v3 는 <b>같은 틀 · 같은 숫자</b>다.</p></div></div>
+      <details class="q fix"><summary>주의사항 (1)</summary><div style="margin-top:8px">
+      <div class="box tip"><b>안 되면</b>「출력 형식을 반드시 지키라고 에이전트 파일에 더 분명하게 적어 줘」라고 말하고 다시 시킵니다. 계속 안 되면 정답 파일과 내 파일을 나란히 열어 다른 곳을 봅니다.</div>
+      </div></details>
+    </div>
+  </article>
+</section>
+</details>
+
+<details class="grp" id="g5">
+<summary><span class="gno">⑤</span> 마무리 <small>10단계 · 5분</small></summary>
+<section class="part" id="p5">
+  <h2><small>PART 5</small>마무리 — 무엇을 고를까</h2>
+  <article class="step" id="s10" data-step="10">
+    <header><span class="no">10</span><h3>세 결과물 나란히 보고 고르기</h3><label><input type="checkbox">완료</label></header>
+    <div class="body">
+      <div class="row"><b>방법</b><div><p>시트 · 대시보드 · 리포트를 브라우저 탭 세 개로 나란히 엽니다. 아래 표의 빈칸을 내 업무로 채워 봅니다.</p>
+        <div class="tbl"><table>
+          <tr><th>보는 사람</th><th>그 사람이 하고 싶은 일</th><th>고를 결과물</th></tr>
+          <tr><td>예: 팀장</td><td>매달 회의 전에 숫자만 빨리 본다</td><td>대시보드</td></tr>
+          <tr><td>예: 담당자</td><td>센터별로 다시 거르고 숫자를 덧붙인다</td><td>구글 시트</td></tr>
+          <tr><td>예: 본부장</td><td>왜 줄었는지 설명을 읽는다</td><td>리포트</td></tr>
+          <tr><td>(내 업무)</td><td>　</td><td>　</td></tr>
+        </table></div></div></div>
+      <div class="row"><b>확인</b><div><p>내 업무 줄이 채워졌다. 세 파일(시트 링크 · <code class="k">직영_대시보드.html</code> · <code class="k">리포트_v2.html</code>)을 지우지 않았다.</p></div></div>
+    </div>
+  </article>
+  <div class="box tip"><b>4 발행 · 공유에서는</b>오늘 만든 결과물을 <b>링크 하나로 팀이 보게</b> 합니다 — 구글 웹앱 · Claude 아티팩트 · 사내 로컬 서버 중 고르고, 누가 볼 수 있는지 정합니다.</div>
+</section>
+</details>
+
+<details class="grp" id="g8">
+<summary><span class="gno">!</span> 막혔을 때 <small>언제든</small></summary>
+<section class="part" id="p6">
+  <h2><small>PART 6</small>막혔을 때</h2>
+  <div class="tbl"><table>
+    <tr><th>증상</th><th>원인</th><th>해결</th></tr>
+    <tr><td>1단계에서 CSV 가 없다고 한다</td><td>2 전처리 11단계를 안 했다 · 다른 폴더를 열었다</td><td>받은 <code class="k">정답_정리</code> 를 <code class="k">basic_data\정리</code> 로 넣는다 · <code class="k">basic_data</code> 를 열었는지 본다</td></tr>
+    <tr><td>2단계 시트가 다른 계정에 생겼다</td><td>claude.ai 커넥터가 먼저 불렸다</td><td>「커넥터는 쓰지 마」 줄을 빼지 않았는지 보고 다시 붙여넣는다</td></tr>
+    <tr><td>2단계에서 「GOOGLE_AUTH_DIR 가 없다」</td><td>1 수집 API 연결을 안 했다</td><td>2단계 「손으로 하기」로 한다</td></tr>
+    <tr><td>D열에 숫자만 있고 수식이 없다</td><td>값으로 넣었다</td><td>「D열을 값이 아니라 수식으로 다시 넣어 줘」</td></tr>
+    <tr><td>대시보드가 하얗게 나오거나 그래프가 없다</td><td>인터넷 라이브러리를 불러오려 했다</td><td>「외부 라이브러리 없이 SVG 로 다시」</td></tr>
+    <tr><td>5단계 대조에서 「다름」이 나온다</td><td>대시보드가 숫자를 다시 셌다 · 반올림이 다르다</td><td>「CSV 값을 그대로 쓰게 고쳐 줘」 → 5단계 다시</td></tr>
+    <tr><td>에이전트가 「실행 도구가 없어 셀 수 없다」고 돌아온다</td><td>에이전트 파일 <code class="k">tools</code> 줄에 이 PC 의 실행 도구가 없다(Git Bash 가 없는 PC 는 PowerShell)</td><td><code class="k">tools</code> 줄을 <code class="k">Read, Glob, Grep, Write, Bash, PowerShell</code> 로 → 새 세션</td></tr>
+    <tr><td>에이전트 목록에 리포트 담당이 없다</td><td>파일이 워크스페이스의 <code class="k">.claude\agents\</code> 에 없다 · 만든 뒤 다시 켜지 않았다</td><td>윈도우 탐색기에서 파일 확인 → 새 세션 · 또는 정답 파일</td></tr>
+    <tr><td>에이전트 대신 내 창에서 직접 센다</td><td>이름을 대지 않았다</td><td>「직영 리포트 담당 에이전트에게 맡겨」를 문장에 넣는다</td></tr>
+    <tr><td>리포트 파일이 안 생긴다</td><td>에이전트에 쓰기 · 실행 도구가 없다</td><td>6단계 도구 선택 다시 · 또는 정답 파일</td></tr>
+    <tr><td>리포트가 덮어써졌다</td><td>판단 기준 2 가 없다</td><td>8단계. 덮어쓴 파일은 에이전트에게 다시 만들게 한다</td></tr>
+    <tr><td><code class="k">/rewind</code> 로 되돌렸는데 파일이 안 돌아온다</td><td>담당 에이전트(서브 에이전트)가 만든 · 고친 파일과 명령으로만 바뀐 파일은 <code class="k">/rewind</code> 가 되돌리지 못한다</td><td>그래서 「덮어쓰지 말고 새 이름으로」를 판단 기준에 둔다</td></tr>
+    <tr><td>결과 모양이 매번 다르다</td><td>출력 형식이 파일에 없다</td><td>8단계</td></tr>
+  </table></div>
+</section>
+</details>
+</main>
+
+</div>
+
+<dialog id="zoom"><img alt=""></dialog>
+<dialog id="rel" class="relnote" aria-label="수정 내역">
+  <button class="close" type="button" autofocus>닫기</button>
+  <h2>수정 내역 <small style="font-weight:400;color:var(--sub);font-size:14px">Update Notes</small></h2>
+  <div class="tbl"><table>
+    <tr><th>버전</th><th>날짜</th><th>내용</th></tr>
+    <tr><td><b>v1.0</b></td><td>2026-11-24</td><td>첫 판. 리뷰 그림 흐름의 <b>3 결과물</b> — 2 전처리의 정리 CSV 로 구글 시트(API · 수식 · 필터, 직접 거르기) · 대시보드(한 파일 HTML + 새 대화에서 CSV 대조) · 리포트 = 에이전트(옛 basic 1step 에이전트 단계를 정리 CSV 기준으로 고침) · 고르기. 받을 파일 <code class="k">정답_정리</code> = 정답표 숫자로 만든 CSV 2개(학년별 합 = 월 학생수 6개월 모두 확인)</td></tr>
+  </table></div>
+  <p style="font-size:13px;color:var(--sub)">기준 버전: Claude Code 2.1.284</p>
+</dialog>
+
+<script>
+(function(){
+  var KEY='cc-output-steps-v1';
+  var steps=[].slice.call(document.querySelectorAll('.step[data-step]'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}')}catch(e){}
+  function update(){
+    var n=0;
+    steps.forEach(function(s){var c=s.querySelector('input[type=checkbox]');s.classList.toggle('done',c.checked);if(c.checked)n++});
+    document.getElementById('barFill').style.width=(n/steps.length*100)+'%';
+    document.getElementById('barText').textContent=n+' / '+steps.length+' 단계';
+  }
+  steps.forEach(function(s){
+    var c=s.querySelector('input[type=checkbox]');
+    c.checked=!!saved[s.dataset.step];
+    c.addEventListener('change',function(){
+      saved[s.dataset.step]=c.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved))}catch(e){}
+      update();
+    });
+  });
+  update();
+
+  document.querySelectorAll('.cmd button').forEach(function(b){
+    b.addEventListener('click',function(){
+      var t=b.previousElementSibling.textContent;
+      function done(){b.textContent='복사됨';setTimeout(function(){b.textContent='복사'},1500)}
+      if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(t).then(done,fallback)}else{fallback()}
+      function fallback(){var a=document.createElement('textarea');a.value=t;document.body.appendChild(a);a.select();try{document.execCommand('copy');done()}catch(e){}a.remove()}
+    });
+  });
+
+  var dlg=document.getElementById('zoom');
+  document.querySelectorAll('figure img').forEach(function(img){
+    img.addEventListener('click',function(){dlg.querySelector('img').src=img.src;dlg.showModal()});
+  });
+  dlg.addEventListener('click',function(){dlg.close()});
+
+  var rel=document.getElementById('rel');
+  document.getElementById('relBtn').addEventListener('click',function(){rel.showModal()});
+  rel.querySelector('.close').addEventListener('click',function(){rel.close()});
+
+  // 4묶음 접기/펼치기 (단계 번호·앵커는 그대로라 옛 링크도 산다)
+  var grps=[].slice.call(document.querySelectorAll('details.grp'));
+  function openFor(t){var d=t&&t.closest?t.closest('details.grp'):null;if(d)d.open=true;return d}
+  function openByHash(){
+    if(!location.hash)return false;
+    var t=null;try{t=document.querySelector(location.hash)}catch(e){}
+    if(!t)return false;
+    if(openFor(t))setTimeout(function(){t.scrollIntoView()},0);
+    return true;
+  }
+  // 첫 화면은 무조건 전부 접힌다 (해시가 있어도, 새로고침이어도)
+  // 브라우저는 새로고침·뒤로가기 때 details 의 펼침 상태를 되살린다. 그것까지 지운다.
+  function collapseAll(){[].slice.call(document.querySelectorAll('details')).forEach(function(d){d.open=false})}
+  var touched=false;   // 사람이 한 번 누른 뒤에는 늦게 오는 load 가 그것을 닫아 버리면 안 된다
+  document.addEventListener('click',function(){touched=true},true);
+  function collapseIfUntouched(){if(!touched)collapseAll()}
+  collapseAll();
+  window.addEventListener('DOMContentLoaded',collapseIfUntouched);
+  window.addEventListener('load',collapseIfUntouched);
+  window.addEventListener('pageshow',function(e){if(e.persisted){touched=false;collapseAll()}});
+  // 펼치는 것은 페이지 안에서 링크를 눌렀을 때만이다 (목차 · 표의 (7단계) · 맨 위 [막혔을 때])
+  window.addEventListener('hashchange',openByHash);
+  // 맨 위 [막혔을 때] 처럼 이미 같은 해시에 있을 때는 hashchange 가 안 뜬다
+  [].slice.call(document.querySelectorAll('header.top a[href^="#"]')).forEach(function(a){
+    a.addEventListener('click',function(){
+      var t=null;try{t=document.querySelector(a.getAttribute('href'))}catch(e){}
+      if(t)openFor(t);
+    });
+  });
+  var expandBtn=document.getElementById('expandBtn');
+  expandBtn.addEventListener('click',function(){
+    var toOpen=grps.some(function(d){return !d.open});
+    grps.forEach(function(d){d.open=toOpen});
+    expandBtn.textContent=toOpen?'모두 접기':'모두 펼치기';
+  });
+  // 막히면 블록의 [닫기] (첫 화면에서는 전부 접힌 상태로 시작한다 = details 에 open 을 달지 않는다)
+  document.addEventListener('click',function(e){
+    var b=e.target.closest?e.target.closest('.fold-close'):null;if(!b)return;
+    var d=b.closest('details');if(!d)return;
+    d.open=false;var sm=d.querySelector('summary');if(sm)sm.scrollIntoView({block:'center'});
+  });
+  // 인쇄할 때는 접힌 것까지 전부 펼친다 (묶음 4개 + 막히면 + Q&A)
+  window.addEventListener('beforeprint',function(){[].slice.call(document.querySelectorAll('details')).forEach(function(d){d.open=true})});
+
+  var toc=document.getElementById('toc'),btn=document.getElementById('menuBtn');
+  toc.addEventListener('click',function(e){
+    var a=e.target.closest('a');if(!a)return;
+    var t=null;try{t=document.querySelector(a.getAttribute('href'))}catch(err){}
+    if(t)openFor(t);
+  });
+  btn.addEventListener('click',function(){var o=toc.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
+  var links=[].slice.call(toc.querySelectorAll('a'));
+  links.forEach(function(a){a.addEventListener('click',function(){toc.classList.remove('open');btn.setAttribute('aria-expanded',false)})});
+  var targets=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  function sync(){
+    var y=window.pageYOffset,hit=links[0];
+    targets.forEach(function(t,i){if(t&&t.offsetParent!==null&&t.getBoundingClientRect().top+y<=y+90)hit=links[i]});
+    // 맨 아래에서는 마지막 항목(더 스크롤할 수 없어 기준선에 못 닿는다)
+    if(y+window.innerHeight>=document.documentElement.scrollHeight-2)hit=links[links.length-1];
+    links.forEach(function(a){a.classList.remove('on')});hit.classList.add('on');
+  }
+  window.addEventListener('scroll',sync,{passive:true});
+  window.addEventListener('resize',sync);
+  sync();
+})();
+</script>
+</body>
+</html>
